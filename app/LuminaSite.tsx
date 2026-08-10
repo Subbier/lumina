@@ -58,11 +58,7 @@ function MoreRead({
 
 function Header() {
   const [open, setOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
-
-  function toggleMenu(id: string) {
-    setOpenMenu((prev) => (prev === id ? null : id));
-  }
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
     <>
@@ -96,59 +92,27 @@ function Header() {
             <a href="/" onClick={() => setOpen(false)}>
               Home
             </a>
+            <a href="/spitex" onClick={() => setOpen(false)}>
+              Spitex
+            </a>
+            <a href="/angehoerige" onClick={() => setOpen(false)}>
+              Pflegende Angehörige
+            </a>
+            <a href="/begleitung" onClick={() => setOpen(false)}>
+              Begleitung
+            </a>
 
             <div
-              className={`nav-dropdown ${openMenu === "dl" ? "open" : ""}`}
-              onMouseEnter={() => setOpenMenu("dl")}
-              onMouseLeave={() => setOpenMenu(null)}
+              className={`nav-dropdown ${aboutOpen ? "open" : ""}`}
+              onMouseEnter={() => setAboutOpen(true)}
+              onMouseLeave={() => setAboutOpen(false)}
             >
               <button
                 type="button"
                 className="nav-dropdown-trigger"
-                aria-expanded={openMenu === "dl"}
+                aria-expanded={aboutOpen}
                 aria-haspopup="true"
-                onClick={() => toggleMenu("dl")}
-              >
-                Dienstleistungen
-              </button>
-              <div className="nav-dropdown-panel" role="menu">
-                <div className="nav-dropdown-panel-inner">
-                  <a
-                    href="/spitex"
-                    role="menuitem"
-                    onClick={() => setOpen(false)}
-                  >
-                    Spitex
-                  </a>
-                  <a
-                    href="/angehoerige"
-                    role="menuitem"
-                    onClick={() => setOpen(false)}
-                  >
-                    Pflegende Angehörige
-                  </a>
-                  <a
-                    href="/begleitung"
-                    role="menuitem"
-                    onClick={() => setOpen(false)}
-                  >
-                    Begleitung
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className={`nav-dropdown ${openMenu === "about" ? "open" : ""}`}
-              onMouseEnter={() => setOpenMenu("about")}
-              onMouseLeave={() => setOpenMenu(null)}
-            >
-              <button
-                type="button"
-                className="nav-dropdown-trigger"
-                aria-expanded={openMenu === "about"}
-                aria-haspopup="true"
-                onClick={() => toggleMenu("about")}
+                onClick={() => setAboutOpen((v) => !v)}
               >
                 Über uns
               </button>
@@ -369,6 +333,10 @@ function Home() {
               <b>Begleitung entdecken →</b>
             </a>
           </div>
+          <a className="paths-cta" href="/lohn-check">
+            <span className="paths-cta-title">Lohn für pflegende Angehörige</span>
+            <span className="paths-cta-action">Jetzt Anspruch prüfen →</span>
+          </a>
         </div>
       </section>
 
