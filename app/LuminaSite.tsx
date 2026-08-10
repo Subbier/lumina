@@ -14,54 +14,27 @@ import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
 import { ListenPlayer } from "./listen/ListenPlayer";
 import { getPageAudio, type AudioView } from "./listen/pageAudio";
 
-function BrandMark({ size = 56 }: { size?: number }) {
+function BrandLockup({
+  height = 84,
+  light = false,
+}: {
+  height?: number;
+  light?: boolean;
+}) {
+  const width = Math.round(height * (987 / 360));
   return (
-    <svg
-      className="brand-mark-svg"
-      width={size}
-      height={size}
-      viewBox="0 0 64 64"
-      fill="none"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <ellipse
-        className="brand-ring brand-ring-green"
-        cx="25"
-        cy="32"
-        rx="14"
-        ry="22"
-        transform="rotate(-20 25 32)"
-        strokeWidth="8.5"
-      />
-      <ellipse
-        className="brand-ring brand-ring-navy"
-        cx="39"
-        cy="32"
-        rx="14"
-        ry="22"
-        transform="rotate(20 39 32)"
-        strokeWidth="8.5"
-      />
-      <path
-        className="brand-ring brand-ring-green"
-        d="M21.2 43.5c2.4 4.6 7 7.8 12.2 8.6"
-        strokeWidth="8.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function BrandLockup({ size = 56 }: { size?: number }) {
-  return (
-    <>
-      <BrandMark size={size} />
-      <span className="brand-wordmark">
-        <b>Lumina</b>
-        <small>Spitex+</small>
-      </span>
-    </>
+    <img
+      className="brand-logo"
+      src={
+        light
+          ? "/images/logo-lumina-lockup-light.png?v=orig1"
+          : "/images/logo-lumina-lockup.png?v=orig1"
+      }
+      alt=""
+      width={width}
+      height={height}
+      decoding="async"
+    />
   );
 }
 
@@ -124,7 +97,7 @@ function Header() {
       <header className="header">
         <div className="wrap nav-wrap">
           <a className="brand" href="/" aria-label="Lumina Spitex Startseite">
-            <BrandLockup size={56} />
+            <BrandLockup height={84} />
           </a>
           <button
             className="menu-btn"
@@ -215,7 +188,7 @@ function Footer() {
       <div className="wrap footer-grid">
         <div>
           <a className="brand brand-light" href="/" aria-label="Lumina Spitex Startseite">
-            <BrandLockup size={56} />
+            <BrandLockup height={72} light />
           </a>
           <p>
             Persönliche Spitex-Pflege zu Hause – und wo Angehörige pflegen:
@@ -1297,7 +1270,7 @@ function QuizClose() {
   return (
     <div className="quiz-top">
       <a className="quiz-brand brand brand-on-dark" href="/" aria-label="Lumina Spitex Startseite">
-        <BrandLockup size={44} />
+        <BrandLockup height={56} light />
       </a>
       <a
         className="quiz-close"
