@@ -116,6 +116,22 @@ export function ServiceSegmentPage({
         </div>
       </section>
 
+      {page.claimBanner ? (
+        <section className="wrap claim-banner">
+          <a className="claim-banner-card" href={page.claimBanner.href}>
+            <div className="claim-banner-copy">
+              <span className="eyebrow light">{page.claimBanner.eyebrow}</span>
+              <h2>{page.claimBanner.title}</h2>
+              <p>{page.claimBanner.text}</p>
+            </div>
+            <span className="claim-banner-action">
+              {page.claimBanner.label}
+              <span aria-hidden="true"> →</span>
+            </span>
+          </a>
+        </section>
+      ) : null}
+
       <section className="wrap intro">
         <span className="eyebrow">{page.introEyebrow}</span>
         <h2>{page.introTitle}</h2>

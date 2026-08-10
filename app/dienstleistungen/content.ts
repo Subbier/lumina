@@ -26,6 +26,13 @@ export type ServiceSegment = {
   process?: { step: string; title: string; text: string }[];
   audioSrc: string;
   speakScript: string;
+  claimBanner?: {
+    eyebrow: string;
+    title: string;
+    text: string;
+    href: string;
+    label: string;
+  };
   cta: {
     title: string;
     text: string;
@@ -347,13 +354,20 @@ export const serviceSegments: ServiceSegment[] = [
     audioSrc: "/audio/angehoerige.mp3?v=begleitung12",
     speakScript:
       "Willkommen bei Lumina Spietex zum Thema pflegende Angehörige. Wenn Sie einen Menschen zu Hause pflegen, müssen Sie das nicht allein tragen. Lumina stellt Sie an, begleitet Sie eng und schult Sie im Alltag. Innerhalb von zwölf Monaten führen wir Sie zur anerkannten Qualifikation als Pflegehilfsperson. Die dokumentierte Grundpflege wird über die Grundversicherung abgerechnet. Sie erhalten monatlichen Lohn und Sozialversicherungsschutz. Eine diplomierte Pflegefachperson bleibt an Ihrer Seite – mit Einführung, Fachfragen und regelmässiger Begleitung. Der Weg ist klar: klären, abklären, anstellen, qualifizieren und dauerhaft begleiten. Wenn Sie wissen möchten, ob das Modell zu Ihrer Familie passt, fordern Sie bitte weitere Informationen an.",
+    claimBanner: {
+      eyebrow: "Erste Einschätzung",
+      title: "Pflegen Sie Angehörige? Dann prüfen Sie Ihren möglichen Lohnanspruch.",
+      text: "Viele Familien übernehmen täglich Grundpflege – oft ohne zu wissen, dass dafür ein Lohn möglich ist. In rund zwei Minuten erhalten Sie eine klare, unverbindliche Orientierung.",
+      href: "/lohn-check",
+      label: "Anspruch prüfen",
+    },
     cta: {
-      title: "Dürfen wir Ihre Situation gemeinsam anschauen?",
-      text: "In einem persönlichen Gespräch klären wir Möglichkeiten, Begleitung und nächste Schritte – klar, ruhig und unverbindlich.",
-      primaryHref: "/kontakt",
-      primaryLabel: "Beratung anfragen",
-      secondaryHref: "/lohn-check",
-      secondaryLabel: "Orientierung starten",
+      title: "Pflegen Sie Angehörige – und möchten wissen, was möglich ist?",
+      text: "Starten Sie mit einer kurzen Einschätzung zum möglichen Lohnanspruch – oder sprechen Sie direkt mit uns über Anstellung und Begleitung.",
+      primaryHref: "/lohn-check",
+      primaryLabel: "Anspruch prüfen",
+      secondaryHref: "/kontakt",
+      secondaryLabel: "Beratung anfragen",
     },
   },
 ];
