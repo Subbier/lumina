@@ -47,23 +47,23 @@ export const serviceSegments: ServiceSegment[] = [
   {
     id: "spitex",
     path: "/spitex",
-    eyebrow: "Spitex · kassenpflichtige Pflege",
-    title: "Professionelle Pflege",
-    titleEm: "zu Hause.",
+    eyebrow: "Spitex",
+    title: "Professionelle Pflege.",
+    titleEm: "Zu Hause begleitet.",
     lead:
       "Abklärung & Beratung sowie Grund- und Behandlungspflege – ärztlich verordnet, von Fachpersonen erbracht und über die Krankenkasse abrechenbar.",
     image: "/images/spitex-care-2.png",
     imageAlt: "Spitex-Pflegefachperson im Einsatz bei einer Klientin",
-    heroTone: "dark",
-    introEyebrow: "Aus unserem Angebot",
-    introTitle: "Spitex-Pflege, die zu Hause ankommt.",
+    heroTone: "warm",
+    introEyebrow: "Kassenpflichtige Pflege mit Haltung",
+    introTitle: "Sie brauchen Pflege. Wir bleiben an Ihrer Seite.",
     introSummary:
       "Bevor die Pflege beginnt, klären wir den Bedarf. Danach begleiten diplomierte Pflegefachpersonen und Fachpersonen Gesundheit Sie im Alltag – wirksam, zweckmässig und wirtschaftlich.",
     introMore: [
       "Sämtliche Grund- und Behandlungspflegeleistungen nach KLV Art. 7 Abs. 2 werden direkt über Ihre Krankenkasse abgerechnet. Die Leistungen erfassen wir transparent in der Pflegedokumentation.",
       "Leistungen über die Kassenpflege hinaus finden Sie unter Begleitung. Wenn Angehörige die Pflege übernehmen, begleiten wir Anstellung und Qualifikation unter Pflegende Angehörige. Aktuelle Ansätze stehen unter Tarife.",
     ],
-    accordionTitle: "Leistungen im Überblick",
+    accordionTitle: "Was Sie von der Lumina Spitex erwarten dürfen",
     accordion: [
       {
         title: "Abklärung & Beratung",
@@ -112,44 +112,61 @@ export const serviceSegments: ServiceSegment[] = [
     ],
     facts: [
       {
-        label: "Finanzierung",
-        value: "Über die Krankenkasse abrechenbar",
+        label: "Leistungen",
+        value: "Abklärung, Grund- und Behandlungspflege",
       },
       {
-        label: "Bezugsperson",
-        value: "Fest zugewiesen",
+        label: "Finanzierung",
+        value: "Direkte Abrechnung über die Grundversicherung (KVG)",
       },
       {
         label: "Region",
         value: "Kanton Zürich & Aargau",
       },
     ],
-    processTitle: "So starten wir",
+    processTitle: "Ihr Weg mit Lumina",
     process: [
       {
         step: "01",
-        title: "Erstkontakt",
-        text: "Sie melden sich – wir klären unverbindlich, was nötig ist und wie die Finanzierung greift.",
+        title: "Melden",
+        text: "Sie kontaktieren uns – wir klären unverbindlich Bedarf und Finanzierung.",
       },
       {
         step: "02",
-        title: "Bedarfsabklärung",
-        text: "Eine diplomierte Pflegefachperson besucht Sie zu Hause und erstellt den Pflegeplan.",
+        title: "Abklären",
+        text: "Eine diplomierte Pflegefachperson erhebt den Bedarf zu Hause und erstellt den Pflegeplan.",
       },
       {
         step: "03",
-        title: "Pflege im Alltag",
-        text: "Feste Bezugspersonen begleiten Sie – mit klarer Dokumentation und direkter Abrechnung.",
+        title: "Verordnen",
+        text: "Ärztliche Verordnung und Krankenkasse greifen – wir unterstützen bei den Formalitäten.",
+      },
+      {
+        step: "04",
+        title: "Pflegen",
+        text: "Feste Bezugspersonen begleiten Sie im Alltag – klar dokumentiert und nachvollziehbar.",
+      },
+      {
+        step: "05",
+        title: "Begleiten",
+        text: "Wir bleiben erreichbar, stimmen uns mit Ärztinnen ab und passen die Pflege bei Bedarf an.",
       },
     ],
-    audioSrc: "/audio/spitex.mp3?v=noprices",
+    audioSrc: "/audio/spitex.mp3?v=spoken2",
     speakScript:
-      "Willkommen bei den Spietex-Dienstleistungen von Lumina Spietex. Wir bieten professionelle Pflege zu Hause: Zuerst die Abklärung und Beratung, danach Grundpflege und Behandlungspflege. Beim Erstbesuch erfassen diplomierte Pflegefachpersonen Ihren Bedarf und erstellen mit Ihnen einen Versorgungsplan. Die Grundpflege unterstützt Körperpflege, Mobilisation und Selbständigkeit im Alltag. Die Behandlungspflege umfasst medizinisch-pflegerische Maßnahmen auf ärztliche Anordnung – etwa Medikamente, Wundversorgung oder Vitalzeichenkontrolle. Diese Leistungen rechnen wir direkt mit Ihrer Krankenkasse ab. Einzelheiten zu den Ansätzen finden Sie auf unserer Tarifseite. Wenn Sie mehr erfahren möchten, fordern Sie bitte eine kostenlose Erstberatung an – telefonisch oder über das Kontaktformular.",
+      "Hallo und willkommen bei Lumina Spietex. Schön, dass Sie da sind. Wir kommen zu Ihnen nach Hause – mit professioneller Pflege, die wirklich zu Ihrem Alltag passt. Zuerst schauen wir gemeinsam hin: Was brauchen Sie gerade? Eine diplomierte Pflegefachperson macht die Abklärung bei Ihnen vor Ort und plant die nächsten Schritte mit Ihnen. Danach unterstützen wir Sie in der Grundpflege – zum Beispiel bei Körperpflege, Mobilisation oder beim Anziehen. Und wenn medizinische Massnahmen nötig sind, übernehmen wir die Behandlungspflege auf ärztliche Anordnung. Medikamente, Wundversorgung, Blutdruck – das regeln wir fachlich und ruhig. Wichtig für Sie: Diese Leistungen rechnen wir direkt mit der Krankenkasse ab. Sie müssen das nicht allein organisieren. Wenn Sie jetzt wissen möchten, wie der Einstieg bei Ihnen aussehen könnte, fordern Sie bitte eine kostenlose Erstberatung an – über das Kontaktformular auf dieser Seite oder telefonisch unter null vier drei, vier drei drei, acht acht, null null. Wir melden uns persönlich bei Ihnen.",
+    claimBanner: {
+      eyebrow: "Unverbindliche Orientierung",
+      title: "Brauchen Sie Spitex-Pflege zu Hause? Dann klären wir den nächsten Schritt.",
+      text: "In einem kurzen Gespräch prüfen wir Bedarf, Finanzierung über die Krankenkasse und wie der Einstieg bei Ihnen aussehen könnte – klar und ohne Verpflichtung.",
+      href: "/kontakt",
+      label: "Erstberatung anfragen",
+    },
     cta: {
-      title: "Mehr Informationen zur Spitex anfordern?",
-      text: "Wir erklären unverbindlich Leistungen und Ablauf – persönlich und verständlich. Ansätze finden Sie unter Tarife.",
+      title: "Dürfen wir Ihre Pflegesituation gemeinsam anschauen?",
+      text: "Starten Sie mit einer unverbindlichen Erstberatung – oder prüfen Sie zuerst die Tarife für kassenpflichtige Leistungen.",
       primaryHref: "/kontakt",
-      primaryLabel: "Informationen anfordern",
+      primaryLabel: "Erstberatung anfragen",
       secondaryHref: "/tarife",
       secondaryLabel: "Tarife ansehen",
     },
@@ -241,9 +258,9 @@ export const serviceSegments: ServiceSegment[] = [
         text: "Wir sind verlässlich da und passen die Unterstützung bei Bedarf an.",
       },
     ],
-    audioSrc: "/audio/begleitung.mp3?v=1",
+    audioSrc: "/audio/begleitung.mp3?v=spoken2",
     speakScript:
-      "Willkommen bei der Begleitung von Lumina Spietex. Wenn Pflege das Nötige sichert, schafft Begleitung das Angenehme. Wir unterstützen Sie bei Erledigungen im Alltag, begleiten Sie zu Terminen und fördern die Teilhabe am sozialen Leben. Dazu gehören Einkäufe und Besorgungen, Begleitung zu Arzt oder Behörde sowie Gesellschaft bei Spaziergängen, Besuchen und Anlässen. Diese Leistungen gehen über die kassenpflichtige Grundpflege hinaus und werden individuell vereinbart. Ansätze finden Sie auf unserer Tarifseite. Wenn Sie ein persönliches Arrangement wünschen, fordern Sie bitte weitere Informationen an.",
+      "Hallo und willkommen bei der Begleitung von Lumina Spietex. Manchmal reicht Pflege allein nicht aus, damit der Tag wieder leicht wird. Genau hier setzen wir an. Wir helfen bei Erledigungen – Einkauf, Apotheke, Post oder Behördengängen. Wir begleiten Sie sicher zu Terminen, zum Beispiel zum Arzt oder zur Therapie. Und wir bleiben an Ihrer Seite, wenn Begegnung und Teilhabe wichtig sind: ein Spaziergang, ein Besuch, ein Café – einfach wieder dabei sein. Das geht über die kassenpflichtige Grundpflege hinaus und wird persönlich mit Ihnen vereinbart. Wenn Sie spüren, dass Sie genau diese Entlastung brauchen, fordern Sie bitte weitere Informationen an – über das Kontaktformular auf dieser Seite. Erzählen Sie uns kurz, was Ihnen helfen würde. Wir melden uns mit einem konkreten Vorschlag.",
     cta: {
       title: "Möchten Sie wieder mehr Leichtigkeit im Alltag?",
       text: "Erzählen Sie uns, was Sie entlasten würde – wir melden uns mit einem konkreten Vorschlag.",
@@ -351,9 +368,9 @@ export const serviceSegments: ServiceSegment[] = [
         text: "Lohn, Dokumentation, Fachaufsicht und Ansprechpersonen bleiben dauerhaft an Ihrer Seite.",
       },
     ],
-    audioSrc: "/audio/angehoerige.mp3?v=begleitung12",
+    audioSrc: "/audio/angehoerige.mp3?v=spoken2",
     speakScript:
-      "Willkommen bei Lumina Spietex zum Thema pflegende Angehörige. Wenn Sie einen Menschen zu Hause pflegen, müssen Sie das nicht allein tragen. Lumina stellt Sie an, begleitet Sie eng und schult Sie im Alltag. Innerhalb von zwölf Monaten führen wir Sie zur anerkannten Qualifikation als Pflegehilfsperson. Die dokumentierte Grundpflege wird über die Grundversicherung abgerechnet. Sie erhalten monatlichen Lohn und Sozialversicherungsschutz. Eine diplomierte Pflegefachperson bleibt an Ihrer Seite – mit Einführung, Fachfragen und regelmässiger Begleitung. Der Weg ist klar: klären, abklären, anstellen, qualifizieren und dauerhaft begleiten. Wenn Sie wissen möchten, ob das Modell zu Ihrer Familie passt, fordern Sie bitte weitere Informationen an.",
+      "Hallo und willkommen bei Lumina Spietex – zum Thema pflegende Angehörige. Vielleicht pflegen Sie gerade jemanden, der Ihnen nahesteht. Dann wissen Sie: Das ist wertvoll. Und oft auch sehr fordernd. Sie müssen das nicht allein tragen. Bei Lumina können Sie angestellt werden – mit Lohn und Sozialversicherung. Eine diplomierte Pflegefachperson bleibt an Ihrer Seite, führt Sie ein und begleitet Sie im Alltag. Innerhalb von zwölf Monaten führen wir Sie zur anerkannten Qualifikation. Die dokumentierte Grundpflege wird über die Grundversicherung abgerechnet. So bleibt Nähe – und Sie gewinnen Sicherheit. Wenn Sie jetzt prüfen möchten, ob für Sie ein Lohnanspruch möglich ist, starten Sie bitte den kurzen Anspruch-Check auf dieser Seite. In rund zwei Minuten erhalten Sie eine erste Orientierung – unverbindlich und klar. Oder Sie fordern direkt eine persönliche Beratung an. Wir sind für Sie da.",
     claimBanner: {
       eyebrow: "Erste Einschätzung",
       title: "Pflegen Sie Angehörige? Dann prüfen Sie Ihren möglichen Lohnanspruch.",

@@ -1,59 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import {
   getServiceSegment,
   partners,
   type ServiceSegment,
 } from "./content";
-
-function AudioReader({ src }: { src: string }) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [playing, setPlaying] = useState(false);
-
-  useEffect(() => {
-    const audio = new Audio(src);
-    audio.preload = "metadata";
-    audioRef.current = audio;
-    const onEnd = () => setPlaying(false);
-    audio.addEventListener("ended", onEnd);
-    return () => {
-      audio.pause();
-      audio.removeEventListener("ended", onEnd);
-      audioRef.current = null;
-    };
-  }, [src]);
-
-  async function toggle() {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (playing) {
-      audio.pause();
-      setPlaying(false);
-      return;
-    }
-    try {
-      await audio.play();
-      setPlaying(true);
-    } catch {
-      setPlaying(false);
-    }
-  }
-
-  return (
-    <div className="page-reader">
-      <button
-        type="button"
-        className="page-reader-play"
-        onClick={toggle}
-        aria-pressed={playing}
-        aria-label={playing ? "Pause" : "Seite vorlesen"}
-      >
-        {playing ? "Pause" : "Seite vorlesen"}
-      </button>
-    </div>
-  );
-}
 
 function PartnersStrip() {
   return (
@@ -100,7 +51,6 @@ export function ServiceSegmentPage({
               <em>{page.titleEm}</em>
             </h1>
             <p className="lead">{page.lead}</p>
-            <AudioReader src={page.audioSrc} />
             <div className="actions">
               <a className="button gold" href={page.cta.primaryHref}>
                 {page.cta.primaryLabel}
@@ -115,22 +65,6 @@ export function ServiceSegmentPage({
           <img src={page.image} alt={page.imageAlt} />
         </div>
       </section>
-
-      {page.claimBanner ? (
-        <section className="wrap claim-banner">
-          <a className="claim-banner-card" href={page.claimBanner.href}>
-            <div className="claim-banner-copy">
-              <span className="eyebrow light">{page.claimBanner.eyebrow}</span>
-              <h2>{page.claimBanner.title}</h2>
-              <p>{page.claimBanner.text}</p>
-            </div>
-            <span className="claim-banner-action">
-              {page.claimBanner.label}
-              <span aria-hidden="true"> →</span>
-            </span>
-          </a>
-        </section>
-      ) : null}
 
       <section className="wrap intro">
         <span className="eyebrow">{page.introEyebrow}</span>
@@ -221,6 +155,22 @@ export function ServiceSegmentPage({
       ) : null}
 
       {showPartners ? <PartnersStrip /> : null}
+
+      {page.claimBanner ? (
+        <section className="wrap claim-banner claim-banner-late">
+          <a className="claim-banner-card" href={page.claimBanner.href}>
+            <div className="claim-banner-copy">
+              <span className="eyebrow light">{page.claimBanner.eyebrow}</span>
+              <h2>{page.claimBanner.title}</h2>
+              <p>{page.claimBanner.text}</p>
+            </div>
+            <span className="claim-banner-action">
+              {page.claimBanner.label}
+              <span aria-hidden="true"> →</span>
+            </span>
+          </a>
+        </section>
+      ) : null}
 
       <section className="cta wrap segment-cta">
         <div>

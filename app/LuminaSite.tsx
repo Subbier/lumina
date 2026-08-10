@@ -11,6 +11,8 @@ import {
 import { articles, getArticle, type Article } from "./ratgeber/articles";
 import { ServiceSegmentPage, PartnersStrip } from "./dienstleistungen/ServiceSegmentPage";
 import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
+import { ListenPlayer } from "./listen/ListenPlayer";
+import { getPageAudio, type AudioView } from "./listen/pageAudio";
 
 export type View =
   | "home"
@@ -71,11 +73,13 @@ function Header() {
       <header className="header">
         <div className="wrap nav-wrap">
           <a className="brand" href="/" aria-label="Lumina Spitex Startseite">
-            <span className="brand-mark">L</span>
-            <span>
-              <b>Lumina</b>
-              <small>Spitex</small>
-            </span>
+            <img
+              className="brand-logo"
+              src="/images/logo-lumina-header.png"
+              alt="Lumina Spitex+"
+              width={175}
+              height={64}
+            />
           </a>
           <button
             className="menu-btn"
@@ -165,12 +169,14 @@ function Footer() {
     <footer className="footer">
       <div className="wrap footer-grid">
         <div>
-          <a className="brand brand-light" href="/">
-            <span className="brand-mark">L</span>
-            <span>
-              <b>Lumina</b>
-              <small>Spitex</small>
-            </span>
+          <a className="brand brand-light" href="/" aria-label="Lumina Spitex Startseite">
+            <img
+              className="brand-logo brand-logo-footer"
+              src="/images/logo-lumina-header.png"
+              alt="Lumina Spitex+"
+              width={160}
+              height={58}
+            />
           </a>
           <p>
             Persönliche Spitex-Pflege zu Hause – und wo Angehörige pflegen:
@@ -298,7 +304,7 @@ function Home() {
             <h2>Spitex im Zentrum – ergänzt um Angehörige und Begleitung.</h2>
           </div>
           <div className="paths aida-paths">
-            <a href="/spitex" className="path-card important">
+            <a href="/spitex" className="path-card">
               <Icon>01</Icon>
               <span>Spitex-Dienstleistungen</span>
               <h3>Pflege, die die Krankenkasse mitträgt</h3>
@@ -351,8 +357,8 @@ function Home() {
             <li>Grund- und Behandlungspflege zu Hause</li>
             <li>Abrechnung über die Krankenkasse (KVG)</li>
           </ul>
-          <a className="button" href="/spitex">
-            Alle Spitex-Leistungen
+          <a className="text-link" href="/spitex">
+            Alle Spitex-Leistungen →
           </a>
         </div>
         <img
@@ -376,14 +382,9 @@ function Home() {
             <li>Enge Begleitung durch diplomierte Fachpersonen</li>
             <li>Anerkannte Qualifikation innert zwölf Monaten</li>
           </ul>
-          <div className="actions">
-            <a className="button" href="/angehoerige">
-              Modell entdecken
-            </a>
-            <a className="text-link" href="/kontakt">
-              Beratung anfragen →
-            </a>
-          </div>
+          <a className="text-link" href="/angehoerige">
+            Modell entdecken →
+          </a>
         </div>
         <img
           className="aida-image"
@@ -406,8 +407,8 @@ function Home() {
             <li>Sichere Begleitung zu Terminen</li>
             <li>Soziale Teilhabe – auf Ihren Rhythmus abgestimmt</li>
           </ul>
-          <a className="button" href="/begleitung">
-            Begleitung ansehen
+          <a className="text-link" href="/begleitung">
+            Begleitung ansehen →
           </a>
         </div>
         <img
@@ -441,14 +442,9 @@ function Home() {
               Prozesse und ein Team mit Haltung.
             </p>
           </MoreRead>
-          <div className="actions">
-            <a className="button gold" href="/team">
-              Offene Rollen ansehen
-            </a>
-            <a className="button ghost-light" href="/kontakt">
-              Bewerbung / Gespräch
-            </a>
-          </div>
+          <a className="text-link light" href="/team">
+            Offene Rollen ansehen →
+          </a>
         </div>
         <img
           src="/images/home-team.png"
@@ -1069,126 +1065,6 @@ function buildArticleSpeechText(article: Article) {
   return parts.filter(Boolean).join("\n\n");
 }
 
-function ArticleReader({ article }: { article: Article }) {
-  const speeds = [1, 1.25, 1.5] as const;
-  const [speed, setSpeed] = useState<(typeof speeds)[number]>(1);
-  const [speaking, setSpeaking] = useState(false);
-  const [paused, setPaused] = useState(false);
-  const [supported, setSupported] = useState(false);
-  const speedRef = useRef<(typeof speeds)[number]>(1);
-  const speakingRef = useRef(false);
-
-  useEffect(() => {
-    setSupported(typeof window !== "undefined" && "speechSynthesis" in window);
-    return () => {
-      if (typeof window !== "undefined" && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-      }
-      speakingRef.current = false;
-    };
-  }, [article.slug]);
-
-  const stop = () => {
-    if (!supported) return;
-    window.speechSynthesis.cancel();
-    speakingRef.current = false;
-    setSpeaking(false);
-    setPaused(false);
-  };
-
-  const start = (rate: number = speedRef.current) => {
-    if (!supported) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(
-      buildArticleSpeechText(article),
-    );
-    utterance.lang = "de-DE";
-    utterance.rate = rate;
-    const voices = window.speechSynthesis.getVoices();
-    const german =
-      voices.find((v) => v.lang === "de-DE" && /Katja|Amala|Conrad|Germany/i.test(v.name)) ||
-      voices.find((v) => v.lang.startsWith("de-DE")) ||
-      voices.find((v) => v.lang.startsWith("de") && !/CH|Swiss|Schweiz/i.test(`${v.lang} ${v.name}`)) ||
-      voices.find((v) => v.lang.startsWith("de")) ||
-      null;
-    if (german) utterance.voice = german;
-    utterance.onend = () => {
-      speakingRef.current = false;
-      setSpeaking(false);
-      setPaused(false);
-    };
-    utterance.onerror = () => {
-      speakingRef.current = false;
-      setSpeaking(false);
-      setPaused(false);
-    };
-    speakingRef.current = true;
-    setSpeaking(true);
-    setPaused(false);
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const togglePlay = () => {
-    if (!supported) return;
-    if (!speaking) {
-      start();
-      return;
-    }
-    if (paused) {
-      window.speechSynthesis.resume();
-      setPaused(false);
-      return;
-    }
-    window.speechSynthesis.pause();
-    setPaused(true);
-  };
-
-  const changeSpeed = (value: (typeof speeds)[number]) => {
-    speedRef.current = value;
-    setSpeed(value);
-    if (speakingRef.current) {
-      start(value);
-    }
-  };
-
-  return (
-    <div className="article-reader" aria-label="Beitrag vorlesen">
-      <div className="article-reader-main">
-        <button
-          type="button"
-          className="article-reader-play"
-          onClick={togglePlay}
-          aria-pressed={speaking && !paused}
-        >
-          {!speaking ? "Vorlesen" : paused ? "Weiter" : "Pause"}
-        </button>
-        {speaking ? (
-          <button type="button" className="article-reader-stop" onClick={stop}>
-            Stopp
-          </button>
-        ) : null}
-        <span className="article-reader-label">Geschwindigkeit</span>
-      </div>
-      <div
-        className="article-reader-speeds"
-        role="group"
-        aria-label="Vorlesegeschwindigkeit"
-      >
-        {speeds.map((value) => (
-          <button
-            type="button"
-            key={value}
-            className={speed === value ? "active" : ""}
-            onClick={() => changeSpeed(value)}
-          >
-            {value === 1 ? "1×" : `${value}×`}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function ArticleDetail({ article }: { article: Article }) {
   const related = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
   return (
@@ -1211,7 +1087,6 @@ function ArticleDetail({ article }: { article: Article }) {
           <div className="article-detail-visual">
             <img src={article.image} alt={article.imageAlt} />
           </div>
-          <ArticleReader article={article} />
           <div className="article-prose">
             {article.sections.map((section) => (
               <section key={section.heading ?? section.paragraphs[0]}>
@@ -1372,8 +1247,14 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
 function QuizClose() {
   return (
     <div className="quiz-top">
-      <a className="quiz-brand" href="/">
-        <span className="brand-mark">L</span> Lumina
+      <a className="quiz-brand" href="/" aria-label="Lumina Spitex Startseite">
+        <img
+          className="brand-logo brand-logo-quiz"
+          src="/images/logo-lumina-header.png"
+          alt="Lumina Spitex+"
+          width={140}
+          height={51}
+        />
       </a>
       <a
         className="quiz-close"
@@ -2032,12 +1913,22 @@ export function LuminaSite({
     default:
       page = <Home />;
   }
+  const activeArticle =
+    view === "ratgeber" && articleSlug ? getArticle(articleSlug) : null;
+
   return (
     <>
       <PWARegister />
       <Header />
       {page}
       <Footer />
+      <ListenPlayer
+        audio={activeArticle ? null : getPageAudio(view as AudioView)}
+        articleText={
+          activeArticle ? buildArticleSpeechText(activeArticle) : undefined
+        }
+        articleLabel={activeArticle?.title}
+      />
       <div className="mobile-bar">
         <a href="tel:+41434338800">Anrufen</a>
         <a href="/kontakt">Kontakt</a>
