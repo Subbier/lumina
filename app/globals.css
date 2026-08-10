@@ -101,6 +101,17 @@
 .recruit-banner{margin-top:40px}
 .more-read{max-width:680px}
 .more-read-summary p,.more-read-body p{color:var(--muted);margin-bottom:14px}
+.relation-banner .more-read-summary p,
+.relation-banner .more-read-body p,
+.recruit-banner .more-read-summary p,
+.recruit-banner .more-read-body p{
+  color:#fff;
+}
+.relation-banner .more-read-details>summary,
+.recruit-banner .more-read-details>summary{
+  color:#e6c98e;
+  border-bottom-color:rgba(230,201,142,.55);
+}
 .more-read-body{margin-top:8px}
 .more-read-details>summary{list-style:none;cursor:pointer;display:none;font-weight:700;color:var(--petrol);margin-top:8px;padding:10px 0;border-bottom:1px solid var(--gold);width:fit-content}
 .more-read-details>summary::-webkit-details-marker{display:none}
@@ -172,143 +183,107 @@
   .hero-title{font-size:clamp(1.85rem,9.2vw,2.25rem)}
 }
 
-.listen-dock{
-  position:fixed;
-  left:50%;
-  bottom:calc(18px + env(safe-area-inset-bottom, 0px));
-  transform:translateX(-50%);
-  z-index:70;
-  width:min(560px, calc(100% - 28px));
-  pointer-events:none;
-}
-.listen-dock-inner{
-  pointer-events:auto;
-  display:grid;
-  grid-template-columns:56px 1fr;
-  gap:14px;
+/* Blog listen bar — one circle tall, full content width */
+.listen-bar{
+  display:flex;
   align-items:center;
-  padding:14px 16px 14px 14px;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:blur(18px) saturate(1.2);
-  border:1px solid rgba(16,47,59,.1);
-  border-radius:18px;
-  box-shadow:0 10px 40px rgba(16,47,59,.14), 0 1px 0 rgba(255,255,255,.7) inset;
+  gap:12px;
+  width:100%;
+  max-width:100%;
+  height:44px;
+  margin:22px 0 8px;
+  padding:0 10px 0 0;
+  box-sizing:border-box;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:999px;
+  overflow:hidden;
 }
-.listen-dock-play{
-  width:56px;
-  height:56px;
+.listen-bar-play{
+  flex:0 0 44px;
+  width:44px;
+  height:44px;
   border:0;
   border-radius:50%;
   display:grid;
   place-items:center;
   background:var(--navy);
   color:#fff;
-  transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
-  box-shadow:0 8px 20px rgba(16,47,59,.22);
+  transition:background .2s ease;
 }
-.listen-dock-play:hover{transform:translateY(-1px);background:var(--petrol)}
-.listen-dock.is-playing .listen-dock-play{
-  background:var(--petrol);
-  box-shadow:0 0 0 4px rgba(31,107,100,.16), 0 8px 20px rgba(16,47,59,.18);
-}
-.listen-dock-main{min-width:0;display:flex;flex-direction:column;gap:8px}
-.listen-dock-meta{display:flex;flex-direction:column;gap:2px;min-width:0}
-.listen-dock-kicker{
-  font-size:.68rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--petrol);
-  font-weight:700;
-}
-.listen-dock-meta strong{
-  font-family:"Libre Franklin",sans-serif;
-  font-size:.98rem;
-  color:var(--navy);
-  font-weight:700;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.listen-dock-track{
+.listen-bar-play:hover{background:var(--petrol)}
+.listen-bar.is-playing .listen-bar-play{background:var(--petrol)}
+.listen-bar-track{
   position:relative;
-  height:6px;
+  flex:1 1 auto;
+  min-width:48px;
+  height:4px;
   border-radius:999px;
-  background:rgba(16,47,59,.08);
-  cursor:pointer;
+  background:rgba(16,47,59,.1);
+  overflow:hidden;
 }
-.listen-dock-track.is-soft{cursor:default}
-.listen-dock-track-fill{
-  position:absolute;
-  left:0;top:0;bottom:0;
+.listen-bar-track-fill{
+  display:block;
+  height:100%;
   border-radius:inherit;
   background:linear-gradient(90deg, var(--petrol), #3f8f86);
-  transition:width .12s linear;
+  width:0;
+  transition:width .2s linear;
 }
-.listen-dock-track.is-soft .listen-dock-track-fill{
-  opacity:.35;
-  transition:width 8s linear;
+.listen-bar.is-playing .listen-bar-track-fill{
+  transition:width 12s linear;
 }
-.listen-dock-track-thumb{
-  position:absolute;
-  top:50%;
-  width:14px;height:14px;
-  margin-left:-7px;
-  margin-top:-7px;
-  border-radius:50%;
-  background:#fff;
-  border:2px solid var(--petrol);
-  box-shadow:0 2px 8px rgba(16,47,59,.18);
-  pointer-events:none;
-}
-.listen-dock-footer{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.listen-dock-time{
-  font-size:.78rem;
-  color:var(--muted);
-  font-variant-numeric:tabular-nums;
-  min-width:5.5rem;
-}
-.listen-dock-speeds{display:flex;gap:4px;margin-left:auto}
-.listen-dock-speeds button{
-  border:1px solid transparent;
-  background:transparent;
-  color:var(--muted);
-  min-height:28px;
-  min-width:34px;
-  padding:0 8px;
-  border-radius:6px;
+.listen-bar-label{
+  flex:0 0 auto;
   font-size:.78rem;
   font-weight:700;
-}
-.listen-dock-speeds button:hover{background:rgba(16,47,59,.04);color:var(--navy)}
-.listen-dock-speeds button.active{
-  background:rgba(216,176,106,.28);
   color:var(--navy);
-  border-color:rgba(216,176,106,.55);
+  white-space:nowrap;
 }
-.listen-dock-stop{
+.listen-bar-title{
+  display:none;
+}
+.listen-bar-speeds{
+  display:flex;
+  gap:2px;
+  flex:0 0 auto;
+}
+.listen-bar-speeds button{
   border:0;
   background:transparent;
   color:var(--muted);
-  font-size:.78rem;
+  min-height:28px;
+  min-width:30px;
+  padding:0 6px;
+  border-radius:999px;
+  font-size:.72rem;
   font-weight:700;
-  padding:4px 6px;
 }
-.listen-dock-stop:hover{color:var(--navy)}
-body{padding-bottom:110px}
+.listen-bar-speeds button:hover{color:var(--navy);background:rgba(16,47,59,.05)}
+.listen-bar-speeds button.active{
+  background:rgba(216,176,106,.3);
+  color:var(--navy);
+}
+.listen-bar-stop{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:700;
+  padding:0 8px 0 0;
+  flex:0 0 auto;
+}
+.listen-bar-stop:hover{color:var(--navy)}
 @media(max-width:640px){
-  .listen-dock{
-    bottom:calc(62px + env(safe-area-inset-bottom, 0px));
-    width:calc(100% - 20px);
+  .listen-bar{
+    height:40px;
+    gap:8px;
+    margin:18px 0 6px;
+    padding-right:6px;
   }
-  .listen-dock-inner{grid-template-columns:48px 1fr;gap:12px;padding:12px;border-radius:16px}
-  .listen-dock-play{width:48px;height:48px}
-  .listen-dock-speeds{width:100%;margin-left:0;justify-content:flex-start}
-  body{padding-bottom:150px}
+  .listen-bar-play{flex-basis:40px;width:40px;height:40px}
+  .listen-bar-label{font-size:.7rem}
+  .listen-bar-speeds button{min-width:26px;padding:0 4px;font-size:.68rem}
 }
 .legal a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
 .legal-copy a{color:var(--petrol);font-weight:700}

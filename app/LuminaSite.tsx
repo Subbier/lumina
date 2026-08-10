@@ -12,7 +12,6 @@ import { articles, getArticle, type Article } from "./ratgeber/articles";
 import { ServiceSegmentPage, PartnersStrip } from "./dienstleistungen/ServiceSegmentPage";
 import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
 import { ListenPlayer } from "./listen/ListenPlayer";
-import { getPageAudio, type AudioView } from "./listen/pageAudio";
 
 function BrandLockup({
   height = 84,
@@ -1097,6 +1096,10 @@ function ArticleDetail({ article }: { article: Article }) {
             <span className="tag">{article.tag}</span>
             <h1>{article.title}</h1>
             <p className="lead article-lead">{article.text}</p>
+            <ListenPlayer
+              articleText={buildArticleSpeechText(article)}
+              articleLabel={article.title}
+            />
             <div className="article-meta">
               <span>{article.read} Lesezeit</span>
               <span>Aktualisiert {article.updated}</span>
@@ -1929,22 +1932,12 @@ export function LuminaSite({
     default:
       page = <Home />;
   }
-  const activeArticle =
-    view === "ratgeber" && articleSlug ? getArticle(articleSlug) : null;
-
   return (
     <>
       <PWARegister />
       <Header />
       {page}
       <Footer />
-      <ListenPlayer
-        audio={activeArticle ? null : getPageAudio(view as AudioView)}
-        articleText={
-          activeArticle ? buildArticleSpeechText(activeArticle) : undefined
-        }
-        articleLabel={activeArticle?.title}
-      />
       <div className="mobile-bar">
         <a href="tel:+41434338800">Anrufen</a>
         <a href="/kontakt">Kontakt</a>
