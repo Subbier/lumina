@@ -21,6 +21,11 @@ export type ServiceSegment = {
   introMore: string[];
   accordionTitle: string;
   accordion: ServiceAccordionItem[];
+  /** Text link shown bottom-right inside each open accordion item */
+  accordionLink?: {
+    href: string;
+    label: string;
+  };
   facts?: { label: string; value: string }[];
   processTitle?: string;
   process?: { step: string; title: string; text: string }[];
@@ -192,6 +197,10 @@ export const serviceSegments: ServiceSegment[] = [
       "Kassenpflichtige Pflege: unter Spitex. Anstellung und Qualifikation für Angehörige: unter Pflegende Angehörige.",
     ],
     accordionTitle: "So begleiten wir Sie",
+    accordionLink: {
+      href: "/kontakt?thema=begleitung",
+      label: "unverbindliche Beratung",
+    },
     accordion: [
       {
         title: "Erledigungen im Alltag",
@@ -292,6 +301,10 @@ export const serviceSegments: ServiceSegment[] = [
       "Fachliche Begleitung ist bei uns kein Zusatz, sondern Teil des Modells: Einführung vor Ort, laufende Unterstützung und eine strukturierte Ausbildung, die Sie innerhalb von zwölf Monaten zur Pflegehilfsperson qualifiziert.",
     ],
     accordionTitle: "Was Sie von Lumina erwarten dürfen",
+    accordionLink: {
+      href: "/anspruchscheck",
+      label: "Jetzt Anspruch prüfen",
+    },
     accordion: [
       {
         title: "Für wen eignet sich das Modell?",

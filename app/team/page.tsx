@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function Page() {
-  redirect("/ueber-uns#team");
+  redirect("/ueber-uns#karriere");
 }

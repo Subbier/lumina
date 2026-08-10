@@ -123,6 +123,14 @@ export function ServiceSegmentPage({
                   </ul>
                 ) : null}
                 {item.note ? <p className="acc-note">{item.note}</p> : null}
+                {page.accordionLink ? (
+                  <a
+                    className="service-accordion-link"
+                    href={page.accordionLink.href}
+                  >
+                    {page.accordionLink.label} →
+                  </a>
+                ) : null}
               </div>
             </details>
           ))}

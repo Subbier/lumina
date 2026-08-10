@@ -146,7 +146,7 @@ function Header() {
                     role="menuitem"
                     onClick={() => setOpen(false)}
                   >
-                    Über uns & Team
+                    Über uns
                   </a>
                   <a
                     href="/tarife"
@@ -210,7 +210,7 @@ function Footer() {
         </div>
         <div>
           <h3>Über uns</h3>
-          <a href="/ueber-uns">Über uns & Team</a>
+          <a href="/ueber-uns">Über uns</a>
           <a href="/tarife">Tarife</a>
           <a href="/ratgeber">Ratgeber</a>
           <a href="/bewerbung">Bewerbung</a>
@@ -403,14 +403,15 @@ function Home() {
             <li>Enge Begleitung durch diplomierte Fachpersonen</li>
             <li>Anerkannte Qualifikation innert zwölf Monaten</li>
           </ul>
-          <a className="button outline" href="/angehoerige">
-            Modell entdecken →
+          <a className="text-link" href="/anspruchscheck">
+            Sie pflegen einen Angehörigen? Jetzt innerhalb von zwei Minuten
+            Lohnanspruch prüfen →
           </a>
         </div>
         <img
           className="aida-image"
-          src="/images/home-family.png"
-          alt="Tochter unterstützt ihre Mutter zu Hause – familiäre Angehörigenpflege"
+          src="/images/angehoerige-hero-anleitung.jpg?v=sq3"
+          alt="Pflegefachperson zeigt einem Angehörigen auf Hausbesuch, wie er seinen Vater unterstützt"
         />
       </section>
 
@@ -442,25 +443,25 @@ function Home() {
       {/* AIDA – Action + Recruiting */}
       <section className="wrap relation-banner recruit-banner">
         <div>
-          <span className="eyebrow light">Team · Wir suchen Verstärkung</span>
+          <span className="eyebrow light">Team · Wachstum mit Vertrauen</span>
           <h2>
-            Lumina sucht
+            Wir suchen
             <br />
-            Pflegefachkräfte.
+            mehrere Fachkräfte.
           </h2>
           <MoreRead
             summary={
               <p>
-                Lumina sucht Verstärkung – insbesondere Pflegefachfrauen und
-                Pflegefachmänner EFZ sowie diplomierte Fachpersonen.
+                Immer mehr Menschen vertrauen dem Lumina-Team. Deshalb wachsen
+                wir – und suchen Verstärkung an mehreren Stellen.
               </p>
             }
           >
             <p>
-              Wir suchen Pflegefachpersonen EFZ, diplomierte Pflegefachpersonen
+              Gesucht sind Pflegefachpersonen EFZ, diplomierte Pflegefachpersonen
               (HF/FH) und Fachpersonen Gesundheit, die Verantwortung übernehmen,
               Familien anleiten und Qualität sichern. Faire Anstellung, klare
-              Prozesse und ein Team mit Haltung.
+              Prozesse und ein erfahrenes Team mit Haltung.
             </p>
           </MoreRead>
           <a className="text-link light" href="/ueber-uns#karriere">
@@ -820,21 +821,24 @@ function About() {
             </h1>
             <p className="lead">
               „Lumina“ kommt von Lumen – dem Licht. Für uns bedeutet das:
-              fachlich Orientierung geben und menschlich nahe bleiben – als
-              Team in Zürich und Aargau.
+              fachlich Orientierung geben und menschlich nahe bleiben. Lumina
+              ist eine junge Firma – fünf Personen, drei Frauen und zwei Männer
+              – mit langjähriger Erfahrung in der Pflege. Gemeinsam bringen wir
+              über 50 Jahre Berufspraxis mit und begleiten Klientinnen und
+              Familien in Zürich und Aargau.
             </p>
             <div className="actions">
-              <a className="button gold" href="#team">
-                Unser Team
+              <a className="button gold" href="#karriere">
+                Offene Stellen
               </a>
-              <a className="text-link light" href="#karriere">
-                Offene Stellen →
+              <a className="text-link light" href="/bewerbung">
+                Bewerben →
               </a>
             </div>
           </div>
           <img
-            src="/images/team-group.jpg"
-            alt="Das Team von Lumina Spitex"
+            src="/images/home-team.png"
+            alt="Teil des Lumina-Teams – Pflegefachpersonen unterwegs"
           />
         </div>
       </section>
@@ -845,10 +849,10 @@ function About() {
         </div>
         <article>
           <b>01</b>
-          <h3>Professionalität</h3>
+          <h3>Erfahrung mit Herz</h3>
           <p>
-            Diplomierte Pflegefachpersonen HF/FH, Fachpersonen Gesundheit und
-            geschulte Pflegehelfende – mit laufender Weiterbildung.
+            Neu gegründet – aber keine Anfänger: erfahrene Fachleute mit Liebe
+            zum Beruf, die wissen, worauf es in der Pflege zu Hause ankommt.
           </p>
         </article>
         <article>
@@ -888,46 +892,29 @@ function About() {
         </div>
       </section>
 
-      <section id="team" className="wrap team-section">
-        <div className="section-head left">
-          <span className="eyebrow">Unser Team</span>
-          <h2>Die Menschen hinter Lumina.</h2>
-          <p className="lead small-lead">
-            Pflegefachpersonen, Fallführungen und Begleitung – ein Team, das
-            Beziehungspflege ernst nimmt und in Zürich sowie Aargau unterwegs
-            ist.
-          </p>
-        </div>
-        <figure className="team-photo">
-          <img
-            src="/images/team-group.jpg"
-            alt="Gesamtes Team der Lumina Spitex"
-          />
-          <figcaption>
-            Unser Team: Pflegefachpersonen EFZ, diplomierte Fachpersonen und
-            FaGe – gemeinsam für Klientinnen und Familien.
-          </figcaption>
-        </figure>
-      </section>
-
       <section id="karriere" className="wrap benefits">
         <article>
           <Icon>♡</Icon>
-          <h3>Mehr Zeit für Menschen</h3>
+          <h3>Vertrauen, das wächst</h3>
           <p>
-            Planbare Einsätze und eine Kultur, die Beziehungspflege ernst nimmt.
+            Immer mehr Familien vertrauen uns ihre Pflege an – dieses Vertrauen
+            möchten wir mit zusätzlichen Fachpersonen tragen.
           </p>
         </article>
         <article>
           <Icon>↗</Icon>
-          <h3>Mit Lumina wachsen</h3>
-          <p>Weiterbildung, Verantwortung und Raum für eigene Ideen.</p>
+          <h3>Bedarf und Wachstum</h3>
+          <p>
+            Die Nachfrage steigt. Deshalb suchen wir mehrere Mitarbeitende, die
+            mit uns Qualität und Nähe ausbauen.
+          </p>
         </article>
         <article>
           <Icon>☼</Icon>
           <h3>Rückhalt im Team</h3>
           <p>
-            Kurze Wege, offene Kommunikation und verlässliche Fachbegleitung.
+            Kurze Wege, offene Kommunikation und erfahrene Kolleginnen und
+            Kollegen an Ihrer Seite.
           </p>
         </article>
       </section>
@@ -935,10 +922,12 @@ function About() {
       <section id="jobs" className="wrap jobs">
         <div>
           <span className="eyebrow">Karriere</span>
-          <h2>Werden Sie Teil von Lumina.</h2>
+          <h2>Wir suchen Verstärkung – an mehreren Stellen.</h2>
           <p className="lead small-lead">
-            Wir suchen Pflegefachfrauen und Pflegefachmänner EFZ sowie
-            diplomierte Fachpersonen in den Kantonen Zürich und Aargau.
+            Lumina Spitex wächst, weil Menschen uns bereits vertrauen. Damit
+            wir diesen Zuspruch halten und mehr Familien begleiten können,
+            suchen wir Pflegefachfrauen und Pflegefachmänner EFZ sowie
+            diplomierte Fachpersonen in Zürich und Aargau.
           </p>
         </div>
         <div>
@@ -1167,24 +1156,105 @@ function Bewerbung() {
   );
 }
 
+type ContactIntent = "anrufen" | "rueckruf" | "termin" | "schreiben";
+
+const contactIntents: {
+  id: ContactIntent;
+  label: string;
+  hint: string;
+}[] = [
+  {
+    id: "anrufen",
+    label: "Direkt anrufen",
+    hint: "Sofort mit uns sprechen",
+  },
+  {
+    id: "rueckruf",
+    label: "Rückruf anfordern",
+    hint: "Wir rufen Sie zurück",
+  },
+  {
+    id: "termin",
+    label: "Termin vereinbaren",
+    hint: "Erstgespräch planen",
+  },
+  {
+    id: "schreiben",
+    label: "Einfach schreiben",
+    hint: "Nachricht hinterlassen",
+  },
+];
+
 function Contact() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
+  const [topic, setTopic] = useState("pflege");
+  const [intent, setIntent] = useState<ContactIntent>("schreiben");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("thema");
+    if (
+      q === "pflege" ||
+      q === "begleitung" ||
+      q === "bewerbung" ||
+      q === "sonstiges"
+    ) {
+      setTopic(q);
+    }
+    const aktion = params.get("aktion");
+    if (
+      aktion === "anrufen" ||
+      aktion === "rueckruf" ||
+      aktion === "termin" ||
+      aktion === "schreiben"
+    ) {
+      setIntent(aktion);
+    } else if (q === "begleitung" || q === "pflege") {
+      setIntent("schreiben");
+    }
+  }, []);
+
+  function chooseIntent(next: ContactIntent) {
+    setIntent(next);
+    setSent(false);
+    setError("");
+  }
+
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (topic === "bewerbung") {
+      window.location.href = "/bewerbung";
+      return;
+    }
     setSending(true);
     setError("");
     const data = new FormData(e.currentTarget);
+    const preferred = String(data.get("preferred") || "").trim();
+    const messageRaw = String(data.get("message") || "").trim();
+    const intentLabel =
+      contactIntents.find((item) => item.id === intent)?.label || intent;
+    const messageParts = [
+      `Anliegen: ${intentLabel}`,
+      preferred ? `Wunschzeit / Terminwunsch: ${preferred}` : "",
+      messageRaw,
+    ].filter(Boolean);
+
     const response = await fetch("/api/leads", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        source: "kontakt",
+        source: `kontakt-${intent}`,
         name: `${data.get("first") || ""} ${data.get("last") || ""}`.trim(),
         contact: data.get("contact"),
         topic: data.get("topic"),
-        message: data.get("message"),
+        message: messageParts.join("\n\n"),
+        details: {
+          intent,
+          preferred: preferred || null,
+        },
         consent: true,
       }),
     });
@@ -1195,6 +1265,50 @@ function Contact() {
         "Das Senden hat nicht geklappt. Bitte rufen Sie uns unter 043 433 88 00 an.",
       );
   }
+
+  const formCopy =
+    intent === "rueckruf"
+      ? {
+          eyebrow: "Rückruf",
+          title: "Wann dürfen wir Sie anrufen?",
+          submit: "Rückruf anfordern",
+          successTitle: "Rückruf angefordert.",
+          successText:
+            "Danke. Wir melden uns telefonisch so rasch wie möglich bei Ihnen.",
+          messageLabel: "Kurznotiz (optional)",
+          messageRequired: false,
+          preferredLabel: "Wann passt ein Rückruf am besten?",
+          preferredRequired: true,
+          contactLabel: "Ihre Telefonnummer",
+        }
+      : intent === "termin"
+        ? {
+            eyebrow: "Termin",
+            title: "Erstgespräch vereinbaren",
+            submit: "Terminwunsch senden",
+            successTitle: "Terminwunsch erhalten.",
+            successText:
+              "Danke. Wir prüfen Ihre Wunschzeiten und melden uns zur Bestätigung.",
+            messageLabel: "Worum geht es? (optional)",
+            messageRequired: false,
+            preferredLabel: "Wunschtag oder Zeitraum",
+            preferredRequired: true,
+            contactLabel: "Telefon oder E-Mail",
+          }
+        : {
+            eyebrow: "Nachricht",
+            title: "Schreiben Sie uns einfach",
+            submit: "Nachricht senden",
+            successTitle: "Danke für Ihre Nachricht.",
+            successText:
+              "Wir melden uns so rasch wie möglich persönlich bei Ihnen.",
+            messageLabel: "Ihre Nachricht",
+            messageRequired: true,
+            preferredLabel: "",
+            preferredRequired: false,
+            contactLabel: "Telefon oder E-Mail",
+          };
+
   return (
     <main>
       <section className="contact-hero">
@@ -1205,20 +1319,18 @@ function Contact() {
             <span className="hero-title-line">für Sie da.</span>
           </h1>
           <p className="lead">
-            Rufen Sie an oder schreiben Sie uns. Wir melden uns rasch und
-            unkompliziert.
+            Rufen Sie direkt an, fordern Sie einen Rückruf an, vereinbaren Sie
+            einen Termin – oder schreiben Sie uns einfach.
           </p>
         </div>
       </section>
       <section className="wrap contact-grid">
         <div className="contact-info">
-          <div>
-            <Icon>☎</Icon>
-            <span>
-              <b>Telefon</b>
-              <a href="tel:+41434338800">043 433 88 00</a>
-            </span>
-          </div>
+          <a className="contact-callout" href="tel:+41434338800">
+            <span>Jetzt anrufen</span>
+            <b>043 433 88 00</b>
+            <small>Mo–Fr, 08:00–17:00 Uhr</small>
+          </a>
           <div>
             <Icon>✉</Icon>
             <span>
@@ -1256,62 +1368,153 @@ function Contact() {
             </p>
           </div>
         </div>
-        <form className="contact-form" onSubmit={submit}>
-          {sent ? (
-            <div className="success">
-              <Icon>✓</Icon>
-              <h2>Danke für Ihre Nachricht.</h2>
-              <p>Wir melden uns so rasch wie möglich persönlich bei Ihnen.</p>
+
+        <div className="contact-panel">
+          <div
+            className="contact-intents"
+            role="tablist"
+            aria-label="Wie möchten Sie Kontakt aufnehmen?"
+          >
+            {contactIntents.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={intent === item.id}
+                className={
+                  intent === item.id
+                    ? "contact-intent is-active"
+                    : "contact-intent"
+                }
+                onClick={() => chooseIntent(item.id)}
+              >
+                <b>{item.label}</b>
+                <span>{item.hint}</span>
+              </button>
+            ))}
+          </div>
+
+          {intent === "anrufen" ? (
+            <div className="contact-call-panel">
+              <span className="eyebrow">Direkt anrufen</span>
+              <h2>Ein Anruf genügt.</h2>
+              <p>
+                Sprechen Sie jetzt mit dem Lumina-Team – unverbindlich und
+                persönlich. Ausserhalb der Bürozeiten hinterlassen Sie bitte
+                eine Nachricht oder fordern Sie einen Rückruf an.
+              </p>
+              <a className="button gold" href="tel:+41434338800">
+                043 433 88 00 anrufen
+              </a>
+              <button
+                type="button"
+                className="text-link"
+                onClick={() => chooseIntent("rueckruf")}
+              >
+                Lieber Rückruf anfordern →
+              </button>
             </div>
           ) : (
-            <>
-              <span className="eyebrow">Nachricht senden</span>
-              <h2>Worum dürfen wir uns kümmern?</h2>
-              <div className="form-row">
-                <label>
-                  Vorname
-                  <input required name="first" autoComplete="given-name" />
-                </label>
-                <label>
-                  Nachname
-                  <input required name="last" autoComplete="family-name" />
-                </label>
-              </div>
-              <label>
-                Telefon oder E-Mail
-                <input required name="contact" />
-              </label>
-              <label>
-                Ich interessiere mich für
-                <select name="topic">
-                  <option>Spitex-Pflege</option>
-                  <option>Begleitung</option>
-                  <option>Anstellung als pflegende Angehörige</option>
-                  <option>Etwas anderes</option>
-                </select>
-              </label>
-              <p className="form-hint">
-                Bewerbungen bitte über das{" "}
-                <a href="/bewerbung">Bewerbungsformular</a>.
-              </p>
-              <label>
-                Ihre Nachricht
-                <textarea rows={5} required name="message" />
-              </label>
-              <label className="check">
-                <input type="checkbox" required />{" "}
-                <span>
-                  Ich bin mit der Bearbeitung meiner Angaben gemäss{" "}
-                  <a href="/datenschutz">Datenschutzerklärung</a> einverstanden.
-                </span>
-              </label>
-              {error && <p role="alert">{error}</p>}
-              <button className="button" disabled={sending} type="submit">
-                {sending ? "Wird gesendet …" : "Nachricht senden"}
-              </button>
-            </>
+            <form className="contact-form" onSubmit={submit}>
+              {sent ? (
+                <div className="success">
+                  <Icon>✓</Icon>
+                  <h2>{formCopy.successTitle}</h2>
+                  <p>{formCopy.successText}</p>
+                  <button
+                    type="button"
+                    className="text-link"
+                    onClick={() => {
+                      setSent(false);
+                      setIntent("schreiben");
+                    }}
+                  >
+                    Weitere Nachricht schreiben →
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <span className="eyebrow">{formCopy.eyebrow}</span>
+                  <h2>{formCopy.title}</h2>
+                  <div className="form-row">
+                    <label>
+                      Vorname
+                      <input required name="first" autoComplete="given-name" />
+                    </label>
+                    <label>
+                      Nachname
+                      <input required name="last" autoComplete="family-name" />
+                    </label>
+                  </div>
+                  <label>
+                    {formCopy.contactLabel}
+                    <input
+                      required
+                      name="contact"
+                      type={intent === "rueckruf" ? "tel" : "text"}
+                      autoComplete={
+                        intent === "rueckruf" ? "tel" : "email"
+                      }
+                    />
+                  </label>
+                  <label>
+                    Ich interessiere mich für
+                    <select
+                      name="topic"
+                      value={topic}
+                      onChange={(e) => setTopic(e.target.value)}
+                    >
+                      <option value="pflege">Pflege</option>
+                      <option value="begleitung">Begleitung</option>
+                      <option value="bewerbung">Bewerbung</option>
+                      <option value="sonstiges">Sonstiges</option>
+                    </select>
+                  </label>
+                  {topic === "bewerbung" ? (
+                    <p className="form-hint">
+                      Für Bewerbungen öffnet sich nach dem Absenden das{" "}
+                      <a href="/bewerbung">Bewerbungsformular</a>.
+                    </p>
+                  ) : null}
+                  {formCopy.preferredLabel ? (
+                    <label>
+                      {formCopy.preferredLabel}
+                      <input
+                        name="preferred"
+                        required={formCopy.preferredRequired}
+                        placeholder={
+                          intent === "termin"
+                            ? "z. B. Dienstag Vormittag oder 12.08. nach 14 Uhr"
+                            : "z. B. heute Nachmittag oder morgen Vormittag"
+                        }
+                      />
+                    </label>
+                  ) : null}
+                  <label>
+                    {formCopy.messageLabel}
+                    <textarea
+                      rows={intent === "schreiben" ? 5 : 3}
+                      required={formCopy.messageRequired}
+                      name="message"
+                    />
+                  </label>
+                  <label className="check">
+                    <input type="checkbox" required />{" "}
+                    <span>
+                      Ich bin mit der Bearbeitung meiner Angaben gemäss{" "}
+                      <a href="/datenschutz">Datenschutzerklärung</a>{" "}
+                      einverstanden.
+                    </span>
+                  </label>
+                  {error && <p role="alert">{error}</p>}
+                  <button className="button" disabled={sending} type="submit">
+                    {sending ? "Wird gesendet …" : formCopy.submit}
+                  </button>
+                </>
+              )}
+            </form>
           )}
-        </form>
+        </div>
       </section>
     </main>
   );
