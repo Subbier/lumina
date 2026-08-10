@@ -1,0 +1,17 @@
+.vercel
+.env*
+.venv-tts/
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+.firecrawl/
+agent-tools/
+*.log
+npm-debug.log*
+.turbo/

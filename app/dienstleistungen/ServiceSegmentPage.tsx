@@ -1,0 +1,230 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import {
+  getServiceSegment,
+  partners,
+  type ServiceSegment,
+} from "./content";
+
+function AudioReader({ src }: { src: string }) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const audio = new Audio(src);
+    audio.preload = "metadata";
+    audioRef.current = audio;
+    const onEnd = () => setPlaying(false);
+    audio.addEventListener("ended", onEnd);
+    return () => {
+      audio.pause();
+      audio.removeEventListener("ended", onEnd);
+      audioRef.current = null;
+    };
+  }, [src]);
+
+  async function toggle() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (playing) {
+      audio.pause();
+      setPlaying(false);
+      return;
+    }
+    try {
+      await audio.play();
+      setPlaying(true);
+    } catch {
+      setPlaying(false);
+    }
+  }
+
+  return (
+    <div className="page-reader">
+      <button
+        type="button"
+        className="page-reader-play"
+        onClick={toggle}
+        aria-pressed={playing}
+        aria-label={playing ? "Pause" : "Seite vorlesen"}
+      >
+        {playing ? "Pause" : "Seite vorlesen"}
+      </button>
+    </div>
+  );
+}
+
+function PartnersStrip() {
+  return (
+    <section className="wrap partners-section">
+      <div className="section-head">
+        <span className="eyebrow">Unsere Partner</span>
+        <h2>Vernetzt für gute Versorgung.</h2>
+      </div>
+      <div className="partners-grid">
+        {partners.map((p) => (
+          <div className="partner-logo" key={p.name}>
+            <img src={p.src} alt={p.name} />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function ServiceSegmentPage({
+  id,
+  showPartners = true,
+}: {
+  id: ServiceSegment["id"];
+  showPartners?: boolean;
+}) {
+  const page = getServiceSegment(id);
+
+  return (
+    <main className="service-segment">
+      <section className={`subhero ${page.heroTone}`}>
+        <div className="wrap subhero-grid">
+          <div>
+            <span
+              className={
+                page.heroTone === "dark" ? "eyebrow light" : "eyebrow"
+              }
+            >
+              {page.eyebrow}
+            </span>
+            <h1>
+              {page.title}
+              <br />
+              <em>{page.titleEm}</em>
+            </h1>
+            <p className="lead">{page.lead}</p>
+            <AudioReader src={page.audioSrc} />
+            <div className="actions">
+              <a className="button gold" href={page.cta.primaryHref}>
+                {page.cta.primaryLabel}
+              </a>
+              {page.cta.secondaryHref && page.cta.secondaryLabel ? (
+                <a className="text-link" href={page.cta.secondaryHref}>
+                  {page.cta.secondaryLabel} →
+                </a>
+              ) : null}
+            </div>
+          </div>
+          <img src={page.image} alt={page.imageAlt} />
+        </div>
+      </section>
+
+      <section className="wrap intro">
+        <span className="eyebrow">{page.introEyebrow}</span>
+        <h2>{page.introTitle}</h2>
+        <div className="more-read">
+          <div className="more-read-summary">
+            <p className="lead small-lead">{page.introSummary}</p>
+          </div>
+          <details className="more-read-details">
+            <summary>Mehr lesen</summary>
+            <div className="more-read-body">
+              {page.introMore.map((p) => (
+                <p key={p.slice(0, 40)}>{p}</p>
+              ))}
+            </div>
+          </details>
+        </div>
+      </section>
+
+      {page.facts ? (
+        <section className="wrap segment-facts">
+          {page.facts.map((f) => (
+            <div key={f.label}>
+              <span>{f.label}</span>
+              <b>{f.value}</b>
+            </div>
+          ))}
+        </section>
+      ) : null}
+
+      <section className="wrap accordion-section">
+        <div className="section-head left">
+          <span className="eyebrow">Dienstleistungen</span>
+          <h2>{page.accordionTitle}</h2>
+        </div>
+        <div className="service-accordion">
+          {page.accordion.map((item, i) => (
+            <details
+              className="service-accordion-item"
+              key={item.title}
+              open={i === 0}
+            >
+              <summary>
+                <span className="acc-num">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>{item.title}</span>
+              </summary>
+              <div className="service-accordion-body">
+                <p>{item.intro}</p>
+                {item.bullets?.length ? (
+                  <ul>
+                    {item.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                ) : null}
+                {item.note ? <p className="acc-note">{item.note}</p> : null}
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {page.process?.length ? (
+        <section className="process-bg">
+          <div className="wrap">
+            <div className="section-head">
+              <span className="eyebrow light">Ablauf</span>
+              <h2>{page.processTitle}</h2>
+            </div>
+            <div
+              className="timeline"
+              style={{
+                gridTemplateColumns: `repeat(${Math.min(page.process.length, 5)}, 1fr)`,
+              }}
+            >
+              {page.process.map((step) => (
+                <div key={step.step}>
+                  <b>{step.step}</b>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {showPartners ? <PartnersStrip /> : null}
+
+      <section className="cta wrap segment-cta">
+        <div>
+          <span className="eyebrow light">Nächster Schritt</span>
+          <h2>{page.cta.title}</h2>
+          <p>{page.cta.text}</p>
+        </div>
+        <div className="cta-actions">
+          <a className="button gold" href={page.cta.primaryHref}>
+            {page.cta.primaryLabel}
+          </a>
+          {page.cta.secondaryHref && page.cta.secondaryLabel ? (
+            <a className="text-link light" href={page.cta.secondaryHref}>
+              {page.cta.secondaryLabel} →
+            </a>
+          ) : null}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+export { PartnersStrip };

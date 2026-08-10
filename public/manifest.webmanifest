@@ -1,0 +1,19 @@
+{
+  "name": "Lumina Spitex",
+  "short_name": "Lumina",
+  "description": "Persönliche Pflege zu Hause und Unterstützung für pflegende Angehörige.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf9f4",
+  "theme_color": "#102f3b",
+  "lang": "de-CH",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Spitex", "url": "/spitex" },
+    { "name": "Lohn-Check", "url": "/lohn-check" },
+    { "name": "Kontakt", "url": "/kontakt" }
+  ]
+}
