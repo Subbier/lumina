@@ -5,8 +5,6 @@ import {
   partners,
   type ServiceSegment,
 } from "./content";
-import { ListenPlayer } from "../listen/ListenPlayer";
-import { getPageAudio } from "../listen/pageAudio";
 
 function PartnersStrip() {
   return (
@@ -47,14 +45,12 @@ export function ServiceSegmentPage({
             >
               {page.eyebrow}
             </span>
-            <h1 className="hero-title">
-              <span className="hero-title-line">{page.title}</span>
-              <span className="hero-title-line">
-                <em>{page.titleEm}</em>
-              </span>
+            <h1>
+              {page.title}
+              <br />
+              <em>{page.titleEm}</em>
             </h1>
             <p className="lead">{page.lead}</p>
-            <ListenPlayer audio={getPageAudio(page.id)} variant="inline" />
             <div className="actions">
               <a className="button gold" href={page.cta.primaryHref}>
                 {page.cta.primaryLabel}

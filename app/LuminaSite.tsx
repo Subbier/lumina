@@ -12,7 +12,7 @@ import { articles, getArticle, type Article } from "./ratgeber/articles";
 import { ServiceSegmentPage, PartnersStrip } from "./dienstleistungen/ServiceSegmentPage";
 import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
 import { ListenPlayer } from "./listen/ListenPlayer";
-import { getPageAudio } from "./listen/pageAudio";
+import { getPageAudio, type AudioView } from "./listen/pageAudio";
 
 function BrandMark({ size = 56 }: { size?: number }) {
   return (
@@ -318,7 +318,6 @@ function Home() {
             fester Bezugsperson und Abrechnung über die Krankenkasse. So bleibt
             Selbstbestimmung dort, wo Sie zu Hause sind.
           </p>
-          <ListenPlayer audio={getPageAudio("home")} variant="inline" />
           <div className="actions">
             <a className="button" href="/spitex">
               Spitex-Leistungen
@@ -551,7 +550,6 @@ function Team() {
               Beziehungen aufbauen und mit uns eine besondere Spitex gestalten
               wollen.
             </p>
-            <ListenPlayer audio={getPageAudio("team")} variant="inline" />
             <a className="button" href="#jobs">
               Offene Rollen ansehen
             </a>
@@ -711,7 +709,6 @@ function Tarife() {
               Pflegeleistungen nach KLV und UVG sowie hauswirtschaftliche
               Leistungen – wie auf der bestehenden Lumina-Website ausgewiesen.
             </p>
-            <ListenPlayer audio={getPageAudio("tarife")} variant="inline" />
             <a className="button gold" href="/kontakt">
               Tariffrage klären
             </a>
@@ -845,7 +842,6 @@ function About() {
               „Lumina“ kommt von Lumen – dem Licht. Für uns bedeutet das:
               fachlich Orientierung geben und menschlich nahe bleiben.
             </p>
-            <ListenPlayer audio={getPageAudio("ueber-uns")} variant="inline" />
           </div>
           <img
             src="/images/hero.jpg"
@@ -949,7 +945,6 @@ function Contact() {
             Rufen Sie an oder schreiben Sie uns. Wir melden uns rasch und
             unkompliziert.
           </p>
-          <ListenPlayer audio={getPageAudio("kontakt")} variant="inline" />
         </div>
       </section>
       <section className="wrap contact-grid">
@@ -1129,12 +1124,6 @@ function ArticleDetail({ article }: { article: Article }) {
             <span className="tag">{article.tag}</span>
             <h1>{article.title}</h1>
             <p className="lead article-lead">{article.text}</p>
-            <ListenPlayer
-              audio={null}
-              articleText={buildArticleSpeechText(article)}
-              articleLabel={article.title}
-              variant="inline"
-            />
             <div className="article-meta">
               <span>{article.read} Lesezeit</span>
               <span>Aktualisiert {article.updated}</span>
@@ -1261,7 +1250,6 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
             Verständliche Antworten auf Fragen zu Pflege, Lohn, Finanzierung und
             Familienalltag – Schweizerisch, konkret und ohne Fachchinesisch.
           </p>
-          <ListenPlayer audio={getPageAudio("ratgeber")} variant="inline" />
           <a className="button gold" href="/anspruchscheck">
             Anspruch in 2 Minuten prüfen
           </a>
@@ -1779,10 +1767,6 @@ function Legal({ privacy = false }: { privacy?: boolean }) {
           <span className="eyebrow">Rechtliches</span>
           <h1>{privacy ? "Datenschutzerklärung" : "Impressum"}</h1>
           <p>Stand: August 2026</p>
-          <ListenPlayer
-            audio={getPageAudio(privacy ? "datenschutz" : "impressum")}
-            variant="inline"
-          />
         </div>
       </section>
       <section className="wrap legal-copy">
@@ -1972,12 +1956,22 @@ export function LuminaSite({
     default:
       page = <Home />;
   }
+  const activeArticle =
+    view === "ratgeber" && articleSlug ? getArticle(articleSlug) : null;
+
   return (
     <>
       <PWARegister />
       <Header />
       {page}
       <Footer />
+      <ListenPlayer
+        audio={activeArticle ? null : getPageAudio(view as AudioView)}
+        articleText={
+          activeArticle ? buildArticleSpeechText(activeArticle) : undefined
+        }
+        articleLabel={activeArticle?.title}
+      />
       <div className="mobile-bar">
         <a href="tel:+41434338800">Anrufen</a>
         <a href="/kontakt">Kontakt</a>
