@@ -4,6 +4,13 @@ import { useEffect, useRef, useState } from "react";
 
 const SPEEDS = [0.85, 1, 1.15, 1.3] as const;
 
+function formatTime(seconds: number) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
+
 function PlayIcon() {
   return (
     <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
@@ -27,85 +34,94 @@ function PauseIcon() {
 }
 
 export function ListenPlayer({
-  articleText,
+  audioSrc,
   articleLabel,
 }: {
-  articleText: string;
+  audioSrc: string;
   articleLabel?: string;
 }) {
-  const label = articleLabel ?? "Ratgeber";
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(1);
-  const speedRef = useRef(speed);
+  const [progress, setProgress] = useState(0);
+  const [current, setCurrent] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    speedRef.current = speed;
+    const el = new Audio(audioSrc);
+    el.preload = "metadata";
+    el.playbackRate = speed;
+    audioRef.current = el;
+
+    const onMeta = () => setDuration(el.duration || 0);
+    const onTime = () => {
+      setCurrent(el.currentTime);
+      if (el.duration) setProgress(el.currentTime / el.duration);
+    };
+    const onEnd = () => {
+      setPlaying(false);
+      setProgress(0);
+      setCurrent(0);
+    };
+
+    el.addEventListener("loadedmetadata", onMeta);
+    el.addEventListener("timeupdate", onTime);
+    el.addEventListener("ended", onEnd);
+    return () => {
+      el.pause();
+      el.removeEventListener("loadedmetadata", onMeta);
+      el.removeEventListener("timeupdate", onTime);
+      el.removeEventListener("ended", onEnd);
+      if (audioRef.current === el) audioRef.current = null;
+    };
+  }, [audioSrc]);
+
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.playbackRate = speed;
   }, [speed]);
 
-  useEffect(() => {
-    setPlaying(false);
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-    }
-  }, [articleText, label]);
-
-  useEffect(() => {
-    return () => {
-      if (typeof window !== "undefined" && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, []);
-
-  function startSpeech(rate: number = speedRef.current) {
-    if (!articleText || typeof window === "undefined") return;
-    if (!("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(articleText);
-    utter.lang = "de-DE";
-    utter.rate = rate;
-    const voices = window.speechSynthesis.getVoices();
-    const german =
-      voices.find(
-        (v) => v.lang === "de-DE" && /Katja|Amala|Germany/i.test(v.name),
-      ) ||
-      voices.find((v) => v.lang.startsWith("de-DE")) ||
-      voices.find((v) => v.lang.startsWith("de")) ||
-      null;
-    if (german) utter.voice = german;
-    utter.onend = () => setPlaying(false);
-    utter.onerror = () => setPlaying(false);
-    setPlaying(true);
-    window.speechSynthesis.speak(utter);
-  }
-
-  function toggle() {
+  async function toggle() {
+    const el = audioRef.current;
+    if (!el) return;
     if (playing) {
-      window.speechSynthesis.cancel();
+      el.pause();
       setPlaying(false);
       return;
     }
-    startSpeech();
-  }
-
-  function changeSpeed(value: (typeof SPEEDS)[number]) {
-    setSpeed(value);
-    speedRef.current = value;
-    if (playing) startSpeech(value);
+    try {
+      el.playbackRate = speed;
+      await el.play();
+      setPlaying(true);
+    } catch {
+      setPlaying(false);
+    }
   }
 
   function stop() {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-    }
+    const el = audioRef.current;
+    if (!el) return;
+    el.pause();
+    el.currentTime = 0;
     setPlaying(false);
+    setProgress(0);
+    setCurrent(0);
+  }
+
+  function seek(clientX: number, target: HTMLElement) {
+    const el = audioRef.current;
+    if (!el || !el.duration) return;
+    const rect = target.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+    el.currentTime = ratio * el.duration;
+    setProgress(ratio);
+    setCurrent(el.currentTime);
   }
 
   return (
     <div
       className={`listen-bar ${playing ? "is-playing" : ""}`}
       role="region"
-      aria-label="Beitrag anhören"
+      aria-label={articleLabel ? `${articleLabel} anhören` : "Beitrag anhören"}
     >
       <button
         type="button"
@@ -117,15 +133,25 @@ export function ListenPlayer({
         {playing ? <PauseIcon /> : <PlayIcon />}
       </button>
 
-      <div className="listen-bar-track" aria-hidden="true">
+      <div
+        className="listen-bar-track"
+        role="slider"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(progress * 100)}
+        aria-label="Fortschritt"
+        onClick={(e) => seek(e.clientX, e.currentTarget)}
+      >
         <span
           className="listen-bar-track-fill"
-          style={{ width: playing ? "100%" : "0%" }}
+          style={{ width: `${progress * 100}%` }}
         />
       </div>
 
       <span className="listen-bar-label">
-        {playing ? "Wird vorgelesen…" : "Anhören"}
+        {playing
+          ? `${formatTime(current)} / ${formatTime(duration)}`
+          : "Anhören"}
       </span>
 
       <div className="listen-bar-speeds" role="group" aria-label="Geschwindigkeit">
@@ -134,14 +160,14 @@ export function ListenPlayer({
             type="button"
             key={value}
             className={speed === value ? "active" : ""}
-            onClick={() => changeSpeed(value)}
+            onClick={() => setSpeed(value)}
           >
             {value === 1 ? "1×" : `${value}×`}
           </button>
         ))}
       </div>
 
-      {playing ? (
+      {playing || progress > 0 ? (
         <button type="button" className="listen-bar-stop" onClick={stop}>
           Stopp
         </button>

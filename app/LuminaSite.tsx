@@ -12,6 +12,7 @@ import { articles, getArticle, type Article } from "./ratgeber/articles";
 import { ServiceSegmentPage, PartnersStrip } from "./dienstleistungen/ServiceSegmentPage";
 import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
 import { ListenPlayer } from "./listen/ListenPlayer";
+import { CookieBanner } from "./CookieBanner";
 
 function BrandLockup({
   height = 84,
@@ -47,6 +48,7 @@ export type View =
   | "ueber-uns"
   | "tarife"
   | "kontakt"
+  | "bewerbung"
   | "ratgeber"
   | "lohn-check"
   | "anspruchscheck"
@@ -140,18 +142,11 @@ function Header() {
               <div className="nav-dropdown-panel" role="menu">
                 <div className="nav-dropdown-panel-inner">
                   <a
-                    href="/team"
+                    href="/ueber-uns"
                     role="menuitem"
                     onClick={() => setOpen(false)}
                   >
-                    Team
-                  </a>
-                  <a
-                    href="/ratgeber"
-                    role="menuitem"
-                    onClick={() => setOpen(false)}
-                  >
-                    Ratgeber
+                    Über uns & Team
                   </a>
                   <a
                     href="/tarife"
@@ -161,11 +156,18 @@ function Header() {
                     Tarife
                   </a>
                   <a
-                    href="/ueber-uns"
+                    href="/ratgeber"
                     role="menuitem"
                     onClick={() => setOpen(false)}
                   >
-                    Über Lumina
+                    Ratgeber
+                  </a>
+                  <a
+                    href="/bewerbung"
+                    role="menuitem"
+                    onClick={() => setOpen(false)}
+                  >
+                    Bewerbung
                   </a>
                 </div>
               </div>
@@ -208,10 +210,10 @@ function Footer() {
         </div>
         <div>
           <h3>Über uns</h3>
-          <a href="/team">Team</a>
-          <a href="/ratgeber">Ratgeber</a>
+          <a href="/ueber-uns">Über uns & Team</a>
           <a href="/tarife">Tarife</a>
-          <a href="/ueber-uns">Über Lumina</a>
+          <a href="/ratgeber">Ratgeber</a>
+          <a href="/bewerbung">Bewerbung</a>
           <a href="/kontakt">Kontakt</a>
         </div>
         <div>
@@ -252,6 +254,13 @@ function TrustStrip() {
 function CTA({
   title = "Lassen Sie uns zuerst zuhören.",
   text = "Ein kurzes Gespräch schafft Klarheit – kostenlos, persönlich und ohne Verpflichtung.",
+  href = "/kontakt",
+  ctaLabel = "Gespräch vereinbaren",
+}: {
+  title?: string;
+  text?: string;
+  href?: string;
+  ctaLabel?: string;
 }) {
   return (
     <section className="cta wrap">
@@ -261,8 +270,8 @@ function CTA({
         <p>{text}</p>
       </div>
       <div className="cta-actions">
-        <a className="button gold" href="/kontakt">
-          Gespräch vereinbaren
+        <a className="button gold" href={href}>
+          {ctaLabel}
         </a>
         <a className="text-link light" href="tel:+41434338800">
           043 433 88 00 →
@@ -302,8 +311,8 @@ function Home() {
         </div>
         <div className="hero-visual">
           <img
-            src="/images/spitex-care-2.png"
-            alt="Spitex-Pflegefachperson bei der Versorgung einer Klientin zu Hause"
+            src="/images/home-hero.jpg?v=sq3"
+            alt="Pflege und Medikamentenplanung zu Hause mit Angehörigen und Fachperson"
           />
         </div>
       </section>
@@ -454,7 +463,7 @@ function Home() {
               Prozesse und ein Team mit Haltung.
             </p>
           </MoreRead>
-          <a className="text-link light" href="/team">
+          <a className="text-link light" href="/ueber-uns#karriere">
             Offene Rollen ansehen →
           </a>
         </div>
@@ -505,115 +514,7 @@ function Angehörige() {
 }
 
 function Team() {
-  return (
-    <main>
-      <section className="subhero clean">
-        <div className="wrap subhero-grid">
-          <div>
-            <span className="eyebrow">Arbeiten bei Lumina</span>
-            <h1 className="hero-title">
-              <span className="hero-title-line">Pflege braucht Können.</span>
-              <span className="hero-title-line">
-                <em>Und Menschen mit Herz.</em>
-              </span>
-            </h1>
-            <p className="lead">
-              Wir suchen Teammitglieder, die Verantwortung übernehmen,
-              Beziehungen aufbauen und mit uns eine besondere Spitex gestalten
-              wollen.
-            </p>
-            <a className="button" href="#jobs">
-              Offene Rollen ansehen
-            </a>
-          </div>
-          <img
-            src="/images/home-team.png"
-            alt="Lumina sucht Pflegefachkräfte – Team mit Haltung"
-          />
-        </div>
-      </section>
-      <section className="wrap intro">
-        <span className="eyebrow">Wir suchen Verstärkung</span>
-        <h2>Werden Sie Teil von Lumina.</h2>
-        <MoreRead
-          summary={
-            <p className="lead small-lead">
-              Lumina sucht Pflegefachfrauen und Pflegefachmänner EFZ sowie
-              diplomierte Fachpersonen in den Kantonen Zürich und Aargau.
-            </p>
-          }
-        >
-          <p>
-            Sie begleiten Klientinnen und Familien mit Fachlichkeit und Zeit,
-            leiten Angehörige an und sichern Qualität in Spitex und
-            Angehörigenpflege. Faire Anstellung, klare Prozesse und ein Team,
-            das Beziehungspflege ernst nimmt.
-          </p>
-        </MoreRead>
-      </section>
-      <section className="wrap benefits">
-        <article>
-          <Icon>♡</Icon>
-          <h3>Mehr Zeit für Menschen</h3>
-          <p>
-            Planbare Einsätze und eine Kultur, die Beziehungspflege ernst nimmt.
-          </p>
-        </article>
-        <article>
-          <Icon>↗</Icon>
-          <h3>Mit Lumina wachsen</h3>
-          <p>Weiterbildung, Verantwortung und Raum für eigene Ideen.</p>
-        </article>
-        <article>
-          <Icon>☼</Icon>
-          <h3>Rückhalt im Team</h3>
-          <p>
-            Kurze Wege, offene Kommunikation und verlässliche Fachbegleitung.
-          </p>
-        </article>
-      </section>
-      <section id="jobs" className="wrap jobs">
-        <div>
-          <span className="eyebrow">Offene Rollen</span>
-          <h2>Wo Sie bei uns Wirkung entfalten.</h2>
-        </div>
-        <div>
-          <article>
-            <span>60–100% · Zürich & Aargau</span>
-            <h3>Pflegefachfrau / Pflegefachmann EFZ</h3>
-            <p>
-              Grund- und Behandlungspflege im Alltag, stabile Beziehungen zu
-              Klientinnen und enge Zusammenarbeit mit dem Fachteam.
-            </p>
-            <a href="/kontakt">Jetzt bewerben →</a>
-          </article>
-          <article>
-            <span>60–100% · Zürich & Aargau</span>
-            <h3>Dipl. Pflegefachperson HF/FH</h3>
-            <p>
-              Fallführung, Bedarfsabklärung und fachliche Begleitung von
-              Kund:innen und Angehörigen.
-            </p>
-            <a href="/kontakt">Interesse melden →</a>
-          </article>
-          <article>
-            <span>40–100% · Zürich & Aargau</span>
-            <h3>Fachperson Gesundheit FaGe</h3>
-            <p>
-              Professionelle Pflege mit Eigenverantwortung und einer festen
-              Beziehung zu Kund:innen.
-            </p>
-            <a href="/kontakt">Interesse melden →</a>
-          </article>
-        </div>
-      </section>
-      <LohnJob />
-      <CTA
-        title="Bewerben Sie sich als Pflegefachperson EFZ."
-        text="Schreiben Sie uns unkompliziert. Wir lernen Sie gerne kennen – auch initiativ."
-      />
-    </main>
-  );
+  return <About />;
 }
 
 function LohnJob() {
@@ -788,6 +689,113 @@ function Tarife() {
         </div>
       </section>
 
+      <section className="wrap legal-foundations">
+        <div className="section-head left">
+          <span className="eyebrow">Rechtliche Grundlagen</span>
+          <h2>Was Spitex und Finanzierung rechtlich trägt.</h2>
+          <p className="lead small-lead">
+            Für Pflege zu Hause gelten klare Bundesgesetze und Verordnungen.
+            Hier die wichtigsten Bestimmungen – verständlich eingeordnet, mit
+            Link zum Originaltext auf Fedlex.
+          </p>
+        </div>
+
+        <div className="legal-cards">
+          <article>
+            <h3>Krankenversicherungsgesetz (KVG)</h3>
+            <p>
+              Das KVG legt fest, welche Pflegeleistungen die obligatorische
+              Krankenpflegeversicherung übernimmt und wie die Finanzierung
+              zwischen Versicherer, Kanton und versicherter Person aufgeteilt
+              wird (Art. 25a). Es verlangt wirtschaftliche Leistungen (Art. 56),
+              schützt vor überhöhten Tarifen (Art. 44) und regelt die Vergütung
+              von Analysen, Arzneimitteln sowie Mitteln und Gegenständen (Art.
+              52).
+            </p>
+            <a
+              className="text-link"
+              href="https://www.fedlex.admin.ch/eli/cc/1995/1328_1328_1328/de"
+              target="_blank"
+              rel="noreferrer"
+            >
+              KVG auf Fedlex öffnen →
+            </a>
+          </article>
+
+          <article>
+            <h3>Krankenpflege-Leistungsverordnung (KLV)</h3>
+            <p>
+              Die KLV konkretisiert die kassenpflichtige Pflege: Art. 7 und 7a
+              listen die Leistungen und die Beiträge der Krankenversicherer.
+              Art. 8 und 8a regeln, wann ein ärztlicher Auftrag nötig ist und
+              wie die Spitex den Bedarf ermittelt. Art. 9 steuert die
+              Abrechnung; Art. 20a verweist auf die Mittel- und Gegenständeliste
+              des BAG.
+            </p>
+            <a
+              className="text-link"
+              href="https://www.fedlex.admin.ch/eli/cc/1995/4964_4964_4964/de"
+              target="_blank"
+              rel="noreferrer"
+            >
+              KLV auf Fedlex öffnen →
+            </a>
+          </article>
+
+          <article>
+            <h3>Krankenversicherungsverordnung (KVV)</h3>
+            <p>
+              Die KVV regelt unter anderem die Zulassung von
+              Spitex-Organisationen (Art. 51) und die Qualitätsanforderungen
+              (Art. 58). Ohne diese Voraussetzungen ist keine Abrechnung über
+              die Grundversicherung möglich.
+            </p>
+            <a
+              className="text-link"
+              href="https://www.fedlex.admin.ch/eli/cc/1995/3867_3867_3867/de"
+              target="_blank"
+              rel="noreferrer"
+            >
+              KVV auf Fedlex öffnen →
+            </a>
+          </article>
+
+          <article>
+            <h3>Ergänzungsleistungen (ELG)</h3>
+            <p>
+              Das Bundesgesetz über Ergänzungsleistungen zur AHV und IV regelt
+              in Art. 14–16, wie Kantone Krankheits- und Behinderungskosten
+              mitvergüten können – etwa bei Haushaltshilfe oder
+              Restkostenbeteiligung.
+            </p>
+            <a
+              className="text-link"
+              href="https://www.fedlex.admin.ch/eli/cc/2007/804/de#art_14"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ELG Art. 14 auf Fedlex öffnen →
+            </a>
+          </article>
+        </div>
+
+        <div className="legal-notes">
+          <h3>Kantone, Gemeinden und Versichererverträge</h3>
+          <p>
+            Viele Regeln zur Hilfe und Pflege zu Hause sind kantonal oder
+            kommunal. Massgebend sind die Vorgaben Ihres Wohnkantons bzw. Ihrer
+            Gemeinde. Zusätzlich gelten Administrativverträge zwischen
+            Spitex-Organisationen und Krankenversicherern sowie der Tarifvertrag
+            IV/UV/MV für Leistungen zulasten Invaliden-, Unfall- und
+            Militärversicherung.
+          </p>
+          <p>
+            Wir erklären Ihnen gerne, welche Grundlagen für Ihre Situation
+            greifen – und was das für Abrechnung und Beteiligung bedeutet.
+          </p>
+        </div>
+      </section>
+
       <PartnersStrip />
       <CTA
         title="Fragen zu Finanzierung oder Rechnung?"
@@ -803,7 +811,7 @@ function About() {
       <section className="subhero dark">
         <div className="wrap subhero-grid">
           <div>
-            <span className="eyebrow light">Über Lumina</span>
+            <span className="eyebrow light">Über uns</span>
             <h1 className="hero-title">
               <span className="hero-title-line">Licht und Wärme.</span>
               <span className="hero-title-line">
@@ -812,12 +820,21 @@ function About() {
             </h1>
             <p className="lead">
               „Lumina“ kommt von Lumen – dem Licht. Für uns bedeutet das:
-              fachlich Orientierung geben und menschlich nahe bleiben.
+              fachlich Orientierung geben und menschlich nahe bleiben – als
+              Team in Zürich und Aargau.
             </p>
+            <div className="actions">
+              <a className="button gold" href="#team">
+                Unser Team
+              </a>
+              <a className="text-link light" href="#karriere">
+                Offene Stellen →
+              </a>
+            </div>
           </div>
           <img
-            src="/images/hero.jpg"
-            alt="Hände als Zeichen von Nähe und Unterstützung"
+            src="/images/team-group.jpg"
+            alt="Das Team von Lumina Spitex"
           />
         </div>
       </section>
@@ -870,8 +887,282 @@ function About() {
           </ul>
         </div>
       </section>
+
+      <section id="team" className="wrap team-section">
+        <div className="section-head left">
+          <span className="eyebrow">Unser Team</span>
+          <h2>Die Menschen hinter Lumina.</h2>
+          <p className="lead small-lead">
+            Pflegefachpersonen, Fallführungen und Begleitung – ein Team, das
+            Beziehungspflege ernst nimmt und in Zürich sowie Aargau unterwegs
+            ist.
+          </p>
+        </div>
+        <figure className="team-photo">
+          <img
+            src="/images/team-group.jpg"
+            alt="Gesamtes Team der Lumina Spitex"
+          />
+          <figcaption>
+            Unser Team: Pflegefachpersonen EFZ, diplomierte Fachpersonen und
+            FaGe – gemeinsam für Klientinnen und Familien.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="karriere" className="wrap benefits">
+        <article>
+          <Icon>♡</Icon>
+          <h3>Mehr Zeit für Menschen</h3>
+          <p>
+            Planbare Einsätze und eine Kultur, die Beziehungspflege ernst nimmt.
+          </p>
+        </article>
+        <article>
+          <Icon>↗</Icon>
+          <h3>Mit Lumina wachsen</h3>
+          <p>Weiterbildung, Verantwortung und Raum für eigene Ideen.</p>
+        </article>
+        <article>
+          <Icon>☼</Icon>
+          <h3>Rückhalt im Team</h3>
+          <p>
+            Kurze Wege, offene Kommunikation und verlässliche Fachbegleitung.
+          </p>
+        </article>
+      </section>
+
+      <section id="jobs" className="wrap jobs">
+        <div>
+          <span className="eyebrow">Karriere</span>
+          <h2>Werden Sie Teil von Lumina.</h2>
+          <p className="lead small-lead">
+            Wir suchen Pflegefachfrauen und Pflegefachmänner EFZ sowie
+            diplomierte Fachpersonen in den Kantonen Zürich und Aargau.
+          </p>
+        </div>
+        <div>
+          <article>
+            <span>60–100% · Zürich & Aargau</span>
+            <h3>Pflegefachfrau / Pflegefachmann EFZ</h3>
+            <p>
+              Grund- und Behandlungspflege im Alltag, stabile Beziehungen zu
+              Klientinnen und enge Zusammenarbeit mit dem Fachteam.
+            </p>
+            <a href="/bewerbung?rolle=efz">Jetzt bewerben →</a>
+          </article>
+          <article>
+            <span>60–100% · Zürich & Aargau</span>
+            <h3>Dipl. Pflegefachperson HF/FH</h3>
+            <p>
+              Fallführung, Bedarfsabklärung und fachliche Begleitung von
+              Kund:innen und Angehörigen.
+            </p>
+            <a href="/bewerbung?rolle=dipl">Jetzt bewerben →</a>
+          </article>
+          <article>
+            <span>40–100% · Zürich & Aargau</span>
+            <h3>Fachperson Gesundheit FaGe</h3>
+            <p>
+              Professionelle Pflege mit Eigenverantwortung und einer festen
+              Beziehung zu Kund:innen.
+            </p>
+            <a href="/bewerbung?rolle=fage">Jetzt bewerben →</a>
+          </article>
+        </div>
+      </section>
+
+      <LohnJob />
       <PartnersStrip />
-      <CTA />
+      <CTA
+        title="Bewerben Sie sich bei Lumina."
+        text="Nutzen Sie unser Bewerbungsformular – wir melden uns persönlich."
+        href="/bewerbung"
+        ctaLabel="Zum Bewerbungsformular"
+      />
+    </main>
+  );
+}
+
+function Bewerbung() {
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
+  const [rolle, setRolle] = useState("efz");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const q = new URLSearchParams(window.location.search).get("rolle");
+    if (q === "dipl" || q === "fage" || q === "efz" || q === "initiativ") {
+      setRolle(q);
+    }
+  }, []);
+
+  async function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSending(true);
+    setError("");
+    const data = new FormData(e.currentTarget);
+    const response = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        source: "bewerbung",
+        name: `${data.get("first") || ""} ${data.get("last") || ""}`.trim(),
+        contact: data.get("contact"),
+        topic: `Bewerbung: ${data.get("role")}`,
+        message: data.get("message"),
+        details: {
+          role: data.get("role"),
+          pensum: data.get("pensum"),
+          region: data.get("region"),
+          start: data.get("start"),
+        },
+        consent: true,
+      }),
+    });
+    setSending(false);
+    if (response.ok) setSent(true);
+    else
+      setError(
+        "Das Senden hat nicht geklappt. Bitte mailen Sie an info@lumina-spitex.ch oder rufen Sie 043 433 88 00 an.",
+      );
+  }
+
+  return (
+    <main>
+      <section className="contact-hero">
+        <div className="wrap">
+          <span className="eyebrow">Karriere</span>
+          <h1 className="hero-title">
+            <span className="hero-title-line">Bewerbung</span>
+            <span className="hero-title-line">bei Lumina.</span>
+          </h1>
+          <p className="lead">
+            Eigenes Formular für Bewerbungen – nicht das allgemeine
+            Kontaktformular. Wir melden uns persönlich.
+          </p>
+        </div>
+      </section>
+      <section className="wrap contact-grid">
+        <div className="contact-info">
+          <div>
+            <Icon>☎</Icon>
+            <span>
+              <b>Fragen zur Stelle?</b>
+              <a href="tel:+41434338800">043 433 88 00</a>
+            </span>
+          </div>
+          <div>
+            <Icon>✉</Icon>
+            <span>
+              <b>E-Mail</b>
+              <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
+            </span>
+          </div>
+          <div className="contact-note">
+            <b>Lebenslauf</b>
+            <p>
+              Bitte Lebenslauf und Zeugnisse nach dem Absenden per E-Mail
+              nachreichen – oder im Nachrichtenfeld den Link zu Ihrem Profil
+              angeben.
+            </p>
+          </div>
+          <div>
+            <a className="text-link light" href="/ueber-uns#karriere">
+              ← Zurück zu offenen Rollen
+            </a>
+          </div>
+        </div>
+        <form className="contact-form" onSubmit={submit}>
+          {sent ? (
+            <div className="success">
+              <Icon>✓</Icon>
+              <h2>Danke für Ihre Bewerbung.</h2>
+              <p>
+                Wir prüfen Ihre Angaben und melden uns so rasch wie möglich.
+              </p>
+            </div>
+          ) : (
+            <>
+              <span className="eyebrow">Bewerbungsformular</span>
+              <h2>Erzählen Sie uns von sich.</h2>
+              <div className="form-row">
+                <label>
+                  Vorname
+                  <input required name="first" autoComplete="given-name" />
+                </label>
+                <label>
+                  Nachname
+                  <input required name="last" autoComplete="family-name" />
+                </label>
+              </div>
+              <label>
+                Telefon oder E-Mail
+                <input required name="contact" />
+              </label>
+              <label>
+                Stelle / Profil
+                <select
+                  name="role"
+                  value={rolle}
+                  onChange={(e) => setRolle(e.target.value)}
+                >
+                  <option value="efz">
+                    Pflegefachfrau / Pflegefachmann EFZ
+                  </option>
+                  <option value="dipl">Dipl. Pflegefachperson HF/FH</option>
+                  <option value="fage">Fachperson Gesundheit FaGe</option>
+                  <option value="initiativ">Initiativbewerbung</option>
+                </select>
+              </label>
+              <div className="form-row">
+                <label>
+                  Gewünschtes Pensum
+                  <select name="pensum" defaultValue="80">
+                    <option value="40-60">40–60%</option>
+                    <option value="60-80">60–80%</option>
+                    <option value="80-100">80–100%</option>
+                    <option value="flexibel">Flexibel</option>
+                  </select>
+                </label>
+                <label>
+                  Region
+                  <select name="region" defaultValue="beides">
+                    <option value="zuerich">Kanton Zürich</option>
+                    <option value="aargau">Kanton Aargau</option>
+                    <option value="beides">Zürich & Aargau</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Möglicher Start
+                <input name="start" placeholder="z. B. ab Oktober 2026" />
+              </label>
+              <label>
+                Motivation & Erfahrung
+                <textarea
+                  rows={6}
+                  required
+                  name="message"
+                  placeholder="Kurz zu Ausbildung, Erfahrung und warum Lumina zu Ihnen passt."
+                />
+              </label>
+              <label className="check">
+                <input type="checkbox" required />{" "}
+                <span>
+                  Ich bin mit der Bearbeitung meiner Bewerbungsdaten gemäss{" "}
+                  <a href="/datenschutz">Datenschutzerklärung</a> einverstanden.
+                </span>
+              </label>
+              {error && <p role="alert">{error}</p>}
+              <button className="button" disabled={sending} type="submit">
+                {sending ? "Wird gesendet …" : "Bewerbung absenden"}
+              </button>
+            </>
+          )}
+        </form>
+      </section>
     </main>
   );
 }
@@ -996,10 +1287,13 @@ function Contact() {
                   <option>Spitex-Pflege</option>
                   <option>Begleitung</option>
                   <option>Anstellung als pflegende Angehörige</option>
-                  <option>Arbeiten bei Lumina</option>
                   <option>Etwas anderes</option>
                 </select>
               </label>
+              <p className="form-hint">
+                Bewerbungen bitte über das{" "}
+                <a href="/bewerbung">Bewerbungsformular</a>.
+              </p>
               <label>
                 Ihre Nachricht
                 <textarea rows={5} required name="message" />
@@ -1069,20 +1363,6 @@ function ArticleCard({ a, i }: { a: Article; i: number }) {
   );
 }
 
-function buildArticleSpeechText(article: Article) {
-  const parts = [
-    article.title,
-    article.text,
-    ...article.sections.flatMap((section) => [
-      section.heading ?? "",
-      ...section.paragraphs,
-    ]),
-    "Das Wichtigste.",
-    ...article.takeaways,
-  ];
-  return parts.filter(Boolean).join("\n\n");
-}
-
 function ArticleDetail({ article }: { article: Article }) {
   const related = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
   return (
@@ -1096,10 +1376,12 @@ function ArticleDetail({ article }: { article: Article }) {
             <span className="tag">{article.tag}</span>
             <h1>{article.title}</h1>
             <p className="lead article-lead">{article.text}</p>
-            <ListenPlayer
-              articleText={buildArticleSpeechText(article)}
-              articleLabel={article.title}
-            />
+            {article.audioSrc ? (
+              <ListenPlayer
+                audioSrc={article.audioSrc}
+                articleLabel={article.title}
+              />
+            ) : null}
             <div className="article-meta">
               <span>{article.read} Lesezeit</span>
               <span>Aktualisiert {article.updated}</span>
@@ -1906,6 +2188,9 @@ export function LuminaSite({
     case "kontakt":
       page = <Contact />;
       break;
+    case "bewerbung":
+      page = <Bewerbung />;
+      break;
     case "ratgeber":
       page = <Ratgeber articleSlug={articleSlug} />;
       break;
@@ -1914,6 +2199,7 @@ export function LuminaSite({
         <>
           <PWARegister />
           <LohnCheck />
+          <CookieBanner />
         </>
       );
     case "anspruchscheck":
@@ -1921,6 +2207,7 @@ export function LuminaSite({
         <>
           <PWARegister />
           <Anspruchscheck />
+          <CookieBanner />
         </>
       );
     case "impressum":
@@ -1938,6 +2225,7 @@ export function LuminaSite({
       <Header />
       {page}
       <Footer />
+      <CookieBanner />
       <div className="mobile-bar">
         <a href="tel:+41434338800">Anrufen</a>
         <a href="/kontakt">Kontakt</a>

@@ -52,8 +52,9 @@ export const serviceSegments: ServiceSegment[] = [
     titleEm: "Zu Hause begleitet.",
     lead:
       "Abklärung & Beratung sowie Grund- und Behandlungspflege – ärztlich verordnet, von Fachpersonen erbracht und über die Krankenkasse abrechenbar.",
-    image: "/images/spitex-care-2.png",
-    imageAlt: "Spitex-Pflegefachperson im Einsatz bei einer Klientin",
+    image: "/images/spitex-hero-home-visit.jpg?v=sq3",
+    imageAlt:
+      "Spitex-Pflegefachperson misst bei einer Klientin zu Hause den Blutdruck",
     heroTone: "warm",
     introEyebrow: "Kassenpflichtige Pflege mit Haltung",
     introTitle: "Sie brauchen Pflege. Wir bleiben an Ihrer Seite.",
@@ -278,8 +279,9 @@ export const serviceSegments: ServiceSegment[] = [
     titleEm: "Sicherheit gewinnen.",
     lead:
       "Wenn Sie einen Menschen zu Hause pflegen, müssen Sie das nicht allein tragen. Lumina stellt an, begleitet eng, schult Sie im Alltag – und führt Sie innert zwölf Monaten zur anerkannten Qualifikation.",
-    image: "/images/home-family.png",
-    imageAlt: "Familiäre Angehörigenpflege zu Hause",
+    image: "/images/angehoerige-hero-anleitung.jpg?v=sq3",
+    imageAlt:
+      "Pflegefachperson zeigt einem Angehörigen auf Hausbesuch, wie er seinen Vater unterstützt",
     heroTone: "warm",
     introEyebrow: "Anstellung mit echter Begleitung",
     introTitle: "Sie pflegen. Wir bleiben an Ihrer Seite.",

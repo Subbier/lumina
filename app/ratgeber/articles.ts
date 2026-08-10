@@ -12,6 +12,8 @@ export type Article = {
   image: string;
   imageAlt: string;
   updated: string;
+  /** Pre-rendered spoken audio (edge-tts), not browser speechSynthesis */
+  audioSrc?: string;
   sections: ArticleSection[];
   takeaways: string[];
   ctaLabel?: string;
@@ -27,6 +29,7 @@ export type Article = {
 export const articles: Article[] = [
   {
     slug: "lohn-fuer-pflegende-angehoerige",
+    audioSrc: "/audio/articles/lohn-fuer-pflegende-angehoerige.mp3?v=1",
     tag: "Lohn & Anspruch",
     title: "Lohn für pflegende Angehörige: Was ist möglich?",
     text: "Welche Pflegezeit zählt, wie eine Anstellung funktioniert und warum die genaue Abklärung entscheidend ist.",
@@ -75,6 +78,7 @@ export const articles: Article[] = [
   },
   {
     slug: "wer-gilt-als-pflegende-angehoerige",
+    audioSrc: "/audio/articles/wer-gilt-als-pflegende-angehoerige.mp3?v=1",
     tag: "Orientierung",
     title: "Wer gilt als pflegende Angehörige?",
     text: "Ehepartner, Kinder, Eltern und enge Bezugspersonen: Entscheidend sind Situation und regelmässige Grundpflege.",
@@ -121,6 +125,7 @@ export const articles: Article[] = [
   },
   {
     slug: "hilflosenentschaedigung-verstaendlich",
+    audioSrc: "/audio/articles/hilflosenentschaedigung-verstaendlich.mp3?v=1",
     tag: "Finanzierung",
     title: "Hilflosenentschädigung verständlich erklärt",
     text: "Wann eine Anmeldung sinnvoll sein kann, welche Stufen es gibt und wo Sie eine verbindliche Prüfung erhalten.",
@@ -167,6 +172,7 @@ export const articles: Article[] = [
   },
   {
     slug: "koerperpflege-zu-hause",
+    audioSrc: "/audio/articles/koerperpflege-zu-hause.mp3?v=1",
     tag: "Pflegealltag",
     title: "Körperpflege zu Hause würdevoll gestalten",
     text: "Praktische Hinweise für mehr Sicherheit, Selbstbestimmung und Ruhe im täglichen Miteinander.",
@@ -212,6 +218,7 @@ export const articles: Article[] = [
   },
   {
     slug: "vorsorgeauftrag-und-patientenverfuegung",
+    audioSrc: "/audio/articles/vorsorgeauftrag-und-patientenverfuegung.mp3?v=1",
     tag: "Vorsorge",
     title: "Vorsorgeauftrag und Patientenverfügung",
     text: "Zwei Dokumente, die Angehörige entlasten und den Willen der betroffenen Person sichtbar machen.",
@@ -256,6 +263,7 @@ export const articles: Article[] = [
   },
   {
     slug: "pflegen-und-arbeiten",
+    audioSrc: "/audio/articles/pflegen-und-arbeiten.mp3?v=1",
     tag: "Entlastung",
     title: "Pflegen und arbeiten: So kann beides gelingen",
     text: "Grenzen erkennen, Hilfe organisieren und die eigene Gesundheit nicht aus dem Blick verlieren.",
@@ -301,6 +309,7 @@ export const articles: Article[] = [
   },
   {
     slug: "private-oder-oeffentliche-spitex",
+    audioSrc: "/audio/articles/private-oder-oeffentliche-spitex.mp3?v=1",
     tag: "Spitex",
     title: "Private oder öffentliche Spitex?",
     text: "Worauf Familien bei Verfügbarkeit, Bezugspersonen, Leistungen und Finanzierung achten sollten.",
@@ -339,6 +348,7 @@ export const articles: Article[] = [
   },
   {
     slug: "sturzpraevention-zu-hause",
+    audioSrc: "/audio/articles/sturzpraevention-zu-hause.mp3?v=1",
     tag: "Sicherheit",
     title: "Sturzprävention: Kleine Änderungen, grosse Wirkung",
     text: "Ein kompakter Rundgang durch Wohnung, Alltag und Hilfsmittel für mehr Sicherheit zu Hause.",
@@ -377,6 +387,7 @@ export const articles: Article[] = [
   },
   {
     slug: "arbeitsvertrag-ferien-sozialversicherungen",
+    audioSrc: "/audio/articles/arbeitsvertrag-ferien-sozialversicherungen.mp3?v=1",
     tag: "Anstellung",
     title: "Arbeitsvertrag, Ferien und Sozialversicherungen",
     text: "Was zu einer richtigen Anstellung gehört und weshalb professionelle Begleitung so wichtig ist.",
@@ -422,6 +433,7 @@ export const articles: Article[] = [
   },
   {
     slug: "entlastungsangebote-limmattal",
+    audioSrc: "/audio/articles/entlastungsangebote-limmattal.mp3?v=1",
     tag: "Regional",
     title: "Entlastungsangebote im Limmattal",
     text: "Welche Angebote pflegende Familien ergänzend nutzen können und wie Lumina beim Koordinieren hilft.",

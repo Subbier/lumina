@@ -1,2 +1,5 @@
-import { RoutePage } from "../routes";
-export default function Page(){return <RoutePage view="team"/>}
+import { redirect } from "next/navigation";
+
+export default function Page() {
+  redirect("/ueber-uns#team");
+}
