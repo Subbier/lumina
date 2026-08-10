@@ -308,9 +308,9 @@ function Home() {
         <div className="hero-copy">
           <span className="eyebrow">Lumina Spitex · Zürich & Aargau</span>
           <h1 className="hero-title">
-            <span className="hero-title-line">Professionelle Pflege</span>
+            <span className="hero-title-line">Professionelle</span>
             <span className="hero-title-line">
-              <em>zu Hause.</em>
+              Pflege <em>zu Hause.</em>
             </span>
           </h1>
           <p className="lead">
