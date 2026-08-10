@@ -38,10 +38,12 @@ export function ListenPlayer({
   audio,
   articleText,
   articleLabel,
+  variant = "dock",
 }: {
   audio: PageAudio | null;
   articleText?: string;
   articleLabel?: string;
+  variant?: "dock" | "inline";
 }) {
   const source = articleText
     ? {
@@ -195,7 +197,7 @@ export function ListenPlayer({
 
   return (
     <div
-      className={`listen-dock ${playing ? "is-playing" : ""}`}
+      className={`listen-dock listen-${variant} ${playing ? "is-playing" : ""}`}
       role="region"
       aria-label="Seite anhören"
     >

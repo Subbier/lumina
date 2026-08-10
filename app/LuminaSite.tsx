@@ -12,7 +12,58 @@ import { articles, getArticle, type Article } from "./ratgeber/articles";
 import { ServiceSegmentPage, PartnersStrip } from "./dienstleistungen/ServiceSegmentPage";
 import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
 import { ListenPlayer } from "./listen/ListenPlayer";
-import { getPageAudio, type AudioView } from "./listen/pageAudio";
+import { getPageAudio } from "./listen/pageAudio";
+
+function BrandMark({ size = 56 }: { size?: number }) {
+  return (
+    <svg
+      className="brand-mark-svg"
+      width={size}
+      height={size}
+      viewBox="0 0 64 64"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <ellipse
+        className="brand-ring brand-ring-green"
+        cx="25"
+        cy="32"
+        rx="14"
+        ry="22"
+        transform="rotate(-20 25 32)"
+        strokeWidth="8.5"
+      />
+      <ellipse
+        className="brand-ring brand-ring-navy"
+        cx="39"
+        cy="32"
+        rx="14"
+        ry="22"
+        transform="rotate(20 39 32)"
+        strokeWidth="8.5"
+      />
+      <path
+        className="brand-ring brand-ring-green"
+        d="M21.2 43.5c2.4 4.6 7 7.8 12.2 8.6"
+        strokeWidth="8.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function BrandLockup({ size = 56 }: { size?: number }) {
+  return (
+    <>
+      <BrandMark size={size} />
+      <span className="brand-wordmark">
+        <b>Lumina</b>
+        <small>Spitex+</small>
+      </span>
+    </>
+  );
+}
 
 export type View =
   | "home"
@@ -73,13 +124,7 @@ function Header() {
       <header className="header">
         <div className="wrap nav-wrap">
           <a className="brand" href="/" aria-label="Lumina Spitex Startseite">
-            <img
-              className="brand-logo"
-              src="/images/logo-lumina-header.png"
-              alt="Lumina Spitex+"
-              width={175}
-              height={64}
-            />
+            <BrandLockup size={56} />
           </a>
           <button
             className="menu-btn"
@@ -170,13 +215,7 @@ function Footer() {
       <div className="wrap footer-grid">
         <div>
           <a className="brand brand-light" href="/" aria-label="Lumina Spitex Startseite">
-            <img
-              className="brand-logo brand-logo-footer"
-              src="/images/logo-lumina-header.png"
-              alt="Lumina Spitex+"
-              width={160}
-              height={58}
-            />
+            <BrandLockup size={56} />
           </a>
           <p>
             Persönliche Spitex-Pflege zu Hause – und wo Angehörige pflegen:
@@ -268,16 +307,18 @@ function Home() {
       <section className="hero wrap mobile-lean">
         <div className="hero-copy">
           <span className="eyebrow">Lumina Spitex · Zürich & Aargau</span>
-          <h1>
-            Professionelle Pflege
-            <br />
-            <em>zu Hause.</em>
+          <h1 className="hero-title">
+            <span className="hero-title-line">Professionelle Pflege</span>
+            <span className="hero-title-line">
+              <em>zu Hause.</em>
+            </span>
           </h1>
           <p className="lead">
             Abklärung, Grund- und Behandlungspflege – persönlich begleitet, mit
             fester Bezugsperson und Abrechnung über die Krankenkasse. So bleibt
             Selbstbestimmung dort, wo Sie zu Hause sind.
           </p>
+          <ListenPlayer audio={getPageAudio("home")} variant="inline" />
           <div className="actions">
             <a className="button" href="/spitex">
               Spitex-Leistungen
@@ -357,7 +398,7 @@ function Home() {
             <li>Grund- und Behandlungspflege zu Hause</li>
             <li>Abrechnung über die Krankenkasse (KVG)</li>
           </ul>
-          <a className="text-link" href="/spitex">
+          <a className="button outline" href="/spitex">
             Alle Spitex-Leistungen →
           </a>
         </div>
@@ -382,7 +423,7 @@ function Home() {
             <li>Enge Begleitung durch diplomierte Fachpersonen</li>
             <li>Anerkannte Qualifikation innert zwölf Monaten</li>
           </ul>
-          <a className="text-link" href="/angehoerige">
+          <a className="button outline" href="/angehoerige">
             Modell entdecken →
           </a>
         </div>
@@ -407,7 +448,7 @@ function Home() {
             <li>Sichere Begleitung zu Terminen</li>
             <li>Soziale Teilhabe – auf Ihren Rhythmus abgestimmt</li>
           </ul>
-          <a className="text-link" href="/begleitung">
+          <a className="button outline" href="/begleitung">
             Begleitung ansehen →
           </a>
         </div>
@@ -499,16 +540,18 @@ function Team() {
         <div className="wrap subhero-grid">
           <div>
             <span className="eyebrow">Arbeiten bei Lumina</span>
-            <h1>
-              Pflege braucht Können.
-              <br />
-              <em>Und Menschen mit Herz.</em>
+            <h1 className="hero-title">
+              <span className="hero-title-line">Pflege braucht Können.</span>
+              <span className="hero-title-line">
+                <em>Und Menschen mit Herz.</em>
+              </span>
             </h1>
             <p className="lead">
               Wir suchen Teammitglieder, die Verantwortung übernehmen,
               Beziehungen aufbauen und mit uns eine besondere Spitex gestalten
               wollen.
             </p>
+            <ListenPlayer audio={getPageAudio("team")} variant="inline" />
             <a className="button" href="#jobs">
               Offene Rollen ansehen
             </a>
@@ -658,15 +701,17 @@ function Tarife() {
         <div className="wrap subhero-grid">
           <div>
             <span className="eyebrow light">Über uns · Tarife</span>
-            <h1>
-              Transparente Tarife.
-              <br />
-              <em>Klar kommuniziert.</em>
+            <h1 className="hero-title">
+              <span className="hero-title-line">Transparente Tarife.</span>
+              <span className="hero-title-line">
+                <em>Klar kommuniziert.</em>
+              </span>
             </h1>
             <p className="lead">
               Pflegeleistungen nach KLV und UVG sowie hauswirtschaftliche
               Leistungen – wie auf der bestehenden Lumina-Website ausgewiesen.
             </p>
+            <ListenPlayer audio={getPageAudio("tarife")} variant="inline" />
             <a className="button gold" href="/kontakt">
               Tariffrage klären
             </a>
@@ -790,15 +835,17 @@ function About() {
         <div className="wrap subhero-grid">
           <div>
             <span className="eyebrow light">Über Lumina</span>
-            <h1>
-              Licht und Wärme.
-              <br />
-              <em>Auch wenn es schwierig wird.</em>
+            <h1 className="hero-title">
+              <span className="hero-title-line">Licht und Wärme.</span>
+              <span className="hero-title-line">
+                <em>Auch wenn es schwierig wird.</em>
+              </span>
             </h1>
             <p className="lead">
               „Lumina“ kommt von Lumen – dem Licht. Für uns bedeutet das:
               fachlich Orientierung geben und menschlich nahe bleiben.
             </p>
+            <ListenPlayer audio={getPageAudio("ueber-uns")} variant="inline" />
           </div>
           <img
             src="/images/hero.jpg"
@@ -894,11 +941,15 @@ function Contact() {
       <section className="contact-hero">
         <div className="wrap">
           <span className="eyebrow">Kontakt</span>
-          <h1>Wir sind für Sie da.</h1>
+          <h1 className="hero-title">
+            <span className="hero-title-line">Wir sind</span>
+            <span className="hero-title-line">für Sie da.</span>
+          </h1>
           <p className="lead">
             Rufen Sie an oder schreiben Sie uns. Wir melden uns rasch und
             unkompliziert.
           </p>
+          <ListenPlayer audio={getPageAudio("kontakt")} variant="inline" />
         </div>
       </section>
       <section className="wrap contact-grid">
@@ -1078,6 +1129,12 @@ function ArticleDetail({ article }: { article: Article }) {
             <span className="tag">{article.tag}</span>
             <h1>{article.title}</h1>
             <p className="lead article-lead">{article.text}</p>
+            <ListenPlayer
+              audio={null}
+              articleText={buildArticleSpeechText(article)}
+              articleLabel={article.title}
+              variant="inline"
+            />
             <div className="article-meta">
               <span>{article.read} Lesezeit</span>
               <span>Aktualisiert {article.updated}</span>
@@ -1196,11 +1253,15 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
       <section className="blog-hero">
         <div className="wrap">
           <span className="eyebrow light">Lumina Ratgeber</span>
-          <h1>Wissen gibt Sicherheit.</h1>
+          <h1 className="hero-title">
+            <span className="hero-title-line">Wissen gibt</span>
+            <span className="hero-title-line">Sicherheit.</span>
+          </h1>
           <p className="lead">
             Verständliche Antworten auf Fragen zu Pflege, Lohn, Finanzierung und
             Familienalltag – Schweizerisch, konkret und ohne Fachchinesisch.
           </p>
+          <ListenPlayer audio={getPageAudio("ratgeber")} variant="inline" />
           <a className="button gold" href="/anspruchscheck">
             Anspruch in 2 Minuten prüfen
           </a>
@@ -1247,14 +1308,8 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
 function QuizClose() {
   return (
     <div className="quiz-top">
-      <a className="quiz-brand" href="/" aria-label="Lumina Spitex Startseite">
-        <img
-          className="brand-logo brand-logo-quiz"
-          src="/images/logo-lumina-header.png"
-          alt="Lumina Spitex+"
-          width={140}
-          height={51}
-        />
+      <a className="quiz-brand brand brand-on-dark" href="/" aria-label="Lumina Spitex Startseite">
+        <BrandLockup size={44} />
       </a>
       <a
         className="quiz-close"
@@ -1724,6 +1779,10 @@ function Legal({ privacy = false }: { privacy?: boolean }) {
           <span className="eyebrow">Rechtliches</span>
           <h1>{privacy ? "Datenschutzerklärung" : "Impressum"}</h1>
           <p>Stand: August 2026</p>
+          <ListenPlayer
+            audio={getPageAudio(privacy ? "datenschutz" : "impressum")}
+            variant="inline"
+          />
         </div>
       </section>
       <section className="wrap legal-copy">
@@ -1913,22 +1972,12 @@ export function LuminaSite({
     default:
       page = <Home />;
   }
-  const activeArticle =
-    view === "ratgeber" && articleSlug ? getArticle(articleSlug) : null;
-
   return (
     <>
       <PWARegister />
       <Header />
       {page}
       <Footer />
-      <ListenPlayer
-        audio={activeArticle ? null : getPageAudio(view as AudioView)}
-        articleText={
-          activeArticle ? buildArticleSpeechText(activeArticle) : undefined
-        }
-        articleLabel={activeArticle?.title}
-      />
       <div className="mobile-bar">
         <a href="tel:+41434338800">Anrufen</a>
         <a href="/kontakt">Kontakt</a>
