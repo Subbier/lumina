@@ -121,7 +121,7 @@ export const serviceSegments: ServiceSegment[] = [
       },
       {
         label: "Region",
-        value: "Limmattal & Kanton Zürich",
+        value: "Kanton Zürich & Aargau",
       },
     ],
     processTitle: "So starten wir",

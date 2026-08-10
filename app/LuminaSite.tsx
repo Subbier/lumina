@@ -74,7 +74,7 @@ function Header() {
             <span className="brand-mark">L</span>
             <span>
               <b>Lumina</b>
-              <small>SPITEX</small>
+              <small>Spitex</small>
             </span>
           </a>
           <button
@@ -169,7 +169,7 @@ function Footer() {
             <span className="brand-mark">L</span>
             <span>
               <b>Lumina</b>
-              <small>SPITEX</small>
+              <small>Spitex</small>
             </span>
           </a>
           <p>
@@ -261,7 +261,7 @@ function Home() {
       {/* AIDA – Attention */}
       <section className="hero wrap mobile-lean">
         <div className="hero-copy">
-          <span className="eyebrow">Lumina Spitex · Limmattal & Kanton Zürich</span>
+          <span className="eyebrow">Lumina Spitex · Zürich & Aargau</span>
           <h1>
             Professionelle Pflege
             <br />
@@ -287,10 +287,6 @@ function Home() {
             src="/images/spitex-care-2.png"
             alt="Spitex-Pflegefachperson bei der Versorgung einer Klientin zu Hause"
           />
-          <div className="float-card">
-            <span>Spitex-Pflege</span>
-            <b>Krankenkassen anerkannt · feste Bezugsperson</b>
-          </div>
         </div>
       </section>
 
@@ -345,30 +341,18 @@ function Home() {
         <div className="aida-copy">
           <span className="eyebrow">01 · Spitex</span>
           <h2>Professionelle Pflege zu Hause.</h2>
-          <MoreRead
-            summary={
-              <p>
-                Wie bei anerkannten Spitex-Organisationen in der Schweiz starten
-                wir mit einer Bedarfsabklärung und begleiten Sie mit festen
-                Bezugspersonen – wirksam, zweckmässig und wirtschaftlich.
-              </p>
-            }
-          >
-            <p>
-              Unsere Spitex-Leistungen umfassen Abklärung & Beratung,
-              Grundpflege und Behandlungspflege. Was ärztlich verordnet und
-              pflegerisch notwendig ist, rechnen wir über die obligatorische
-              Krankenpflegeversicherung ab. So bleibt Pflege zu Hause klar und
-              nachvollziehbar finanziert.
-            </p>
-            <p>
-              Details zu den einzelnen Leistungen finden Sie auf der
-              Spitex-Seite – dort orientieren wir uns an den etablierten
-              Kategorien von Spitex Schweiz.
-            </p>
-          </MoreRead>
-          <a className="text-link" href="/spitex">
-            Alle Spitex-Leistungen →
+          <p className="aida-lead">
+            Wie bei anerkannten Spitex-Organisationen in der Schweiz starten wir
+            mit einer Bedarfsabklärung und begleiten Sie mit festen
+            Bezugspersonen – wirksam, zweckmässig und wirtschaftlich.
+          </p>
+          <ul className="aida-points">
+            <li>Bedarfsabklärung mit fester Bezugsperson</li>
+            <li>Grund- und Behandlungspflege zu Hause</li>
+            <li>Abrechnung über die Krankenkasse (KVG)</li>
+          </ul>
+          <a className="button" href="/spitex">
+            Alle Spitex-Leistungen
           </a>
         </div>
         <img
@@ -382,26 +366,16 @@ function Home() {
         <div className="aida-copy">
           <span className="eyebrow">02 · Pflegende Angehörige</span>
           <h2>Vertraute Pflege – professionell getragen.</h2>
-          <MoreRead
-            summary={
-              <p>
-                Wer Angehörige pflegt, verdient mehr als stille Anerkennung:
-                eine Anstellung, laufende Fachbegleitung und eine klare
-                Qualifikation innert zwölf Monaten.
-              </p>
-            }
-          >
-            <p>
-              Lumina übernimmt Vertrag, Abrechnung und Qualitätssicherung.
-              Gleichzeitig bleiben Sie die vertraute Person im Alltag – mit einer
-              diplomierten Pflegefachperson im Rücken, die einführt, schult und
-              erreichbar bleibt.
-            </p>
-            <p>
-              So entsteht ein Modell, das Nähe bewahrt und Sicherheit schafft –
-              für die gepflegte Person und für Sie.
-            </p>
-          </MoreRead>
+          <p className="aida-lead">
+            Wer Angehörige pflegt, verdient mehr als stille Anerkennung: eine
+            Anstellung, laufende Fachbegleitung und eine klare Qualifikation
+            innert zwölf Monaten.
+          </p>
+          <ul className="aida-points">
+            <li>Anstellung mit Lohn und Sozialversicherung</li>
+            <li>Enge Begleitung durch diplomierte Fachpersonen</li>
+            <li>Anerkannte Qualifikation innert zwölf Monaten</li>
+          </ul>
           <div className="actions">
             <a className="button" href="/angehoerige">
               Modell entdecken
@@ -422,23 +396,18 @@ function Home() {
         <div className="aida-copy">
           <span className="eyebrow">03 · Begleitung</span>
           <h2>Wenn Alltag wieder angenehm werden soll.</h2>
-          <MoreRead
-            summary={
-              <p>
-                Begleitung geht über die Grundpflege hinaus: Erledigungen,
-                Termine und Teilhabe am sozialen Leben – damit Selbstbestimmung
-                spürbar bleibt.
-              </p>
-            }
-          >
-            <p>
-              Wir entlasten bei Besorgungen, begleiten sicher zu Terminen und
-              halten Begegnungen lebendig. Diskret, verlässlich und auf Ihren
-              Rhythmus abgestimmt.
-            </p>
-          </MoreRead>
-          <a className="text-link" href="/begleitung">
-            Begleitung ansehen →
+          <p className="aida-lead">
+            Begleitung geht über die Grundpflege hinaus: Erledigungen, Termine
+            und Teilhabe am sozialen Leben – damit Selbstbestimmung spürbar
+            bleibt.
+          </p>
+          <ul className="aida-points">
+            <li>Unterstützung bei Erledigungen und Alltag</li>
+            <li>Sichere Begleitung zu Terminen</li>
+            <li>Soziale Teilhabe – auf Ihren Rhythmus abgestimmt</li>
+          </ul>
+          <a className="button" href="/begleitung">
+            Begleitung ansehen
           </a>
         </div>
         <img
@@ -503,7 +472,7 @@ function Home() {
           </div>
           <div>
             <b>ZH</b>
-            <span>Regional im Limmattal</span>
+            <span>Regional in ZH & AG</span>
           </div>
         </div>
       </section>
@@ -561,7 +530,7 @@ function Team() {
           summary={
             <p className="lead small-lead">
               Lumina sucht Pflegefachfrauen und Pflegefachmänner EFZ sowie
-              diplomierte Fachpersonen im Limmattal und Kanton Zürich.
+              diplomierte Fachpersonen in den Kantonen Zürich und Aargau.
             </p>
           }
         >
@@ -601,7 +570,7 @@ function Team() {
         </div>
         <div>
           <article>
-            <span>60–100% · Limmattal</span>
+            <span>60–100% · Zürich & Aargau</span>
             <h3>Pflegefachfrau / Pflegefachmann EFZ</h3>
             <p>
               Grund- und Behandlungspflege im Alltag, stabile Beziehungen zu
@@ -610,7 +579,7 @@ function Team() {
             <a href="/kontakt">Jetzt bewerben →</a>
           </article>
           <article>
-            <span>60–100% · Limmattal</span>
+            <span>60–100% · Zürich & Aargau</span>
             <h3>Dipl. Pflegefachperson HF/FH</h3>
             <p>
               Fallführung, Bedarfsabklärung und fachliche Begleitung von
@@ -619,7 +588,7 @@ function Team() {
             <a href="/kontakt">Interesse melden →</a>
           </article>
           <article>
-            <span>40–100% · Limmattal</span>
+            <span>40–100% · Zürich & Aargau</span>
             <h3>Fachperson Gesundheit FaGe</h3>
             <p>
               Professionelle Pflege mit Eigenverantwortung und einer festen
@@ -1236,7 +1205,7 @@ function ArticleDetail({ article }: { article: Article }) {
             <div className="article-meta">
               <span>{article.read} Lesezeit</span>
               <span>Aktualisiert {article.updated}</span>
-              <span>Schweiz · Limmattal / ZH</span>
+              <span>Schweiz · Zürich & Aargau</span>
             </div>
           </header>
           <div className="article-detail-visual">
@@ -1763,12 +1732,12 @@ function Anspruchscheck() {
     },
     {
       q: "In welcher Region wohnt die Person?",
-      s: "Lumina ist im Limmattal und Kanton Zürich für Sie da.",
+      s: "Lumina ist in den Kantonen Zürich und Aargau für Sie da.",
       o: [
-        "Stadt Zürich",
-        "Limmattal",
-        "Zürichsee / Pfannenstiel",
-        "Übriger Kanton Zürich",
+        "Kanton Zürich",
+        "Kanton Aargau",
+        "Limmattal / Grenzregion",
+        "Andere Region",
       ],
     },
   ];

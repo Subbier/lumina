@@ -453,7 +453,7 @@ export const articles: Article[] = [
         heading: "Warum regionale Nähe zählt",
         paragraphs: [
           "Wenn die Pflegefachperson Anfahrtswege kennt, Schulen und Hausärzte in der Region vernetzt sind und bei Fragen jemand innert nützlicher Frist zurückruft, sinkt der Stress spürbar. Nationale Plattformen können Reichweite haben – Vertrauen entsteht vor Ort.",
-          "Lumina Spitex AG ist in Schlieren verankert (Rütistrasse 18) und auf das Limmattal sowie den Kanton Zürich ausgerichtet. Wir koordinieren, statt Familien mit zehn Telefonnummern allein zu lassen.",
+          "Lumina Spitex AG ist in Schlieren verankert (Rütistrasse 18) und in den Kantonen Zürich und Aargau tätig. Wir koordinieren, statt Familien mit zehn Telefonnummern allein zu lassen.",
         ],
       },
       {

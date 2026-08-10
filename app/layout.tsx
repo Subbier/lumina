@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | Lumina Spitex",
   },
   description:
-    "Persönliche Spitex im Limmattal und Kanton Zürich. Pflege zu Hause, Begleitung und faire Anerkennung für pflegende Angehörige.",
+    "Persönliche Spitex in den Kantonen Zürich und Aargau. Pflege zu Hause, Begleitung und faire Anerkennung für pflegende Angehörige.",
   applicationName: "Lumina Spitex",
   // Noch nicht öffentlich: keine Suchmaschinen-Indexierung
   robots: {
