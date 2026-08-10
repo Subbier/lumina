@@ -837,8 +837,8 @@ function About() {
             </div>
           </div>
           <img
-            src="/images/home-team.png"
-            alt="Teil des Lumina-Teams – Pflegefachpersonen unterwegs"
+            src="/images/lumina-team-5.jpg?v=1"
+            alt="Das Lumina-Team: drei Frauen und zwei Männer"
           />
         </div>
       </section>
@@ -1200,7 +1200,8 @@ function Contact() {
       q === "pflege" ||
       q === "begleitung" ||
       q === "bewerbung" ||
-      q === "sonstiges"
+      q === "sonstiges" ||
+      q === "mehr-infos"
     ) {
       setTopic(q);
     }
@@ -1212,6 +1213,8 @@ function Contact() {
       aktion === "schreiben"
     ) {
       setIntent(aktion);
+    } else if (q === "mehr-infos") {
+      setIntent("rueckruf");
     } else if (q === "begleitung" || q === "pflege") {
       setIntent("schreiben");
     }
@@ -1466,6 +1469,7 @@ function Contact() {
                     >
                       <option value="pflege">Pflege</option>
                       <option value="begleitung">Begleitung</option>
+                      <option value="mehr-infos">Mehr Infos anfordern</option>
                       <option value="bewerbung">Bewerbung</option>
                       <option value="sonstiges">Sonstiges</option>
                     </select>
@@ -1474,6 +1478,11 @@ function Contact() {
                     <p className="form-hint">
                       Für Bewerbungen öffnet sich nach dem Absenden das{" "}
                       <a href="/bewerbung">Bewerbungsformular</a>.
+                    </p>
+                  ) : topic === "mehr-infos" ? (
+                    <p className="form-hint">
+                      Wir rufen Sie zurück und beantworten Ihre Fragen zu den
+                      Spitex-Leistungen persönlich.
                     </p>
                   ) : null}
                   {formCopy.preferredLabel ? (

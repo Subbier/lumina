@@ -70,6 +70,10 @@ export const serviceSegments: ServiceSegment[] = [
       "Leistungen über die Kassenpflege hinaus finden Sie unter Begleitung. Wenn Angehörige die Pflege übernehmen, begleiten wir Anstellung und Qualifikation unter Pflegende Angehörige. Aktuelle Ansätze stehen unter Tarife.",
     ],
     accordionTitle: "Was Sie von der Lumina Spitex erwarten dürfen",
+    accordionLink: {
+      href: "/kontakt?thema=mehr-infos&aktion=rueckruf",
+      label: "Mehr Infos anfordern",
+    },
     accordion: [
       {
         title: "Abklärung & Beratung",
