@@ -17,7 +17,14 @@ function PartnersStrip() {
       <div className="partners-grid">
         {partners.map((p) => (
           <div className="partner-logo" key={p.name}>
-            <img src={p.src} alt={p.name} width={160} height={64} loading="lazy" decoding="async" />
+            <img
+              src={p.src.replace(/\.(png|jpe?g)$/i, ".webp")}
+              alt={p.name}
+              width={160}
+              height={64}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         ))}
       </div>

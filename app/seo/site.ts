@@ -27,7 +27,7 @@ export const pageSeo = {
     path: "/",
     title: "Spitex Zürich & Aargau | Pflege zu Hause & Angehörige",
     description:
-      "Spitex in Zürich & Aargau – und Lohn für pflegende Angehörige. Sofort anstellen, SRK innert 12 Monaten. Jetzt Anspruch prüfen.",
+      "Spitex in Zürich & Aargau. Lohn für pflegende Angehörige. Sofort anstellen, SRK innert 12 Monaten. Jetzt Anspruch prüfen.",
   },
   spitex: {
     path: "/spitex",
@@ -105,6 +105,18 @@ export const pageSeo = {
     description:
       "Datenschutzerklärung der Lumina Spitex AG – Umgang mit Personendaten auf dieser Website.",
   },
+  agb: {
+    path: "/agb",
+    title: "AGB | Allgemeine Geschäftsbedingungen",
+    description:
+      "Allgemeine Geschäftsbedingungen der Lumina Spitex AG für Spitex, Begleitung und Anstellung pflegender Angehöriger.",
+  },
+  redaktion: {
+    path: "/redaktion",
+    title: "Redaktionsrichtlinien",
+    description:
+      "Wie Lumina Spitex Inhalte prüft, aktualisiert und kennzeichnet – Orientierung statt Rechtsberatung.",
+  },
 } as const satisfies Record<string, PageSeo>;
 
 export function buildMetadata(page: PageSeo): Metadata {
@@ -122,7 +134,11 @@ export function organizationJsonLd(baseUrl: string = SITE_URL) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Organization", "HomeHealthCareService", "LocalBusiness"],
+        "@type": "LocalBusiness",
+        additionalType: [
+          "https://schema.org/Organization",
+          "https://schema.org/HomeHealthCareService",
+        ],
         "@id": `${base}/#organization`,
         name: "Lumina Spitex AG",
         legalName: "Lumina Spitex AG",
@@ -155,7 +171,10 @@ export function organizationJsonLd(baseUrl: string = SITE_URL) {
           opens: "08:00",
           closes: "17:00",
         },
-        sameAs: [],
+        sameAs: [
+          "https://www.local.ch/de/d/schlieren/8952/spitex/lumina-spitex-ag-GDCwJTVZfXfYzZT1jek6xQ",
+          "https://www.help.ch/firma/CHE-233.932.070/lumina-spitex-ag-schlieren",
+        ],
         knowsAbout: [
           "Spitex",
           "Ambulante Pflege",

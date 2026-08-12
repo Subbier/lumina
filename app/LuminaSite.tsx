@@ -14,27 +14,31 @@ import { ListenPlayer } from "./listen/ListenPlayer";
 import { CookieBanner } from "./CookieBanner";
 import { AnspruchscheckQuiz } from "./anspruchscheck/AnspruchscheckQuiz";
 import { LohnCheckQuiz } from "./lohn-check/LohnCheckQuiz";
+import { PictImg } from "./components/PictImg";
 
 function BrandLockup({
   height = 84,
   light = false,
+  lazy = false,
 }: {
   height?: number;
   light?: boolean;
+  lazy?: boolean;
 }) {
   const width = Math.round(height * (987 / 360));
+  const src = light
+    ? "/images/logo-lumina-lockup-light.png?v=orig1"
+    : "/images/logo-lumina-lockup.png?v=orig1";
   return (
-    <img
+    <PictImg
       className="brand-logo"
-      src={
-        light
-          ? "/images/logo-lumina-lockup-light.png?v=orig1"
-          : "/images/logo-lumina-lockup.png?v=orig1"
-      }
+      src={src}
       alt="Lumina Spitex"
       width={width}
       height={height}
+      loading={lazy ? "lazy" : "eager"}
       decoding="async"
+      sizes={`${width}px`}
     />
   );
 }
@@ -54,7 +58,9 @@ export type View =
   | "lohn-check"
   | "anspruchscheck"
   | "impressum"
-  | "datenschutz";
+  | "datenschutz"
+  | "agb"
+  | "redaktion";
 
 function Icon({ children }: { children: ReactNode }) {
   return (
@@ -117,6 +123,7 @@ function Header() {
         <div className="wrap nav-wrap">
           <a className="brand" href="/" aria-label="Lumina Spitex Startseite">
             <BrandLockup height={84} />
+            <span className="sr-only">Lumina Spitex</span>
           </a>
           <button
             className="menu-btn"
@@ -150,17 +157,21 @@ function Header() {
               onMouseEnter={() => setAboutOpen(true)}
               onMouseLeave={() => setAboutOpen(false)}
             >
-              <button
-                type="button"
+              <a
+                href="/ueber-uns"
                 className="nav-dropdown-trigger"
                 id="nav-about-trigger"
                 aria-expanded={aboutOpen}
                 aria-haspopup="menu"
                 aria-controls="nav-about-menu"
-                onClick={() => setAboutOpen((v) => !v)}
+                onClick={() => {
+                  setOpen(false);
+                  setAboutOpen(false);
+                }}
+                onFocus={() => setAboutOpen(true)}
               >
                 Über uns
-              </button>
+              </a>
               <div
                 id="nav-about-menu"
                 className="nav-dropdown-panel"
@@ -208,6 +219,16 @@ function Header() {
                   >
                     Bewerbung
                   </a>
+                  <a
+                    href="/redaktion"
+                    role="menuitem"
+                    onClick={() => {
+                      setOpen(false);
+                      setAboutOpen(false);
+                    }}
+                  >
+                    Redaktion
+                  </a>
                 </div>
               </div>
             </div>
@@ -223,15 +244,18 @@ function Header() {
 }
 
 function Footer() {
+  const shareUrl = "https://lumina-spitex.vercel.app/";
+  const shareText = "Lumina Spitex – Pflege zu Hause in Zürich und Aargau";
   return (
     <footer className="footer">
       <div className="wrap footer-grid">
         <div>
           <a className="brand brand-light" href="/" aria-label="Lumina Spitex Startseite">
-            <BrandLockup height={72} light />
+            <BrandLockup height={72} light lazy />
+            <span className="sr-only">Lumina Spitex</span>
           </a>
           <p>
-            Spitex zu Hause – und Anstellung für pflegende Angehörige: sofort mit
+            Spitex zu Hause. Anstellung für pflegende Angehörige: sofort mit
             Lohn, Ausbildung innert zwölf Monaten.
           </p>
           <address className="footer-contact">
@@ -243,6 +267,45 @@ function Footer() {
             ·{" "}
             <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
           </address>
+          <p className="share-row" aria-label="Seite teilen">
+            <span>Teilen:</span>
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={`mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(shareUrl)}`}
+            >
+              E-Mail
+            </a>
+          </p>
+          <p className="share-row" aria-label="Verzeichnisse">
+            <span>Profile:</span>
+            <a
+              href="https://www.local.ch/de/d/schlieren/8952/spitex/lumina-spitex-ag-GDCwJTVZfXfYzZT1jek6xQ"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              local.ch
+            </a>
+            <a
+              href="https://www.help.ch/firma/CHE-233.932.070/lumina-spitex-ag-schlieren"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              help.ch
+            </a>
+          </p>
         </div>
         <nav aria-label="Dienstleistungen">
           <h3>Dienstleistungen</h3>
@@ -257,6 +320,7 @@ function Footer() {
           <a href="/ratgeber">Ratgeber</a>
           <a href="/bewerbung">Bewerbung</a>
           <a href="/kontakt">Kontakt</a>
+          <a href="/redaktion">Redaktion</a>
         </nav>
         <div>
           <h3>Für Sie da</h3>
@@ -276,6 +340,8 @@ function Footer() {
         <span>
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutz</a>
+          <a href="/agb">AGB</a>
+          <a href="/redaktion">Redaktionsrichtlinien</a>
         </span>
       </div>
     </footer>
@@ -326,7 +392,6 @@ function CTA({
 function Home() {
   return (
     <main id="main-content">
-      {/* AIDA – Attention */}
       <section className="hero wrap mobile-lean">
         <div className="hero-copy">
           <span className="eyebrow">Lumina Spitex · Zürich & Aargau</span>
@@ -337,9 +402,9 @@ function Home() {
             </span>
           </h1>
           <p className="lead">
-            Abklärung, Grund- und Behandlungspflege – mit fester Bezugsperson
-            und Abrechnung über die Krankenkasse. Selbstbestimmung bleibt, wo
-            Sie zu Hause sind.
+            Abklärung, Grundpflege, Behandlungspflege. Eine feste Bezugsperson
+            begleitet Sie. Die Krankenkasse rechnet direkt ab. Sie bleiben zu
+            Hause – selbstbestimmt.
           </p>
           <div className="actions">
             <a className="button" href="/spitex">
@@ -350,58 +415,97 @@ function Home() {
             </a>
           </div>
           <TrustStrip />
+          <p className="byline">
+            <span>Redaktion: Lumina Spitex AG · Pflegefachpersonen HF/FH</span>
+            <time dateTime="2026-08-12">Aktualisiert am 12. August 2026</time>
+          </p>
         </div>
         <div className="hero-visual">
-          <img
+          <PictImg
             src="/images/home-hero.jpg?v=sq3"
-            alt="Pflege und Medikamentenplanung zu Hause mit Angehörigen und Fachperson"
-            width={960}
-            height={720}
+            alt="Pflegefachperson plant Medikamente mit Angehörigen zu Hause"
+            width={558}
+            height={558}
             fetchPriority="high"
             decoding="async"
+            sizes="(max-width: 980px) 100vw, 520px"
           />
         </div>
       </section>
 
-      {/* AIDA – Interest: 3 Kernangebote */}
+      <section className="wrap home-prose" aria-labelledby="home-orientierung">
+        <h2 id="home-orientierung">Klarheit für Familien in Zürich und Aargau</h2>
+        <p>
+          Viele Angehörige organisieren Pflege neben Job und Familie. Das fühlt
+          sich oft schwer an. Lumina Spitex hilft mit einem einfachen Einstieg:
+          Wir klären den Bedarf zu Hause. Danach starten wir mit Pflege oder mit
+          einer Anstellung für Sie als pflegende Angehörige.
+        </p>
+        <p>
+          Sitz ist Schlieren im Limmattal. Einsatzgebiet sind der Kanton Zürich
+          sowie der Kanton Aargau. Wir sind vom Kanton bewilligt. Krankenkassen
+          anerkennen unsere Leistungen. Unsere Fachpersonen bleiben Ihre
+          festen Ansprechpersonen.
+        </p>
+        <p>
+          Sie möchten zuerst nur verstehen, was möglich ist? Rufen Sie an oder
+          nutzen Sie den kurzen Anspruchs-Check. Ohne Login. Ohne Verpflichtung.
+          Danach entscheiden Sie in Ruhe.
+        </p>
+      </section>
+
       <section className="path-section" id="aida-angebote">
         <div className="wrap">
           <div className="section-head">
             <span className="eyebrow">Unsere Dienstleistungen</span>
-            <h2>Spitex im Zentrum – ergänzt um Angehörige und Begleitung.</h2>
+            <h2>Spitex im Zentrum. Dazu Angehörige und Begleitung.</h2>
+            <p className="section-lead">
+              Drei Wege – ein Ziel: gute Versorgung zu Hause, mit Lohn oder mit
+              Fachpersonen, je nach Ihrer Lage.
+            </p>
           </div>
           <div className="paths aida-paths">
-            <a href="/spitex" className="path-card">
+            <article className="path-card">
               <Icon>01</Icon>
               <span>Spitex-Dienstleistungen</span>
               <h3>Pflege, die die Krankenkasse mitträgt</h3>
               <p>
-                Abklärung, Grund- und Behandlungspflege – ärztlich verordnet und
-                professionell zu Hause.
+                Abklärung, Grundpflege, Behandlungspflege. Ärztlich verordnet.
+                Professionell zu Hause.
               </p>
-              <b>Spitex ansehen →</b>
-            </a>
-            <a href="/angehoerige" className="path-card">
+              <a href="/spitex">
+                <b>Spitex ansehen →</b>
+              </a>
+            </article>
+            <article className="path-card">
               <Icon>02</Icon>
               <span>Pflegende Angehörige</span>
               <h3>Sofort anstellen. Lohn für Ihre Pflege.</h3>
               <p>
-                Sie pflegen schon – wir stellen an. Ausbildung Pflegende
-                Angehörige SRK innert zwölf Monaten, Kosten bei uns.
+                Sie pflegen schon. Wir stellen an. Ausbildung Pflegende
+                Angehörige SRK innert zwölf Monaten. Kosten trägt Lumina.
               </p>
-              <b>Anspruch prüfen →</b>
-            </a>
-            <a href="/begleitung" className="path-card premium">
+              <a href="/angehoerige">
+                <b>Anspruch prüfen →</b>
+              </a>
+            </article>
+            <article className="path-card premium">
               <Icon>03</Icon>
               <span>Begleitung</span>
-              <h3>Erledigungen, Termine und Teilhabe</h3>
+              <h3>Erledigungen, Termine, Teilhabe</h3>
               <p>
-                Unterstützung über die Grundpflege hinaus – für ein angenehmes,
-                selbstbestimmtes Leben im Alltag.
+                Hilfe über die Grundpflege hinaus. Für einen angenehmen,
+                selbstbestimmten Alltag.
               </p>
-              <b>Begleitung entdecken →</b>
-            </a>
+              <a href="/begleitung">
+                <b>Begleitung entdecken →</b>
+              </a>
+            </article>
           </div>
+          <p className="paths-note">
+            Tipp: Der Anspruchs-Check dauert etwa zwei Minuten. Sie sehen sofort,
+            ob Lohn für Ihre Pflegelage realistisch ist.
+          </p>
           <a className="paths-cta" href="/anspruchscheck">
             <span className="paths-cta-title">
               Pflegen Sie Angehörige? Prüfen Sie Ihren Lohnanspruch
@@ -411,33 +515,33 @@ function Home() {
         </div>
       </section>
 
-      {/* AIDA – Desire: Vertiefung */}
       <section className="wrap aida-block">
         <div className="aida-copy">
           <span className="eyebrow">01 · Spitex</span>
-          <h2>Pflege mit fester Bezugsperson und klarer Abrechnung.</h2>
+          <h2>Pflege mit fester Bezugsperson. Klare Abrechnung.</h2>
           <p className="aida-lead">
-            Wie bei anerkannten Spitex-Organisationen in der Schweiz starten wir
-            mit einer Bedarfsabklärung und begleiten Sie mit festen
-            Bezugspersonen – wirksam, zweckmässig und wirtschaftlich.
+            Wir starten mit einer Bedarfsabklärung. Danach begleiten feste
+            Fachpersonen Ihren Alltag. Wirksam. Zweckmässig. Wirtschaftlich.
+            Genau so, wie es anerkannte Spitex-Organisationen in der Schweiz
+            machen.
           </p>
           <ul className="aida-points">
             <li>Bedarfsabklärung mit fester Bezugsperson</li>
-            <li>Grund- und Behandlungspflege zu Hause</li>
+            <li>Grundpflege sowie Behandlungspflege zu Hause</li>
             <li>Abrechnung über die Krankenkasse (KVG)</li>
           </ul>
           <a className="button outline" href="/spitex">
             Alle Spitex-Leistungen →
           </a>
         </div>
-        <img
+        <PictImg
           className="aida-image"
           src="/images/home-spitex.png"
-          alt="Diplomierte Pflegefachperson bei der Behandlungspflege zu Hause"
-          width={720}
-          height={540}
-          loading="lazy"
+          alt="Diplomierte Pflegefachperson misst Blutdruck zu Hause"
+          width={1536}
+          height={1024}
           decoding="async"
+          sizes="(max-width: 980px) 100vw, 560px"
         />
       </section>
 
@@ -446,27 +550,28 @@ function Home() {
           <span className="eyebrow">02 · Pflegende Angehörige</span>
           <h2>Sie pflegen schon. Wir zahlen dafür.</h2>
           <p className="aida-lead">
-            Sofortige Anstellung mit Lohn – die Ausbildung folgt. Innert zwölf
-            Monaten: Lehrgang Pflegende Angehörige SRK, organisiert und
-            finanziert durch Lumina.
+            Sofortige Anstellung mit Lohn. Die Ausbildung folgt. Innert zwölf
+            Monaten: Lehrgang Pflegende Angehörige SRK. Lumina organisiert.
+            Lumina finanziert.
           </p>
           <ul className="aida-points">
             <li>Sofort anstellen – ohne Kursabschluss zuerst</li>
-            <li>Lohn und Sozialversicherung von Tag eins</li>
-            <li>SRK-Ausbildung innert zwölf Monaten – wir tragen die Kosten</li>
+            <li>Lohn plus Sozialversicherung ab Tag eins</li>
+            <li>SRK-Ausbildung innert zwölf Monaten – Kosten bei uns</li>
           </ul>
           <a className="text-link" href="/anspruchscheck">
             In zwei Minuten prüfen, ob Lohn möglich ist →
           </a>
         </div>
-        <img
+        <PictImg
           className="aida-image"
           src="/images/angehoerige-hero-anleitung.jpg?v=sq3"
-          alt="Pflegefachperson zeigt einem Angehörigen auf Hausbesuch, wie er seinen Vater unterstützt"
-          width={720}
-          height={540}
+          alt="Pflegefachperson zeigt Angehörigen, wie sie den Vater stützen"
+          width={558}
+          height={558}
           loading="lazy"
           decoding="async"
+          sizes="(max-width: 980px) 100vw, 560px"
         />
       </section>
 
@@ -475,31 +580,30 @@ function Home() {
           <span className="eyebrow">03 · Begleitung</span>
           <h2>Wenn Alltag wieder angenehm werden soll.</h2>
           <p className="aida-lead">
-            Begleitung geht über die Grundpflege hinaus: Erledigungen, Termine
-            und Teilhabe am sozialen Leben – damit Selbstbestimmung spürbar
-            bleibt.
+            Begleitung geht über die Grundpflege hinaus. Erledigungen. Termine.
+            Soziale Teilhabe. So bleibt Selbstbestimmung spürbar.
           </p>
           <ul className="aida-points">
-            <li>Unterstützung bei Erledigungen und Alltag</li>
+            <li>Unterstützung bei Erledigungen im Alltag</li>
             <li>Sichere Begleitung zu Terminen</li>
-            <li>Soziale Teilhabe – auf Ihren Rhythmus abgestimmt</li>
+            <li>Soziale Teilhabe – passend zu Ihrem Rhythmus</li>
           </ul>
           <a className="button outline" href="/begleitung">
             Begleitung ansehen →
           </a>
         </div>
-        <img
+        <PictImg
           className="aida-image"
           src="/images/home-services.png"
-          alt="Begleitung einer älteren Dame im Freien für mehr Teilhabe"
-          width={720}
-          height={540}
+          alt="Begleitung einer älteren Dame im Freien"
+          width={1536}
+          height={1024}
           loading="lazy"
           decoding="async"
+          sizes="(max-width: 980px) 100vw, 560px"
         />
       </section>
 
-      {/* AIDA – Action + Recruiting */}
       <section className="wrap relation-banner recruit-banner">
         <div>
           <span className="eyebrow light">Team · Wachstum mit Vertrauen</span>
@@ -512,28 +616,29 @@ function Home() {
             summary={
               <p>
                 Immer mehr Menschen vertrauen dem Lumina-Team. Deshalb wachsen
-                wir – und suchen Verstärkung an mehreren Stellen.
+                wir. Wir suchen Verstärkung an mehreren Stellen.
               </p>
             }
           >
             <p>
               Gesucht sind Pflegefachpersonen EFZ, diplomierte Pflegefachpersonen
-              (HF/FH) und Fachpersonen Gesundheit, die Verantwortung übernehmen,
-              Familien anleiten und Qualität sichern. Faire Anstellung, klare
-              Prozesse und ein erfahrenes Team mit Haltung.
+              (HF/FH) sowie Fachpersonen Gesundheit. Verantwortung übernehmen.
+              Familien anleiten. Qualität sichern. Faire Anstellung. Klare
+              Prozesse. Ein erfahrenes Team mit Haltung.
             </p>
           </MoreRead>
           <a className="text-link light" href="/ueber-uns#karriere">
             Offene Rollen ansehen →
           </a>
         </div>
-        <img
+        <PictImg
           src="/images/home-team.png"
-          alt="Pflegefachpersonen von Lumina Spitex – wir suchen Verstärkung"
-          width={800}
-          height={600}
+          alt="Pflegefachpersonen von Lumina Spitex"
+          width={1536}
+          height={1024}
           loading="lazy"
           decoding="async"
+          sizes="(max-width: 980px) 100vw, 560px"
         />
       </section>
 
@@ -560,7 +665,9 @@ function Home() {
 
       <PartnersStrip />
       <BlogPreview />
-      <CTA />
+      <CTA
+        text="Ein kurzes Gespräch schafft Klarheit. Kostenlos. Persönlich. Ohne Verpflichtung."
+      />
     </main>
   );
 }
@@ -1616,7 +1723,15 @@ function ArticleCard({ a, i }: { a: Article; i: number }) {
   return (
     <article className="article-card">
       <a className="article-media" href={`/ratgeber/${a.slug}`}>
-        <img src={a.image} alt={a.imageAlt} width={640} height={400} loading="lazy" decoding="async" />
+        <PictImg
+          src={a.image}
+          alt={a.imageAlt}
+          width={640}
+          height={400}
+          loading="lazy"
+          decoding="async"
+          sizes="(max-width: 640px) 100vw, 360px"
+        />
         <span className={`article-art-label art-${i % 3}`}>
           {i % 3 === 0
             ? "Wissen schafft Klarheit."
@@ -1856,7 +1971,110 @@ function Anspruchscheck() {
   );
 }
 
-function Legal({ privacy = false }: { privacy?: boolean }) {
+function Legal({
+  privacy = false,
+  agb = false,
+  redaktion = false,
+}: {
+  privacy?: boolean;
+  agb?: boolean;
+  redaktion?: boolean;
+}) {
+  if (agb) {
+    return (
+      <main id="main-content">
+        <section className="legal-hero">
+          <div className="wrap">
+            <span className="eyebrow">Rechtliches</span>
+            <h1>Allgemeine Geschäftsbedingungen</h1>
+            <p>
+              <time dateTime="2026-08-12">Stand: 12. August 2026</time>
+            </p>
+          </div>
+        </section>
+        <section className="wrap legal-copy">
+          <h2>1. Geltungsbereich</h2>
+          <p>
+            Diese AGB gelten für Spitex-Leistungen, Begleitung sowie die
+            Anstellung pflegender Angehöriger der Lumina Spitex AG, Schlieren.
+          </p>
+          <h2>2. Leistungen</h2>
+          <p>
+            Wir erbringen Pflege nach ärztlicher Verordnung. Wir stellen
+            Angehörige an, wenn die Lage passt. Digitale Checks sind nur eine
+            Orientierung. Sie ersetzen keine Fachabklärung.
+          </p>
+          <h2>3. Verträge</h2>
+          <p>
+            Pflege- oder Anstellungsverträge entstehen schriftlich. Preise für
+            kassenpflichtige Leistungen folgen den geltenden Tarifen. Private
+            Zusatzleistungen vereinbaren wir vorab.
+          </p>
+          <h2>4. Datenschutz</h2>
+          <p>
+            Personendaten bearbeiten wir gemäss unserer{" "}
+            <a href="/datenschutz">Datenschutzerklärung</a>.
+          </p>
+          <h2>5. Haftung</h2>
+          <p>
+            Wir haften nach den gesetzlichen Regeln. Für Inhalte auf der Website
+            übernehmen wir keine Garantie auf Vollständigkeit.
+          </p>
+          <h2>6. Kontakt</h2>
+          <p>
+            Lumina Spitex AG, Rütistrasse 18, 8952 Schlieren · 043 433 88 00 ·
+            info@lumina-spitex.ch
+          </p>
+        </section>
+      </main>
+    );
+  }
+
+  if (redaktion) {
+    return (
+      <main id="main-content">
+        <section className="legal-hero">
+          <div className="wrap">
+            <span className="eyebrow">Transparenz</span>
+            <h1>Redaktionsrichtlinien</h1>
+            <p>
+              <time dateTime="2026-08-12">Stand: 12. August 2026</time>
+            </p>
+          </div>
+        </section>
+        <section className="wrap legal-copy">
+          <p className="byline">
+            <span>Herausgeberin: Lumina Spitex AG</span>
+            <span>Fachliche Verantwortung: diplomierte Pflegefachpersonen</span>
+          </p>
+          <h2>Zweck</h2>
+          <p>
+            Unsere Texte helfen Familien bei Pflege zu Hause. Sie erklären
+            Abläufe, Finanzierung und Anstellung. Sie sind Orientierung. Keine
+            Rechtsberatung. Keine medizinische Einzelfall-Auskunft.
+          </p>
+          <h2>Fachliche Grundlage</h2>
+          <p>
+            Inhalte prüfen Pflegefachpersonen HF/FH. Quellen sind unter anderem
+            KVG/KLV, AHV/IV-Merkblätter sowie kantonale Vorgaben. Beträge und
+            Regeln können sich ändern.
+          </p>
+          <h2>Aktualisierung</h2>
+          <p>
+            Wir prüfen Ratgeber-Beiträge mindestens jährlich. Das Datum steht
+            auf der Seite. Fehler melden Sie bitte an info@lumina-spitex.ch.
+          </p>
+          <h2>Interesse</h2>
+          <p>
+            Lumina Spitex AG erbringt Spitex-Leistungen. Wir kennzeichnen
+            Angebote klar. Unabhängige Behörden bleiben die massgebende Stelle
+            für Entscheide.
+          </p>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main id="main-content">
       <section className="legal-hero">
@@ -2054,6 +2272,12 @@ export function LuminaSite({
       break;
     case "datenschutz":
       page = <Legal privacy />;
+      break;
+    case "agb":
+      page = <Legal agb />;
+      break;
+    case "redaktion":
+      page = <Legal redaktion />;
       break;
     default:
       page = <Home />;
