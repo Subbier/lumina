@@ -25,97 +25,97 @@ export type PageSeo = {
 export const pageSeo = {
   home: {
     path: "/",
-    title: "Spitex Zürich & Aargau | Pflege zu Hause & Angehörige",
+    title: "Pflege zu Hause Zürich & Aargau",
     description:
-      "Spitex in Zürich & Aargau. Lohn für pflegende Angehörige. Sofort anstellen, SRK innert 12 Monaten. Jetzt Anspruch prüfen.",
+      "Pflege zu Hause in Zürich & Aargau. Lohn für pflegende Angehörige. Sofort anstellen, SRK innert 12 Monaten. Anspruch prüfen.",
   },
   spitex: {
     path: "/spitex",
-    title: "Spitex-Leistungen | Abklärung, Grund- & Behandlungspflege",
+    title: "Spitex-Leistungen: Abklärung & Pflege",
     description:
-      "Professionelle Spitex in Zürich und Aargau: Abklärung, Grund- und Behandlungspflege – ärztlich verordnet, direkt mit der Krankenkasse. Auch für Familien mit Angehörigenpflege.",
+      "Spitex-Leistungen in Zürich und Aargau: Abklärung, Grund- und Behandlungspflege. Ärztlich verordnet, Abrechnung über die Krankenkasse.",
   },
   angehoerige: {
     path: "/angehoerige",
-    title: "Pflegende Angehörige anstellen | Sofort Lohn | SRK",
+    title: "Pflegende Angehörige anstellen mit Lohn",
     description:
-      "Angehörige pflegen und sofort angestellt werden: Lohn von Tag eins, Lehrgang Pflegende Angehörige SRK innert 12 Monaten – Kosten trägt Lumina. Jetzt Anspruch prüfen.",
+      "Pflegende Angehörige sofort anstellen: Lohn ab Tag eins, Lehrgang SRK innert 12 Monaten – Kosten trägt Lumina. Anspruch prüfen.",
     conversion: true,
   },
   begleitung: {
     path: "/begleitung",
-    title: "Begleitung im Alltag | Erledigungen & Termine",
+    title: "Begleitung im Alltag & Termine",
     description:
-      "Begleitung über die Grundpflege hinaus: Einkäufe, Termine und soziale Teilhabe – persönlich und flexibel. Unverbindliche Beratung bei Lumina Spitex.",
+      "Begleitung über die Grundpflege hinaus: Einkäufe, Termine und soziale Teilhabe. Unverbindliche Beratung bei Lumina.",
   },
   ueberUns: {
     path: "/ueber-uns",
-    title: "Über uns | Junges Team mit über 50 Jahren Erfahrung",
+    title: "Über uns: Team mit 50 Jahren Praxis",
     description:
-      "Lumina Spitex: junge Firma, erfahrene Fachpersonen – fünf Personen, drei Frauen und zwei Männer, über 50 Jahre Berufspraxis in Zürich und Aargau.",
+      "Junges Team, erfahrene Fachpersonen: fünf Personen mit über 50 Jahren Berufspraxis in Zürich und Aargau.",
   },
   tarife: {
     path: "/tarife",
-    title: "Spitex-Tarife | Transparent nach KLV & UVG",
+    title: "Tarife nach KLV und UVG",
     description:
-      "Transparente Spitex-Tarife nach KLV und UVG sowie hauswirtschaftliche Leistungen. Klar kommuniziert – Fragen direkt mit Lumina klären.",
+      "Transparente Tarife nach KLV und UVG sowie hauswirtschaftliche Leistungen. Fragen klären wir persönlich.",
   },
   ratgeber: {
     path: "/ratgeber",
-    title: "Ratgeber | Lohn für pflegende Angehörige & Spitex",
+    title: "Ratgeber zu Pflege und Lohn",
     description:
-      "Ratgeber zu Anstellung und Lohn für pflegende Angehörige, SRK-Ausbildung, Hilflosenentschädigung und Spitex im Limmattal – klar und praxisnah.",
+      "Ratgeber zu Lohn für pflegende Angehörige, SRK-Ausbildung, Hilflosenentschädigung und Pflege im Limmattal.",
   },
   kontakt: {
     path: "/kontakt",
-    title: "Kontakt | Rückruf für pflegende Angehörige & Spitex",
+    title: "Kontakt und Rückruf",
     description:
-      "Rückruf anfordern oder anrufen: Fragen zu Anstellung pflegender Angehöriger und Spitex. Mo–Fr 08:00–17:00, Schlieren.",
+      "Rückruf anfordern oder anrufen zu Anstellung und Pflege. Mo–Fr 08:00–17:00, Schlieren.",
     conversion: true,
   },
   bewerbung: {
     path: "/bewerbung",
-    title: "Bewerbung | Pflegefachkräfte gesucht",
+    title: "Bewerbung: Pflegefachkräfte gesucht",
     description:
-      "Werden Sie Teil von Lumina Spitex: offene Stellen für Pflegefachpersonen EFZ, dipl. Fachpersonen und FaGe in Zürich und Aargau.",
+      "Offene Stellen für Pflegefachpersonen EFZ, dipl. Fachpersonen und FaGe in Zürich und Aargau.",
     conversion: true,
   },
   anspruchscheck: {
     path: "/anspruchscheck",
-    title: "Anspruch prüfen | Lohn für pflegende Angehörige",
+    title: "Anspruch prüfen für Angehörige",
     description:
-      "In 2 Minuten prüfen: Ist Lohn für Ihre Angehörigenpflege möglich? Unverbindlich – und bei Passung sofort Anstellung bei Lumina Spitex.",
+      "In 2 Minuten prüfen: Ist Lohn für Ihre Angehörigenpflege möglich? Unverbindlich und ohne Login.",
     conversion: true,
   },
   lohnCheck: {
     path: "/lohn-check",
-    title: "Lohn-Check | Was verdienen pflegende Angehörige?",
+    title: "Lohn-Check für Angehörige",
     description:
-      "Erste Bruttolohn-Schätzung für pflegende Angehörige – Pensum und Stundenlohn als Orientierung. Danach Rückruf oder Beratung bei Lumina.",
+      "Erste Bruttolohn-Schätzung für pflegende Angehörige nach Pensum und Stundenlohn. Danach Beratung möglich.",
     conversion: true,
   },
   impressum: {
     path: "/impressum",
-    title: "Impressum",
+    title: "Impressum der Lumina Spitex AG",
     description: "Impressum und Anbieterangaben der Lumina Spitex AG, Schlieren.",
   },
   datenschutz: {
     path: "/datenschutz",
-    title: "Datenschutz",
+    title: "Datenschutzerklärung der Website",
     description:
       "Datenschutzerklärung der Lumina Spitex AG – Umgang mit Personendaten auf dieser Website.",
   },
   agb: {
     path: "/agb",
-    title: "AGB | Allgemeine Geschäftsbedingungen",
+    title: "AGB für Pflege und Anstellung",
     description:
-      "Allgemeine Geschäftsbedingungen der Lumina Spitex AG für Spitex, Begleitung und Anstellung pflegender Angehöriger.",
+      "Allgemeine Geschäftsbedingungen für Spitex, Begleitung und Anstellung pflegender Angehöriger.",
   },
   redaktion: {
     path: "/redaktion",
-    title: "Redaktionsrichtlinien",
+    title: "Redaktion: so prüfen wir Texte",
     description:
-      "Wie Lumina Spitex Inhalte prüft, aktualisiert und kennzeichnet – Orientierung statt Rechtsberatung.",
+      "Wie wir Inhalte prüfen, aktualisieren und kennzeichnen – Orientierung statt Rechtsberatung.",
   },
 } as const satisfies Record<string, PageSeo>;
 
@@ -216,7 +216,7 @@ export function organizationJsonLd(baseUrl: string = SITE_URL) {
       {
         "@type": "Service",
         "@id": `${base}/spitex#service`,
-        name: "Spitex-Pflege",
+        name: "Spitex-Leistungen",
         serviceType: "Ambulante Krankenpflege",
         provider: { "@id": `${base}/#organization` },
         areaServed: ["Zürich", "Aargau"],

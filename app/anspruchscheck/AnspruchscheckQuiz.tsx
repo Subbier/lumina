@@ -67,18 +67,18 @@ export function AnspruchscheckQuiz({
           <div className="quiz-card result-check">
             <span className="success-icon">✓</span>
             <span className="result-kicker">Ihre erste Orientierung</span>
-            <h1>Mehrere Ansprüche könnten in Frage kommen.</h1>
+            <h2>Mehrere Ansprüche könnten in Frage kommen.</h2>
             <div className="claim-grid">
               <div>
-                <b>Hilflosenentschädigung</b>
+                <span className="claim-title">Hilflosenentschädigung</span>
                 <span>Persönlich abklären</span>
               </div>
               <div>
-                <b>Betreuungsgutschrift</b>
+                <span className="claim-title">Betreuungsgutschrift</span>
                 <span>Situation prüfen</span>
               </div>
               <div>
-                <b>Anstellung bei Lumina</b>
+                <span className="claim-title">Anstellung bei Lumina</span>
                 <span>Wahrscheinlich relevant</span>
               </div>
             </div>
@@ -137,7 +137,7 @@ export function AnspruchscheckQuiz({
                   key={o}
                 >
                   <span>{o}</span>
-                  <b>→</b>
+                  <span aria-hidden="true">→</span>
                 </button>
               ))}
             </div>
@@ -185,9 +185,5 @@ export function AnspruchscheckQuiz({
     );
   }
 
-  return (
-    <main id="main-content" className="quiz-page green">
-      <section className="quiz-shell">{shell}</section>
-    </main>
-  );
+  return <section className="quiz-shell">{shell}</section>;
 }

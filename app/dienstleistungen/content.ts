@@ -53,26 +53,26 @@ export const serviceSegments: ServiceSegment[] = [
     id: "spitex",
     path: "/spitex",
     eyebrow: "Spitex",
-    title: "Professionelle Pflege.",
-    titleEm: "Zu Hause begleitet.",
+    title: "Spitex-Leistungen.",
+    titleEm: "Abklärung und Pflege.",
     lead:
-      "Abklärung & Beratung sowie Grund- und Behandlungspflege – ärztlich verordnet, von Fachpersonen erbracht und über die Krankenkasse abrechenbar.",
-    image: "/images/spitex-hero-home-visit.jpg?v=sq3",
+      "Spitex-Leistungen nach KVG: Abklärung & Beratung sowie Grund- und Behandlungspflege – ärztlich verordnet, von Fachpersonen erbracht und über die Krankenkasse abrechenbar.",
+    image: "/images/spitex-hero-home-visit.webp",
     imageAlt:
       "Spitex-Pflegefachperson misst bei einer Klientin zu Hause den Blutdruck",
     heroTone: "warm",
-    introEyebrow: "Kassenpflichtige Pflege mit Haltung",
-    introTitle: "Sie brauchen Pflege. Wir bleiben an Ihrer Seite.",
+    introEyebrow: "Kassenpflichtige Spitex-Leistungen",
+    introTitle: "Spitex-Leistungen nach KVG – klar und fachlich begleitet.",
     introSummary:
-      "Bevor die Pflege beginnt, klären wir den Bedarf. Danach begleiten diplomierte Pflegefachpersonen und Fachpersonen Gesundheit Sie im Alltag – wirksam, zweckmässig und wirtschaftlich.",
+      "Unsere Spitex-Leistungen starten mit der Abklärung des Pflegebedarfs. Danach erbringen diplomierte Pflegefachpersonen und Fachpersonen Gesundheit Grund- und Behandlungspflege – wirksam, zweckmässig und wirtschaftlich nach KVG.",
     introMore: [
-      "Sämtliche Grund- und Behandlungspflegeleistungen nach KLV Art. 7 Abs. 2 werden direkt über Ihre Krankenkasse abgerechnet. Die Leistungen erfassen wir transparent in der Pflegedokumentation.",
-      "Leistungen über die Kassenpflege hinaus finden Sie unter Begleitung. Wenn Angehörige die Pflege übernehmen, begleiten wir Anstellung und Qualifikation unter Pflegende Angehörige. Aktuelle Ansätze stehen unter Tarife.",
+      "Abklärung, Grundpflege und Behandlungspflege nach KLV Art. 7 Abs. 2 rechnen wir direkt über Ihre Krankenkasse (KVG) ab. Die Spitex-Leistungen erfassen wir transparent in der Pflegedokumentation.",
+      "Leistungen über die kassenpflichtige Spitex-Pflege hinaus finden Sie unter Begleitung. Wenn Angehörige die Pflege übernehmen, begleiten wir Anstellung und Qualifikation unter Pflegende Angehörige. Aktuelle Ansätze stehen unter Tarife.",
     ],
     accordionTitle: "Was Sie von der Lumina Spitex erwarten dürfen",
     accordionLink: {
       href: "/kontakt?thema=mehr-infos&aktion=rueckruf",
-      label: "Mehr Infos anfordern",
+      label: "Rückruf anfordern",
     },
     accordion: [
       {
@@ -185,10 +185,10 @@ export const serviceSegments: ServiceSegment[] = [
     id: "begleitung",
     path: "/begleitung",
     eyebrow: "Begleitung · über die Grundpflege hinaus",
-    title: "Ein Leben,",
+    title: "Begleitung: Ein Leben,",
     titleEm: "das sich wieder leicht anfühlt.",
     lead:
-      "Wenn Pflege das Nötige sichert, schafft Begleitung das Angenehme: Erledigungen, Termine und Teilhabe am sozialen Leben – diskret, verlässlich und auf Sie abgestimmt.",
+      "Wenn Pflege das Nötige sichert, schafft Begleitung das Angenehme: Erledigungen, Termine und Teilhabe am sozialen Leben – diskret, verlässlich und so, dass der Alltag sich wieder leicht anfühlt.",
     image: "/images/home-services.webp",
     imageAlt: "Begleitung für Teilhabe und ein angenehmes Leben zu Hause",
     heroTone: "clean",
@@ -199,6 +199,8 @@ export const serviceSegments: ServiceSegment[] = [
     introMore: [
       "Diese Leistungen ergänzen die Spitex-Pflege. Sie sind in der Regel privat zu finanzieren; je nach Situation können Zusatzversicherung, Ergänzungsleistungen oder Gemeindebeiträge mittragen. Transparente Ansätze finden Sie unter Tarife.",
       "Kassenpflichtige Pflege: unter Spitex. Anstellung und Qualifikation für Angehörige: unter Pflegende Angehörige.",
+      "Begleitung im Alltag bedeutet: Erledigungen, sichere Termine und soziale Teilhabe – damit ein Leben sich wieder leicht anfühlt, ohne die Grundpflege zu ersetzen.",
+      "Wir stimmen Tempo und Umfang mit Ihnen ab. So bleibt Begleitung persönlich, planbar und klar von kassenpflichtigen Spitex-Leistungen getrennt.",
     ],
     accordionTitle: "So begleiten wir Sie",
     accordionLink: {
@@ -292,7 +294,7 @@ export const serviceSegments: ServiceSegment[] = [
     titleEm: "Wir stellen an.",
     lead:
       "Sie pflegen schon – und können sofort angestellt werden. Lohn von Tag eins. Die Ausbildung folgt innert zwölf Monaten: Lehrgang Pflegende Angehörige SRK, organisiert und finanziert durch uns.",
-    image: "/images/angehoerige-hero-anleitung.jpg?v=sq3",
+    image: "/images/angehoerige-hero-anleitung.webp",
     imageAlt:
       "Pflegefachperson zeigt einem Angehörigen auf Hausbesuch, wie er seinen Vater unterstützt",
     heroTone: "warm",

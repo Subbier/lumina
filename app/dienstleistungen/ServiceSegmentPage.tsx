@@ -99,7 +99,7 @@ export function ServiceSegmentPage({
           {page.facts.map((f) => (
             <div key={f.label}>
               <span>{f.label}</span>
-              <b>{f.value}</b>
+              <span className="stat-value">{f.value}</span>
             </div>
           ))}
         </section>
@@ -162,7 +162,7 @@ export function ServiceSegmentPage({
             >
               {page.process.map((step) => (
                 <div key={step.step}>
-                  <b>{step.step}</b>
+                  <span className="step-num">{step.step}</span>
                   <h3>{step.title}</h3>
                   <p>{step.text}</p>
                 </div>

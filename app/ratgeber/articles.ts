@@ -31,10 +31,10 @@ export const articles: Article[] = [
     slug: "lohn-fuer-pflegende-angehoerige",
     audioSrc: "/audio/articles/lohn-fuer-pflegende-angehoerige.mp3?v=1",
     tag: "Lohn & Anspruch",
-    title: "Lohn für pflegende Angehörige: Was ist möglich?",
+    title: "Lohn für pflegende Angehörige",
     text: "Welche Pflegezeit zählt, wie eine Anstellung funktioniert und warum die genaue Abklärung entscheidend ist.",
     read: "8 Min.",
-    image: "/images/ratgeber/blog-12.png",
+    image: "/images/ratgeber/blog-12.webp",
     imageAlt:
       "Pflegende Angehörige begleitet eine ältere Frau zu Hause im Rollstuhl",
     updated: "August 2026",
@@ -48,7 +48,7 @@ export const articles: Article[] = [
     sections: [
       {
         paragraphs: [
-          "In der Schweiz pflegen Hunderttausende Angehörige ihre Liebsten zu Hause – oft mit reduziertem Erwerbspensum, ohne Lohn und ohne Sozialversicherung. Seit dem Bundesgerichtsentscheid BGE 145 V 161 (2019) ist klar: Grundpflegeleistungen können über eine zugelassene Spitex auch dann zulasten der obligatorischen Krankenpflegeversicherung (OKP) abgerechnet werden, wenn sie von angestellten Angehörigen erbracht werden.",
+          "Lohn für pflegende Angehörige ist in der Schweiz unter klaren Voraussetzungen möglich. Hunderttausende Angehörige pflegen zu Hause – oft mit reduziertem Erwerbspensum, ohne Lohn und ohne Sozialversicherung. Seit dem Bundesgerichtsentscheid BGE 145 V 161 (2019) ist klar: Grundpflegeleistungen können über eine zugelassene Spitex auch dann zulasten der obligatorischen Krankenpflegeversicherung (OKP) abgerechnet werden, wenn sie von angestellten Angehörigen erbracht werden.",
           "Das ändert die Realität vieler Familien im Limmattal und im Kanton Zürich: Aus unsichtbarer Care-Arbeit kann eine echte Anstellung werden – mit Lohn, Ferienanspruch und Sozialversicherungen. Entscheidend ist aber, was rechtlich als Pflege zählt und was nicht.",
         ],
       },
@@ -83,7 +83,7 @@ export const articles: Article[] = [
     title: "Wer gilt als pflegende Angehörige?",
     text: "Ehepartner, Kinder, Eltern und enge Bezugspersonen: Entscheidend sind Situation und regelmässige Grundpflege.",
     read: "6 Min.",
-    image: "/images/ratgeber/blog-10.png",
+    image: "/images/ratgeber/blog-10.webp",
     imageAlt: "Gespräch zwischen pflegendem Angehörigen und älterem Mann",
     updated: "August 2026",
     takeaways: [
@@ -96,7 +96,7 @@ export const articles: Article[] = [
     sections: [
       {
         paragraphs: [
-          "«Pflegende Angehörige» ist kein Marketingbegriff, sondern beschreibt Menschen, die regelmässig eine nahestehende Person mit gesundheitlichen Einschränkungen im Alltag unterstützen. Das Bundesamt für Statistik geht von mehreren Hunderttausend Personen in der Schweiz aus – viele davon im erwerbsfähigen Alter.",
+          "Wer gilt als pflegende Angehörige? Der Begriff beschreibt Menschen, die regelmässig eine nahestehende Person mit gesundheitlichen Einschränkungen im Alltag unterstützen. Das Bundesamt für Statistik geht von mehreren Hunderttausend Personen in der Schweiz aus – viele davon im erwerbsfähigen Alter.",
           "Für eine Anstellung bei einer Spitex kommt es weniger auf den Stammbaum allein an, sondern auf die konkrete Pflegesituation: Wer leistet welche Hilfe, wie oft, und ist diese Hilfe Teil der verordneten Grundpflege?",
         ],
       },
@@ -130,7 +130,7 @@ export const articles: Article[] = [
     title: "Hilflosenentschädigung verständlich erklärt",
     text: "Wann eine Anmeldung sinnvoll sein kann, welche Stufen es gibt und wo Sie eine verbindliche Prüfung erhalten.",
     read: "9 Min.",
-    image: "/images/ratgeber/blog-11.png",
+    image: "/images/ratgeber/blog-11.webp",
     imageAlt: "Pflegefachperson hält die Hand einer älteren Klientin",
     updated: "August 2026",
     takeaways: [
@@ -143,7 +143,7 @@ export const articles: Article[] = [
     sections: [
       {
         paragraphs: [
-          "Neben Krankenkasse und Spitex gibt es in der Schweiz ein weiteres wichtiges Instrument: die Hilflosenentschädigung (HE) der AHV oder IV. Sie richtet sich an Menschen, die für alltägliche Verrichtungen dauernd auf die Hilfe Dritter angewiesen sind oder der persönlichen Überwachung bedürfen.",
+          "Hilflosenentschädigung verständlich erklärt: Neben Krankenkasse und Spitex gibt es in der Schweiz ein weiteres wichtiges Instrument – die Hilflosenentschädigung (HE) der AHV oder IV. Sie richtet sich an Menschen, die für alltägliche Verrichtungen dauernd auf die Hilfe Dritter angewiesen sind oder der persönlichen Überwachung bedürfen.",
           "Laut Informationsstelle AHV/IV ist die wirtschaftliche Lage dabei nicht massgebend – entscheidend sind die tatsächlichen Einschränkungen. Für viele Familien im Kanton Zürich ist die HE eine spürbare monatliche Entlastung, die unabhängig vom Spitex-Modell geprüft werden sollte.",
         ],
       },
@@ -177,7 +177,7 @@ export const articles: Article[] = [
     title: "Körperpflege zu Hause würdevoll gestalten",
     text: "Praktische Hinweise für mehr Sicherheit, Selbstbestimmung und Ruhe im täglichen Miteinander.",
     read: "7 Min.",
-    image: "/images/ratgeber/blog-09.png",
+    image: "/images/ratgeber/blog-12.webp",
     imageAlt: "Fürsorgliche Berührung bei der Pflege – Hände von jung und alt",
     updated: "August 2026",
     takeaways: [
@@ -190,7 +190,7 @@ export const articles: Article[] = [
     sections: [
       {
         paragraphs: [
-          "Körperpflege ist intim. Für viele ältere Menschen im Limmattal ist sie der Moment, in dem Selbstbestimmung besonders spürbar – oder besonders verletzlich – wird. Ob Angehörige oder Spitex-Fachperson: Der Ton entscheidet mit darüber, ob Pflege als Hilfe oder als Übergriff erlebt wird.",
+          "Körperpflege zu Hause würdevoll gestalten: Körperpflege ist intim. Für viele ältere Menschen im Limmattal ist sie der Moment, in dem Selbstbestimmung besonders spürbar – oder besonders verletzlich – wird. Ob Angehörige oder Spitex-Fachperson: Der Ton entscheidet mit darüber, ob Pflege als Hilfe oder als Übergriff erlebt wird.",
           "Gute Körperpflege zu Hause ist keine Show. Sie ist ruhig, vorbereitet und richtet sich nach dem, was die Person heute kann – nicht nach dem, was gestern noch ging.",
         ],
       },
@@ -223,7 +223,7 @@ export const articles: Article[] = [
     title: "Vorsorgeauftrag und Patientenverfügung",
     text: "Zwei Dokumente, die Angehörige entlasten und den Willen der betroffenen Person sichtbar machen.",
     read: "9 Min.",
-    image: "/images/family.jpg",
+    image: "/images/angehoerige-hero-anleitung.webp",
     imageAlt: "Familie im Gespräch über Vorsorge und Betreuung",
     updated: "August 2026",
     takeaways: [
@@ -268,7 +268,7 @@ export const articles: Article[] = [
     title: "Pflegen und arbeiten: So kann beides gelingen",
     text: "Grenzen erkennen, Hilfe organisieren und die eigene Gesundheit nicht aus dem Blick verlieren.",
     read: "7 Min.",
-    image: "/images/ratgeber/blog-13.png",
+    image: "/images/ratgeber/blog-10.webp",
     imageAlt: "Angehörige und ältere Frau teilen einen Moment zu Hause",
     updated: "August 2026",
     takeaways: [
@@ -281,7 +281,7 @@ export const articles: Article[] = [
     sections: [
       {
         paragraphs: [
-          "Viele pflegende Angehörige im Limmattal jonglieren Job, Familie und Pflege. Studien und Praxisberichten zeigen: Ohne Struktur steigt das Risiko für Erschöpfung, Konflikte am Arbeitsplatz und eigene Gesundheitsprobleme. Gleichzeitig wollen die meisten nicht «abschieben», sondern Verantwortung teilen.",
+          "Pflegen und arbeiten: So kann beides gelingen. Viele pflegende Angehörige im Limmattal jonglieren Job, Familie und Pflege. Studien und Praxisberichten zeigen: Ohne Struktur steigt das Risiko für Erschöpfung, Konflikte am Arbeitsplatz und eigene Gesundheitsprobleme. Gleichzeitig wollen die meisten nicht «abschieben», sondern Verantwortung teilen.",
         ],
       },
       {
@@ -311,10 +311,10 @@ export const articles: Article[] = [
     slug: "private-oder-oeffentliche-spitex",
     audioSrc: "/audio/articles/private-oder-oeffentliche-spitex.mp3?v=1",
     tag: "Spitex",
-    title: "Private oder öffentliche Spitex?",
+    title: "Private oder öffentliche Anbieter?",
     text: "Worauf Familien bei Verfügbarkeit, Bezugspersonen, Leistungen und Finanzierung achten sollten.",
     read: "6 Min.",
-    image: "/images/care.jpg",
+    image: "/images/home-spitex.webp",
     imageAlt: "Ambulante Pflege zu Hause durch Spitex-Fachperson",
     updated: "August 2026",
     takeaways: [
@@ -350,10 +350,10 @@ export const articles: Article[] = [
     slug: "sturzpraevention-zu-hause",
     audioSrc: "/audio/articles/sturzpraevention-zu-hause.mp3?v=1",
     tag: "Sicherheit",
-    title: "Sturzprävention: Kleine Änderungen, grosse Wirkung",
+    title: "Sturzprävention zu Hause",
     text: "Ein kompakter Rundgang durch Wohnung, Alltag und Hilfsmittel für mehr Sicherheit zu Hause.",
     read: "5 Min.",
-    image: "/images/hero.jpg",
+    image: "/images/home-hero.webp",
     imageAlt: "Sicheres, helles Wohnumfeld für Pflege zu Hause",
     updated: "August 2026",
     takeaways: [
@@ -392,7 +392,7 @@ export const articles: Article[] = [
     title: "Arbeitsvertrag, Ferien und Sozialversicherungen",
     text: "Was zu einer richtigen Anstellung gehört und weshalb professionelle Begleitung so wichtig ist.",
     read: "8 Min.",
-    image: "/images/team.jpg",
+    image: "/images/home-team.webp",
     imageAlt: "Professionelle Begleitung und Team von Lumina Spitex",
     updated: "August 2026",
     takeaways: [
@@ -438,7 +438,7 @@ export const articles: Article[] = [
     title: "Entlastungsangebote im Limmattal",
     text: "Welche Angebote pflegende Familien ergänzend nutzen können und wie Lumina beim Koordinieren hilft.",
     read: "6 Min.",
-    image: "/images/ratgeber/blog-11.png",
+    image: "/images/ratgeber/blog-11.webp",
     imageAlt: "Persönliche Pflege und Beratung im häuslichen Umfeld",
     updated: "August 2026",
     takeaways: [

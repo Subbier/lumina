@@ -272,7 +272,7 @@ function Footer() {
             <a
               href={`mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(shareUrl)}`}
             >
-              Seite per E-Mail teilen
+              Per E-Mail teilen
             </a>
           </p>
           <p className="share-row" aria-label="Verzeichnisse">
@@ -415,11 +415,11 @@ function Home() {
       <section className="wrap home-prose" aria-labelledby="home-orientierung">
         <h2 id="home-orientierung">Klarheit für Familien in Zürich und Aargau</h2>
         <p>
-          Viele Angehörige organisieren Pflege neben Job und Familie. Das fühlt
-          sich oft schwer an. Lumina Spitex hilft mit einem einfachen Einstieg:
-          Professionelle Pflege zu Hause beginnt mit einer klaren Abklärung.
-          Danach starten wir mit Pflege oder mit einer Anstellung für Sie als
-          pflegende Angehörige.
+          Viele Angehörige organisieren Pflege zu Hause neben Job und Familie.
+          Das fühlt sich oft schwer an. Professionelle Pflege zu Hause beginnt
+          mit einer klaren Abklärung. Danach starten wir mit Pflege oder mit
+          einer Anstellung für Sie als pflegende Angehörige – persönlich und
+          ohne Umwege.
         </p>
         <p>
           Sitz ist Schlieren im Limmattal. Einsatzgebiet sind der Kanton Zürich
@@ -453,9 +453,7 @@ function Home() {
                 Abklärung, Grundpflege, Behandlungspflege. Ärztlich verordnet.
                 Professionell zu Hause.
               </p>
-              <a href="/spitex">
-                <b>Spitex ansehen →</b>
-              </a>
+              <a href="/spitex">Spitex ansehen →</a>
             </article>
             <article className="path-card">
               <Icon>02</Icon>
@@ -465,9 +463,7 @@ function Home() {
                 Sie pflegen schon. Wir stellen an. Ausbildung Pflegende
                 Angehörige SRK innert zwölf Monaten. Kosten trägt Lumina.
               </p>
-              <a href="/angehoerige">
-                <b>Anspruch prüfen →</b>
-              </a>
+              <a href="/angehoerige">Anspruch prüfen →</a>
             </article>
             <article className="path-card premium">
               <Icon>03</Icon>
@@ -477,9 +473,7 @@ function Home() {
                 Hilfe über die Grundpflege hinaus. Für einen angenehmen,
                 selbstbestimmten Alltag.
               </p>
-              <a href="/begleitung">
-                <b>Begleitung entdecken →</b>
-              </a>
+              <a href="/begleitung">Begleitung entdecken →</a>
             </article>
           </div>
           <p className="paths-note">
@@ -724,14 +718,14 @@ function Tarife() {
           <div>
             <span className="eyebrow light">Über uns · Tarife</span>
             <h1 className="hero-title">
-              <span className="hero-title-line">Transparente Tarife.</span>
               <span className="hero-title-line">
-                <em>Klar kommuniziert.</em>
+                Transparente Tarife nach KLV und UVG.
               </span>
             </h1>
             <p className="lead">
-              Pflegeleistungen nach KLV und UVG sowie hauswirtschaftliche
-              Leistungen – wie auf der bestehenden Lumina-Website ausgewiesen.
+              Transparent und klar kommuniziert: Pflegeleistungen nach KLV und
+              UVG sowie hauswirtschaftliche Leistungen – nachvollziehbar
+              ausgewiesen für Familien in Zürich und Aargau.
             </p>
             <a className="button gold" href="/kontakt">
               Tariffrage klären
@@ -964,18 +958,22 @@ function About() {
           <div>
             <span className="eyebrow light">Über uns</span>
             <h1 className="hero-title">
-              <span className="hero-title-line">Licht und Wärme.</span>
+              <span className="hero-title-line">Über uns: Team mit</span>
               <span className="hero-title-line">
-                <em>Auch wenn es schwierig wird.</em>
+                <em>Licht und Wärme.</em>
               </span>
             </h1>
             <p className="lead">
-              „Lumina“ kommt von Lumen – dem Licht. Für uns bedeutet das:
-              fachlich Orientierung geben und menschlich nahe bleiben. Lumina
-              ist eine junge Firma – fünf Personen, drei Frauen und zwei Männer
-              – mit langjähriger Erfahrung in der Pflege. Gemeinsam bringen wir
-              über 50 Jahre Berufspraxis mit und begleiten Klientinnen und
-              Familien in Zürich und Aargau.
+              Über uns als Team: Licht und Wärme auch dann, wenn der Alltag
+              schwierig wird. „Lumina“ kommt von Lumen – dem Licht. Für uns
+              bedeutet das: fachlich Orientierung geben und menschlich nahe
+              bleiben.
+            </p>
+            <p>
+              Junges Team mit über 50 Jahren Erfahrung: fünf Personen, drei
+              Frauen und zwei Männer, die Klientinnen und Familien in Zürich und
+              Aargau begleiten. Hier erfahren Sie Haltung, Qualität und offene
+              Rollen.
             </p>
             <div className="actions">
               <a className="button gold" href="#karriere">
@@ -986,9 +984,14 @@ function About() {
               </a>
             </div>
           </div>
-          <img
-            src="/images/lumina-team-5.jpg?v=1"
+          <PictImg
+            src="/images/lumina-team-5.webp"
             alt="Das Lumina-Team: drei Frauen und zwei Männer"
+            width={1536}
+            height={1024}
+            loading="lazy"
+            decoding="async"
+            sizes="(max-width: 980px) 100vw, 560px"
           />
         </div>
       </section>
@@ -1174,12 +1177,24 @@ function Bewerbung() {
         <div className="wrap">
           <span className="eyebrow">Karriere</span>
           <h1 className="hero-title">
-            <span className="hero-title-line">Bewerbung</span>
-            <span className="hero-title-line">bei Lumina.</span>
+            <span className="hero-title-line">Bewerbung bei Lumina:</span>
+            <span className="hero-title-line">
+              Pflegefachkräfte gesucht.
+            </span>
           </h1>
           <p className="lead">
             Eigenes Formular für Bewerbungen – nicht das allgemeine
             Kontaktformular. Wir melden uns persönlich.
+          </p>
+          <p>
+            Mit Ihrer Bewerbung bewerben Sie sich direkt beim Team in Schlieren.
+            Wir suchen Pflegefachkräfte für Einsätze in Zürich und Aargau – mit
+            festen Bezugspersonen und kurzen Wegen im Alltag.
+          </p>
+          <p>
+            Ob EFZ, Diplom HF/FH oder FaGe: Senden Sie Ihre Bewerbung mit
+            Pensum und Region. Pflegefachkräfte gesucht heisst bei uns: wir
+            antworten persönlich und prüfen die Passung gemeinsam mit Ihnen.
           </p>
         </div>
       </section>
@@ -1188,19 +1203,19 @@ function Bewerbung() {
           <div>
             <Icon>☎</Icon>
             <span>
-              <b>Fragen zur Stelle?</b>
+              <span className="contact-label">Fragen zur Stelle?</span>
               <a href="tel:+41434338800">043 433 88 00</a>
             </span>
           </div>
           <div>
             <Icon>✉</Icon>
             <span>
-              <b>E-Mail</b>
+              <span className="contact-label">E-Mail</span>
               <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
             </span>
           </div>
           <div className="contact-note">
-            <b>Lebenslauf</b>
+            <span className="contact-label">Lebenslauf</span>
             <p>
               Bitte Lebenslauf und Zeugnisse nach dem Absenden per E-Mail
               nachreichen – oder im Nachrichtenfeld den Link zu Ihrem Profil
@@ -1468,12 +1483,22 @@ function Contact() {
         <div className="wrap">
           <span className="eyebrow">Kontakt</span>
           <h1 className="hero-title">
-            <span className="hero-title-line">Wir sind</span>
-            <span className="hero-title-line">für Sie da.</span>
+            <span className="hero-title-line">Kontakt und Rückruf</span>
+            <span className="hero-title-line">für Ihre Pflegefrage.</span>
           </h1>
           <p className="lead">
             Rufen Sie direkt an, fordern Sie einen Rückruf an, vereinbaren Sie
             einen Termin – oder schreiben Sie uns einfach.
+          </p>
+          <p>
+            Kontakt und Rückruf helfen, wenn Sie Pflege zu Hause organisieren
+            oder als Angehörige entlastet werden möchten. Schildern Sie kurz
+            Ihre Situation – wir melden uns mit einem klaren nächsten Schritt.
+          </p>
+          <p>
+            Ob Telefon, Rückruf oder Nachricht: Im Kontakt klären wir unverbindlich,
+            welches Angebot passt – Spitex, Anstellung für pflegende Angehörige
+            oder Begleitung. Ohne Login und ohne Verpflichtung.
           </p>
         </div>
       </section>
@@ -1481,20 +1506,20 @@ function Contact() {
         <div className="contact-info">
           <a className="contact-callout" href="tel:+41434338800">
             <span>Jetzt anrufen</span>
-            <b>043 433 88 00</b>
+            <strong>043 433 88 00</strong>
             <small>Mo–Fr, 08:00–17:00 Uhr</small>
           </a>
           <div>
             <Icon>✉</Icon>
             <span>
-              <b>E-Mail</b>
+              <span className="contact-label">E-Mail</span>
               <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
             </span>
           </div>
           <div>
             <Icon>⌂</Icon>
             <span>
-              <b>Adresse</b>
+              <span className="contact-label">Adresse</span>
               <p>
                 Rütistrasse 18
                 <br />
@@ -1505,7 +1530,7 @@ function Contact() {
           <div>
             <Icon>◷</Icon>
             <span>
-              <b>Bürozeiten</b>
+              <span className="contact-label">Bürozeiten</span>
               <p>
                 Montag–Freitag
                 <br />
@@ -1514,7 +1539,7 @@ function Contact() {
             </span>
           </div>
           <div className="contact-note">
-            <b>Dringender Pflegebedarf?</b>
+            <span className="contact-label">Dringender Pflegebedarf?</span>
             <p>
               Rufen Sie uns direkt an. Bei medizinischen Notfällen wählen Sie
               144.
@@ -1541,7 +1566,7 @@ function Contact() {
                 }
                 onClick={() => chooseIntent(item.id)}
               >
-                <b>{item.label}</b>
+                <span>{item.label}</span>
                 <span>{item.hint}</span>
               </button>
             ))}
@@ -1702,16 +1727,18 @@ function BlogPreview() {
 function ArticleCard({ a, i }: { a: Article; i: number }) {
   return (
     <article className="article-card">
-      <a className="article-media" href={`/ratgeber/${a.slug}`}>
-        <PictImg
-          src={a.image}
-          alt={a.imageAlt}
-          width={640}
-          height={400}
-          loading="lazy"
-          decoding="async"
-          sizes="(max-width: 640px) 100vw, 360px"
-        />
+      <div className="article-media">
+        <a href={`/ratgeber/${a.slug}`} aria-label={`${a.title} lesen`}>
+          <PictImg
+            src={a.image}
+            alt={a.imageAlt}
+            width={640}
+            height={400}
+            loading="lazy"
+            decoding="async"
+            sizes="(max-width: 640px) 100vw, 360px"
+          />
+        </a>
         <span className={`article-art-label art-${i % 3}`}>
           {i % 3 === 0
             ? "Wissen schafft Klarheit."
@@ -1719,14 +1746,14 @@ function ArticleCard({ a, i }: { a: Article; i: number }) {
               ? "Gute Pflege beginnt beim Zuhören."
               : "Entlastung ist Teil der Fürsorge."}
         </span>
-      </a>
+      </div>
       <div>
         <span className="tag">{a.tag}</span>
         <h3>{a.title}</h3>
         <p>{a.text}</p>
         <small>{a.read} Lesezeit</small>
-        <a href={`/ratgeber/${a.slug}`} aria-label={`${a.title} lesen`}>
-          Beitrag lesen →
+        <a href={`/ratgeber/${a.slug}`}>
+          {a.title} →
         </a>
       </div>
     </article>
@@ -1871,12 +1898,22 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
         <div className="wrap">
           <span className="eyebrow light">Lumina Ratgeber</span>
           <h1 className="hero-title">
-            <span className="hero-title-line">Wissen gibt</span>
+            <span className="hero-title-line">Ratgeber: Wissen gibt</span>
             <span className="hero-title-line">Sicherheit.</span>
           </h1>
           <p className="lead">
-            Verständliche Antworten auf Fragen zu Pflege, Lohn, Finanzierung und
-            Familienalltag – Schweizerisch, konkret und ohne Fachchinesisch.
+            Im Ratgeber finden Sie verständliche Antworten zu Pflege, Lohn,
+            Finanzierung und Familienalltag – schweizerisch, konkret und ohne
+            Fachchinesisch. Ratgeber-Wissen schafft Sicherheit für Angehörige.
+          </p>
+          <p>
+            Die Beiträge erklären Lohn für pflegende Angehörige, Hilflosenentschädigung,
+            Anstellung und Pflege zu Hause im Limmattal. Jeder Text ist fachlich
+            geprüft und mit Aktualisierungsdatum versehen.
+          </p>
+          <p>
+            Nutzen Sie den Ratgeber als Einstieg. Für Ihre persönliche Lage bleiben
+            Anspruchscheck, Lohn-Check und ein Gespräch mit uns die nächsten Schritte.
           </p>
           <a className="button gold" href="/anspruchscheck">
             Anspruch in 2 Minuten prüfen
@@ -1940,14 +1977,50 @@ function QuizClose() {
 }
 
 function LohnCheck() {
-  return <LohnCheckQuiz topBar={<QuizClose />} />;
+  return (
+    <main id="main-content" className="quiz-page">
+      <section className="wrap quiz-intro">
+        <h1>Lohn-Check für pflegende Angehörige</h1>
+        <p>
+          Mit dem Lohn-Check schätzen Sie, was verdienen pflegende Angehörige
+          ungefähr können – als Bruttoorientierung nach Pensum.
+        </p>
+        <p>
+          Die Angaben sind unverbindlich. Danach können Sie einen Rückruf
+          anfordern oder die Anstellung bei Lumina genauer besprechen.
+        </p>
+        <p>
+          Weiterführend: <a href="/angehoerige">Pflegende Angehörige</a>,{" "}
+          <a href="/ratgeber">Ratgeber</a>, <a href="/kontakt">Kontakt</a>.
+        </p>
+      </section>
+      <LohnCheckQuiz topBar={<QuizClose />} />
+    </main>
+  );
 }
 
 function Anspruchscheck() {
   return (
-    <AnspruchscheckQuiz
-      topBar={<QuizClose />}
-    />
+    <main id="main-content" className="quiz-page green">
+      <section className="wrap quiz-intro">
+        <h1>Anspruch prüfen für pflegende Angehörige</h1>
+        <p>
+          Prüfen Sie in wenigen Minuten, ob ein Anspruch auf Lohn für pflegende
+          Angehörige in Ihrer Situation realistisch ist.
+        </p>
+        <p>
+          Der Check ist unverbindlich und ohne Login. Bei Passung erklären wir
+          die sofortige Anstellung und den Lehrgang SRK.
+        </p>
+        <p>
+          Mehr erfahren unter{" "}
+          <a href="/angehoerige">Anstellung Angehörige</a>, im{" "}
+          <a href="/ratgeber">Ratgeber</a> oder per{" "}
+          <a href="/kontakt">Kontakt</a>.
+        </p>
+      </section>
+      <AnspruchscheckQuiz topBar={<QuizClose />} />
+    </main>
   );
 }
 
@@ -1966,7 +2039,7 @@ function Legal({
         <section className="legal-hero">
           <div className="wrap">
             <span className="eyebrow">Rechtliches</span>
-            <h1>Allgemeine Geschäftsbedingungen</h1>
+            <h1>Allgemeine Geschäftsbedingungen für Pflege</h1>
             <p>
               <time dateTime="2026-08-12">Stand: 12. August 2026</time>
             </p>
@@ -1975,8 +2048,9 @@ function Legal({
         <section className="wrap legal-copy">
           <h2>1. Geltungsbereich</h2>
           <p>
-            Diese AGB gelten für Spitex-Leistungen, Begleitung sowie die
-            Anstellung pflegender Angehöriger der Lumina Spitex AG, Schlieren.
+            Diese Allgemeinen Geschäftsbedingungen gelten für Spitex-Leistungen,
+            Begleitung sowie die Anstellung pflegender Angehöriger der Lumina
+            Spitex AG, Schlieren.
           </p>
           <h2>2. Leistungen</h2>
           <p>
@@ -2016,13 +2090,18 @@ function Legal({
         <section className="legal-hero">
           <div className="wrap">
             <span className="eyebrow">Transparenz</span>
-            <h1>Redaktionsrichtlinien</h1>
+            <h1>Redaktion: so prüfen wir Texte</h1>
             <p>
               <time dateTime="2026-08-12">Stand: 12. August 2026</time>
             </p>
           </div>
         </section>
         <section className="wrap legal-copy">
+          <p>
+            Diese Seite beschreibt den redaktionellen Prüfprozess für Ratgeber
+            und Website-Texte: Fachprüfung, Quellen und jährliche Aktualisierung
+            – unabhängig von Produktseiten zur Pflege zu Hause.
+          </p>
           <p className="byline">
             <span>Herausgeberin: Lumina Spitex AG</span>
             <span>Fachliche Verantwortung: diplomierte Pflegefachpersonen</span>
@@ -2060,7 +2139,11 @@ function Legal({
       <section className="legal-hero">
         <div className="wrap">
           <span className="eyebrow">Rechtliches</span>
-          <h1>{privacy ? "Datenschutzerklärung" : "Impressum"}</h1>
+          <h1>
+            {privacy
+              ? "Datenschutzerklärung dieser Website"
+              : "Impressum der Lumina Spitex AG"}
+          </h1>
           <p>Stand: August 2026</p>
         </div>
       </section>
@@ -2132,6 +2215,11 @@ function Legal({
           </>
         ) : (
           <>
+            <p>
+              Hier finden Sie die Anbieterangaben zur Lumina Spitex AG:
+              Firmensitz, Kontakt und rechtliche Hinweise zur Website – ohne
+              Leistungsbeschreibung der Pflegeangebote.
+            </p>
             <h2>Anbieterin</h2>
             <p>
               Lumina Spitex AG

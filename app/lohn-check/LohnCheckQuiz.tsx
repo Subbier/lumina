@@ -282,9 +282,7 @@ export function LohnCheckQuiz({
   }
 
   return (
-    <main id="main-content" className="quiz-page">
-      <section className="quiz-shell">{inner}</section>
-    </main>
+    <section className="quiz-shell">{inner}</section>
   );
 }
 
@@ -318,7 +316,7 @@ function Choice({
             key={o}
           >
             <span>{o}</span>
-            <b>→</b>
+            <span aria-hidden="true">→</span>
           </button>
         ))}
       </div>
@@ -358,7 +356,7 @@ function MultiChoice({
             key={o}
           >
             <span>{o}</span>
-            <b>{value.includes(o) ? "✓" : "+"}</b>
+            <span aria-hidden="true">{value.includes(o) ? "✓" : "+"}</span>
           </button>
         ))}
       </div>
