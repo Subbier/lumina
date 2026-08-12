@@ -70,7 +70,7 @@ export const articles: Article[] = [
       {
         heading: "Was Sie vor dem Unterschreiben prüfen sollten",
         paragraphs: [
-          "Fragen Sie nach dem Brutto-/Nettolohn, Ferien, AHV/ALV/UVG/BVG, der fachlichen Begleitung und danach, wie die Restkostenfinanzierung der Gemeinde kommuniziert wird. Im Kanton Zürich gelten für Angehörigenpflege strengere finanzielle und qualitative Vorgaben – unter anderem die Pflicht, innert eines Jahres einen anerkannten Pflegehelferkurs (z. B. SRK) zu absolvieren.",
+          "Fragen Sie nach dem Brutto-/Nettolohn, Ferien, AHV/ALV/UVG/BVG, der fachlichen Begleitung und danach, wie die Restkostenfinanzierung der Gemeinde kommuniziert wird. Im Kanton Zürich gelten für Angehörigenpflege strengere Vorgaben – unter anderem eine anerkannte Qualifikation innert eines Jahres. Bei Lumina können Sie sofort angestellt werden; den Lehrgang Pflegende Angehörige SRK organisieren und finanzieren wir innert zwölf Monaten.",
           "Lumina begleitet Sie bei Abklärung, Anstellung und Dokumentation. So bleibt die Pflege bei Ihnen zu Hause – und die Administration nicht allein auf Ihren Schultern.",
         ],
       },

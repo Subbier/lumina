@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "rechner-lumina-spitex.vercel.app"
+        }
+      ],
+      "destination": "/kampagne/rechner"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "rechner-lumina-spitex-gntc.vercel.app"
+        }
+      ],
+      "destination": "/kampagne/rechner"
+    }
+  ]
+}

@@ -4,7 +4,6 @@ import {
   FormEvent,
   ReactNode,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
@@ -13,6 +12,8 @@ import { ServiceSegmentPage, PartnersStrip } from "./dienstleistungen/ServiceSeg
 import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
 import { ListenPlayer } from "./listen/ListenPlayer";
 import { CookieBanner } from "./CookieBanner";
+import { AnspruchscheckQuiz } from "./anspruchscheck/AnspruchscheckQuiz";
+import { LohnCheckQuiz } from "./lohn-check/LohnCheckQuiz";
 
 function BrandLockup({
   height = 84,
@@ -30,7 +31,7 @@ function BrandLockup({
           ? "/images/logo-lumina-lockup-light.png?v=orig1"
           : "/images/logo-lumina-lockup.png?v=orig1"
       }
-      alt=""
+      alt="Lumina Spitex"
       width={width}
       height={height}
       decoding="async"
@@ -230,10 +231,10 @@ function Footer() {
             <BrandLockup height={72} light />
           </a>
           <p>
-            Persönliche Spitex-Pflege zu Hause – und wo Angehörige pflegen:
-            Anstellung, enge Begleitung und Qualifikation innert zwölf Monaten.
+            Spitex zu Hause – und Anstellung für pflegende Angehörige: sofort mit
+            Lohn, Ausbildung innert zwölf Monaten.
           </p>
-          <p className="footer-contact">
+          <address className="footer-contact">
             Rütistrasse 18, 8952 Schlieren
             <br />
             <a href="tel:+41434338800" aria-label="Telefon 043 433 88 00">
@@ -241,7 +242,7 @@ function Footer() {
             </a>{" "}
             ·{" "}
             <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
-          </p>
+          </address>
         </div>
         <nav aria-label="Dienstleistungen">
           <h3>Dienstleistungen</h3>
@@ -268,7 +269,7 @@ function Footer() {
       <div className="wrap legal">
         <span>
           © 2026 Lumina Spitex AG · Website & Inhalte:{" "}
-          <a href="https://www.agenticit.ch" target="_blank" rel="noreferrer">
+          <a href="https://www.agenticit.ch" target="_blank" rel="noopener noreferrer">
             AgenticIT
           </a>
         </span>
@@ -330,15 +331,15 @@ function Home() {
         <div className="hero-copy">
           <span className="eyebrow">Lumina Spitex · Zürich & Aargau</span>
           <h1 className="hero-title">
-            <span className="hero-title-line">Professionelle</span>
+            <span className="hero-title-line">Professionelle </span>
             <span className="hero-title-line">
               Pflege <em>zu Hause.</em>
             </span>
           </h1>
           <p className="lead">
-            Abklärung, Grund- und Behandlungspflege – persönlich begleitet, mit
-            fester Bezugsperson und Abrechnung über die Krankenkasse. So bleibt
-            Selbstbestimmung dort, wo Sie zu Hause sind.
+            Abklärung, Grund- und Behandlungspflege – mit fester Bezugsperson
+            und Abrechnung über die Krankenkasse. Selbstbestimmung bleibt, wo
+            Sie zu Hause sind.
           </p>
           <div className="actions">
             <a className="button" href="/spitex">
@@ -354,6 +355,10 @@ function Home() {
           <img
             src="/images/home-hero.jpg?v=sq3"
             alt="Pflege und Medikamentenplanung zu Hause mit Angehörigen und Fachperson"
+            width={960}
+            height={720}
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
       </section>
@@ -379,12 +384,12 @@ function Home() {
             <a href="/angehoerige" className="path-card">
               <Icon>02</Icon>
               <span>Pflegende Angehörige</span>
-              <h3>Pflegen – mit Rückhalt und Qualifikation</h3>
+              <h3>Sofort anstellen. Lohn für Ihre Pflege.</h3>
               <p>
-                Anstellung, enge Fachbegleitung und Ausbildung innert zwölf
-                Monaten – damit Nähe und Sicherheit zusammenpassen.
+                Sie pflegen schon – wir stellen an. Ausbildung Pflegende
+                Angehörige SRK innert zwölf Monaten, Kosten bei uns.
               </p>
-              <b>Mehr erfahren →</b>
+              <b>Anspruch prüfen →</b>
             </a>
             <a href="/begleitung" className="path-card premium">
               <Icon>03</Icon>
@@ -397,9 +402,11 @@ function Home() {
               <b>Begleitung entdecken →</b>
             </a>
           </div>
-          <a className="paths-cta" href="/lohn-check">
-            <span className="paths-cta-title">Lohn für pflegende Angehörige</span>
-            <span className="paths-cta-action">Jetzt Anspruch prüfen →</span>
+          <a className="paths-cta" href="/anspruchscheck">
+            <span className="paths-cta-title">
+              Pflegen Sie Angehörige? Prüfen Sie Ihren Lohnanspruch
+            </span>
+            <span className="paths-cta-action">In 2 Minuten starten →</span>
           </a>
         </div>
       </section>
@@ -408,7 +415,7 @@ function Home() {
       <section className="wrap aida-block">
         <div className="aida-copy">
           <span className="eyebrow">01 · Spitex</span>
-          <h2>Professionelle Pflege zu Hause.</h2>
+          <h2>Pflege mit fester Bezugsperson und klarer Abrechnung.</h2>
           <p className="aida-lead">
             Wie bei anerkannten Spitex-Organisationen in der Schweiz starten wir
             mit einer Bedarfsabklärung und begleiten Sie mit festen
@@ -427,32 +434,39 @@ function Home() {
           className="aida-image"
           src="/images/home-spitex.png"
           alt="Diplomierte Pflegefachperson bei der Behandlungspflege zu Hause"
+          width={720}
+          height={540}
+          loading="lazy"
+          decoding="async"
         />
       </section>
 
       <section className="wrap aida-block reverse">
         <div className="aida-copy">
           <span className="eyebrow">02 · Pflegende Angehörige</span>
-          <h2>Vertraute Pflege – professionell getragen.</h2>
+          <h2>Sie pflegen schon. Wir zahlen dafür.</h2>
           <p className="aida-lead">
-            Wer Angehörige pflegt, verdient mehr als stille Anerkennung: eine
-            Anstellung, laufende Fachbegleitung und eine klare Qualifikation
-            innert zwölf Monaten.
+            Sofortige Anstellung mit Lohn – die Ausbildung folgt. Innert zwölf
+            Monaten: Lehrgang Pflegende Angehörige SRK, organisiert und
+            finanziert durch Lumina.
           </p>
           <ul className="aida-points">
-            <li>Anstellung mit Lohn und Sozialversicherung</li>
-            <li>Enge Begleitung durch diplomierte Fachpersonen</li>
-            <li>Anerkannte Qualifikation innert zwölf Monaten</li>
+            <li>Sofort anstellen – ohne Kursabschluss zuerst</li>
+            <li>Lohn und Sozialversicherung von Tag eins</li>
+            <li>SRK-Ausbildung innert zwölf Monaten – wir tragen die Kosten</li>
           </ul>
           <a className="text-link" href="/anspruchscheck">
-            Sie pflegen einen Angehörigen? Jetzt innerhalb von zwei Minuten
-            Lohnanspruch prüfen →
+            In zwei Minuten prüfen, ob Lohn möglich ist →
           </a>
         </div>
         <img
           className="aida-image"
           src="/images/angehoerige-hero-anleitung.jpg?v=sq3"
           alt="Pflegefachperson zeigt einem Angehörigen auf Hausbesuch, wie er seinen Vater unterstützt"
+          width={720}
+          height={540}
+          loading="lazy"
+          decoding="async"
         />
       </section>
 
@@ -478,6 +492,10 @@ function Home() {
           className="aida-image"
           src="/images/home-services.png"
           alt="Begleitung einer älteren Dame im Freien für mehr Teilhabe"
+          width={720}
+          height={540}
+          loading="lazy"
+          decoding="async"
         />
       </section>
 
@@ -486,7 +504,7 @@ function Home() {
         <div>
           <span className="eyebrow light">Team · Wachstum mit Vertrauen</span>
           <h2>
-            Wir suchen
+            Wir suchen{" "}
             <br />
             mehrere Fachkräfte.
           </h2>
@@ -512,6 +530,10 @@ function Home() {
         <img
           src="/images/home-team.png"
           alt="Pflegefachpersonen von Lumina Spitex – wir suchen Verstärkung"
+          width={800}
+          height={600}
+          loading="lazy"
+          decoding="async"
         />
       </section>
 
@@ -758,7 +780,7 @@ function Tarife() {
               className="text-link"
               href="https://www.fedlex.admin.ch/eli/cc/1995/1328_1328_1328/de"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               KVG auf Fedlex öffnen →
             </a>
@@ -778,7 +800,7 @@ function Tarife() {
               className="text-link"
               href="https://www.fedlex.admin.ch/eli/cc/1995/4964_4964_4964/de"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               KLV auf Fedlex öffnen →
             </a>
@@ -796,7 +818,7 @@ function Tarife() {
               className="text-link"
               href="https://www.fedlex.admin.ch/eli/cc/1995/3867_3867_3867/de"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               KVV auf Fedlex öffnen →
             </a>
@@ -814,7 +836,7 @@ function Tarife() {
               className="text-link"
               href="https://www.fedlex.admin.ch/eli/cc/2007/804/de#art_14"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               ELG Art. 14 auf Fedlex öffnen →
             </a>
@@ -1594,7 +1616,7 @@ function ArticleCard({ a, i }: { a: Article; i: number }) {
   return (
     <article className="article-card">
       <a className="article-media" href={`/ratgeber/${a.slug}`}>
-        <img src={a.image} alt={a.imageAlt} />
+        <img src={a.image} alt={a.imageAlt} width={640} height={400} loading="lazy" decoding="async" />
         <span className={`article-art-label art-${i % 3}`}>
           {i % 3 === 0
             ? "Wissen schafft Klarheit."
@@ -1823,450 +1845,14 @@ function QuizClose() {
 }
 
 function LohnCheck() {
-  const [step, setStep] = useState(0);
-  const [relation, setRelation] = useState("");
-  const [tasks, setTasks] = useState<string[]>([]);
-  const [hours, setHours] = useState(2);
-  const [canton, setCanton] = useState("");
-  const [contact, setContact] = useState(false);
-  const [leadName, setLeadName] = useState("");
-  const [leadPhone, setLeadPhone] = useState("");
-  const [leadEmail, setLeadEmail] = useState("");
-  const eligible =
-    tasks.some((t) => t !== "Haushalt & Gesellschaft") &&
-    (canton === "Zürich" || canton === "Aargau");
-  const wage = useMemo(() => Math.round(hours * 30.4 * 36), [hours]);
-  const screens = [
-    <Choice
-      key="s1"
-      title="Welche Situation trifft auf Sie zu?"
-      subtitle="Damit wir Sie auf den richtigen Weg führen."
-      options={[
-        "Ich pflege einen Menschen",
-        "Ich werde gepflegt",
-        "Ich möchte mich informieren",
-      ]}
-      value={relation}
-      setValue={setRelation}
-    />,
-    <Choice
-      key="s2"
-      title="Wen begleiten Sie?"
-      subtitle="Mehrere Beziehungen können grundsätzlich in Frage kommen."
-      options={[
-        "Mutter oder Vater",
-        "Partner:in",
-        "Grosseltern",
-        "Eigenes Kind",
-        "Nahestehende Person",
-      ]}
-      value=""
-      setValue={() => {}}
-    />,
-    <MultiChoice
-      key="s3"
-      title="Wobei helfen Sie regelmässig?"
-      subtitle="Wählen Sie alles, was zutrifft."
-      options={[
-        "Körperpflege",
-        "Essen & Trinken",
-        "Aufstehen & Bewegen",
-        "An- & Auskleiden",
-        "Haushalt & Gesellschaft",
-      ]}
-      value={tasks}
-      setValue={setTasks}
-    />,
-    <div key="s4">
-      <h2>Wie viel Zeit wenden Sie pro Tag auf?</h2>
-      <p className="quiz-sub">
-        Eine ungefähre Angabe reicht für die erste Schätzung.
-      </p>
-      <div className="big-number">
-        {hours.toFixed(1)} <small>Stunden / Tag</small>
-      </div>
-      <input
-        className="big-range"
-        type="range"
-        min="0.5"
-        max="4"
-        step="0.5"
-        value={hours}
-        onChange={(e) => setHours(+e.target.value)}
-      />
-      <div className="range-labels">
-        <span>30 Min.</span>
-        <span>4+ Std.</span>
-      </div>
-    </div>,
-    <Choice
-      key="s5"
-      title="Wo wohnt die gepflegte Person?"
-      subtitle="Lumina ist aktuell in Zürich und Aargau im Aufbau tätig."
-      options={["Zürich", "Aargau", "Anderer Kanton"]}
-      value={canton}
-      setValue={setCanton}
-    />,
-    <div key="s6" className="quiz-lead">
-      <h2>Wohin dürfen wir Ihr Ergebnis senden?</h2>
-      <p className="quiz-sub">
-        Optional – Sie sehen die Schätzung auch direkt auf dem nächsten Schritt.
-      </p>
-      <div className="quiz-lead-form">
-        <div className="quiz-lead-grid">
-          <label className="quiz-field">
-            <span>Vorname</span>
-            <input
-              value={leadName}
-              onChange={(e) => setLeadName(e.target.value)}
-              placeholder="z. B. Anna"
-              autoComplete="given-name"
-            />
-          </label>
-          <label className="quiz-field">
-            <span>Telefon</span>
-            <input
-              type="tel"
-              value={leadPhone}
-              onChange={(e) => setLeadPhone(e.target.value)}
-              placeholder="079 000 00 00"
-              autoComplete="tel"
-            />
-          </label>
-        </div>
-        <label className="quiz-field">
-          <span>E-Mail</span>
-          <input
-            type="email"
-            value={leadEmail}
-            onChange={(e) => setLeadEmail(e.target.value)}
-            placeholder="name@beispiel.ch"
-            autoComplete="email"
-          />
-        </label>
-        <label className="quiz-consent">
-          <input
-            type="checkbox"
-            checked={contact}
-            onChange={(e) => setContact(e.target.checked)}
-          />
-          <span>
-            Ich wünsche eine persönliche Rückmeldung und stimme der Bearbeitung
-            gemäss{" "}
-            <a href="/datenschutz" target="_blank" rel="noreferrer">
-              Datenschutz
-            </a>{" "}
-            zu.
-          </span>
-        </label>
-      </div>
-    </div>,
-    <div className="quiz-result" key="s7">
-      <span className="result-kicker">Ihre unverbindliche Einschätzung</span>
-      {eligible ? (
-        <>
-          <h2>Eine Anstellung könnte möglich sein.</h2>
-          <div className="wage">
-            <span>Orientierungswert brutto / Monat</span>
-            <b>CHF {wage.toLocaleString("de-CH")}</b>
-            <small>
-              Beispiel mit CHF 36.–/Std. für anrechenbare Grundpflege
-            </small>
-          </div>
-          <ul>
-            <li>Arbeitsvertrag und monatliche Lohnabrechnung</li>
-            <li>AHV und Unfallversicherung</li>
-            <li>Fachliche Begleitung und Schulung</li>
-            <li>Administration und Abrechnung durch Lumina</li>
-          </ul>
-          <a className="button gold" href="/kontakt">
-            Persönliche Prüfung vereinbaren
-          </a>
-        </>
-      ) : (
-        <>
-          <h2>Lassen Sie uns Ihre Situation persönlich ansehen.</h2>
-          <p>
-            Die gewählten Angaben reichen für eine positive digitale
-            Einschätzung noch nicht aus. Es können trotzdem andere Leistungen
-            oder Entlastungsangebote passen.
-          </p>
-          <a className="button gold" href="/kontakt">
-            Kostenlos beraten lassen
-          </a>
-        </>
-      )}
-    </div>,
-  ];
-  async function next() {
-    if (step === 5 && contact && (leadPhone || leadEmail)) {
-      await fetch("/api/leads", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          source: "lohn-check",
-          name: leadName,
-          contact: [leadPhone, leadEmail].filter(Boolean).join(" · "),
-          topic: "Anstellung als pflegende Angehörige",
-          details: { relation, tasks, hours, canton, estimatedMonthlyGross: wage },
-          consent: true,
-        }),
-      });
-    }
-    if (step < 6) setStep(step + 1);
-  }
-  return (
-    <main id="main-content" className="quiz-page">
-      <section className="quiz-shell">
-        <QuizClose />
-        <div className="quiz-progress">
-          <span style={{ width: `${((step + 1) / 7) * 100}%` }} />
-          <small>Schritt {step + 1} von 7</small>
-        </div>
-        <div className="quiz-card">
-          {screens[step]}
-          {step < 6 && (
-            <div className="quiz-nav">
-              <button
-                onClick={() => setStep(Math.max(0, step - 1))}
-                disabled={step === 0}
-              >
-                Zurück
-              </button>
-              <button className="button" onClick={next}>
-                Weiter
-              </button>
-            </div>
-          )}
-          {step >= 6 && (
-            <div className="quiz-nav quiz-nav-end">
-              <a className="text-link" href="/">
-                Zur Website →
-              </a>
-            </div>
-          )}
-        </div>
-        <p className="quiz-disclaimer">
-          Automatisierte, unverbindliche Schätzung auf Basis eines
-          Beispiel-Stundenlohns · ersetzt keine Bedarfsabklärung oder
-          Rechtsberatung.
-        </p>
-      </section>
-    </main>
-  );
-}
-
-function Choice({
-  title,
-  subtitle,
-  options,
-  value,
-  setValue,
-}: {
-  title: string;
-  subtitle: string;
-  options: string[];
-  value: string;
-  setValue: (v: string) => void;
-}) {
-  const [local, setLocal] = useState(value);
-  return (
-    <div>
-      <h2>{title}</h2>
-      <p className="quiz-sub">{subtitle}</p>
-      <div className="choices">
-        {options.map((o) => (
-          <button
-            className={(value || local) === o ? "selected" : ""}
-            onClick={() => {
-              setLocal(o);
-              setValue(o);
-            }}
-            key={o}
-          >
-            <span>{o}</span>
-            <b>→</b>
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-function MultiChoice({
-  title,
-  subtitle,
-  options,
-  value,
-  setValue,
-}: {
-  title: string;
-  subtitle: string;
-  options: string[];
-  value: string[];
-  setValue: (v: string[]) => void;
-}) {
-  return (
-    <div>
-      <h2>{title}</h2>
-      <p className="quiz-sub">{subtitle}</p>
-      <div className="choices multi">
-        {options.map((o) => (
-          <button
-            className={value.includes(o) ? "selected" : ""}
-            onClick={() =>
-              setValue(
-                value.includes(o)
-                  ? value.filter((x) => x !== o)
-                  : [...value, o],
-              )
-            }
-            key={o}
-          >
-            <span>{o}</span>
-            <b>{value.includes(o) ? "✓" : "+"}</b>
-          </button>
-        ))}
-      </div>
-    </div>
-  );
+  return <LohnCheckQuiz topBar={<QuizClose />} />;
 }
 
 function Anspruchscheck() {
-  const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
-  const qs = [
-    {
-      q: "Wen betreuen oder pflegen Sie?",
-      s: "Damit wir einschätzen, welche Unterstützung in Frage kommt.",
-      o: [
-        "Mutter oder Vater",
-        "Partnerin oder Partner",
-        "Anderes Familienmitglied",
-        "Nahestehende Person",
-      ],
-    },
-    {
-      q: "Wie viel Hilfe braucht die Person im Alltag?",
-      s: "Denken Sie an Ankleiden, Essen, Körperpflege, Bewegung und Toilette.",
-      o: [
-        "Bei fast allem täglich",
-        "Bei mehreren Dingen regelmässig",
-        "Bei einzelnen Dingen",
-        "Noch weitgehend selbstständig",
-      ],
-    },
-    {
-      q: "Wie lange besteht der Hilfebedarf?",
-      s: "Für einzelne Sozialleistungen gelten Warte- oder Mindestfristen.",
-      o: [
-        "Rund ein Jahr oder länger",
-        "Seit einigen Monaten",
-        "Erst seit Kurzem",
-        "Nicht sicher",
-      ],
-    },
-    {
-      q: "In welcher Region wohnt die Person?",
-      s: "Lumina ist in den Kantonen Zürich und Aargau für Sie da.",
-      o: [
-        "Kanton Zürich",
-        "Kanton Aargau",
-        "Limmattal / Grenzregion",
-        "Andere Region",
-      ],
-    },
-  ];
-  if (step >= 4)
-    return (
-      <main id="main-content" className="quiz-page green">
-        <section className="quiz-shell">
-          <QuizClose />
-          <div className="quiz-card result-check">
-            <span className="success-icon">✓</span>
-            <span className="result-kicker">Ihre erste Orientierung</span>
-            <h1>Mehrere Ansprüche könnten in Frage kommen.</h1>
-            <div className="claim-grid">
-              <div>
-                <b>Hilflosenentschädigung</b>
-                <span>Persönlich abklären</span>
-              </div>
-              <div>
-                <b>Betreuungsgutschrift</b>
-                <span>Situation prüfen</span>
-              </div>
-              <div>
-                <b>Anstellung bei Lumina</b>
-                <span>Wahrscheinlich relevant</span>
-              </div>
-            </div>
-            <p>
-              Eine Fachperson kann Ihre Angaben kostenlos einordnen und die
-              nächsten Schritte mit Ihnen besprechen.
-            </p>
-            <a className="button" href="/kontakt">
-              Persönliche Prüfung anfragen
-            </a>
-            <button
-              className="restart"
-              onClick={() => {
-                setStep(0);
-                setAnswers([]);
-              }}
-            >
-              Check wiederholen
-            </button>
-            <a className="restart" href="/">
-              Zur Website
-            </a>
-          </div>
-          <p className="quiz-disclaimer">
-            Unverbindliche Orientierung, keine Rechts- oder Sozialberatung. Die
-            verbindliche Prüfung erfolgt durch die zuständige Stelle oder
-            Fachperson.
-          </p>
-        </section>
-      </main>
-    );
-  const q = qs[step];
   return (
-    <main id="main-content" className="quiz-page green">
-      <section className="quiz-shell">
-        <QuizClose />
-        <div className="quiz-progress">
-          <span style={{ width: `${((step + 1) / 4) * 100}%` }} />
-          <small>Frage {step + 1} von 4</small>
-        </div>
-        <div className="quiz-card">
-          <h2>{q.q}</h2>
-          <p className="quiz-sub">{q.s}</p>
-          <div className="choices">
-            {q.o.map((o) => (
-              <button
-                onClick={() => {
-                  setAnswers([...answers, o]);
-                  setStep(step + 1);
-                }}
-                key={o}
-              >
-                <span>{o}</span>
-                <b>→</b>
-              </button>
-            ))}
-          </div>
-          {step > 0 && (
-            <button
-              className="restart"
-              onClick={() => {
-                setStep(step - 1);
-                setAnswers(answers.slice(0, -1));
-              }}
-            >
-              ← Zurück
-            </button>
-          )}
-        </div>
-      </section>
-    </main>
+    <AnspruchscheckQuiz
+      topBar={<QuizClose />}
+    />
   );
 }
 
@@ -2291,7 +1877,7 @@ function Legal({ privacy = false }: { privacy?: boolean }) {
             </p>
             <p>
               Website und redaktionelle Inhalte:{" "}
-              <a href="https://www.agenticit.ch" target="_blank" rel="noreferrer">
+              <a href="https://www.agenticit.ch" target="_blank" rel="noopener noreferrer">
                 AgenticIT
               </a>
               , www.agenticit.ch
@@ -2389,7 +1975,7 @@ function Legal({ privacy = false }: { privacy?: boolean }) {
             <h2>Website & Inhalte</h2>
             <p>
               Diese Website wurde erstellt von{" "}
-              <a href="https://www.agenticit.ch" target="_blank" rel="noreferrer">
+              <a href="https://www.agenticit.ch" target="_blank" rel="noopener noreferrer">
                 AgenticIT
               </a>{" "}
               (www.agenticit.ch). AgenticIT ist auch für die Inhalte dieser

@@ -1,35 +1,16 @@
 import type { MetadataRoute } from "next";
-import { articles } from "./ratgeber/articles";
-import { SITE_URL, pageSeo, type PageSeo } from "./seo/site";
+import { REVIEW_CRAWL_OPEN } from "../lib/stage-seo";
+import { pageSeo } from "./seo/site";
 
+/** Stage: Sitemap nur wenn Review-Crawl offen; Live später voll ausbauen (Ortsseiten!). */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  if (!REVIEW_CRAWL_OPEN) return [];
 
-  const staticRoutes = (Object.values(pageSeo) as PageSeo[]).map((page) => {
-    const isConversion = Boolean(page.conversion);
-    return {
-      url: `${SITE_URL}${page.path === "/" ? "" : page.path}`,
-      lastModified: now,
-      changeFrequency: isConversion
-        ? ("daily" as const)
-        : ("weekly" as const),
-      priority:
-        page.path === "/"
-          ? 1
-          : isConversion
-            ? 0.9
-            : page.path === "/impressum" || page.path === "/datenschutz"
-              ? 0.3
-              : 0.7,
-    };
-  });
-
-  const articleRoutes = articles.map((article) => ({
-    url: `${SITE_URL}/ratgeber/${article.slug}`,
-    lastModified: now,
+  const base = "https://lumina-spitex.vercel.app";
+  return Object.values(pageSeo).map((page) => ({
+    url: `${base}${page.path}`,
+    lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.55,
+    priority: page.path === "/" ? 1 : 0.7,
   }));
-
-  return [...staticRoutes, ...articleRoutes];
 }

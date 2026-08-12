@@ -1,5 +1,6 @@
 "use client";
 
+import { AnspruchscheckQuiz } from "../anspruchscheck/AnspruchscheckQuiz";
 import {
   getServiceSegment,
   partners,
@@ -16,7 +17,7 @@ function PartnersStrip() {
       <div className="partners-grid">
         {partners.map((p) => (
           <div className="partner-logo" key={p.name}>
-            <img src={p.src} alt={p.name} />
+            <img src={p.src} alt={p.name} width={160} height={64} loading="lazy" decoding="async" />
           </div>
         ))}
       </div>
@@ -83,6 +84,8 @@ export function ServiceSegmentPage({
           </details>
         </div>
       </section>
+
+      {id === "angehoerige" ? <AnspruchscheckQuiz embedded /> : null}
 
       {page.facts ? (
         <section className="wrap segment-facts">

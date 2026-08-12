@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { stageRobotsMeta } from "../../lib/stage-seo";
 
 export const SITE_URL = "https://lumina-spitex.ch";
 export const SITE_NAME = "Lumina Spitex";
@@ -24,21 +25,21 @@ export type PageSeo = {
 export const pageSeo = {
   home: {
     path: "/",
-    title: "Spitex Zürich & Aargau | Pflege zu Hause",
+    title: "Spitex Zürich & Aargau | Pflege zu Hause & Angehörige",
     description:
-      "Lumina Spitex: kassenpflichtige Pflege zu Hause, Begleitung und Anstellung für pflegende Angehörige in Zürich und Aargau. Kostenlose Erstberatung.",
+      "Spitex in Zürich & Aargau – und Lohn für pflegende Angehörige. Sofort anstellen, SRK innert 12 Monaten. Jetzt Anspruch prüfen.",
   },
   spitex: {
     path: "/spitex",
     title: "Spitex-Leistungen | Abklärung, Grund- & Behandlungspflege",
     description:
-      "Professionelle Spitex in Zürich und Aargau: Abklärung & Beratung, Grundpflege und Behandlungspflege – ärztlich verordnet, direkt mit der Krankenkasse.",
+      "Professionelle Spitex in Zürich und Aargau: Abklärung, Grund- und Behandlungspflege – ärztlich verordnet, direkt mit der Krankenkasse. Auch für Familien mit Angehörigenpflege.",
   },
   angehoerige: {
     path: "/angehoerige",
-    title: "Pflegende Angehörige anstellen | Lohn & Qualifikation",
+    title: "Pflegende Angehörige anstellen | Sofort Lohn | SRK",
     description:
-      "Angehörige pflegen und dafür Lohn erhalten: Anstellung bei Lumina, Fachbegleitung und anerkannte Qualifikation innert 12 Monaten. Jetzt Anspruch prüfen.",
+      "Angehörige pflegen und sofort angestellt werden: Lohn von Tag eins, Lehrgang Pflegende Angehörige SRK innert 12 Monaten – Kosten trägt Lumina. Jetzt Anspruch prüfen.",
     conversion: true,
   },
   begleitung: {
@@ -61,15 +62,15 @@ export const pageSeo = {
   },
   ratgeber: {
     path: "/ratgeber",
-    title: "Ratgeber | Wissen zu Pflege & Angehörigen",
+    title: "Ratgeber | Lohn für pflegende Angehörige & Spitex",
     description:
-      "Ratgeber zu Lohn für pflegende Angehörige, Hilflosenentschädigung, Vorsorge und Spitex im Limmattal – verständlich und praxisnah.",
+      "Ratgeber zu Anstellung und Lohn für pflegende Angehörige, SRK-Ausbildung, Hilflosenentschädigung und Spitex im Limmattal – klar und praxisnah.",
   },
   kontakt: {
     path: "/kontakt",
-    title: "Kontakt | Anrufen, Rückruf oder Termin",
+    title: "Kontakt | Rückruf für pflegende Angehörige & Spitex",
     description:
-      "Kontaktieren Sie Lumina Spitex: direkt anrufen, Rückruf anfordern, Termin vereinbaren oder schreiben. Mo–Fr 08:00–17:00, Schlieren.",
+      "Rückruf anfordern oder anrufen: Fragen zu Anstellung pflegender Angehöriger und Spitex. Mo–Fr 08:00–17:00, Schlieren.",
     conversion: true,
   },
   bewerbung: {
@@ -83,14 +84,14 @@ export const pageSeo = {
     path: "/anspruchscheck",
     title: "Anspruch prüfen | Lohn für pflegende Angehörige",
     description:
-      "In wenigen Minuten prüfen, ob für Ihre Angehörigenpflege ein Lohnanspruch möglich ist. Unverbindliche Einschätzung von Lumina Spitex.",
+      "In 2 Minuten prüfen: Ist Lohn für Ihre Angehörigenpflege möglich? Unverbindlich – und bei Passung sofort Anstellung bei Lumina Spitex.",
     conversion: true,
   },
   lohnCheck: {
     path: "/lohn-check",
-    title: "Lohn-Check | Orientierung für pflegende Angehörige",
+    title: "Lohn-Check | Was verdienen pflegende Angehörige?",
     description:
-      "Unverbindliche Bruttolohn-Schätzung für pflegende Angehörige – Pensum und Stundenlohn als erste Orientierung vor dem Gespräch.",
+      "Erste Bruttolohn-Schätzung für pflegende Angehörige – Pensum und Stundenlohn als Orientierung. Danach Rückruf oder Beratung bei Lumina.",
     conversion: true,
   },
   impressum: {
@@ -107,46 +108,27 @@ export const pageSeo = {
 } as const satisfies Record<string, PageSeo>;
 
 export function buildMetadata(page: PageSeo): Metadata {
-  const url = `${SITE_URL}${page.path === "/" ? "" : page.path}`;
   return {
     title: page.title,
     description: page.description,
-    alternates: { canonical: url },
-    openGraph: {
-      title: page.title,
-      description: page.description,
-      url,
-      siteName: SITE_NAME,
-      locale: "de_CH",
-      type: "website",
-      images: [
-        {
-          url: "/og.png",
-          alt: `${SITE_NAME} – Pflege, die ankommt.`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: page.title,
-      description: page.description,
-      images: ["/og.png"],
-    },
+    robots: stageRobotsMeta,
+    // Stage: kein Canonical / Social-Preview auf Live-Domain bis Go-Live
   };
 }
 
-export function organizationJsonLd() {
+export function organizationJsonLd(baseUrl: string = SITE_URL) {
+  const base = baseUrl.replace(/\/$/, "");
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": ["Organization", "HomeHealthCareService", "LocalBusiness"],
-        "@id": `${SITE_URL}/#organization`,
+        "@id": `${base}/#organization`,
         name: "Lumina Spitex AG",
         legalName: "Lumina Spitex AG",
-        url: SITE_URL,
-        logo: `${SITE_URL}/icon-512.png`,
-        image: `${SITE_URL}/og.png`,
+        url: base,
+        logo: `${base}/icon-512.png`,
+        image: `${base}/og.png`,
         telephone: SITE_PHONE,
         email: SITE_EMAIL,
         address: {
@@ -185,48 +167,48 @@ export function organizationJsonLd() {
       },
       {
         "@type": "WebSite",
-        "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        "@id": `${base}/#website`,
+        url: base,
         name: SITE_NAME,
         inLanguage: "de-CH",
-        publisher: { "@id": `${SITE_URL}/#organization` },
+        publisher: { "@id": `${base}/#organization` },
       },
       {
         "@type": "WebPage",
-        "@id": `${SITE_URL}/#webpage`,
-        url: SITE_URL,
+        "@id": `${base}/#webpage`,
+        url: base,
         name: pageSeo.home.title,
         description: pageSeo.home.description,
-        isPartOf: { "@id": `${SITE_URL}/#website` },
-        about: { "@id": `${SITE_URL}/#organization` },
+        isPartOf: { "@id": `${base}/#website` },
+        about: { "@id": `${base}/#organization` },
         inLanguage: "de-CH",
       },
       {
         "@type": "Service",
-        "@id": `${SITE_URL}/spitex#service`,
+        "@id": `${base}/spitex#service`,
         name: "Spitex-Pflege",
         serviceType: "Ambulante Krankenpflege",
-        provider: { "@id": `${SITE_URL}/#organization` },
+        provider: { "@id": `${base}/#organization` },
         areaServed: ["Zürich", "Aargau"],
-        url: `${SITE_URL}/spitex`,
+        url: `${base}/spitex`,
         description: pageSeo.spitex.description,
       },
       {
         "@type": "Service",
-        "@id": `${SITE_URL}/angehoerige#service`,
+        "@id": `${base}/angehoerige#service`,
         name: "Anstellung pflegender Angehöriger",
         serviceType: "Pflegende Angehörige",
-        provider: { "@id": `${SITE_URL}/#organization` },
-        url: `${SITE_URL}/angehoerige`,
+        provider: { "@id": `${base}/#organization` },
+        url: `${base}/angehoerige`,
         description: pageSeo.angehoerige.description,
       },
       {
         "@type": "Service",
-        "@id": `${SITE_URL}/begleitung#service`,
+        "@id": `${base}/begleitung#service`,
         name: "Begleitung im Alltag",
         serviceType: "Alltagsbegleitung",
-        provider: { "@id": `${SITE_URL}/#organization` },
-        url: `${SITE_URL}/begleitung`,
+        provider: { "@id": `${base}/#organization` },
+        url: `${base}/begleitung`,
         description: pageSeo.begleitung.description,
       },
     ],

@@ -108,6 +108,49 @@
 .quiz-nav-end{justify-content:flex-end}
 .quiz-nav-end .text-link.light{border-bottom-color:var(--gold);color:#fff}
 
+/* Inline Anspruchscheck auf /angehoerige */
+.claim-inline-quiz{padding-block:28px 56px;scroll-margin-top:120px}
+.claim-inline-head{margin-bottom:28px;max-width:640px}
+.claim-inline-head p{margin:12px 0 0;color:var(--muted);font-size:1.05rem;line-height:1.55}
+.quiz-embed{background:radial-gradient(circle at top right,#cce2d6 0,transparent 32%),#103f3b;padding:28px 18px 36px;border-radius:18px;color:#fff}
+.quiz-embed.navy{background:radial-gradient(circle at top right,#ead5a8 0,transparent 35%),var(--navy)}
+.quiz-embed .quiz-shell{width:min(720px,100%);margin:auto}
+.quiz-embed .quiz-card{margin-top:28px;min-height:420px}
+.quiz-embed .quiz-progress{margin-bottom:22px}
+.quiz-embed .quiz-disclaimer{margin-top:18px;color:rgba(255,255,255,.72);font-size:.85rem;line-height:1.45;text-align:center}
+@media(max-width:640px){
+  .claim-inline-quiz{padding-block:12px 40px;scroll-margin-top:96px}
+  .quiz-embed{padding:20px 12px 28px;border-radius:14px}
+  .quiz-embed .quiz-card{min-height:380px;padding:28px 18px}
+}
+
+/* Kampagne Stage: rechner-lumina-spitex.vercel.app */
+.kampagne-rechner{background:var(--cream);padding-bottom:48px}
+.kampagne-top{position:sticky;top:0;z-index:20;background:rgba(252,251,247,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.kampagne-top-inner{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:16px}
+.kampagne-top .brand-logo{height:52px;width:auto}
+.kampagne-phone{font-weight:700;color:var(--navy);white-space:nowrap}
+.kampagne-hero{position:relative;min-height:min(78vh,700px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.kampagne-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.kampagne-hero-shade{position:absolute;inset:0;background:linear-gradient(105deg,rgba(12,28,36,.82) 0%,rgba(12,28,36,.55) 48%,rgba(12,28,36,.2) 100%),linear-gradient(to top,rgba(12,28,36,.75),transparent 55%)}
+.kampagne-hero-copy{position:relative;z-index:1;padding:64px 0 56px;max-width:640px}
+.kampagne-brand{margin:0;font-family:"Libre Franklin",sans-serif;font-size:clamp(2rem,4vw,2.75rem);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.kampagne-hero-copy h1{font-size:clamp(1.45rem,2.6vw,1.95rem);line-height:1.2;margin:14px 0;font-weight:600;max-width:24ch}
+.kampagne-hero-copy>p{color:rgba(255,255,255,.9);font-size:1.06rem;line-height:1.55;max-width:36ch;margin:0}
+.kampagne-actions{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;margin-top:26px}
+.kampagne-contact{padding:24px 0 64px}
+.kampagne-contact-card{background:var(--navy);color:#fff;border-radius:18px;padding:clamp(32px,5vw,52px);max-width:720px}
+.kampagne-contact-card h2{margin:8px 0 12px}
+.kampagne-contact-card>p{color:rgba(255,255,255,.84)}
+.kampagne-form{display:grid;gap:14px;margin:22px 0 0;max-width:420px}
+.kampagne-form label{display:grid;gap:6px;font-size:.82rem;font-weight:700}
+.kampagne-form input{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;padding:14px 16px;border-radius:10px}
+.kampagne-form input::placeholder{color:rgba(255,255,255,.45)}
+.kampagne-success{margin:22px 0 0;font-weight:700;color:var(--gold)}
+.kampagne-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:24px 40px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+.kampagne-footer a{color:var(--muted)}
+@media(max-width:640px){.kampagne-hero{min-height:70vh}.kampagne-hero-copy{padding:40px 0 36px}}
+
 /* Home AIDA + Mehr lesen */
 .aida-paths .path-card{min-height:320px}
 .paths-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin:36px auto 0;max-width:520px;padding:26px 32px;background:var(--navy);color:#fff;border-radius:6px;text-align:center;transition:.2s ease;box-shadow:var(--shadow)}
@@ -553,3 +596,4 @@
 @media(max-width:520px){
   .contact-intents{grid-template-columns:1fr}
 }
+address.footer-contact{font-style:normal;margin:0}

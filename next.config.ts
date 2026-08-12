@@ -1,4 +1,29 @@
 import type { NextConfig } from "next";
+import { REVIEW_CRAWL_OPEN } from "./lib/stage-seo";
+
+const securityHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=()",
+  },
+  {
+    key: "Content-Security-Policy",
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https:",
+      "font-src 'self' data:",
+      "connect-src 'self' https:",
+      "frame-ancestors 'self'",
+      "base-uri 'self'",
+      "form-action 'self'",
+    ].join("; "),
+  },
+];
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -9,17 +34,32 @@ const nextConfig: NextConfig = {
     dirs: ["app", "db"],
   },
   async headers() {
+    const headers = [...securityHeaders];
+    if (!REVIEW_CRAWL_OPEN) {
+      headers.push({
+        key: "X-Robots-Tag",
+        value: "noindex, nofollow, noarchive",
+      });
+    }
     return [
       {
         source: "/:path*",
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "noindex, nofollow, noarchive",
-          },
-        ],
+        headers,
       },
     ];
+  },
+  async rewrites() {
+    const hosts = [
+      "rechner-lumina-spitex.vercel.app",
+      "rechner-lumina-spitex-gntc.vercel.app",
+    ];
+    return {
+      beforeFiles: hosts.map((host) => ({
+        source: "/",
+        has: [{ type: "host" as const, value: host }],
+        destination: "/kampagne/rechner",
+      })),
+    };
   },
 };
 

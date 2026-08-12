@@ -1,11 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Analytics } from "./seo/Analytics";
-import { JsonLd } from "./seo/JsonLd";
-import { SITE_NAME, SITE_URL, pageSeo } from "./seo/site";
+import {
+  REVIEW_CRAWL_OPEN,
+  STAGE_PUBLIC_URL,
+  stageRobotsMeta,
+} from "../lib/stage-seo";
+import {
+  SITE_NAME,
+  SITE_URL,
+  organizationJsonLd,
+  pageSeo,
+} from "./seo/site";
+
+const publicBase = REVIEW_CRAWL_OPEN ? STAGE_PUBLIC_URL : SITE_URL;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(publicBase),
   title: {
     default: pageSeo.home.title,
     template: `%s | ${SITE_NAME}`,
@@ -17,33 +27,26 @@ export const metadata: Metadata = {
   publisher: "Lumina Spitex AG",
   category: "healthcare",
   keywords: [
+    "pflegende Angehörige",
+    "pflegende Angehörige anstellen",
+    "Lohn für pflegende Angehörige",
+    "Angehörige bei Spitex anstellen",
+    "Lehrgang Pflegende Angehörige SRK",
     "Spitex",
     "Spitex Zürich",
-    "Spitex Aargau",
+    "Spitex Schlieren",
     "Spitex Limmattal",
+    "Spitex Aargau",
     "Pflege zu Hause",
-    "pflegende Angehörige",
-    "Angehörige anstellen",
     "Grundpflege",
     "Behandlungspflege",
     "Begleitung",
     "Lumina Spitex",
   ],
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
-  alternates: {
-    canonical: SITE_URL,
-    languages: { "de-CH": SITE_URL },
-  },
+  robots: stageRobotsMeta,
+  alternates: REVIEW_CRAWL_OPEN
+    ? { canonical: STAGE_PUBLIC_URL }
+    : undefined,
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
@@ -65,7 +68,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "de_CH",
-    url: SITE_URL,
+    url: publicBase,
     siteName: SITE_NAME,
     title: pageSeo.home.title,
     description: pageSeo.home.description,
@@ -97,11 +100,22 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const jsonLd = organizationJsonLd(publicBase);
   return (
     <html lang="de-CH">
+      <head>
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="llms.txt"
+        />
+      </head>
       <body>
-        <JsonLd />
-        <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>
