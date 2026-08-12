@@ -13,6 +13,14 @@ export const REVIEW_CRAWL_OPEN = true;
 /** Absolute Basis-URL für Meta/OG während Stage-Review (nicht die noch tote .ch). */
 export const STAGE_PUBLIC_URL = "https://lumina-spitex.vercel.app";
 
+/** Live-Domain – erst nach DNS/Go-Live als Canonical-Ziel nutzen. */
+export const LIVE_PUBLIC_URL = "https://lumina-spitex.ch";
+
+/** Öffentliche Basis-URL für Canonical, OG, Sitemap, JSON-LD. */
+export function publicSiteUrl(): string {
+  return REVIEW_CRAWL_OPEN ? STAGE_PUBLIC_URL : LIVE_PUBLIC_URL;
+}
+
 export const stageRobotsMeta = REVIEW_CRAWL_OPEN
   ? {
       index: true,

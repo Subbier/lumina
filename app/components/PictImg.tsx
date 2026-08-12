@@ -1,4 +1,5 @@
-/** Shared responsive <picture> for audit-friendly WebP + srcset. */
+/** Shared responsive <picture> for audit-friendly WebP + srcset.
+ *  Fallback <img> also uses WebP so crawlers never pull oversized PNG/JPEG. */
 export function PictImg({
   src,
   alt,
@@ -21,7 +22,7 @@ export function PictImg({
   sizes?: string;
 }) {
   const clean = src.split("?")[0];
-  const webpBase = clean.replace(/\.(jpe?g|png)$/i, "");
+  const webpBase = clean.replace(/\.(jpe?g|png|webp)$/i, "");
   const webp = `${webpBase}.webp`;
   const candidates = [480, 768, 1200]
     .filter((w) => w < width)
@@ -33,7 +34,7 @@ export function PictImg({
       <source type="image/webp" srcSet={srcSet} sizes={sizes} />
       <img
         className={className}
-        src={src}
+        src={webp}
         alt={alt}
         width={width}
         height={height}

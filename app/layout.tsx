@@ -1,18 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import {
-  REVIEW_CRAWL_OPEN,
-  STAGE_PUBLIC_URL,
-  stageRobotsMeta,
-} from "../lib/stage-seo";
+import { publicSiteUrl, stageRobotsMeta } from "../lib/stage-seo";
 import {
   SITE_NAME,
-  SITE_URL,
   organizationJsonLd,
   pageSeo,
 } from "./seo/site";
 
-const publicBase = REVIEW_CRAWL_OPEN ? STAGE_PUBLIC_URL : SITE_URL;
+const publicBase = publicSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(publicBase),
@@ -44,9 +39,7 @@ export const metadata: Metadata = {
     "Lumina Spitex",
   ],
   robots: stageRobotsMeta,
-  alternates: REVIEW_CRAWL_OPEN
-    ? { canonical: STAGE_PUBLIC_URL }
-    : undefined,
+  // Canonical pro Seite via buildMetadata / generateMetadata – nie global auf /
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,

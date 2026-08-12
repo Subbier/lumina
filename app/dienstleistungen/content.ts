@@ -189,7 +189,7 @@ export const serviceSegments: ServiceSegment[] = [
     titleEm: "das sich wieder leicht anfühlt.",
     lead:
       "Wenn Pflege das Nötige sichert, schafft Begleitung das Angenehme: Erledigungen, Termine und Teilhabe am sozialen Leben – diskret, verlässlich und auf Sie abgestimmt.",
-    image: "/images/home-services.png",
+    image: "/images/home-services.webp",
     imageAlt: "Begleitung für Teilhabe und ein angenehmes Leben zu Hause",
     heroTone: "clean",
     introEyebrow: "Mehr als das Minimum",

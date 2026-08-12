@@ -270,34 +270,13 @@ function Footer() {
           <p className="share-row" aria-label="Seite teilen">
             <span>Teilen:</span>
             <a
-              href={`https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
-            <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
               href={`mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(shareUrl)}`}
             >
-              E-Mail
+              Seite per E-Mail teilen
             </a>
           </p>
           <p className="share-row" aria-label="Verzeichnisse">
             <span>Profile:</span>
-            <a
-              href="https://www.local.ch/de/d/schlieren/8952/spitex/lumina-spitex-ag-GDCwJTVZfXfYzZT1jek6xQ"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              local.ch
-            </a>
             <a
               href="https://www.help.ch/firma/CHE-233.932.070/lumina-spitex-ag-schlieren"
               target="_blank"
@@ -333,7 +312,7 @@ function Footer() {
       <div className="wrap legal">
         <span>
           © 2026 Lumina Spitex AG · Website & Inhalte:{" "}
-          <a href="https://www.agenticit.ch" target="_blank" rel="noopener noreferrer">
+          <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
             AgenticIT
           </a>
         </span>
@@ -438,8 +417,9 @@ function Home() {
         <p>
           Viele Angehörige organisieren Pflege neben Job und Familie. Das fühlt
           sich oft schwer an. Lumina Spitex hilft mit einem einfachen Einstieg:
-          Wir klären den Bedarf zu Hause. Danach starten wir mit Pflege oder mit
-          einer Anstellung für Sie als pflegende Angehörige.
+          Professionelle Pflege zu Hause beginnt mit einer klaren Abklärung.
+          Danach starten wir mit Pflege oder mit einer Anstellung für Sie als
+          pflegende Angehörige.
         </p>
         <p>
           Sitz ist Schlieren im Limmattal. Einsatzgebiet sind der Kanton Zürich
@@ -536,7 +516,7 @@ function Home() {
         </div>
         <PictImg
           className="aida-image"
-          src="/images/home-spitex.png"
+          src="/images/home-spitex.webp"
           alt="Diplomierte Pflegefachperson misst Blutdruck zu Hause"
           width={1536}
           height={1024}
@@ -594,7 +574,7 @@ function Home() {
         </div>
         <PictImg
           className="aida-image"
-          src="/images/home-services.png"
+          src="/images/home-services.webp"
           alt="Begleitung einer älteren Dame im Freien"
           width={1536}
           height={1024}
@@ -632,7 +612,7 @@ function Home() {
           </a>
         </div>
         <PictImg
-          src="/images/home-team.png"
+          src="/images/home-team.webp"
           alt="Pflegefachpersonen von Lumina Spitex"
           width={1536}
           height={1024}
@@ -758,7 +738,7 @@ function Tarife() {
             </a>
           </div>
           <img
-            src="/images/home-spitex.png"
+            src="/images/home-spitex.webp"
             alt="Transparente Spitex-Tarife und Beratung"
           />
         </div>
@@ -2095,7 +2075,7 @@ function Legal({
             </p>
             <p>
               Website und redaktionelle Inhalte:{" "}
-              <a href="https://www.agenticit.ch" target="_blank" rel="noopener noreferrer">
+              <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
                 AgenticIT
               </a>
               , www.agenticit.ch
@@ -2193,7 +2173,7 @@ function Legal({
             <h2>Website & Inhalte</h2>
             <p>
               Diese Website wurde erstellt von{" "}
-              <a href="https://www.agenticit.ch" target="_blank" rel="noopener noreferrer">
+              <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
                 AgenticIT
               </a>{" "}
               (www.agenticit.ch). AgenticIT ist auch für die Inhalte dieser

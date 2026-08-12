@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { stageRobotsMeta } from "../../lib/stage-seo";
+import { publicSiteUrl, stageRobotsMeta } from "../../lib/stage-seo";
 
 export const SITE_URL = "https://lumina-spitex.ch";
 export const SITE_NAME = "Lumina Spitex";
@@ -119,12 +119,24 @@ export const pageSeo = {
   },
 } as const satisfies Record<string, PageSeo>;
 
+export function absoluteUrl(path: string): string {
+  const base = publicSiteUrl().replace(/\/$/, "");
+  if (!path || path === "/") return base;
+  return `${base}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
 export function buildMetadata(page: PageSeo): Metadata {
+  const canonical = absoluteUrl(page.path);
   return {
     title: page.title,
     description: page.description,
     robots: stageRobotsMeta,
-    // Stage: kein Canonical / Social-Preview auf Live-Domain bis Go-Live
+    alternates: { canonical },
+    openGraph: {
+      title: page.title,
+      description: page.description,
+      url: canonical,
+    },
   };
 }
 
@@ -172,7 +184,6 @@ export function organizationJsonLd(baseUrl: string = SITE_URL) {
           closes: "17:00",
         },
         sameAs: [
-          "https://www.local.ch/de/d/schlieren/8952/spitex/lumina-spitex-ag-GDCwJTVZfXfYzZT1jek6xQ",
           "https://www.help.ch/firma/CHE-233.932.070/lumina-spitex-ag-schlieren",
         ],
         knowsAbout: [

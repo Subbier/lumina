@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { articles, getArticle } from "../articles";
 import { RoutePage } from "../../routes";
-import { SITE_NAME, SITE_URL } from "../../seo/site";
+import { SITE_NAME, absoluteUrl } from "../../seo/site";
+import { stageRobotsMeta } from "../../../lib/stage-seo";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -17,10 +18,11 @@ export async function generateMetadata({
   if (!article) {
     return { title: "Ratgeber" };
   }
-  const url = `${SITE_URL}/ratgeber/${article.slug}`;
+  const url = absoluteUrl(`/ratgeber/${article.slug}`);
   return {
     title: article.title,
     description: article.text,
+    robots: stageRobotsMeta,
     alternates: { canonical: url },
     openGraph: {
       title: article.title,
