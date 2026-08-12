@@ -1,28 +1,60 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Analytics } from "./seo/Analytics";
+import { JsonLd } from "./seo/JsonLd";
+import { SITE_NAME, SITE_URL, pageSeo } from "./seo/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lumina-spitex.ch"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Lumina Spitex | Persönliche Pflege mit Licht & Wärme",
-    template: "%s | Lumina Spitex",
+    default: pageSeo.home.title,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Persönliche Spitex in den Kantonen Zürich und Aargau. Pflege zu Hause, Begleitung und faire Anerkennung für pflegende Angehörige.",
-  applicationName: "Lumina Spitex",
-  // Noch nicht öffentlich: keine Suchmaschinen-Indexierung
+  description: pageSeo.home.description,
+  applicationName: SITE_NAME,
+  authors: [{ name: "Lumina Spitex AG" }],
+  creator: "Lumina Spitex AG",
+  publisher: "Lumina Spitex AG",
+  category: "healthcare",
+  keywords: [
+    "Spitex",
+    "Spitex Zürich",
+    "Spitex Aargau",
+    "Spitex Limmattal",
+    "Pflege zu Hause",
+    "pflegende Angehörige",
+    "Angehörige anstellen",
+    "Grundpflege",
+    "Behandlungspflege",
+    "Begleitung",
+    "Lumina Spitex",
+  ],
   robots: {
-    index: false,
-    follow: false,
-    nocache: true,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
+  alternates: {
+    canonical: SITE_URL,
+    languages: { "de-CH": SITE_URL },
+  },
   manifest: "/manifest.webmanifest",
-  appleWebApp: { capable: true, title: "Lumina", statusBarStyle: "default" },
+  appleWebApp: {
+    capable: true,
+    title: "Lumina",
+    statusBarStyle: "default",
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
   icons: {
     icon: [
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
@@ -33,23 +65,45 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "de_CH",
-    siteName: "Lumina Spitex",
-    title: "Pflege, die ankommt. Anerkennung, die bleibt.",
-    description: "Persönliche Pflege zu Hause und faire Anerkennung für pflegende Angehörige.",
-    images: [{ url: "/og.png", alt: "Lumina Spitex – Pflege, die ankommt. Anerkennung, die bleibt." }],
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: pageSeo.home.title,
+    description: pageSeo.home.description,
+    images: [
+      {
+        url: "/og.png",
+        alt: "Lumina Spitex – Pflege, die ankommt. Anerkennung, die bleibt.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lumina Spitex",
-    description: "Pflege, die ankommt. Anerkennung, die bleibt.",
+    title: pageSeo.home.title,
+    description: pageSeo.home.description,
     images: ["/og.png"],
+  },
+  other: {
+    "ai-content-declaration": "human-edited",
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export const viewport: Viewport = {
+  themeColor: "#102f3b",
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "light",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="de-CH">
-      <body>{children}</body>
+      <body>
+        <JsonLd />
+        <Analytics />
+        {children}
+      </body>
     </html>
   );
 }

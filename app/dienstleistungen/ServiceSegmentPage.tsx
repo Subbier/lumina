@@ -34,7 +34,7 @@ export function ServiceSegmentPage({
   const page = getServiceSegment(id);
 
   return (
-    <main className="service-segment">
+    <main id="main-content" className="service-segment">
       <section className={`subhero ${page.heroTone}`}>
         <div className="wrap subhero-grid">
           <div>
@@ -108,7 +108,7 @@ export function ServiceSegmentPage({
               open={i === 0}
             >
               <summary>
-                <span className="acc-num">
+                <span className="acc-num" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span>{item.title}</span>

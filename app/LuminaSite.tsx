@@ -87,12 +87,29 @@ function Header() {
   const [open, setOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
 
+  useEffect(() => {
+    if (!aboutOpen && !open) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setAboutOpen(false);
+        setOpen(false);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [aboutOpen, open]);
+
   return (
     <>
+      <a className="skip-link" href="#main-content">
+        Zum Inhalt springen
+      </a>
       <div className="utility">
         <div className="wrap utility-inner">
           <span>Vom Kanton bewilligt · Krankenkassen anerkannt</span>
-          <a href="tel:+41434338800">043 433 88 00</a>
+          <a href="tel:+41434338800" aria-label="Telefon 043 433 88 00">
+            043 433 88 00
+          </a>
         </div>
       </div>
       <header className="header">
@@ -104,11 +121,13 @@ function Header() {
             className="menu-btn"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
-            aria-label="Navigation öffnen"
+            aria-controls="main-nav"
+            aria-label={open ? "Navigation schliessen" : "Navigation öffnen"}
           >
             {open ? "Schliessen" : "Menü"}
           </button>
           <nav
+            id="main-nav"
             className={open ? "nav open" : "nav"}
             aria-label="Hauptnavigation"
           >
@@ -133,39 +152,58 @@ function Header() {
               <button
                 type="button"
                 className="nav-dropdown-trigger"
+                id="nav-about-trigger"
                 aria-expanded={aboutOpen}
-                aria-haspopup="true"
+                aria-haspopup="menu"
+                aria-controls="nav-about-menu"
                 onClick={() => setAboutOpen((v) => !v)}
               >
                 Über uns
               </button>
-              <div className="nav-dropdown-panel" role="menu">
+              <div
+                id="nav-about-menu"
+                className="nav-dropdown-panel"
+                role="menu"
+                aria-labelledby="nav-about-trigger"
+              >
                 <div className="nav-dropdown-panel-inner">
                   <a
                     href="/ueber-uns"
                     role="menuitem"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      setAboutOpen(false);
+                    }}
                   >
                     Über uns
                   </a>
                   <a
                     href="/tarife"
                     role="menuitem"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      setAboutOpen(false);
+                    }}
                   >
                     Tarife
                   </a>
                   <a
                     href="/ratgeber"
                     role="menuitem"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      setAboutOpen(false);
+                    }}
                   >
                     Ratgeber
                   </a>
                   <a
                     href="/bewerbung"
                     role="menuitem"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      setAboutOpen(false);
+                    }}
                   >
                     Bewerbung
                   </a>
@@ -198,24 +236,27 @@ function Footer() {
           <p className="footer-contact">
             Rütistrasse 18, 8952 Schlieren
             <br />
-            <a href="tel:+41434338800">043 433 88 00</a> ·{" "}
+            <a href="tel:+41434338800" aria-label="Telefon 043 433 88 00">
+              043 433 88 00
+            </a>{" "}
+            ·{" "}
             <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
           </p>
         </div>
-        <div>
+        <nav aria-label="Dienstleistungen">
           <h3>Dienstleistungen</h3>
           <a href="/spitex">Spitex</a>
           <a href="/angehoerige">Pflegende Angehörige</a>
           <a href="/begleitung">Begleitung</a>
-        </div>
-        <div>
+        </nav>
+        <nav aria-label="Über uns und Service">
           <h3>Über uns</h3>
           <a href="/ueber-uns">Über uns</a>
           <a href="/tarife">Tarife</a>
           <a href="/ratgeber">Ratgeber</a>
           <a href="/bewerbung">Bewerbung</a>
           <a href="/kontakt">Kontakt</a>
-        </div>
+        </nav>
         <div>
           <h3>Für Sie da</h3>
           <p>Mo–Fr, 08:00–17:00 Uhr</p>
@@ -283,7 +324,7 @@ function CTA({
 
 function Home() {
   return (
-    <main>
+    <main id="main-content">
       {/* AIDA – Attention */}
       <section className="hero wrap mobile-lean">
         <div className="hero-copy">
@@ -568,7 +609,7 @@ function LohnJob() {
 
 function Tarife() {
   return (
-    <main>
+    <main id="main-content">
       <section className="subhero dark">
         <div className="wrap subhero-grid">
           <div>
@@ -808,7 +849,7 @@ function Tarife() {
 
 function About() {
   return (
-    <main>
+    <main id="main-content">
       <section className="subhero dark">
         <div className="wrap subhero-grid">
           <div>
@@ -1019,7 +1060,7 @@ function Bewerbung() {
   }
 
   return (
-    <main>
+    <main id="main-content">
       <section className="contact-hero">
         <div className="wrap">
           <span className="eyebrow">Karriere</span>
@@ -1313,7 +1354,7 @@ function Contact() {
           };
 
   return (
-    <main>
+    <main id="main-content">
       <section className="contact-hero">
         <div className="wrap">
           <span className="eyebrow">Kontakt</span>
@@ -1578,7 +1619,7 @@ function ArticleCard({ a, i }: { a: Article; i: number }) {
 function ArticleDetail({ article }: { article: Article }) {
   const related = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
   return (
-    <main>
+    <main id="main-content">
       <article className="article-detail">
         <div className="wrap article-column">
           <header className="article-detail-hero">
@@ -1691,7 +1732,7 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
 
   if (articleSlug && !selected) {
     return (
-      <main>
+      <main id="main-content">
         <section className="wrap legal-page">
           <h1>Beitrag nicht gefunden</h1>
           <p>Dieser Ratgeber existiert nicht oder wurde verschoben.</p>
@@ -1708,7 +1749,7 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
   }
 
   return (
-    <main>
+    <main id="main-content">
       <section className="blog-hero">
         <div className="wrap">
           <span className="eyebrow light">Lumina Ratgeber</span>
@@ -1975,7 +2016,7 @@ function LohnCheck() {
     if (step < 6) setStep(step + 1);
   }
   return (
-    <main className="quiz-page">
+    <main id="main-content" className="quiz-page">
       <section className="quiz-shell">
         <QuizClose />
         <div className="quiz-progress">
@@ -2137,7 +2178,7 @@ function Anspruchscheck() {
   ];
   if (step >= 4)
     return (
-      <main className="quiz-page green">
+      <main id="main-content" className="quiz-page green">
         <section className="quiz-shell">
           <QuizClose />
           <div className="quiz-card result-check">
@@ -2188,7 +2229,7 @@ function Anspruchscheck() {
     );
   const q = qs[step];
   return (
-    <main className="quiz-page green">
+    <main id="main-content" className="quiz-page green">
       <section className="quiz-shell">
         <QuizClose />
         <div className="quiz-progress">
@@ -2231,7 +2272,7 @@ function Anspruchscheck() {
 
 function Legal({ privacy = false }: { privacy?: boolean }) {
   return (
-    <main>
+    <main id="main-content">
       <section className="legal-hero">
         <div className="wrap">
           <span className="eyebrow">Rechtliches</span>
@@ -2438,10 +2479,18 @@ export function LuminaSite({
       {page}
       <Footer />
       <CookieBanner />
-      <div className="mobile-bar">
-        <a href="tel:+41434338800">Anrufen</a>
-        <a href="/kontakt">Kontakt</a>
-      </div>
+      <nav className="mobile-bar" aria-label="Schnellaktionen mobil">
+        <a
+          href="tel:+41434338800"
+          aria-label="Jetzt anrufen"
+          data-conversion="phone-mobile-bar"
+        >
+          Anrufen
+        </a>
+        <a href="/kontakt" data-conversion="kontakt-mobile-bar">
+          Kontakt
+        </a>
+      </nav>
     </>
   );
 }

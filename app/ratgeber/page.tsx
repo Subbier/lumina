@@ -1,2 +1,8 @@
 import { RoutePage } from "../routes";
-export default function Page(){return <RoutePage view="ratgeber"/>}
+import { buildMetadata, pageSeo } from "../seo/site";
+
+export const metadata = buildMetadata(pageSeo.ratgeber);
+
+export default function Page() {
+  return <RoutePage view="ratgeber" />;
+}

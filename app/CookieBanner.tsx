@@ -28,8 +28,17 @@ export function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="cookie-banner" role="dialog" aria-label="Cookie-Hinweis">
-      <p>
+    <div
+      className="cookie-banner"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cookie-banner-title"
+      aria-describedby="cookie-banner-text"
+    >
+      <p id="cookie-banner-title" className="sr-only">
+        Cookie-Hinweis
+      </p>
+      <p id="cookie-banner-text">
         Wir verwenden Cookies, damit die Website zuverlässig funktioniert. Mit
         «Akzeptieren» stimmen Sie auch optionalen Cookies zu. Details in der{" "}
         <a href="/datenschutz">Datenschutzerklärung</a>.
