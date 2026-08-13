@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { publicSiteUrl, stageRobotsMeta } from "../../lib/stage-seo";
 
 export const SITE_URL = "https://lumina-spitex.ch";
-export const SITE_NAME = "Lumina Spitex";
+export const SITE_NAME = "Lumina Spitex AG";
 export const SITE_PHONE = "+41434338800";
 export const SITE_PHONE_DISPLAY = "043 433 88 00";
 export const SITE_EMAIL = "info@lumina-spitex.ch";
@@ -133,9 +133,10 @@ export function buildMetadata(page: PageSeo): Metadata {
     robots: stageRobotsMeta,
     alternates: { canonical },
     openGraph: {
-      title: page.title,
+      title: page.path === "/" ? SITE_NAME : page.title,
       description: page.description,
       url: canonical,
+      siteName: SITE_NAME,
     },
   };
 }

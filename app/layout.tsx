@@ -63,18 +63,18 @@ export const metadata: Metadata = {
     locale: "de_CH",
     url: publicBase,
     siteName: SITE_NAME,
-    title: pageSeo.home.title,
+    title: SITE_NAME,
     description: pageSeo.home.description,
     images: [
       {
         url: "/og.png",
-        alt: "Lumina Spitex – Pflege, die ankommt. Anerkennung, die bleibt.",
+        alt: "Lumina Spitex AG – Pflege zu Hause in Zürich und Aargau",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: pageSeo.home.title,
+    title: SITE_NAME,
     description: pageSeo.home.description,
     images: ["/og.png"],
   },
