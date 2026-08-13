@@ -15,6 +15,8 @@ import { CookieBanner } from "./CookieBanner";
 import { AnspruchscheckQuiz } from "./anspruchscheck/AnspruchscheckQuiz";
 import { LohnCheckQuiz } from "./lohn-check/LohnCheckQuiz";
 import { PictImg } from "./components/PictImg";
+import { AppMenuSheet, AppTabBar, PWARegister } from "./components/AppShell";
+import { haptic } from "./components/haptic";
 
 function BrandLockup({
   height = 84,
@@ -90,21 +92,23 @@ function MoreRead({
   );
 }
 
-function Header() {
-  const [open, setOpen] = useState(false);
+function Header({
+  menuOpen,
+  onMenuToggle,
+}: {
+  menuOpen: boolean;
+  onMenuToggle: () => void;
+}) {
   const [aboutOpen, setAboutOpen] = useState(false);
 
   useEffect(() => {
-    if (!aboutOpen && !open) return;
+    if (!aboutOpen) return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        setAboutOpen(false);
-        setOpen(false);
-      }
+      if (e.key === "Escape") setAboutOpen(false);
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [aboutOpen, open]);
+  }, [aboutOpen]);
 
   return (
     <>
@@ -126,31 +130,26 @@ function Header() {
             <span className="sr-only">Lumina Spitex</span>
           </a>
           <button
-            className="menu-btn"
-            onClick={() => setOpen(!open)}
-            aria-expanded={open}
-            aria-controls="main-nav"
-            aria-label={open ? "Navigation schliessen" : "Navigation öffnen"}
+            className={`menu-btn${menuOpen ? " is-open" : ""}`}
+            onClick={() => {
+              haptic();
+              onMenuToggle();
+            }}
+            aria-expanded={menuOpen}
+            aria-controls="app-menu-sheet"
+            aria-label={menuOpen ? "Menü schliessen" : "Menü öffnen"}
           >
-            {open ? "Schliessen" : "Menü"}
+            <span className="menu-btn-bars" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
           </button>
-          <nav
-            id="main-nav"
-            className={open ? "nav open" : "nav"}
-            aria-label="Hauptnavigation"
-          >
-            <a href="/" onClick={() => setOpen(false)}>
-              Home
-            </a>
-            <a href="/spitex" onClick={() => setOpen(false)}>
-              Spitex
-            </a>
-            <a href="/angehoerige" onClick={() => setOpen(false)}>
-              Pflegende Angehörige
-            </a>
-            <a href="/begleitung" onClick={() => setOpen(false)}>
-              Begleitung
-            </a>
+          <nav id="main-nav" className="nav" aria-label="Hauptnavigation">
+            <a href="/">Home</a>
+            <a href="/spitex">Spitex</a>
+            <a href="/angehoerige">Pflegende Angehörige</a>
+            <a href="/begleitung">Begleitung</a>
 
             <div
               className={`nav-dropdown ${aboutOpen ? "open" : ""}`}
@@ -165,7 +164,6 @@ function Header() {
                 aria-haspopup="menu"
                 aria-controls="nav-about-menu"
                 onClick={() => {
-                  setOpen(false);
                   setAboutOpen(false);
                 }}
                 onFocus={() => setAboutOpen(true)}
@@ -182,50 +180,35 @@ function Header() {
                   <a
                     href="/ueber-uns"
                     role="menuitem"
-                    onClick={() => {
-                      setOpen(false);
-                      setAboutOpen(false);
-                    }}
+                    onClick={() => setAboutOpen(false)}
                   >
                     Über uns
                   </a>
                   <a
                     href="/tarife"
                     role="menuitem"
-                    onClick={() => {
-                      setOpen(false);
-                      setAboutOpen(false);
-                    }}
+                    onClick={() => setAboutOpen(false)}
                   >
                     Tarife
                   </a>
                   <a
                     href="/ratgeber"
                     role="menuitem"
-                    onClick={() => {
-                      setOpen(false);
-                      setAboutOpen(false);
-                    }}
+                    onClick={() => setAboutOpen(false)}
                   >
                     Ratgeber
                   </a>
                   <a
                     href="/bewerbung"
                     role="menuitem"
-                    onClick={() => {
-                      setOpen(false);
-                      setAboutOpen(false);
-                    }}
+                    onClick={() => setAboutOpen(false)}
                   >
                     Bewerbung
                   </a>
                   <a
                     href="/redaktion"
                     role="menuitem"
-                    onClick={() => {
-                      setOpen(false);
-                      setAboutOpen(false);
-                    }}
+                    onClick={() => setAboutOpen(false)}
                   >
                     Redaktion
                   </a>
@@ -233,9 +216,7 @@ function Header() {
               </div>
             </div>
 
-            <a href="/kontakt" onClick={() => setOpen(false)}>
-              Kontakt
-            </a>
+            <a href="/kontakt">Kontakt</a>
           </nav>
         </div>
       </header>
@@ -2274,14 +2255,6 @@ function Legal({
   );
 }
 
-function PWARegister() {
-  useEffect(() => {
-    if ("serviceWorker" in navigator)
-      navigator.serviceWorker.register("/sw.js").catch(() => undefined);
-  }, []);
-  return null;
-}
-
 export function LuminaSite({
   view,
   articleSlug,
@@ -2289,6 +2262,8 @@ export function LuminaSite({
   view: View;
   articleSlug?: string;
 }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   let page: ReactNode;
   switch (view) {
     case "spitex":
@@ -2320,21 +2295,11 @@ export function LuminaSite({
       page = <Ratgeber articleSlug={articleSlug} />;
       break;
     case "lohn-check":
-      return (
-        <>
-          <PWARegister />
-          <LohnCheck />
-          <CookieBanner />
-        </>
-      );
+      page = <LohnCheck />;
+      break;
     case "anspruchscheck":
-      return (
-        <>
-          <PWARegister />
-          <Anspruchscheck />
-          <CookieBanner />
-        </>
-      );
+      page = <Anspruchscheck />;
+      break;
     case "impressum":
       page = <Legal />;
       break;
@@ -2350,25 +2315,29 @@ export function LuminaSite({
     default:
       page = <Home />;
   }
+
+  const immersive = view === "lohn-check" || view === "anspruchscheck";
+
   return (
     <>
       <PWARegister />
-      <Header />
-      {page}
-      <Footer />
+      {!immersive && (
+        <Header
+          menuOpen={menuOpen}
+          onMenuToggle={() => setMenuOpen((open) => !open)}
+        />
+      )}
+      <div key={view} className="app-page">
+        {page}
+      </div>
+      {!immersive && <Footer />}
       <CookieBanner />
-      <nav className="mobile-bar" aria-label="Schnellaktionen mobil">
-        <a
-          href="tel:+41434338800"
-          aria-label="Jetzt anrufen"
-          data-conversion="phone-mobile-bar"
-        >
-          Anrufen
-        </a>
-        <a href="/kontakt" data-conversion="kontakt-mobile-bar">
-          Kontakt
-        </a>
-      </nav>
+      <AppTabBar
+        view={view}
+        menuOpen={menuOpen}
+        onMore={() => setMenuOpen(true)}
+      />
+      <AppMenuSheet open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

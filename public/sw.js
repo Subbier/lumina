@@ -1,4 +1,4 @@
-const CACHE = "lumina-v6";
+const CACHE = "lumina-v7";
 const CORE = [
   "/",
   "/spitex",

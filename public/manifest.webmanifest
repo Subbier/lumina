@@ -6,12 +6,17 @@
   "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait-primary",
-  "background_color": "#f7f8f8",
+  "background_color": "#102f3b",
   "theme_color": "#102f3b",
   "lang": "de-CH",
   "dir": "ltr",
   "categories": ["health", "medical", "lifestyle"],
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "icons": [
     {
       "src": "/icon-192.png",
@@ -29,7 +34,7 @@
   "shortcuts": [
     {
       "name": "Anspruch prüfen",
-      "short_name": "Anspruch",
+      "short_name": "Check",
       "description": "Lohnanspruch für pflegende Angehörige prüfen",
       "url": "/anspruchscheck?source=pwa"
     },
@@ -44,9 +49,9 @@
       "url": "/spitex?source=pwa"
     },
     {
-      "name": "Bewerbung",
-      "short_name": "Jobs",
-      "url": "/bewerbung?source=pwa"
+      "name": "Angehörige",
+      "short_name": "Angehörige",
+      "url": "/angehoerige?source=pwa"
     }
   ]
 }

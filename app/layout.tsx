@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: "Lumina",
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
   },
   formatDetection: {
     telephone: true,
@@ -88,6 +88,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   colorScheme: "light",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
