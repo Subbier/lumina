@@ -3,9 +3,9 @@ import { stageRobotsMeta } from "../../../lib/stage-seo";
 import { RechnerKampagne } from "./RechnerKampagne";
 
 export const metadata: Metadata = {
-  title: "Lohn- & Anspruchsrechner | Lumina Spitex",
+  title: "Lohnrechner für pflegende Angehörige | Lumina Spitex",
   description:
-    "Prüfen Sie unverbindlich Anspruch und mögliche Lohnorientierung für pflegende Angehörige.",
+    "Unverbindliche Brutto-Orientierung in Franken für pflegende Angehörige. Sofort Anstellung möglich, Ausbildung innert zwölf Monaten.",
   robots: stageRobotsMeta,
 };
 

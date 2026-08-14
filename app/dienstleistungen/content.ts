@@ -309,7 +309,7 @@ export const serviceSegments: ServiceSegment[] = [
     accordionTitle: "Was Sie von Lumina erwarten dürfen",
     accordionLink: {
       href: "#anspruch-pruefen",
-      label: "Jetzt Anspruch prüfen",
+      label: "Jetzt Lohn schätzen",
     },
     accordion: [
       {
@@ -394,16 +394,16 @@ export const serviceSegments: ServiceSegment[] = [
       "Hallo und willkommen bei Lumina Spitex. Wenn Sie jemanden pflegen, der Ihnen nahesteht: Sie müssen das nicht allein tragen. Bei uns können Sie sofort angestellt werden – mit Lohn und Sozialversicherung. Eine diplomierte Pflegefachperson begleitet Sie. Innert zwölf Monaten organisieren und finanzieren wir den Lehrgang Pflegende Angehörige SRK. Prüfen Sie jetzt in zwei Minuten Ihren möglichen Lohnanspruch – oder fordern Sie einen Rückruf an.",
     claimBanner: {
       eyebrow: "2 Minuten",
-      title: "Pflegen Sie Angehörige? Prüfen Sie Ihren Lohnanspruch.",
-      text: "Unverbindlich und klar – oft ist mehr möglich, als Familien denken.",
+      title: "Pflegen Sie Angehörige? Schätzen Sie Ihren möglichen Lohn.",
+      text: "Unverbindlich – Sie sehen sofort eine erste Brutto-Orientierung in Franken.",
       href: "#anspruch-pruefen",
-      label: "Jetzt prüfen",
+      label: "Zur Zahl",
     },
     cta: {
-      title: "Möchten Sie wissen, ob Lohn für Ihre Pflege möglich ist?",
-      text: "Nutzen Sie den Check auf dieser Seite – oder fordern Sie einen Rückruf an.",
+      title: "Möchten Sie wissen, was Ihre Pflege ungefähr wert sein könnte?",
+      text: "Nutzen Sie den Lohnrechner auf dieser Seite – oder fordern Sie einen Rückruf an.",
       primaryHref: "#anspruch-pruefen",
-      primaryLabel: "Anspruch prüfen",
+      primaryLabel: "Lohn schätzen",
       secondaryHref: "/kontakt",
       secondaryLabel: "Rückruf anfordern",
     },

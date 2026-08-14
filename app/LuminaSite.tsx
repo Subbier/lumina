@@ -12,7 +12,6 @@ import { ServiceSegmentPage, PartnersStrip } from "./dienstleistungen/ServiceSeg
 import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
 import { ListenPlayer } from "./listen/ListenPlayer";
 import { CookieBanner } from "./CookieBanner";
-import { AnspruchscheckQuiz } from "./anspruchscheck/AnspruchscheckQuiz";
 import { LohnCheckQuiz } from "./lohn-check/LohnCheckQuiz";
 import { PictImg } from "./components/PictImg";
 import { AppMenuSheet, AppTabBar, PWARegister } from "./components/AppShell";
@@ -286,7 +285,7 @@ function Footer() {
           <h3>Für Sie da</h3>
           <p>Mo–Fr, 08:00–17:00 Uhr</p>
           <a className="button gold" href="/anspruchscheck">
-            Anspruch prüfen
+            Lohn schätzen
           </a>
         </div>
       </div>
@@ -410,8 +409,10 @@ function Home() {
         </p>
         <p>
           Sie möchten zuerst nur verstehen, was möglich ist? Rufen Sie an oder
-          nutzen Sie den kurzen Anspruchs-Check. Ohne Login. Ohne Verpflichtung.
-          Danach entscheiden Sie in Ruhe.
+          nutzen Sie den{" "}
+          <a href="/anspruchscheck">Lohnrechner</a>. In zwei Minuten sehen Sie
+          eine erste Zahl – ohne Login, ohne Verpflichtung. Danach entscheiden
+          Sie in Ruhe.
         </p>
       </section>
 
@@ -444,7 +445,7 @@ function Home() {
                 Sie pflegen schon. Wir stellen an. Ausbildung Pflegende
                 Angehörige SRK innert zwölf Monaten. Kosten trägt Lumina.
               </p>
-              <a href="/angehoerige">Anspruch prüfen →</a>
+              <a href="/angehoerige#anspruch-pruefen">Lohn schätzen →</a>
             </article>
             <article className="path-card premium">
               <Icon>03</Icon>
@@ -458,14 +459,14 @@ function Home() {
             </article>
           </div>
           <p className="paths-note">
-            Tipp: Der Anspruchs-Check dauert etwa zwei Minuten. Sie sehen sofort,
-            ob Lohn für Ihre Pflegelage realistisch ist.
+            Tipp: Der Lohnrechner dauert etwa zwei Minuten. Sie sehen sofort
+            eine erste Brutto-Orientierung in Franken.
           </p>
           <a className="paths-cta" href="/anspruchscheck">
             <span className="paths-cta-title">
-              Pflegen Sie Angehörige? Prüfen Sie Ihren Lohnanspruch
+              Pflegen Sie Angehörige? Schätzen Sie Ihren möglichen Lohn
             </span>
-            <span className="paths-cta-action">In 2 Minuten starten →</span>
+            <span className="paths-cta-action">In 2 Minuten zur Zahl →</span>
           </a>
         </div>
       </section>
@@ -515,7 +516,7 @@ function Home() {
             <li>SRK-Ausbildung innert zwölf Monaten – Kosten bei uns</li>
           </ul>
           <a className="text-link" href="/anspruchscheck">
-            In zwei Minuten prüfen, ob Lohn möglich ist →
+            In zwei Minuten eine erste Lohnzahl sehen →
           </a>
         </div>
         <PictImg
@@ -1894,10 +1895,10 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
           </p>
           <p>
             Nutzen Sie den Ratgeber als Einstieg. Für Ihre persönliche Lage bleiben
-            Anspruchscheck, Lohn-Check und ein Gespräch mit uns die nächsten Schritte.
+            Lohnrechner und ein Gespräch mit uns die nächsten Schritte.
           </p>
           <a className="button gold" href="/anspruchscheck">
-            Anspruch in 2 Minuten prüfen
+            Lohn in 2 Minuten schätzen
           </a>
         </div>
       </section>
@@ -1931,7 +1932,7 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
           </p>
         </div>
         <a className="button gold" href="/anspruchscheck">
-          Leitfaden freischalten
+          Lohn schätzen
         </a>
       </section>
       <CTA />
@@ -1982,16 +1983,16 @@ function LohnCheck() {
 
 function Anspruchscheck() {
   return (
-    <main id="main-content" className="quiz-page green">
+    <main id="main-content" className="quiz-page">
       <section className="wrap quiz-intro">
         <h1>Anspruch prüfen für pflegende Angehörige</h1>
         <p>
-          Prüfen Sie in wenigen Minuten, ob ein Anspruch auf Lohn für pflegende
-          Angehörige in Ihrer Situation realistisch ist.
+          In wenigen Schritten sehen Sie eine erste Brutto-Orientierung in
+          Franken – unverbindlich, ohne Login.
         </p>
         <p>
-          Der Check ist unverbindlich und ohne Login. Bei Passung erklären wir
-          die sofortige Anstellung und den Lehrgang SRK.
+          Bei Passung erklären wir die sofortige Anstellung und den Lehrgang
+          SRK. Die Zahl ersetzt keine Bedarfsabklärung.
         </p>
         <p>
           Mehr erfahren unter{" "}
@@ -2000,7 +2001,7 @@ function Anspruchscheck() {
           <a href="/kontakt">Kontakt</a>.
         </p>
       </section>
-      <AnspruchscheckQuiz topBar={<QuizClose />} />
+      <LohnCheckQuiz source="anspruchscheck" topBar={<QuizClose />} />
     </main>
   );
 }

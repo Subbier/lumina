@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { AnspruchscheckQuiz } from "../../anspruchscheck/AnspruchscheckQuiz";
 import { LohnCheckQuiz } from "../../lohn-check/LohnCheckQuiz";
 import { CookieBanner } from "../../CookieBanner";
 
@@ -64,21 +63,20 @@ export function RechnerKampagne() {
             <p className="kampagne-brand">Lumina Spitex</p>
             <h1>Lohn für Ihre Angehörigenpflege prüfen</h1>
             <p>
-              Anspruch-Check und Lohnrechner – unverbindlich. Sofort Anstellung
-              möglich, Ausbildung innert zwölf Monaten.
+              Lohnrechner – unverbindlich. Sofort Anstellung möglich, Ausbildung
+              innert zwölf Monaten.
             </p>
             <div className="kampagne-actions">
-              <a className="button gold" href="#anspruch-pruefen">
-                Anspruch prüfen
+              <a className="button gold" href="#lohn-rechner">
+                Lohn schätzen
               </a>
-              <a className="text-link light" href="#lohn-rechner">
-                Lohn schätzen →
+              <a className="text-link light" href="#kontakt-kampagne">
+                Rückruf anfordern →
               </a>
             </div>
           </div>
         </section>
 
-        <AnspruchscheckQuiz embedded />
         <LohnCheckQuiz embedded source="kampagne-rechner-lohn" />
 
         <section className="wrap kampagne-contact" id="kontakt-kampagne">

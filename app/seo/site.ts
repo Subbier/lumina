@@ -84,7 +84,7 @@ export const pageSeo = {
     path: "/anspruchscheck",
     title: "Anspruch prüfen für Angehörige",
     description:
-      "In 2 Minuten prüfen: Ist Lohn für Ihre Angehörigenpflege möglich? Unverbindlich und ohne Login.",
+      "In 2 Minuten eine erste Brutto-Orientierung in Franken: Ist Lohn für Ihre Angehörigenpflege möglich? Unverbindlich und ohne Login.",
     conversion: true,
   },
   lohnCheck: {

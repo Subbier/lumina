@@ -174,39 +174,37 @@ export function LohnCheckQuiz({
     </div>,
     <div className="quiz-result" key="s7">
       <span className="result-kicker">Ihre unverbindliche Einschätzung</span>
+      <h2>
+        {eligible
+          ? "Eine Anstellung könnte möglich sein."
+          : "Erste Lohn-Orientierung – persönlich prüfen wir den Rest."}
+      </h2>
+      <div className="wage">
+        <span>Orientierungswert brutto / Monat</span>
+        <b>CHF {wage.toLocaleString("de-CH")}</b>
+        <small>
+          Beispiel mit CHF 36.–/Std. für anrechenbare Grundpflege
+        </small>
+      </div>
       {eligible ? (
-        <>
-          <h2>Eine Anstellung könnte möglich sein.</h2>
-          <div className="wage">
-            <span>Orientierungswert brutto / Monat</span>
-            <b>CHF {wage.toLocaleString("de-CH")}</b>
-            <small>
-              Beispiel mit CHF 36.–/Std. für anrechenbare Grundpflege
-            </small>
-          </div>
-          <ul>
-            <li>Arbeitsvertrag und monatliche Lohnabrechnung</li>
-            <li>AHV und Unfallversicherung</li>
-            <li>Fachliche Begleitung und Schulung</li>
-            <li>Administration und Abrechnung durch Lumina</li>
-          </ul>
-          <a className="button gold" href="/kontakt">
-            Persönliche Prüfung vereinbaren
-          </a>
-        </>
+        <ul>
+          <li>Arbeitsvertrag und monatliche Lohnabrechnung</li>
+          <li>AHV und Unfallversicherung</li>
+          <li>Fachliche Begleitung und Schulung</li>
+          <li>Administration und Abrechnung durch Lumina</li>
+        </ul>
       ) : (
-        <>
-          <h2>Lassen Sie uns Ihre Situation persönlich ansehen.</h2>
-          <p>
-            Die gewählten Angaben reichen für eine positive digitale
-            Einschätzung noch nicht aus. Es können trotzdem andere Leistungen
-            oder Entlastungsangebote passen.
-          </p>
-          <a className="button gold" href="/kontakt">
-            Kostenlos beraten lassen
-          </a>
-        </>
+        <p>
+          Die gewählten Angaben reichen für eine automatische Zusage noch
+          nicht aus. Die Zahl bleibt eine erste Orientierung – eine Fachperson
+          ordnet Ihre Lage ein.
+        </p>
       )}
+      <a className="button gold" href="/kontakt">
+        {eligible
+          ? "Persönliche Prüfung vereinbaren"
+          : "Kostenlos beraten lassen"}
+      </a>
     </div>,
   ];
 

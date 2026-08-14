@@ -91,7 +91,7 @@ export const articles: Article[] = [
       "Massgeblich sind regelmässige Grundpflege und eine ärztlich/pflegerisch bestätigte Bedarfssituation.",
       "Volljährigkeit und eine längerfristige Pflegesituation sind in der Praxis zentrale Voraussetzungen.",
     ],
-    ctaLabel: "Anspruch in 2 Minuten prüfen",
+    ctaLabel: "Lohn in 2 Minuten schätzen",
     ctaHref: "/anspruchscheck",
     sections: [
       {

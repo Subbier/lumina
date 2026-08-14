@@ -33,9 +33,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Anspruch prüfen",
-      "short_name": "Check",
-      "description": "Lohnanspruch für pflegende Angehörige prüfen",
+      "name": "Lohn schätzen",
+      "short_name": "Lohn",
+      "description": "Erste Bruttolohn-Schätzung für pflegende Angehörige",
       "url": "/anspruchscheck?source=pwa"
     },
     {

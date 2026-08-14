@@ -104,7 +104,7 @@ const TABS: {
   { href: "/spitex", label: "Spitex", match: ["spitex"], icon: <IconCare /> },
   {
     href: "/anspruchscheck",
-    label: "Check",
+    label: "Lohn",
     match: ["anspruchscheck", "lohn-check"],
     icon: <IconCheck />,
     accent: true,
