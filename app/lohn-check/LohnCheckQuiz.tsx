@@ -20,6 +20,7 @@ export function LohnCheckQuiz({
 }: LohnCheckQuizProps) {
   const [step, setStep] = useState(0);
   const [relation, setRelation] = useState("");
+  const [who, setWho] = useState("");
   const [tasks, setTasks] = useState<string[]>([]);
   const [hours, setHours] = useState(2);
   const [canton, setCanton] = useState("");
@@ -31,6 +32,11 @@ export function LohnCheckQuiz({
     tasks.some((t) => t !== "Haushalt & Gesellschaft") &&
     (canton === "Zürich" || canton === "Aargau");
   const wage = useMemo(() => Math.round(hours * 30.4 * 36), [hours]);
+  const needsWeiter = step === 2 || step === 3 || step === 5;
+
+  function goNext() {
+    window.setTimeout(() => setStep((s) => Math.min(6, s + 1)), 160);
+  }
 
   const screens = [
     <Choice
@@ -44,6 +50,7 @@ export function LohnCheckQuiz({
       ]}
       value={relation}
       setValue={setRelation}
+      onPick={() => goNext()}
     />,
     <Choice
       key="s2"
@@ -56,8 +63,9 @@ export function LohnCheckQuiz({
         "Eigenes Kind",
         "Nahestehende Person",
       ]}
-      value={relation}
-      setValue={setRelation}
+      value={who}
+      setValue={setWho}
+      onPick={() => goNext()}
     />,
     <MultiChoice
       key="s3"
@@ -108,6 +116,7 @@ export function LohnCheckQuiz({
       options={["Zürich", "Aargau", "Anderer Kanton"]}
       value={canton}
       setValue={setCanton}
+      onPick={() => goNext()}
     />,
     <div key="s6" className="quiz-lead">
       <h2>Wohin dürfen wir Ihr Ergebnis senden?</h2>
@@ -213,6 +222,7 @@ export function LohnCheckQuiz({
           topic: "Anstellung als pflegende Angehörige",
           details: {
             relation,
+            who,
             tasks,
             hours,
             canton,
@@ -243,9 +253,13 @@ export function LohnCheckQuiz({
             >
               Zurück
             </button>
-            <button type="button" className="button" onClick={next}>
-              Weiter
-            </button>
+            {needsWeiter ? (
+              <button type="button" className="button" onClick={next}>
+                Weiter
+              </button>
+            ) : (
+              <span className="quiz-nav-hint">Antwort antippen – es geht automatisch weiter</span>
+            )}
           </div>
         ) : (
           <div className="quiz-nav quiz-nav-end">
@@ -301,14 +315,15 @@ function Choice({
   options,
   value,
   setValue,
+  onPick,
 }: {
   title: string;
   subtitle: string;
   options: string[];
   value: string;
   setValue: (v: string) => void;
+  onPick?: () => void;
 }) {
-  const [local, setLocal] = useState(value);
   return (
     <div>
       <h2>{title}</h2>
@@ -317,10 +332,10 @@ function Choice({
         {options.map((o) => (
           <button
             type="button"
-            className={(value || local) === o ? "selected" : ""}
+            className={value === o ? "selected" : ""}
             onClick={() => {
-              setLocal(o);
               setValue(o);
+              onPick?.();
             }}
             key={o}
           >
