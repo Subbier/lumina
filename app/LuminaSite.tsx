@@ -410,7 +410,7 @@ function Home() {
         <p>
           Sie möchten zuerst nur verstehen, was möglich ist? Rufen Sie an oder
           nutzen Sie den{" "}
-          <a href="/anspruchscheck">Lohnrechner</a>. In zwei Minuten sehen Sie
+          <a href="#anspruch-pruefen">Lohnrechner</a>. In zwei Minuten sehen Sie
           eine erste Zahl – ohne Login, ohne Verpflichtung. Danach entscheiden
           Sie in Ruhe.
         </p>
@@ -462,14 +462,10 @@ function Home() {
             Tipp: Der Lohnrechner dauert etwa zwei Minuten. Sie sehen sofort
             eine erste Brutto-Orientierung in Franken.
           </p>
-          <a className="paths-cta" href="/anspruchscheck">
-            <span className="paths-cta-title">
-              Pflegen Sie Angehörige? Schätzen Sie Ihren möglichen Lohn
-            </span>
-            <span className="paths-cta-action">In 2 Minuten zur Zahl →</span>
-          </a>
         </div>
       </section>
+
+      <LohnCheckQuiz embedded source="home-lohn" sectionId="anspruch-pruefen" />
 
       <section className="wrap aida-block">
         <div className="aida-copy">
@@ -515,7 +511,7 @@ function Home() {
             <li>Lohn plus Sozialversicherung ab Tag eins</li>
             <li>SRK-Ausbildung innert zwölf Monaten – Kosten bei uns</li>
           </ul>
-          <a className="text-link" href="/anspruchscheck">
+          <a className="text-link" href="#anspruch-pruefen">
             In zwei Minuten eine erste Lohnzahl sehen →
           </a>
         </div>
@@ -1960,48 +1956,38 @@ function QuizClose() {
 
 function LohnCheck() {
   return (
-    <main id="main-content" className="quiz-page">
-      <section className="wrap quiz-intro">
-        <h1>Lohn-Check für pflegende Angehörige</h1>
-        <p>
-          Mit dem Lohn-Check schätzen Sie, was verdienen pflegende Angehörige
-          ungefähr können – als Bruttoorientierung nach Pensum.
-        </p>
-        <p>
-          Die Angaben sind unverbindlich. Danach können Sie einen Rückruf
-          anfordern oder die Anstellung bei Lumina genauer besprechen.
-        </p>
-        <p>
-          Weiterführend: <a href="/angehoerige">Pflegende Angehörige</a>,{" "}
-          <a href="/ratgeber">Ratgeber</a>, <a href="/kontakt">Kontakt</a>.
-        </p>
+    <main id="main-content">
+      <section className="subhero warm">
+        <div className="wrap">
+          <span className="eyebrow">Lohnrechner</span>
+          <h1>Lohn-Check für pflegende Angehörige</h1>
+          <p className="lead">
+            Erste Brutto-Orientierung in Franken – unverbindlich, ohne Login.
+          </p>
+        </div>
       </section>
-      <LohnCheckQuiz topBar={<QuizClose />} />
+      <LohnCheckQuiz embedded source="lohn-check" sectionId="lohn-rechner" />
     </main>
   );
 }
 
 function Anspruchscheck() {
   return (
-    <main id="main-content" className="quiz-page">
-      <section className="wrap quiz-intro">
-        <h1>Anspruch prüfen für pflegende Angehörige</h1>
-        <p>
-          In wenigen Schritten sehen Sie eine erste Brutto-Orientierung in
-          Franken – unverbindlich, ohne Login.
-        </p>
-        <p>
-          Bei Passung erklären wir die sofortige Anstellung und den Lehrgang
-          SRK. Die Zahl ersetzt keine Bedarfsabklärung.
-        </p>
-        <p>
-          Mehr erfahren unter{" "}
-          <a href="/angehoerige">Anstellung Angehörige</a>, im{" "}
-          <a href="/ratgeber">Ratgeber</a> oder per{" "}
-          <a href="/kontakt">Kontakt</a>.
-        </p>
+    <main id="main-content">
+      <section className="subhero warm">
+        <div className="wrap">
+          <span className="eyebrow">Lohnrechner</span>
+          <h1>Anspruch prüfen für pflegende Angehörige</h1>
+          <p className="lead">
+            In wenigen Schritten eine erste Brutto-Orientierung in Franken.
+          </p>
+        </div>
       </section>
-      <LohnCheckQuiz source="anspruchscheck" topBar={<QuizClose />} />
+      <LohnCheckQuiz
+        embedded
+        source="anspruchscheck"
+        sectionId="anspruch-pruefen"
+      />
     </main>
   );
 }
@@ -2317,21 +2303,17 @@ export function LuminaSite({
       page = <Home />;
   }
 
-  const immersive = view === "lohn-check" || view === "anspruchscheck";
-
   return (
     <>
       <PWARegister />
-      {!immersive && (
-        <Header
-          menuOpen={menuOpen}
-          onMenuToggle={() => setMenuOpen((open) => !open)}
-        />
-      )}
+      <Header
+        menuOpen={menuOpen}
+        onMenuToggle={() => setMenuOpen((open) => !open)}
+      />
       <div key={view} className="app-page">
         {page}
       </div>
-      {!immersive && <Footer />}
+      <Footer />
       <CookieBanner />
       <AppTabBar
         view={view}
