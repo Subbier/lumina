@@ -1,6 +1,6 @@
 "use client";
 
-import { AnspruchscheckQuiz } from "../anspruchscheck/AnspruchscheckQuiz";
+import { LohnCheckQuiz } from "../lohn-check/LohnCheckQuiz";
 import {
   getServiceSegment,
   partners,
@@ -92,7 +92,13 @@ export function ServiceSegmentPage({
         </div>
       </section>
 
-      {id === "angehoerige" ? <AnspruchscheckQuiz embedded /> : null}
+      {id === "angehoerige" ? (
+        <LohnCheckQuiz
+          embedded
+          source="angehoerige-lohn"
+          sectionId="anspruch-pruefen"
+        />
+      ) : null}
 
       {page.facts ? (
         <section className="wrap segment-facts">

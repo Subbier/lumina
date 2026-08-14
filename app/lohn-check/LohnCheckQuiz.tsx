@@ -7,12 +7,15 @@ type LohnCheckQuizProps = {
   embedded?: boolean;
   /** Lead-Quelle für /api/leads */
   source?: string;
+  /** Anker für Deep-Links, z. B. #anspruch-pruefen */
+  sectionId?: string;
   topBar?: React.ReactNode;
 };
 
 export function LohnCheckQuiz({
   embedded = false,
   source = "lohn-check",
+  sectionId = "lohn-rechner",
   topBar,
 }: LohnCheckQuizProps) {
   const [step, setStep] = useState(0);
@@ -53,8 +56,8 @@ export function LohnCheckQuiz({
         "Eigenes Kind",
         "Nahestehende Person",
       ]}
-      value=""
-      setValue={() => {}}
+      value={relation}
+      setValue={setRelation}
     />,
     <MultiChoice
       key="s3"
@@ -73,7 +76,7 @@ export function LohnCheckQuiz({
     <div key="s4">
       <h2>Wie viel Zeit wenden Sie pro Tag auf?</h2>
       <p className="quiz-sub">
-        Eine ungefähre Angabe reicht für die erste Schätzung.
+        Schieben Sie den Regler. Die Schätzung aktualisiert sich sofort.
       </p>
       <div className="big-number">
         {hours.toFixed(1)} <small>Stunden / Tag</small>
@@ -82,14 +85,20 @@ export function LohnCheckQuiz({
         className="big-range"
         type="range"
         min="0.5"
-        max="4"
+        max="8"
         step="0.5"
         value={hours}
         onChange={(e) => setHours(+e.target.value)}
+        aria-label="Pflegestunden pro Tag"
       />
       <div className="range-labels">
         <span>30 Min.</span>
-        <span>4+ Std.</span>
+        <span>8 Std.</span>
+      </div>
+      <div className="wage wage-live">
+        <span>Erste Brutto-Orientierung / Monat</span>
+        <b>CHF {wage.toLocaleString("de-CH")}</b>
+        <small>bei CHF 36.–/Std. für anrechenbare Grundpflege</small>
       </div>
     </div>,
     <Choice
@@ -261,13 +270,13 @@ export function LohnCheckQuiz({
     return (
       <section
         className="claim-inline-quiz"
-        id="lohn-rechner"
-        aria-labelledby="lohn-rechner-title"
+        id={sectionId}
+        aria-labelledby={`${sectionId}-title`}
       >
         <div className="wrap">
           <div className="section-head left claim-inline-head">
-            <span className="eyebrow">Lohn-Check</span>
-            <h2 id="lohn-rechner-title">Was könnte Ihre Pflege wert sein?</h2>
+            <span className="eyebrow">Lohnrechner</span>
+            <h2 id={`${sectionId}-title`}>Was könnte Ihre Pflege wert sein?</h2>
             <p>
               Kurze Angaben – erste Brutto-Orientierung. Unverbindlich, ohne
               Verpflichtung.
