@@ -29,8 +29,8 @@ function BrandLockup({
 }) {
   const width = Math.round(height * (987 / 360));
   const src = light
-    ? "/images/logo-lumina-lockup-light.png?v=blue1"
-    : "/images/logo-lumina-lockup.png?v=blue1";
+    ? "/images/logo-lumina-lockup-light.png?v=marine1"
+    : "/images/logo-lumina-lockup.png?v=marine1";
   return (
     <PictImg
       className="brand-logo"
