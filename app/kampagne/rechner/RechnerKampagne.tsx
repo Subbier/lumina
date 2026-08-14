@@ -41,7 +41,7 @@ export function RechnerKampagne() {
           <a href="https://lumina-spitex.vercel.app" aria-label="Lumina Spitex">
             <img
               className="brand-logo"
-              src="/images/logo-lumina-lockup.png?v=orig1"
+              src="/images/logo-lumina-lockup.png?v=blue1"
               alt="Lumina Spitex"
               height={52}
             />
