@@ -4,7 +4,6 @@ import {
   FormEvent,
   ReactNode,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { articles, getArticle, type Article } from "./ratgeber/articles";
@@ -99,6 +98,7 @@ function Header({
   onMenuToggle: () => void;
 }) {
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (!aboutOpen) return;
@@ -108,6 +108,13 @@ function Header({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [aboutOpen]);
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 24);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   return (
     <>
@@ -122,7 +129,7 @@ function Header({
           </a>
         </div>
       </div>
-      <header className="header">
+      <header className={`header${scrolled ? " is-compact" : ""}`}>
         <div className="wrap nav-wrap">
           <a className="brand" href="/" aria-label="Lumina Spitex Startseite">
             <BrandLockup height={84} />
@@ -224,8 +231,6 @@ function Header({
 }
 
 function Footer() {
-  const shareUrl = "https://lumina-spitex.vercel.app/";
-  const shareText = "Lumina Spitex – Pflege zu Hause in Zürich und Aargau";
   return (
     <footer className="footer">
       <div className="wrap footer-grid">
@@ -235,8 +240,8 @@ function Footer() {
             <span className="sr-only">Lumina Spitex</span>
           </a>
           <p>
-            Spitex zu Hause. Anstellung für pflegende Angehörige: sofort mit
-            Lohn, Ausbildung innert zwölf Monaten.
+            Persönliche Pflege zu Hause und faire Anstellung für pflegende
+            Angehörige in Zürich und Aargau.
           </p>
           <address className="footer-contact">
             Rütistrasse 18, 8952 Schlieren
@@ -247,24 +252,6 @@ function Footer() {
             ·{" "}
             <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
           </address>
-          <p className="share-row" aria-label="Seite teilen">
-            <span>Teilen:</span>
-            <a
-              href={`mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(shareUrl)}`}
-            >
-              Per E-Mail teilen
-            </a>
-          </p>
-          <p className="share-row" aria-label="Verzeichnisse">
-            <span>Profile:</span>
-            <a
-              href="https://www.help.ch/firma/CHE-233.932.070/lumina-spitex-ag-schlieren"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              help.ch
-            </a>
-          </p>
         </div>
         <nav aria-label="Dienstleistungen">
           <h3>Dienstleistungen</h3>
@@ -291,7 +278,7 @@ function Footer() {
       </div>
       <div className="wrap legal">
         <span>
-          © 2026 Lumina Spitex AG · Website & Inhalte:{" "}
+          © 2026 Lumina Spitex AG · Webdesign & technische Umsetzung:{" "}
           <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
             AgenticIT
           </a>
@@ -361,23 +348,18 @@ function Home() {
             </span>
           </h1>
           <p className="lead">
-            Abklärung, Grundpflege, Behandlungspflege. Eine feste Bezugsperson
-            begleitet Sie. Die Krankenkasse rechnet direkt ab. Sie bleiben zu
-            Hause – selbstbestimmt.
+            Verlässliche Pflege mit festen Bezugspersonen. Persönlich geplant,
+            direkt mit der Krankenkasse abgerechnet.
           </p>
           <div className="actions">
-            <a className="button" href="/spitex">
-              Spitex-Leistungen
+            <a className="button" href="/kontakt?aktion=rueckruf">
+              Kostenlos beraten lassen
             </a>
-            <a className="text-link" href="/kontakt">
-              Kostenlose Erstberatung →
+            <a className="text-link" href="/spitex">
+              Leistungen ansehen →
             </a>
           </div>
           <TrustStrip />
-          <p className="byline">
-            <span>Redaktion: Lumina Spitex AG · Pflegefachpersonen HF/FH</span>
-            <time dateTime="2026-08-12">Aktualisiert am 12. August 2026</time>
-          </p>
         </div>
         <div className="hero-visual">
           <PictImg
@@ -392,38 +374,14 @@ function Home() {
         </div>
       </section>
 
-      <section className="wrap home-prose" aria-labelledby="home-orientierung">
-        <h2 id="home-orientierung">Klarheit für Familien in Zürich und Aargau</h2>
-        <p>
-          Viele Angehörige organisieren Pflege zu Hause neben Job und Familie.
-          Das fühlt sich oft schwer an. Professionelle Pflege zu Hause beginnt
-          mit einer klaren Abklärung. Danach starten wir mit Pflege oder mit
-          einer Anstellung für Sie als pflegende Angehörige – persönlich und
-          ohne Umwege.
-        </p>
-        <p>
-          Sitz ist Schlieren im Limmattal. Einsatzgebiet sind der Kanton Zürich
-          sowie der Kanton Aargau. Wir sind vom Kanton bewilligt. Krankenkassen
-          anerkennen unsere Leistungen. Unsere Fachpersonen bleiben Ihre
-          festen Ansprechpersonen.
-        </p>
-        <p>
-          Sie möchten zuerst nur verstehen, was möglich ist? Rufen Sie an oder
-          nutzen Sie den{" "}
-          <a href="#anspruch-pruefen">Lohnrechner</a>. In zwei Minuten sehen Sie
-          eine erste Zahl – ohne Login, ohne Verpflichtung. Danach entscheiden
-          Sie in Ruhe.
-        </p>
-      </section>
-
       <section className="path-section" id="aida-angebote">
         <div className="wrap">
           <div className="section-head">
             <span className="eyebrow">Unsere Dienstleistungen</span>
-            <h2>Spitex im Zentrum. Dazu Angehörige und Begleitung.</h2>
+            <h2>Die passende Unterstützung für Ihre Situation.</h2>
             <p className="section-lead">
-              Drei Wege – ein Ziel: gute Versorgung zu Hause, mit Lohn oder mit
-              Fachpersonen, je nach Ihrer Lage.
+              Pflege, Lohn für Angehörige oder Begleitung im Alltag – wir
+              klären gemeinsam, was wirklich passt.
             </p>
           </div>
           <div className="paths aida-paths">
@@ -459,8 +417,8 @@ function Home() {
             </article>
           </div>
           <p className="paths-note">
-            Tipp: Der Lohnrechner dauert etwa zwei Minuten. Sie sehen sofort
-            eine erste Brutto-Orientierung in Franken.
+            Sie pflegen bereits jemanden? Der Lohnrechner liefert in zwei
+            Minuten eine erste Orientierung.
           </p>
         </div>
       </section>
@@ -701,17 +659,19 @@ function Tarife() {
               </span>
             </h1>
             <p className="lead">
-              Transparent und klar kommuniziert: Pflegeleistungen nach KLV und
-              UVG sowie hauswirtschaftliche Leistungen – nachvollziehbar
-              ausgewiesen für Familien in Zürich und Aargau.
+              Pflegeleistungen nach KLV und UVG sowie private Leistungen –
+              klar aufgeschlüsselt und verständlich erklärt.
             </p>
-            <a className="button gold" href="/kontakt">
+            <a className="button hero-button" href="/kontakt?thema=pflege">
               Tariffrage klären
             </a>
           </div>
-          <img
+          <PictImg
             src="/images/home-spitex.webp"
             alt="Transparente Spitex-Tarife und Beratung"
+            width={1536}
+            height={1024}
+            sizes="(max-width: 980px) 100vw, 560px"
           />
         </div>
       </section>
@@ -731,9 +691,9 @@ function Tarife() {
             <tbody>
               {tarifeKlv.map((row) => (
                 <tr key={row.leistung}>
-                  <td>{row.leistung}</td>
-                  <td>{row.traeger}</td>
-                  <td>{row.tarif}</td>
+                  <td data-label="Leistung">{row.leistung}</td>
+                  <td data-label="Kostenübernahme">{row.traeger}</td>
+                  <td data-label="Tarif (CHF/Std.)">{row.tarif}</td>
                 </tr>
               ))}
             </tbody>
@@ -756,9 +716,9 @@ function Tarife() {
             <tbody>
               {tarifeUvg.map((row) => (
                 <tr key={row.leistung}>
-                  <td>{row.leistung}</td>
-                  <td>{row.traeger}</td>
-                  <td>{row.tarif}</td>
+                  <td data-label="Leistung">{row.leistung}</td>
+                  <td data-label="Kostenübernahme">{row.traeger}</td>
+                  <td data-label="Tarif (CHF/Std.)">{row.tarif}</td>
                 </tr>
               ))}
             </tbody>
@@ -780,9 +740,9 @@ function Tarife() {
             </thead>
             <tbody>
               <tr>
-                <td>Hauswirtschaftliche Leistungen</td>
-                <td>Klient / Zusatzversicherung</td>
-                <td>55.00</td>
+                <td data-label="Leistung">Hauswirtschaftliche Leistungen</td>
+                <td data-label="Kostenübernahme">Klient / Zusatzversicherung</td>
+                <td data-label="Tarif (CHF/Std.)">55.00</td>
               </tr>
             </tbody>
           </table>
@@ -969,6 +929,7 @@ function About() {
             loading="lazy"
             decoding="async"
             sizes="(max-width: 980px) 100vw, 560px"
+            responsive={false}
           />
         </div>
       </section>
@@ -1113,7 +1074,7 @@ function Bewerbung() {
     if (typeof window === "undefined") return;
     const q = new URLSearchParams(window.location.search).get("rolle");
     if (q === "dipl" || q === "fage" || q === "efz" || q === "initiativ") {
-      setRolle(q);
+      window.requestAnimationFrame(() => setRolle(q));
     }
   }, []);
 
@@ -1153,25 +1114,10 @@ function Bewerbung() {
       <section className="contact-hero">
         <div className="wrap">
           <span className="eyebrow">Karriere</span>
-          <h1 className="hero-title">
-            <span className="hero-title-line">Bewerbung bei Lumina:</span>
-            <span className="hero-title-line">
-              Pflegefachkräfte gesucht.
-            </span>
-          </h1>
+          <h1>Pflege mit Persönlichkeit.</h1>
           <p className="lead">
-            Eigenes Formular für Bewerbungen – nicht das allgemeine
-            Kontaktformular. Wir melden uns persönlich.
-          </p>
-          <p>
-            Mit Ihrer Bewerbung bewerben Sie sich direkt beim Team in Schlieren.
-            Wir suchen Pflegefachkräfte für Einsätze in Zürich und Aargau – mit
-            festen Bezugspersonen und kurzen Wegen im Alltag.
-          </p>
-          <p>
-            Ob EFZ, Diplom HF/FH oder FaGe: Senden Sie Ihre Bewerbung mit
-            Pensum und Region. Pflegefachkräfte gesucht heisst bei uns: wir
-            antworten persönlich und prüfen die Passung gemeinsam mit Ihnen.
+            Wir suchen Pflegefachpersonen für Zürich und Aargau. Senden Sie uns
+            Ihre wichtigsten Angaben – den Rest klären wir persönlich.
           </p>
         </div>
       </section>
@@ -1192,11 +1138,10 @@ function Bewerbung() {
             </span>
           </div>
           <div className="contact-note">
-            <span className="contact-label">Lebenslauf</span>
+            <span className="contact-label">Schnellbewerbung</span>
             <p>
-              Bitte Lebenslauf und Zeugnisse nach dem Absenden per E-Mail
-              nachreichen – oder im Nachrichtenfeld den Link zu Ihrem Profil
-              angeben.
+              Für den ersten Kontakt genügen Ihre Angaben. Lebenslauf und
+              Zeugnisse können Sie später nachreichen.
             </p>
           </div>
           <div>
@@ -1217,7 +1162,7 @@ function Bewerbung() {
           ) : (
             <>
               <span className="eyebrow">Bewerbungsformular</span>
-              <h2>Erzählen Sie uns von sich.</h2>
+              <h2>In zwei Minuten bewerben.</h2>
               <div className="form-row">
                 <label>
                   Vorname
@@ -1267,16 +1212,11 @@ function Bewerbung() {
                 </label>
               </div>
               <label>
-                Möglicher Start
-                <input name="start" placeholder="z. B. ab Oktober 2026" />
-              </label>
-              <label>
-                Motivation & Erfahrung
+                Kurz zu Ihnen <span className="optional">(optional)</span>
                 <textarea
-                  rows={6}
-                  required
+                  rows={4}
                   name="message"
-                  placeholder="Kurz zu Ausbildung, Erfahrung und warum Lumina zu Ihnen passt."
+                  placeholder="Ausbildung, Erfahrung oder möglicher Start"
                 />
               </label>
               <label className="check">
@@ -1298,41 +1238,11 @@ function Bewerbung() {
   );
 }
 
-type ContactIntent = "anrufen" | "rueckruf" | "termin" | "schreiben";
-
-const contactIntents: {
-  id: ContactIntent;
-  label: string;
-  hint: string;
-}[] = [
-  {
-    id: "anrufen",
-    label: "Direkt anrufen",
-    hint: "Sofort mit uns sprechen",
-  },
-  {
-    id: "rueckruf",
-    label: "Rückruf anfordern",
-    hint: "Wir rufen Sie zurück",
-  },
-  {
-    id: "termin",
-    label: "Termin vereinbaren",
-    hint: "Erstgespräch planen",
-  },
-  {
-    id: "schreiben",
-    label: "Einfach schreiben",
-    hint: "Nachricht hinterlassen",
-  },
-];
-
 function Contact() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const [topic, setTopic] = useState("pflege");
-  const [intent, setIntent] = useState<ContactIntent>("schreiben");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -1345,28 +1255,9 @@ function Contact() {
       q === "sonstiges" ||
       q === "mehr-infos"
     ) {
-      setTopic(q);
-    }
-    const aktion = params.get("aktion");
-    if (
-      aktion === "anrufen" ||
-      aktion === "rueckruf" ||
-      aktion === "termin" ||
-      aktion === "schreiben"
-    ) {
-      setIntent(aktion);
-    } else if (q === "mehr-infos") {
-      setIntent("rueckruf");
-    } else if (q === "begleitung" || q === "pflege") {
-      setIntent("schreiben");
+      window.requestAnimationFrame(() => setTopic(q));
     }
   }, []);
-
-  function chooseIntent(next: ContactIntent) {
-    setIntent(next);
-    setSent(false);
-    setError("");
-  }
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -1377,29 +1268,16 @@ function Contact() {
     setSending(true);
     setError("");
     const data = new FormData(e.currentTarget);
-    const preferred = String(data.get("preferred") || "").trim();
-    const messageRaw = String(data.get("message") || "").trim();
-    const intentLabel =
-      contactIntents.find((item) => item.id === intent)?.label || intent;
-    const messageParts = [
-      `Anliegen: ${intentLabel}`,
-      preferred ? `Wunschzeit / Terminwunsch: ${preferred}` : "",
-      messageRaw,
-    ].filter(Boolean);
-
     const response = await fetch("/api/leads", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        source: `kontakt-${intent}`,
-        name: `${data.get("first") || ""} ${data.get("last") || ""}`.trim(),
+        source: "kontakt-rueckruf",
+        name: data.get("name"),
         contact: data.get("contact"),
         topic: data.get("topic"),
-        message: messageParts.join("\n\n"),
-        details: {
-          intent,
-          preferred: preferred || null,
-        },
+        message: data.get("message"),
+        details: {},
         consent: true,
       }),
     });
@@ -1411,71 +1289,15 @@ function Contact() {
       );
   }
 
-  const formCopy =
-    intent === "rueckruf"
-      ? {
-          eyebrow: "Rückruf",
-          title: "Wann dürfen wir Sie anrufen?",
-          submit: "Rückruf anfordern",
-          successTitle: "Rückruf angefordert.",
-          successText:
-            "Danke. Wir melden uns telefonisch so rasch wie möglich bei Ihnen.",
-          messageLabel: "Kurznotiz (optional)",
-          messageRequired: false,
-          preferredLabel: "Wann passt ein Rückruf am besten?",
-          preferredRequired: true,
-          contactLabel: "Ihre Telefonnummer",
-        }
-      : intent === "termin"
-        ? {
-            eyebrow: "Termin",
-            title: "Erstgespräch vereinbaren",
-            submit: "Terminwunsch senden",
-            successTitle: "Terminwunsch erhalten.",
-            successText:
-              "Danke. Wir prüfen Ihre Wunschzeiten und melden uns zur Bestätigung.",
-            messageLabel: "Worum geht es? (optional)",
-            messageRequired: false,
-            preferredLabel: "Wunschtag oder Zeitraum",
-            preferredRequired: true,
-            contactLabel: "Telefon oder E-Mail",
-          }
-        : {
-            eyebrow: "Nachricht",
-            title: "Schreiben Sie uns einfach",
-            submit: "Nachricht senden",
-            successTitle: "Danke für Ihre Nachricht.",
-            successText:
-              "Wir melden uns so rasch wie möglich persönlich bei Ihnen.",
-            messageLabel: "Ihre Nachricht",
-            messageRequired: true,
-            preferredLabel: "",
-            preferredRequired: false,
-            contactLabel: "Telefon oder E-Mail",
-          };
-
   return (
     <main id="main-content">
       <section className="contact-hero">
         <div className="wrap">
           <span className="eyebrow">Kontakt</span>
-          <h1 className="hero-title">
-            <span className="hero-title-line">Kontakt und Rückruf</span>
-            <span className="hero-title-line">für Ihre Pflegefrage.</span>
-          </h1>
+          <h1>Wie können wir Ihnen helfen?</h1>
           <p className="lead">
-            Rufen Sie direkt an, fordern Sie einen Rückruf an, vereinbaren Sie
-            einen Termin – oder schreiben Sie uns einfach.
-          </p>
-          <p>
-            Kontakt und Rückruf helfen, wenn Sie Pflege zu Hause organisieren
-            oder als Angehörige entlastet werden möchten. Schildern Sie kurz
-            Ihre Situation – wir melden uns mit einem klaren nächsten Schritt.
-          </p>
-          <p>
-            Ob Telefon, Rückruf oder Nachricht: Im Kontakt klären wir unverbindlich,
-            welches Angebot passt – Spitex, Anstellung für pflegende Angehörige
-            oder Begleitung. Ohne Login und ohne Verpflichtung.
+            Rufen Sie uns an oder hinterlassen Sie Ihre Kontaktdaten. Wir hören
+            zu und melden uns persönlich – kostenlos und unverbindlich.
           </p>
         </div>
       </section>
@@ -1525,91 +1347,37 @@ function Contact() {
         </div>
 
         <div className="contact-panel">
-          <div
-            className="contact-intents"
-            role="tablist"
-            aria-label="Wie möchten Sie Kontakt aufnehmen?"
-          >
-            {contactIntents.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                aria-selected={intent === item.id}
-                className={
-                  intent === item.id
-                    ? "contact-intent is-active"
-                    : "contact-intent"
-                }
-                onClick={() => chooseIntent(item.id)}
-              >
-                <span>{item.label}</span>
-                <span>{item.hint}</span>
-              </button>
-            ))}
-          </div>
-
-          {intent === "anrufen" ? (
-            <div className="contact-call-panel">
-              <span className="eyebrow">Direkt anrufen</span>
-              <h2>Ein Anruf genügt.</h2>
-              <p>
-                Sprechen Sie jetzt mit dem Lumina-Team – unverbindlich und
-                persönlich. Ausserhalb der Bürozeiten hinterlassen Sie bitte
-                eine Nachricht oder fordern Sie einen Rückruf an.
-              </p>
-              <a className="button gold" href="tel:+41434338800">
-                043 433 88 00 anrufen
-              </a>
-              <button
-                type="button"
-                className="text-link"
-                onClick={() => chooseIntent("rueckruf")}
-              >
-                Lieber Rückruf anfordern →
-              </button>
-            </div>
-          ) : (
-            <form className="contact-form" onSubmit={submit}>
+          <form className="contact-form contact-form-simple" onSubmit={submit}>
               {sent ? (
                 <div className="success">
                   <Icon>✓</Icon>
-                  <h2>{formCopy.successTitle}</h2>
-                  <p>{formCopy.successText}</p>
+                  <h2>Danke. Wir melden uns.</h2>
+                  <p>Eine Fachperson nimmt so rasch wie möglich Kontakt auf.</p>
                   <button
                     type="button"
                     className="text-link"
-                    onClick={() => {
-                      setSent(false);
-                      setIntent("schreiben");
-                    }}
+                    onClick={() => setSent(false)}
                   >
-                    Weitere Nachricht schreiben →
+                    Neue Anfrage erfassen →
                   </button>
                 </div>
               ) : (
                 <>
-                  <span className="eyebrow">{formCopy.eyebrow}</span>
-                  <h2>{formCopy.title}</h2>
-                  <div className="form-row">
-                    <label>
-                      Vorname
-                      <input required name="first" autoComplete="given-name" />
-                    </label>
-                    <label>
-                      Nachname
-                      <input required name="last" autoComplete="family-name" />
-                    </label>
-                  </div>
+                  <span className="eyebrow">Rückruf anfordern</span>
+                  <h2>Drei Angaben genügen.</h2>
+                  <p className="form-intro">
+                    Keine langen Formulare. Sagen Sie uns kurz, worum es geht.
+                  </p>
                   <label>
-                    {formCopy.contactLabel}
+                    Ihr Name
+                    <input required name="name" autoComplete="name" />
+                  </label>
+                  <label>
+                    Telefon oder E-Mail
                     <input
                       required
                       name="contact"
-                      type={intent === "rueckruf" ? "tel" : "text"}
-                      autoComplete={
-                        intent === "rueckruf" ? "tel" : "email"
-                      }
+                      autoComplete="tel"
                     />
                   </label>
                   <label>
@@ -1637,26 +1405,12 @@ function Contact() {
                       Spitex-Leistungen persönlich.
                     </p>
                   ) : null}
-                  {formCopy.preferredLabel ? (
-                    <label>
-                      {formCopy.preferredLabel}
-                      <input
-                        name="preferred"
-                        required={formCopy.preferredRequired}
-                        placeholder={
-                          intent === "termin"
-                            ? "z. B. Dienstag Vormittag oder 12.08. nach 14 Uhr"
-                            : "z. B. heute Nachmittag oder morgen Vormittag"
-                        }
-                      />
-                    </label>
-                  ) : null}
                   <label>
-                    {formCopy.messageLabel}
+                    Ihre Frage <span className="optional">(optional)</span>
                     <textarea
-                      rows={intent === "schreiben" ? 5 : 3}
-                      required={formCopy.messageRequired}
+                      rows={3}
                       name="message"
+                      placeholder="Zum Beispiel: Pflege für meine Mutter in Dietikon"
                     />
                   </label>
                   <label className="check">
@@ -1669,12 +1423,11 @@ function Contact() {
                   </label>
                   {error && <p role="alert">{error}</p>}
                   <button className="button" disabled={sending} type="submit">
-                    {sending ? "Wird gesendet …" : formCopy.submit}
+                    {sending ? "Wird gesendet …" : "Rückruf anfordern"}
                   </button>
                 </>
               )}
-            </form>
-          )}
+          </form>
         </div>
       </section>
     </main>
@@ -1763,7 +1516,14 @@ function ArticleDetail({ article }: { article: Article }) {
             </div>
           </header>
           <div className="article-detail-visual">
-            <img src={article.image} alt={article.imageAlt} />
+            <PictImg
+              src={article.image}
+              alt={article.imageAlt}
+              width={1200}
+              height={675}
+              sizes="(max-width: 980px) 100vw, 900px"
+              responsive={false}
+            />
           </div>
           <div className="article-prose">
             {article.sections.map((section) => (
@@ -1879,18 +1639,8 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
             <span className="hero-title-line">Sicherheit.</span>
           </h1>
           <p className="lead">
-            Im Ratgeber finden Sie verständliche Antworten zu Pflege, Lohn,
-            Finanzierung und Familienalltag – schweizerisch, konkret und ohne
-            Fachchinesisch. Ratgeber-Wissen schafft Sicherheit für Angehörige.
-          </p>
-          <p>
-            Die Beiträge erklären Lohn für pflegende Angehörige, Hilflosenentschädigung,
-            Anstellung und Pflege zu Hause im Limmattal. Jeder Text ist fachlich
-            geprüft und mit Aktualisierungsdatum versehen.
-          </p>
-          <p>
-            Nutzen Sie den Ratgeber als Einstieg. Für Ihre persönliche Lage bleiben
-            Lohnrechner und ein Gespräch mit uns die nächsten Schritte.
+            Verständliche Antworten zu Pflege, Lohn, Finanzierung und
+            Familienalltag – für die Schweiz recherchiert und fachlich geprüft.
           </p>
           <a className="button gold" href="/anspruchscheck">
             Lohn in 2 Minuten schätzen
@@ -1932,24 +1682,6 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
       </section>
       <CTA />
     </main>
-  );
-}
-
-function QuizClose() {
-  return (
-    <div className="quiz-top">
-      <a className="quiz-brand brand brand-on-dark" href="/" aria-label="Lumina Spitex Startseite">
-        <BrandLockup height={56} light />
-      </a>
-      <a
-        className="quiz-close"
-        href="/"
-        aria-label="Berechnung schliessen und zur Website zurück"
-        title="Schliessen"
-      >
-        <span aria-hidden="true">×</span>
-      </a>
-    </div>
   );
 }
 
@@ -2124,11 +1856,10 @@ function Legal({
               E-Mail: info@lumina-spitex.ch · Telefon: 043 433 88 00
             </p>
             <p>
-              Website und redaktionelle Inhalte:{" "}
+              Website-Konzeption und technische Umsetzung:{" "}
               <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
                 AgenticIT
               </a>
-              , www.agenticit.ch
             </p>
             <h2>2. Welche Daten wir bearbeiten</h2>
             <p>
@@ -2182,35 +1913,32 @@ function Legal({
           </>
         ) : (
           <>
-            <p>
-              Hier finden Sie die Anbieterangaben zur Lumina Spitex AG:
-              Firmensitz, Kontakt und rechtliche Hinweise zur Website – ohne
-              Leistungsbeschreibung der Pflegeangebote.
-            </p>
-            <h2>Anbieterin</h2>
-            <p>
-              Lumina Spitex AG
-              <br />
-              Rütistrasse 18
-              <br />
-              8952 Schlieren
-              <br />
-              Schweiz
-            </p>
-            <h2>Kontakt</h2>
-            <p>
-              Telefon: 043 433 88 00
-              <br />
-              E-Mail: info@lumina-spitex.ch
-            </p>
-            <h2>Vertretungsberechtigte Person</h2>
-            <p>Geschäftsleitung der Lumina Spitex AG</p>
-            <h2>Handelsregister</h2>
-            <p>
-              Handelsregisteramt des Kantons Zürich
-              <br />
-              UID und Handelsregisternummer: vor Veröffentlichung ergänzen.
-            </p>
+            <div className="legal-overview">
+              <article>
+                <h2>Anbieterin</h2>
+                <address>
+                  Lumina Spitex AG<br />
+                  Rütistrasse 18<br />
+                  8952 Schlieren<br />
+                  Schweiz
+                </address>
+              </article>
+              <article>
+                <h2>Kontakt</h2>
+                <p>
+                  <a href="tel:+41434338800">043 433 88 00</a><br />
+                  <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
+                </p>
+              </article>
+              <article>
+                <h2>Vertretung</h2>
+                <p>Geschäftsleitung der Lumina Spitex AG</p>
+              </article>
+              <article>
+                <h2>Handelsregister</h2>
+                <p>Handelsregisteramt des Kantons Zürich</p>
+              </article>
+            </div>
             <h2>Haftung</h2>
             <p>
               Die Inhalte dieser Website dienen der allgemeinen Information.
@@ -2225,14 +1953,13 @@ function Legal({
               geschützt. Eine Verwendung ausserhalb der gesetzlichen Schranken
               bedarf der vorherigen Zustimmung.
             </p>
-            <h2>Website & Inhalte</h2>
+            <h2>Website</h2>
             <p>
-              Diese Website wurde erstellt von{" "}
+              Konzeption, Gestaltung und technische Umsetzung:{" "}
               <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
                 AgenticIT
-              </a>{" "}
-              (www.agenticit.ch). AgenticIT ist auch für die Inhalte dieser
-              Website verantwortlich.
+              </a>. Für die Inhalte und Pflegeinformationen ist die Lumina
+              Spitex AG verantwortlich.
             </p>
           </>
         )}

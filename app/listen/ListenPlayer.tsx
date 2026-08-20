@@ -50,7 +50,6 @@ export function ListenPlayer({
   useEffect(() => {
     const el = new Audio(audioSrc);
     el.preload = "metadata";
-    el.playbackRate = speed;
     audioRef.current = el;
 
     const onMeta = () => setDuration(el.duration || 0);
@@ -136,11 +135,26 @@ export function ListenPlayer({
       <div
         className="listen-bar-track"
         role="slider"
+        tabIndex={0}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={Math.round(progress * 100)}
         aria-label="Fortschritt"
         onClick={(e) => seek(e.clientX, e.currentTarget)}
+        onKeyDown={(e) => {
+          const el = audioRef.current;
+          if (!el || !el.duration) return;
+          if (e.key === "Home") el.currentTime = 0;
+          else if (e.key === "End") el.currentTime = el.duration;
+          else if (e.key === "ArrowLeft")
+            el.currentTime = Math.max(0, el.currentTime - 10);
+          else if (e.key === "ArrowRight")
+            el.currentTime = Math.min(el.duration, el.currentTime + 10);
+          else return;
+          e.preventDefault();
+          setProgress(el.currentTime / el.duration);
+          setCurrent(el.currentTime);
+        }}
       >
         <span
           className="listen-bar-track-fill"

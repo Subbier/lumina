@@ -1,6 +1,7 @@
 "use client";
 
 import { LohnCheckQuiz } from "../lohn-check/LohnCheckQuiz";
+import { PictImg } from "../components/PictImg";
 import {
   getServiceSegment,
   partners,
@@ -17,7 +18,7 @@ function PartnersStrip() {
       <div className="partners-grid">
         {partners.map((p) => (
           <div className="partner-logo" key={p.name}>
-            <img
+            <PictImg
               src={p.src.replace(/\.(png|jpe?g)$/i, ".webp")}
               alt={p.name}
               width={160}
@@ -70,7 +71,14 @@ export function ServiceSegmentPage({
               ) : null}
             </div>
           </div>
-          <img src={page.image} alt={page.imageAlt} />
+          <PictImg
+            src={page.image}
+            alt={page.imageAlt}
+            width={1536}
+            height={1024}
+            sizes="(max-width: 980px) 100vw, 560px"
+            responsive={false}
+          />
         </div>
       </section>
 

@@ -10,6 +10,7 @@ export function PictImg({
   fetchPriority,
   decoding = "async",
   sizes = "(max-width: 768px) 100vw, 720px",
+  responsive = true,
 }: {
   src: string;
   alt: string;
@@ -20,13 +21,16 @@ export function PictImg({
   fetchPriority?: "high" | "low" | "auto";
   decoding?: "async" | "auto" | "sync";
   sizes?: string;
+  responsive?: boolean;
 }) {
   const clean = src.split("?")[0];
   const webpBase = clean.replace(/\.(jpe?g|png|webp)$/i, "");
   const webp = `${webpBase}.webp`;
-  const candidates = [480, 768, 1200]
-    .filter((w) => w < width)
-    .map((w) => `${webpBase}-${w}.webp ${w}w`);
+  const candidates = responsive
+    ? [480, 768, 1200]
+        .filter((w) => w < width)
+        .map((w) => `${webpBase}-${w}.webp ${w}w`)
+    : [];
   const srcSet = [...candidates, `${webp} ${width}w`].join(", ");
 
   return (

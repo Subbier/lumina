@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { LohnCheckQuiz } from "../../lohn-check/LohnCheckQuiz";
 import { CookieBanner } from "../../CookieBanner";
+import { PictImg } from "../../components/PictImg";
 
 /** Kampagnen-Landing für Subdomain rechner.lumina-spitex.ch */
 export function RechnerKampagne() {
@@ -38,10 +39,11 @@ export function RechnerKampagne() {
       <header className="kampagne-top">
         <div className="wrap kampagne-top-inner">
           <a href="https://lumina-spitex.vercel.app" aria-label="Lumina Spitex">
-            <img
+            <PictImg
               className="brand-logo"
               src="/images/logo-lumina-lockup.png?v=brand1"
               alt="Lumina Spitex"
+              width={143}
               height={52}
             />
           </a>
@@ -53,10 +55,13 @@ export function RechnerKampagne() {
 
       <main id="main-content">
         <section className="kampagne-hero">
-          <img
+          <PictImg
             className="kampagne-hero-bg"
             src="/images/angehoerige-hero-anleitung.jpg?v=sq3"
             alt="Angehöriger unterstützt einen älteren Vater am Bett"
+            width={558}
+            height={558}
+            fetchPriority="high"
           />
           <div className="kampagne-hero-shade" aria-hidden="true" />
           <div className="kampagne-hero-copy wrap">
