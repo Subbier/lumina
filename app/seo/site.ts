@@ -70,7 +70,7 @@ export const pageSeo = {
     path: "/kontakt",
     title: "Kontakt und Rückruf",
     description:
-      "Rückruf anfordern oder anrufen zu Anstellung und Pflege. Mo–Fr 08:00–17:00, Schlieren.",
+      "Rückruf anfordern oder anrufen zu Anstellung und Pflege. Mo–Fr 08:00–18:00, Schlieren.",
     conversion: true,
   },
   bewerbung: {
@@ -182,7 +182,7 @@ export function organizationJsonLd(baseUrl: string = SITE_URL) {
             "Friday",
           ],
           opens: "08:00",
-          closes: "17:00",
+          closes: "18:00",
         },
         sameAs: [
           "https://www.help.ch/firma/CHE-233.932.070/lumina-spitex-ag-schlieren",

@@ -124,8 +124,9 @@ function Header({
       <div className="utility">
         <div className="wrap utility-inner">
           <span>Vom Kanton bewilligt · Krankenkassen anerkannt</span>
-          <a href="tel:+41434338800" aria-label="Telefon 043 433 88 00">
-            043 433 88 00
+          <a className="utility-contact" href="/kontakt">
+            <strong>Kontaktieren Sie uns</strong>
+            <span>Mo–Fr von 08:00 Uhr bis 18:00 Uhr</span>
           </a>
         </div>
       </div>
@@ -276,7 +277,7 @@ function Footer() {
         </nav>
         <div>
           <h3>Für Sie da</h3>
-          <p>Mo–Fr, 08:00–17:00 Uhr</p>
+          <p>Mo–Fr, 08:00–18:00 Uhr</p>
           <a className="button gold" href="/anspruchscheck">
             Lohn schätzen
           </a>
@@ -1314,7 +1315,7 @@ function Contact() {
           <a className="contact-callout" href="tel:+41434338800">
             <span>Jetzt anrufen</span>
             <strong>043 433 88 00</strong>
-            <small>Mo–Fr, 08:00–17:00 Uhr</small>
+            <small>Mo–Fr, 08:00–18:00 Uhr</small>
           </a>
           <div>
             <Icon>✉</Icon>
@@ -1341,7 +1342,7 @@ function Contact() {
               <p>
                 Montag–Freitag
                 <br />
-                08:00–17:00 Uhr
+                08:00–18:00 Uhr
               </p>
             </span>
           </div>
@@ -1895,11 +1896,10 @@ function Legal({
               ausgelösten Anfragen. Für ein späteres Pflege-, Beratungs- oder
               Arbeitsverhältnis können ergänzende Informationen gelten. Wir
               bearbeiten Personendaten nach dem Schweizer Datenschutzgesetz
-              (DSG). Soweit die EU-Datenschutz-Grundverordnung (DSGVO) anwendbar
-              ist, erfolgt die Bearbeitung insbesondere zur Vertragsanbahnung und
-              Vertragserfüllung, zur Erfüllung gesetzlicher Pflichten, aufgrund
-              Ihrer Einwilligung oder gestützt auf berechtigte Interessen an einem
-              sicheren und kundenfreundlichen Betrieb.
+              (DSG). Die Bearbeitung erfolgt insbesondere zur Vertragsanbahnung
+              und Vertragserfüllung, zur Erfüllung gesetzlicher Pflichten,
+              aufgrund Ihrer Einwilligung oder für einen sicheren und
+              kundenfreundlichen Betrieb.
             </p>
 
             <h2>3. Besuch der Website</h2>
