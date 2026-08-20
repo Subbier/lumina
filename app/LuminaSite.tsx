@@ -936,35 +936,34 @@ function About() {
           <div>
             <span className="eyebrow light">Über uns</span>
             <h1 className="hero-title">
-              <span className="hero-title-line">Über uns: Team mit</span>
+              <span className="hero-title-line">Pflegekompetenz, die</span>
               <span className="hero-title-line">
-                <em>Licht und Wärme.</em>
+                <em>Nähe schafft.</em>
               </span>
             </h1>
             <p className="lead">
-              Über uns als Team: Licht und Wärme auch dann, wenn der Alltag
-              schwierig wird. „Lumina“ kommt von Lumen – dem Licht. Für uns
-              bedeutet das: fachlich Orientierung geben und menschlich nahe
-              bleiben.
+              Wir verbinden fundierte Pflegefachlichkeit mit festen
+              Bezugspersonen und klaren Abläufen. So erhalten Menschen in
+              Zürich und Aargau verlässliche Unterstützung, die ihre
+              Selbstbestimmung stärkt.
             </p>
             <p>
-              Junges Team mit über 50 Jahren Erfahrung: fünf Personen, drei
-              Frauen und zwei Männer, die Klientinnen und Familien in Zürich und
-              Aargau begleiten. Hier erfahren Sie Haltung, Qualität und offene
-              Rollen.
+              Mehr als 50 Jahre gemeinsame Berufserfahrung prägen unsere
+              Arbeit. Wir hören zu, übernehmen Verantwortung und koordinieren
+              Pflege so, dass Familien im Alltag spürbar entlastet werden.
             </p>
             <div className="actions">
-              <a className="button gold" href="#karriere">
-                Offene Stellen
+              <a className="button gold" href="#qualitaet">
+                Unser Qualitätsverständnis
               </a>
               <a className="text-link light" href="/bewerbung">
-                Bewerben →
+                Team verstärken →
               </a>
             </div>
           </div>
           <PictImg
-            src="/images/lumina-team-5.webp"
-            alt="Das Lumina-Team: drei Frauen und zwei Männer"
+            src="/images/about-team-meeting.webp"
+            alt="Das Lumina-Team bespricht gemeinsam die Betreuung von Klientinnen und Klienten"
             width={1536}
             height={1024}
             loading="lazy"
@@ -1003,7 +1002,7 @@ function About() {
           </p>
         </article>
       </section>
-      <section className="quality">
+      <section className="quality" id="qualitaet">
         <div className="wrap split-section">
           <div>
             <span className="eyebrow">Qualität im Alltag</span>

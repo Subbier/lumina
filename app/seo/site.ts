@@ -50,9 +50,9 @@ export const pageSeo = {
   },
   ueberUns: {
     path: "/ueber-uns",
-    title: "Über uns: Team mit 50 Jahren Praxis",
+    title: "Über uns: Pflegekompetenz mit Nähe",
     description:
-      "Junges Team, erfahrene Fachpersonen: fünf Personen mit über 50 Jahren Berufspraxis in Zürich und Aargau.",
+      "Erfahrene Pflegefachpersonen, feste Bezugspersonen und klare Abläufe für verlässliche Pflege in Zürich und Aargau.",
   },
   tarife: {
     path: "/tarife",
