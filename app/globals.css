@@ -875,11 +875,10 @@ html.pwa-standalone .quiz-page{
 .legal-overview article{background:var(--white);border:1px solid var(--line);padding:24px;border-radius:8px}
 .legal-overview h2{font-size:1.05rem;margin:0 0 10px}
 .legal-overview p,.legal-overview address{font-style:normal;color:var(--muted);margin:0}
-.privacy-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:46px}
-.privacy-summary article{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--petrol);padding:22px;border-radius:8px}
-.privacy-summary span{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-bottom:8px}
-.privacy-summary strong{display:block;line-height:1.35;color:var(--navy);margin-bottom:8px}
-.privacy-summary p{font-size:.88rem;margin:0}
+.privacy-intro{margin-bottom:48px;padding-bottom:34px;border-bottom:1px solid var(--line)}
+.privacy-intro .eyebrow{margin-bottom:12px}
+.privacy-intro h2{max-width:760px;margin:0 0 14px;font-size:clamp(1.8rem,3.2vw,2.65rem)}
+.privacy-intro p{max-width:720px;margin:0;font-size:1.05rem;line-height:1.7}
 .privacy-list{color:var(--muted);padding-left:22px}
 .privacy-list li{margin:8px 0;padding-left:4px}
 .privacy-note{margin-top:44px;padding:24px;background:#eef8fc;border-left:4px solid var(--petrol);color:var(--muted)}
@@ -1023,7 +1022,7 @@ html.pwa-standalone .quiz-page{
   .legal-copy{padding-block:var(--mobile-section)}
   .legal-overview{grid-template-columns:1fr;gap:10px}
   .legal-overview article{padding:20px}
-  .privacy-summary{grid-template-columns:1fr;gap:10px;margin-bottom:34px}
+  .privacy-intro{margin-bottom:36px;padding-bottom:28px}
   .values{grid-template-columns:1fr;padding-block:var(--mobile-section);gap:0}
   .values>div{margin-bottom:18px}
   .values article{padding:22px 0;border-left:0;border-top:1px solid var(--line)}

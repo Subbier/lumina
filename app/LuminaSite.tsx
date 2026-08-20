@@ -244,13 +244,19 @@ function Footer() {
             Angehörige in Zürich und Aargau.
           </p>
           <address className="footer-contact">
-            Rütistrasse 18, 8952 Schlieren
+            <strong>Lumina Spitex AG</strong>
+            <br />
+            Rütistrasse 18
+            <br />
+            8952 Schlieren
+            <br />
+            <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
+            <br />
+            <a href="https://lumina-spitex.ch/">lumina-spitex.ch</a>
             <br />
             <a href="tel:+41434338800" aria-label="Telefon 043 433 88 00">
               043 433 88 00
-            </a>{" "}
-            ·{" "}
-            <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
+            </a>
           </address>
         </div>
         <nav aria-label="Dienstleistungen">
@@ -1853,22 +1859,13 @@ function Legal({
       <section className="wrap legal-copy">
         {privacy ? (
           <>
-            <div className="privacy-summary" aria-label="Datenschutz auf einen Blick">
-              <article>
-                <span>Verantwortlich</span>
-                <strong>Lumina Spitex AG</strong>
-                <p>Ihre direkte Anlaufstelle für alle Datenschutzfragen.</p>
-              </article>
-              <article>
-                <span>Website-Tracking</span>
-                <strong>Kein Marketing-Tracking</strong>
-                <p>Derzeit keine Analyse- oder Werbedienste.</p>
-              </article>
-              <article>
-                <span>Digitale Checks</span>
-                <strong>Keine automatischen Entscheide</strong>
-                <p>Ergebnisse sind unverbindlich und werden persönlich geprüft.</p>
-              </article>
+            <div className="privacy-intro">
+              <span className="eyebrow">Vertrauen durch Klarheit</span>
+              <h2>Ihre Daten verdienen denselben Schutz wie Ihr Vertrauen.</h2>
+              <p>
+                Hier erfahren Sie transparent, welche Personendaten wir bearbeiten,
+                wofür wir sie benötigen und welche Rechte Sie haben.
+              </p>
             </div>
 
             <h2>1. Verantwortliche Stelle</h2>
