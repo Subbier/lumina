@@ -278,7 +278,7 @@ function Footer() {
       </div>
       <div className="wrap legal">
         <span>
-          © 2026 Lumina Spitex AG · Webdesign & technische Umsetzung:{" "}
+          © 2026 Lumina Spitex AG · Website & Inhalte:{" "}
           <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
             AgenticIT
           </a>
@@ -430,10 +430,10 @@ function Home() {
           <span className="eyebrow">01 · Spitex</span>
           <h2>Pflege mit fester Bezugsperson. Klare Abrechnung.</h2>
           <p className="aida-lead">
-            Wir starten mit einer Bedarfsabklärung. Danach begleiten feste
-            Fachpersonen Ihren Alltag. Wirksam. Zweckmässig. Wirtschaftlich.
-            Genau so, wie es anerkannte Spitex-Organisationen in der Schweiz
-            machen.
+            Nach einer sorgfältigen Bedarfsabklärung begleiten feste
+            Fachpersonen Ihren Alltag. Die Pflege bleibt wirksam, zweckmässig
+            und wirtschaftlich – so, wie es für anerkannte
+            Spitex-Organisationen in der Schweiz vorgesehen ist.
           </p>
           <ul className="aida-points">
             <li>Bedarfsabklärung mit fester Bezugsperson</li>
@@ -460,9 +460,10 @@ function Home() {
           <span className="eyebrow">02 · Pflegende Angehörige</span>
           <h2>Sie pflegen schon. Wir zahlen dafür.</h2>
           <p className="aida-lead">
-            Sofortige Anstellung mit Lohn. Die Ausbildung folgt. Innert zwölf
-            Monaten: Lehrgang Pflegende Angehörige SRK. Lumina organisiert.
-            Lumina finanziert.
+            Sie können sofort mit Lohn angestellt werden. Den anerkannten
+            Lehrgang für pflegende Angehörige absolvieren Sie anschliessend
+            innerhalb von zwölf Monaten – organisiert und finanziert von
+            Lumina.
           </p>
           <ul className="aida-points">
             <li>Sofort anstellen – ohne Kursabschluss zuerst</li>
@@ -490,8 +491,9 @@ function Home() {
           <span className="eyebrow">03 · Begleitung</span>
           <h2>Wenn Alltag wieder angenehm werden soll.</h2>
           <p className="aida-lead">
-            Begleitung geht über die Grundpflege hinaus. Erledigungen. Termine.
-            Soziale Teilhabe. So bleibt Selbstbestimmung spürbar.
+            Unsere Begleitung ergänzt die Grundpflege dort, wo der Alltag mehr
+            Unterstützung braucht: bei Erledigungen, Terminen und sozialen
+            Kontakten. So bleibt Selbstbestimmung auch im Alltag spürbar.
           </p>
           <ul className="aida-points">
             <li>Unterstützung bei Erledigungen im Alltag</li>
@@ -1856,7 +1858,7 @@ function Legal({
               E-Mail: info@lumina-spitex.ch · Telefon: 043 433 88 00
             </p>
             <p>
-              Website-Konzeption und technische Umsetzung:{" "}
+              Konzeption, Gestaltung und redaktionelle Inhalte:{" "}
               <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
                 AgenticIT
               </a>
@@ -1953,13 +1955,14 @@ function Legal({
               geschützt. Eine Verwendung ausserhalb der gesetzlichen Schranken
               bedarf der vorherigen Zustimmung.
             </p>
-            <h2>Website</h2>
+            <h2>Website & Inhalte</h2>
             <p>
-              Konzeption, Gestaltung und technische Umsetzung:{" "}
+              Diese Website wurde von{" "}
               <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
                 AgenticIT
-              </a>. Für die Inhalte und Pflegeinformationen ist die Lumina
-              Spitex AG verantwortlich.
+              </a>{" "}
+              konzipiert, gestaltet und technisch umgesetzt. AgenticIT
+              verantwortet zudem die redaktionellen Inhalte dieser Website.
             </p>
           </>
         )}

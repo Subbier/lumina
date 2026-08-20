@@ -56,7 +56,7 @@ export const serviceSegments: ServiceSegment[] = [
     title: "Spitex-Leistungen.",
     titleEm: "Abklärung und Pflege.",
     lead:
-      "Spitex-Leistungen nach KVG: Abklärung & Beratung sowie Grund- und Behandlungspflege – ärztlich verordnet, von Fachpersonen erbracht und über die Krankenkasse abrechenbar.",
+      "Wir klären Ihren Pflegebedarf sorgfältig ab und übernehmen Grund- sowie Behandlungspflege zu Hause. Die Leistungen werden ärztlich verordnet, von Fachpersonen erbracht und direkt über die Krankenkasse abgerechnet.",
     image: "/images/spitex-hero-home-visit.webp",
     imageAlt:
       "Spitex-Pflegefachperson misst bei einer Klientin zu Hause den Blutdruck",
@@ -64,7 +64,7 @@ export const serviceSegments: ServiceSegment[] = [
     introEyebrow: "Kassenpflichtige Spitex-Leistungen",
     introTitle: "Spitex-Leistungen nach KVG – klar und fachlich begleitet.",
     introSummary:
-      "Unsere Spitex-Leistungen starten mit der Abklärung des Pflegebedarfs. Danach erbringen diplomierte Pflegefachpersonen und Fachpersonen Gesundheit Grund- und Behandlungspflege – wirksam, zweckmässig und wirtschaftlich nach KVG.",
+      "Am Anfang steht eine sorgfältige Abklärung Ihres Pflegebedarfs. Darauf aufbauend übernehmen diplomierte Pflegefachpersonen und Fachpersonen Gesundheit die Grund- und Behandlungspflege – wirksam, zweckmässig und wirtschaftlich nach KVG.",
     introMore: [
       "Abklärung, Grundpflege und Behandlungspflege nach KLV Art. 7 Abs. 2 rechnen wir direkt über Ihre Krankenkasse (KVG) ab. Die Spitex-Leistungen erfassen wir transparent in der Pflegedokumentation.",
       "Leistungen über die kassenpflichtige Spitex-Pflege hinaus finden Sie unter Begleitung. Wenn Angehörige die Pflege übernehmen, begleiten wir Anstellung und Qualifikation unter Pflegende Angehörige. Aktuelle Ansätze stehen unter Tarife.",
@@ -293,7 +293,7 @@ export const serviceSegments: ServiceSegment[] = [
     title: "Sie pflegen.",
     titleEm: "Wir stellen an.",
     lead:
-      "Sie pflegen schon – und können sofort angestellt werden. Lohn von Tag eins. Die Ausbildung folgt innert zwölf Monaten: Lehrgang Pflegende Angehörige SRK, organisiert und finanziert durch uns.",
+      "Wenn Sie bereits einen nahestehenden Menschen pflegen, können Sie bei uns sofort angestellt werden und erhalten vom ersten Tag an Lohn. Den anerkannten SRK-Lehrgang organisieren und finanzieren wir innerhalb der ersten zwölf Monate.",
     image: "/images/angehoerige-hero-anleitung.webp",
     imageAlt:
       "Pflegefachperson zeigt einem Angehörigen auf Hausbesuch, wie er seinen Vater unterstützt",
@@ -301,7 +301,7 @@ export const serviceSegments: ServiceSegment[] = [
     introEyebrow: "Sofort anstellen. Danach ausbilden.",
     introTitle: "Pflegen Sie weiter. Wir übernehmen den Rest.",
     introSummary:
-      "Kein Kurs zuerst, kein monatelanges Warten: Bei Lumina starten Sie mit Anstellung, Lohn und Sozialversicherung. Eine diplomierte Pflegefachperson bleibt an Ihrer Seite – und die Krankenkasse trägt die dokumentierte Grundpflege.",
+      "Sie müssen nicht erst einen Kurs abschliessen oder monatelang warten. Bei Lumina starten Sie direkt mit Anstellung, Lohn und Sozialversicherung. Eine diplomierte Pflegefachperson begleitet Sie, während die dokumentierte Grundpflege über die Krankenkasse abgerechnet wird.",
     introMore: [
       "Vertrag, Abrechnung und Qualitätssicherung liegen bei uns. Sie bleiben bei dem Menschen, der Ihnen nahesteht – mit Lohn statt stiller Belastung.",
       "Innert zwölf Monaten absolvieren Sie den Lehrgang Pflegende Angehörige SRK (von Spitex Schweiz anerkannt). Wir organisieren, zahlen und begleiten das Coaching zu Hause.",
