@@ -276,10 +276,9 @@ function Footer() {
           <a href="/redaktion">Redaktion</a>
         </nav>
         <div>
-          <h3>Für Sie da</h3>
-          <p>Mo–Fr, 08:00–18:00 Uhr</p>
-          <a className="button gold" href="/anspruchscheck">
-            Lohn schätzen
+          <a className="footer-wage-link" href="/lohn-check">
+            <span>Lohn für pflegende Angehörige</span>
+            <span>schätzen</span>
           </a>
         </div>
       </div>
