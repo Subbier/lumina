@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     };
 
     if (!hasDatabase()) {
-      console.warn("lead-create-no-db", payload);
+      console.warn("lead-create-no-db");
       return Response.json(
         { ok: true, id: `pending-${Date.now()}`, persisted: false },
         { status: 201 }

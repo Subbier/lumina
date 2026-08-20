@@ -1845,73 +1845,226 @@ function Legal({
               ? "Datenschutzerklärung dieser Website"
               : "Impressum der Lumina Spitex AG"}
           </h1>
-          <p>Stand: August 2026</p>
+          <p>
+            <time dateTime="2026-08-20">Stand: 20. August 2026</time>
+          </p>
         </div>
       </section>
       <section className="wrap legal-copy">
         {privacy ? (
           <>
+            <div className="privacy-summary" aria-label="Datenschutz auf einen Blick">
+              <article>
+                <span>Verantwortlich</span>
+                <strong>Lumina Spitex AG</strong>
+                <p>Ihre direkte Anlaufstelle für alle Datenschutzfragen.</p>
+              </article>
+              <article>
+                <span>Website-Tracking</span>
+                <strong>Kein Marketing-Tracking</strong>
+                <p>Derzeit keine Analyse- oder Werbedienste.</p>
+              </article>
+              <article>
+                <span>Digitale Checks</span>
+                <strong>Keine automatischen Entscheide</strong>
+                <p>Ergebnisse sind unverbindlich und werden persönlich geprüft.</p>
+              </article>
+            </div>
+
             <h2>1. Verantwortliche Stelle</h2>
             <p>
               Lumina Spitex AG, Rütistrasse 18, 8952 Schlieren, Schweiz
               <br />
-              E-Mail: info@lumina-spitex.ch · Telefon: 043 433 88 00
+              E-Mail: <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
+              {" · "}
+              Telefon: <a href="tel:+41434338800">043 433 88 00</a>
             </p>
             <p>
-              Konzeption, Gestaltung und redaktionelle Inhalte:{" "}
+              Lumina Spitex AG ist für die Bearbeitung Ihrer Personendaten
+              verantwortlich. AgenticIT unterstützt die Website in den Bereichen
+              Konzeption, Gestaltung, Technik und Redaktion und bearbeitet Daten
+              nur, soweit dies für diese Aufgaben erforderlich ist.
+            </p>
+            <p>
+              Website-Partner:{" "}
               <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
                 AgenticIT
               </a>
             </p>
-            <h2>2. Welche Daten wir bearbeiten</h2>
+
+            <h2>2. Geltungsbereich und Rechtsgrundlagen</h2>
             <p>
-              Wenn Sie uns kontaktieren oder einen Check nutzen, bearbeiten wir
-              die von Ihnen eingegebenen Kontakt-, Anfrage- und
-              Situationsangaben. Gesundheitsbezogene Angaben behandeln wir
-              besonders vertraulich.
+              Diese Erklärung gilt für die Nutzung dieser Website und die darüber
+              ausgelösten Anfragen. Für ein späteres Pflege-, Beratungs- oder
+              Arbeitsverhältnis können ergänzende Informationen gelten. Wir
+              bearbeiten Personendaten nach dem Schweizer Datenschutzgesetz
+              (DSG). Soweit die EU-Datenschutz-Grundverordnung (DSGVO) anwendbar
+              ist, erfolgt die Bearbeitung insbesondere zur Vertragsanbahnung und
+              Vertragserfüllung, zur Erfüllung gesetzlicher Pflichten, aufgrund
+              Ihrer Einwilligung oder gestützt auf berechtigte Interessen an einem
+              sicheren und kundenfreundlichen Betrieb.
             </p>
-            <h2>3. Zweck der Bearbeitung</h2>
+
+            <h2>3. Besuch der Website</h2>
             <p>
-              Wir verwenden Angaben, um Anfragen zu beantworten, eine
-              persönliche Beratung vorzubereiten, unsere Leistungen zu erbringen
-              und gesetzliche Pflichten zu erfüllen. Digitale Checks liefern nur
-              eine unverbindliche Orientierung; eine Fachperson prüft die
-              Situation persönlich.
+              Beim Aufruf der Website können technisch notwendige Protokolldaten
+              anfallen: IP-Adresse, Datum und Uhrzeit, aufgerufene Adresse,
+              verweisende Seite, Browser- und Geräteangaben sowie Status der
+              Anfrage. Wir verwenden diese Daten, um die Website bereitzustellen,
+              Fehler zu beheben, Missbrauch abzuwehren und die Systemsicherheit zu
+              gewährleisten. Die Website wird über Vercel bereitgestellt.
             </p>
-            <h2>4. Weitergabe und Auftragsbearbeitung</h2>
+
+            <h2>4. Kontakt- und Rückrufanfragen</h2>
             <p>
-              Wir geben Daten nur weiter, wenn dies für eine beauftragte
-              Leistung, eine gesetzliche Pflicht oder mit Ihrer Einwilligung
-              erforderlich ist. Eingesetzte Dienstleister werden sorgfältig
-              ausgewählt und vertraglich zum Datenschutz verpflichtet.
+              Wenn Sie ein Formular absenden, bearbeiten wir die von Ihnen
+              angegebenen Kontaktinformationen sowie Thema und Nachricht. Wir
+              benötigen diese Angaben, um Ihre Anfrage zuzuordnen, Sie zu
+              kontaktieren und eine Beratung vorzubereiten. Freitextfelder sind
+              freiwillig. Bitte teilen Sie dort nur Informationen mit, die für Ihr
+              Anliegen erforderlich sind.
             </p>
-            <h2>5. Aufbewahrung und Sicherheit</h2>
+
+            <h2>5. Lohn-Check und Anspruchscheck</h2>
             <p>
-              Wir bewahren Daten nur so lange auf, wie es für den jeweiligen
-              Zweck oder gesetzliche Pflichten notwendig ist, und schützen sie
-              mit angemessenen technischen und organisatorischen Massnahmen.
+              Der Lohn-Check verarbeitet Angaben zur Pflegesituation, zu Aufgaben,
+              Zeitaufwand und Kanton. Diese Angaben können Rückschlüsse auf die
+              Gesundheit der betreuten Person zulassen und sind besonders
+              schützenswert. Ohne Kontaktdaten und Ihre aktive Einwilligung wird
+              das Ergebnis nicht an Lumina übermittelt. Der Anspruchscheck wird
+              direkt in Ihrem Browser ausgewertet; seine Antworten werden nicht
+              über das Kontaktformular gespeichert.
             </p>
-            <h2>6. Ihre Rechte</h2>
             <p>
-              Sie können im Rahmen des anwendbaren Schweizer Datenschutzrechts
-              Auskunft, Berichtigung, Löschung oder Herausgabe Ihrer Daten
-              verlangen und eine Einwilligung für die Zukunft widerrufen.
-              Kontaktieren Sie uns dazu unter info@lumina-spitex.ch.
+              Rechner und Checks liefern nur eine unverbindliche Orientierung.
+              Sie führen zu keiner ausschliesslich automatisierten Entscheidung
+              mit rechtlicher oder ähnlich erheblicher Wirkung. Eine Fachperson
+              klärt die konkrete Situation mit Ihnen.
             </p>
-            <h2>7. Cookies und lokale Speicherung</h2>
+
+            <h2>6. Bewerbungen</h2>
             <p>
-              Die Website kann technisch notwendige lokale Speicherung
-              verwenden, etwa um Eingaben innerhalb eines Checks zu halten oder
-              die Installierbarkeit als App zu ermöglichen. Nicht notwendige
-              Analyse- oder Marketingdienste werden nur nach entsprechender
-              Information und, wo erforderlich, Einwilligung eingesetzt.
+              Bei einer Bewerbung bearbeiten wir Ihre Personal- und Kontaktdaten,
+              die gewünschte Funktion, Pensum, Einsatzregion, möglichen Start und
+              Ihre Nachricht. Die Angaben dienen ausschliesslich der Prüfung und
+              Durchführung des Bewerbungsverfahrens. Weitere Unterlagen fordern
+              wir bei Bedarf separat an.
             </p>
-            <h2>8. Änderungen</h2>
+
+            <h2>7. Empfänger und Dienstleister</h2>
             <p>
-              Wir können diese Erklärung anpassen, wenn sich Funktionen oder
-              rechtliche Anforderungen ändern. Es gilt die auf dieser Website
-              veröffentlichte Fassung.
+              Zugriff erhalten nur Personen und Stellen, die ihn für den
+              jeweiligen Zweck benötigen. Dazu können Mitarbeitende von Lumina,
+              sorgfältig ausgewählte IT- und Website-Dienstleister sowie – wenn
+              Sie dies wünschen oder eine gesetzliche Grundlage besteht –
+              beteiligte Fachstellen gehören. Für die Website setzen wir
+              insbesondere folgende Auftragsbearbeiter ein:
             </p>
+            <ul className="privacy-list">
+              <li><strong>Vercel Inc.</strong> für Hosting, Auslieferung und technische Protokolle;</li>
+              <li><strong>Neon</strong> für die geschützte PostgreSQL-Datenbank der Formulare;</li>
+              <li><strong>AgenticIT GmbH</strong> für technische, gestalterische und redaktionelle Betreuung.</li>
+            </ul>
+            <p>
+              Wir verkaufen keine Personendaten und geben sie nicht für fremde
+              Werbezwecke weiter. Dienstleister dürfen Daten nur für die
+              vereinbarten Aufgaben und nach unseren Weisungen bearbeiten.
+            </p>
+
+            <h2>8. Bearbeitung im Ausland</h2>
+            <p>
+              Vercel, Neon und deren Unterauftragnehmer können Daten insbesondere
+              in der Schweiz, im Europäischen Wirtschaftsraum und in den USA
+              bearbeiten. Befindet sich ein Empfänger in einem Staat ohne
+              anerkannt angemessenes Datenschutzniveau, verwenden wir – soweit
+              erforderlich – anerkannte Standarddatenschutzklauseln und
+              ergänzende Schutzmassnahmen oder stützen die Übermittlung auf eine
+              gesetzliche Ausnahme.
+            </p>
+
+            <h2>9. Cookies, lokaler Speicher und App-Funktion</h2>
+            <p>
+              Diese Website setzt derzeit keine Analyse-, Marketing- oder
+              Profiling-Dienste ein. Sie nutzt ausschliesslich technisch
+              notwendige lokale Speicherungen. Dazu gehören Ihre Auswahl zu
+              diesem Hinweis sowie ein Service Worker, der öffentliche Seiten und
+              Dateien für eine zuverlässige App- und Offline-Funktion im Browser
+              zwischenspeichern kann. Formulareingaben und abgesendete
+              Gesundheitsangaben werden nicht in diesem Offline-Speicher
+              abgelegt. Sie können lokale Website-Daten jederzeit in den
+              Einstellungen Ihres Browsers löschen.
+            </p>
+
+            <h2>10. Aufbewahrungsdauer</h2>
+            <p>
+              Wir bewahren Personendaten nur so lange auf, wie sie für den Zweck
+              erforderlich sind oder gesetzliche und vertragliche Pflichten
+              bestehen. Nicht weitergeführte Website-Anfragen löschen oder
+              anonymisieren wir in der Regel spätestens zwölf Monate nach
+              Abschluss der Anfrage. Daten erfolgloser Bewerbungen löschen wir in
+              der Regel sechs Monate nach Abschluss des Verfahrens, sofern keine
+              Einwilligung für eine längere Aufbewahrung vorliegt. Entsteht ein
+              Pflege-, Vertrags- oder Arbeitsverhältnis, gelten die dafür
+              erforderlichen gesetzlichen Aufbewahrungsfristen. Sicherungskopien
+              werden nach den vorgesehenen Löschzyklen überschrieben.
+            </p>
+
+            <h2>11. Datensicherheit</h2>
+            <p>
+              Wir treffen angemessene technische und organisatorische
+              Massnahmen, um Daten vor Verlust, unberechtigtem Zugriff,
+              Veränderung und Offenlegung zu schützen. Dazu gehören
+              verschlüsselte Übertragung, Zugriffsbeschränkungen,
+              Sicherheitsvorgaben für Dienstleister und technische
+              Schutzmechanismen der Website. Eine Datenübertragung im Internet
+              kann dennoch nie vollständig risikofrei garantiert werden.
+            </p>
+
+            <h2>12. Ihre Rechte</h2>
+            <p>
+              Sie können im Rahmen des anwendbaren Rechts insbesondere Auskunft,
+              Berichtigung, Löschung, Einschränkung der Bearbeitung oder die
+              Herausgabe Ihrer Daten verlangen. Erteilte Einwilligungen können
+              Sie jederzeit für die Zukunft widerrufen. Ein Widerruf berührt die
+              Rechtmässigkeit der bisherigen Bearbeitung nicht. Zur eindeutigen
+              Zuordnung können wir einen geeigneten Identitätsnachweis verlangen.
+            </p>
+            <p>
+              Senden Sie Ihr Anliegen an{" "}
+              <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>.
+              Sie können sich zudem an den{" "}
+              <a href="https://www.edoeb.admin.ch/" target="_blank" rel="noopener noreferrer">
+                Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB)
+              </a>{" "}
+              wenden.
+            </p>
+
+            <h2>13. Externe Links</h2>
+            <p>
+              Diese Website enthält Links zu Angeboten Dritter. Sobald Sie einen
+              solchen Link öffnen, gilt die Datenschutzerklärung der jeweiligen
+              Anbieterin. Lumina hat keinen Einfluss auf deren Datenbearbeitung.
+            </p>
+
+            <h2>14. Änderungen dieser Erklärung</h2>
+            <p>
+              Wir passen diese Datenschutzerklärung an, wenn sich Funktionen,
+              Dienstleister oder rechtliche Anforderungen ändern. Massgebend ist
+              die jeweils auf dieser Website veröffentlichte Fassung.
+            </p>
+
+            <aside className="privacy-note">
+              <strong>Gut zu wissen:</strong> Die Informationspflicht nach dem
+              Schweizer DSG verlangt eine verständliche und leicht zugängliche
+              Erklärung. Weiterführende Informationen finden Sie beim{" "}
+              <a href="https://www.edoeb.admin.ch/de/datenschutzerklaerungen-im-internet" target="_blank" rel="noopener noreferrer">
+                EDÖB
+              </a>{" "}
+              und im{" "}
+              <a href="https://www.fedlex.admin.ch/eli/cc/2022/491/de" target="_blank" rel="noopener noreferrer">
+                Schweizer Datenschutzgesetz
+              </a>.
+            </aside>
           </>
         ) : (
           <>

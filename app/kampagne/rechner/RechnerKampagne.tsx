@@ -11,10 +11,11 @@ export function RechnerKampagne() {
   const [phone, setPhone] = useState("");
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!phone.trim()) return;
+    if (!phone.trim() || !consent) return;
     setSending(true);
     try {
       await fetch("/api/leads", {
@@ -25,7 +26,7 @@ export function RechnerKampagne() {
           name,
           contact: phone.trim(),
           topic: "Rückruf Kampagne Rechner",
-          consent: true,
+          consent,
         }),
       });
       setSent(true);
@@ -112,6 +113,18 @@ export function RechnerKampagne() {
                     placeholder="079 000 00 00"
                     autoComplete="tel"
                   />
+                </label>
+                <label className="kampagne-consent">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                  />
+                  <span>
+                    Ich bin mit der Bearbeitung meiner Angaben gemäss{" "}
+                    <a href="/datenschutz">Datenschutzerklärung</a> einverstanden.
+                  </span>
                 </label>
                 <button className="button gold" type="submit" disabled={sending}>
                   {sending ? "Wird gesendet…" : "Rückruf anfordern"}

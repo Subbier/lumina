@@ -16,9 +16,9 @@ export function CookieBanner() {
     }
   }, []);
 
-  function choose(value: "accepted" | "declined") {
+  function acknowledge() {
     try {
-      window.localStorage.setItem(STORAGE_KEY, value);
+      window.localStorage.setItem(STORAGE_KEY, "acknowledged");
     } catch {
       /* ignore quota / private mode */
     }
@@ -39,24 +39,17 @@ export function CookieBanner() {
         Cookie-Hinweis
       </p>
       <p id="cookie-banner-text">
-        Wir verwenden Cookies, damit die Website zuverlässig funktioniert. Mit
-        «Akzeptieren» stimmen Sie auch optionalen Cookies zu. Details in der{" "}
+        Diese Website nutzt nur technisch notwendige lokale Speicherungen. Es
+        sind derzeit keine Analyse- oder Marketing-Cookies aktiv. Details in der{" "}
         <a href="/datenschutz">Datenschutzerklärung</a>.
       </p>
       <div className="cookie-banner-actions">
         <button
           type="button"
-          className="cookie-banner-decline"
-          onClick={() => choose("declined")}
-        >
-          Ablehnen
-        </button>
-        <button
-          type="button"
           className="cookie-banner-accept"
-          onClick={() => choose("accepted")}
+          onClick={acknowledge}
         >
-          Akzeptieren
+          Verstanden
         </button>
       </div>
     </div>
