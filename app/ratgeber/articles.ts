@@ -12,6 +12,8 @@ export type Article = {
   image: string;
   imageAlt: string;
   updated: string;
+  publishedAt: string;
+  modifiedAt: string;
   /** Pre-rendered spoken audio (edge-tts), not browser speechSynthesis */
   audioSrc?: string;
   sections: ArticleSection[];
@@ -26,7 +28,7 @@ export type Article = {
  * lumina-spitex.ch, Wettbewerbspflege (pflegewegweiser.ch, iaha.ch, spitex.ch) – inhaltlich
  * abgegrenzt durch Transparenz, Limmattal-Bezug und Fokus Grundpflege unter Fachaufsicht.
  */
-export const articles: Article[] = [
+const articleDrafts: Array<Omit<Article, "publishedAt" | "modifiedAt">> = [
   {
     slug: "lohn-fuer-pflegende-angehoerige",
     audioSrc: "/audio/articles/lohn-fuer-pflegende-angehoerige.mp3?v=1",
@@ -477,6 +479,12 @@ export const articles: Article[] = [
     ],
   },
 ];
+
+export const articles: Article[] = articleDrafts.map((article) => ({
+  ...article,
+  publishedAt: "2026-08-20",
+  modifiedAt: "2026-08-30",
+}));
 
 export function getArticle(slug: string) {
   return articles.find((a) => a.slug === slug);

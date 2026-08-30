@@ -1,13 +1,13 @@
 import type { MetadataRoute } from "next";
-import { REVIEW_CRAWL_OPEN, STAGE_PUBLIC_URL } from "../lib/stage-seo";
+import { INDEXING_ENABLED, LIVE_PUBLIC_URL } from "../lib/stage-seo";
 
 /**
  * Stage-Robots.
- * REVIEW_CRAWL_OPEN steuert Crawlbarkeit für Audits.
- * Vor Livegang: siehe docs/launch-checklist.md (Punkt 1).
+ * LUMINA_INDEXING_ENABLED steuert den kontrollierten Domain-Go-live.
+ * Vor Aktivierung: siehe docs/launch-checklist.md (Punkt 1).
  */
 export default function robots(): MetadataRoute.Robots {
-  if (REVIEW_CRAWL_OPEN) {
+  if (INDEXING_ENABLED) {
     return {
       rules: [
         {
@@ -15,8 +15,8 @@ export default function robots(): MetadataRoute.Robots {
           allow: "/",
         },
       ],
-      sitemap: `${STAGE_PUBLIC_URL}/sitemap.xml`,
-      host: STAGE_PUBLIC_URL.replace(/^https?:\/\//, ""),
+      sitemap: `${LIVE_PUBLIC_URL}/sitemap.xml`,
+      host: LIVE_PUBLIC_URL.replace(/^https?:\/\//, ""),
     };
   }
 

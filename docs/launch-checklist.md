@@ -4,7 +4,7 @@
 
 Vergessener `Disallow: /` oder `noindex` = monatelang keine Indexierung.
 
-- [ ] `lib/stage-seo.ts` → `REVIEW_CRAWL_OPEN` bewusst setzen
+- [ ] Vercel-Variable `LUMINA_INDEXING_ENABLED=true` erst nach Domain-Umzug setzen
 - [ ] Live: `app/robots.ts` erlaubt Crawling + zeigt `sitemap.xml`
 - [ ] Live: `app/sitemap.ts` listet alle öffentlichen URLs (Ortsseiten, Karriere, …)
 - [ ] Live: Meta-Robots / `X-Robots-Tag` = index,follow (kein Stage-noindex)
@@ -12,8 +12,8 @@ Vergessener `Disallow: /` oder `noindex` = monatelang keine Indexierung.
 - [ ] `public/llms.txt` auf öffentliche Version umstellen
 - [ ] Nach Deploy: `https://…/robots.txt` und eine Seite manuell prüfen
 
-Stage-Audit: `REVIEW_CRAWL_OPEN = true` (aktuell für Ubersuggest/Kritik).  
-Nach dem Audit wieder auf `false` setzen, bis echter Go-Live.
+Vorschau und Preview-Deployments bleiben ohne Variable automatisch auf
+`noindex, nofollow`. Für Audits wird die Vorschau nicht mehr indexierbar gemacht.
 
 ## 2. Arbitrage-Cluster Hilflosenentschädigung (Priorität)
 

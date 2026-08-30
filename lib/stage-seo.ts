@@ -8,20 +8,24 @@
  * docs/launch-checklist.md prüfen. Vergessener Disallow = monatelang
  * keine Indexierung.
  */
-export const REVIEW_CRAWL_OPEN = true;
+export const REVIEW_CRAWL_OPEN = false;
 
-/** Absolute Basis-URL für Meta/OG während Stage-Review (nicht die noch tote .ch). */
+/** Indexierung wird erst beim kontrollierten Domain-Go-live explizit aktiviert. */
+export const INDEXING_ENABLED =
+  !REVIEW_CRAWL_OPEN && process.env.LUMINA_INDEXING_ENABLED === "true";
+
+/** Technische Vorschau-Adresse; niemals als Canonical verwenden. */
 export const STAGE_PUBLIC_URL = "https://lumina-spitex.vercel.app";
 
-/** Live-Domain – erst nach DNS/Go-Live als Canonical-Ziel nutzen. */
+/** Einzige öffentliche Canonical-Zieldomain. */
 export const LIVE_PUBLIC_URL = "https://lumina-spitex.ch";
 
 /** Öffentliche Basis-URL für Canonical, OG, Sitemap, JSON-LD. */
 export function publicSiteUrl(): string {
-  return REVIEW_CRAWL_OPEN ? STAGE_PUBLIC_URL : LIVE_PUBLIC_URL;
+  return LIVE_PUBLIC_URL;
 }
 
-export const stageRobotsMeta = REVIEW_CRAWL_OPEN
+export const stageRobotsMeta = INDEXING_ENABLED
   ? {
       index: true,
       follow: true,

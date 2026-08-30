@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { REVIEW_CRAWL_OPEN } from "./lib/stage-seo";
+import { INDEXING_ENABLED } from "./lib/stage-seo";
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -26,6 +26,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
   typescript: {
     ignoreBuildErrors: false,
   },
@@ -35,7 +38,7 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     const headers = [...securityHeaders];
-    if (!REVIEW_CRAWL_OPEN) {
+    if (!INDEXING_ENABLED) {
       headers.push({
         key: "X-Robots-Tag",
         value: "noindex, nofollow, noarchive",
@@ -45,6 +48,30 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers,
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/dienstleistungen",
+        destination: "/spitex",
+        statusCode: 301,
+      },
+      {
+        source: "/doctors",
+        destination: "/ueber-uns",
+        statusCode: 301,
+      },
+      {
+        source: "/uber-uns",
+        destination: "/ueber-uns",
+        statusCode: 301,
+      },
+      {
+        source: "/coming-soon",
+        destination: "/",
+        statusCode: 301,
       },
     ];
   },

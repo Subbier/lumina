@@ -22,10 +22,15 @@ export type PageSeo = {
   conversion?: boolean;
 };
 
+export const DEFAULT_SHARE_IMAGE = {
+  url: "/og.png",
+  alt: "Lumina Spitex AG – Pflege zu Hause in Zürich und Aargau",
+};
+
 export const pageSeo = {
   home: {
     path: "/",
-    title: "Pflege zu Hause Zürich & Aargau",
+    title: "Spitex Zürich & Limmattal: Pflege zu Hause | Lumina Spitex AG",
     description:
       "Pflege zu Hause in Zürich & Aargau. Lohn für pflegende Angehörige. Sofort anstellen, SRK innert 12 Monaten. Anspruch prüfen.",
   },
@@ -128,16 +133,56 @@ export function absoluteUrl(path: string): string {
 export function buildMetadata(page: PageSeo): Metadata {
   const canonical = absoluteUrl(page.path);
   return {
-    title: page.title,
+    title: page.path === "/" ? { absolute: page.title } : page.title,
     description: page.description,
     robots: stageRobotsMeta,
     alternates: { canonical },
     openGraph: {
-      title: page.path === "/" ? SITE_NAME : page.title,
+      title: page.title,
       description: page.description,
       url: canonical,
       siteName: SITE_NAME,
+      locale: "de_CH",
+      type: "website",
+      images: [DEFAULT_SHARE_IMAGE],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: page.title,
+      description: page.description,
+      images: [DEFAULT_SHARE_IMAGE.url],
+    },
+  };
+}
+
+export function pageJsonLd(page: PageSeo) {
+  const url = absoluteUrl(page.path);
+  const base = publicSiteUrl().replace(/\/$/, "");
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}${page.path === "/" ? "/" : ""}#webpage`,
+    url,
+    name: page.title,
+    description: page.description,
+    isPartOf: { "@id": `${base}/#website` },
+    about: { "@id": `${base}/#organization` },
+    inLanguage: "de-CH",
+  };
+}
+
+export function breadcrumbJsonLd(
+  items: Array<{ name: string; path: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
   };
 }
 
@@ -203,16 +248,6 @@ export function organizationJsonLd(baseUrl: string = SITE_URL) {
         name: SITE_NAME,
         inLanguage: "de-CH",
         publisher: { "@id": `${base}/#organization` },
-      },
-      {
-        "@type": "WebPage",
-        "@id": `${base}/#webpage`,
-        url: base,
-        name: pageSeo.home.title,
-        description: pageSeo.home.description,
-        isPartOf: { "@id": `${base}/#website` },
-        about: { "@id": `${base}/#organization` },
-        inLanguage: "de-CH",
       },
       {
         "@type": "Service",

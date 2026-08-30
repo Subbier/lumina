@@ -1,7 +1,6 @@
-# Lumina Spitex (Staging / Review)
+# Lumina Spitex AG
 
-Vorschau-Site für Review und SEO-Audit.
-Produktive Domain folgt: https://lumina-spitex.ch
+Offizielle Website: https://lumina-spitex.ch
 
 Hauptangebote: Spitex zu Hause, Anstellung pflegender Angehöriger, Begleitung.
 Standort: Schlieren (ZH), Einsatz Zürich & Aargau.

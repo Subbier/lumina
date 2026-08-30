@@ -1,5 +1,6 @@
-/** Shared responsive <picture> for audit-friendly WebP + srcset.
- *  Fallback <img> also uses WebP so crawlers never pull oversized PNG/JPEG. */
+import Image from "next/image";
+
+/** Shared image wrapper. Next.js generates correctly sized AVIF/WebP variants. */
 export function PictImg({
   src,
   alt,
@@ -10,7 +11,6 @@ export function PictImg({
   fetchPriority,
   decoding = "async",
   sizes = "(max-width: 768px) 100vw, 720px",
-  responsive = true,
 }: {
   src: string;
   alt: string;
@@ -23,30 +23,18 @@ export function PictImg({
   sizes?: string;
   responsive?: boolean;
 }) {
-  const clean = src.split("?")[0];
-  const webpBase = clean.replace(/\.(jpe?g|png|webp)$/i, "");
-  const webp = `${webpBase}.webp`;
-  const candidates = responsive
-    ? [480, 768, 1200]
-        .filter((w) => w < width)
-        .map((w) => `${webpBase}-${w}.webp ${w}w`)
-    : [];
-  const srcSet = [...candidates, `${webp} ${width}w`].join(", ");
-
   return (
-    <picture>
-      <source type="image/webp" srcSet={srcSet} sizes={sizes} />
-      <img
-        className={className}
-        src={webp}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={loading}
-        fetchPriority={fetchPriority}
-        decoding={decoding}
-        sizes={sizes}
-      />
-    </picture>
+    <Image
+      className={className}
+      src={src.split("?")[0]}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      fetchPriority={fetchPriority}
+      priority={fetchPriority === "high"}
+      decoding={decoding}
+      sizes={sizes}
+    />
   );
 }

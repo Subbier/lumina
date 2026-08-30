@@ -6,15 +6,27 @@ import {
   useEffect,
   useState,
 } from "react";
+import dynamic from "next/dynamic";
 import { articles, getArticle, type Article } from "./ratgeber/articles";
 import { ServiceSegmentPage, PartnersStrip } from "./dienstleistungen/ServiceSegmentPage";
 import { tarifeKlv, tarifeUvg } from "./dienstleistungen/content";
 import { ListenPlayer } from "./listen/ListenPlayer";
 import { CookieBanner } from "./CookieBanner";
-import { LohnCheckQuiz } from "./lohn-check/LohnCheckQuiz";
 import { PictImg } from "./components/PictImg";
 import { AppMenuSheet, AppTabBar, PWARegister } from "./components/AppShell";
 import { haptic } from "./components/haptic";
+
+const LohnCheckQuiz = dynamic(
+  () => import("./lohn-check/LohnCheckQuiz").then((mod) => mod.LohnCheckQuiz),
+  { ssr: false },
+);
+const AnspruchscheckQuiz = dynamic(
+  () =>
+    import("./anspruchscheck/AnspruchscheckQuiz").then(
+      (mod) => mod.AnspruchscheckQuiz,
+    ),
+  { ssr: false },
+);
 
 function BrandLockup({
   height = 84,
@@ -253,7 +265,7 @@ function Footer() {
             <br />
             <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
             <br />
-            <a href="https://lumina-spitex.ch/">lumina-spitex.ch</a>
+            <a href="https://lumina-spitex.ch">lumina-spitex.ch</a>
             <br />
             <a href="tel:+41434338800" aria-label="Telefon 043 433 88 00">
               043 433 88 00
@@ -261,13 +273,13 @@ function Footer() {
           </address>
         </div>
         <nav aria-label="Dienstleistungen">
-          <h3>Dienstleistungen</h3>
+          <p className="footer-heading">Dienstleistungen</p>
           <a href="/spitex">Spitex</a>
           <a href="/angehoerige">Pflegende Angehörige</a>
           <a href="/begleitung">Begleitung</a>
         </nav>
         <nav aria-label="Über uns und Service">
-          <h3>Über uns</h3>
+          <p className="footer-heading">Über uns</p>
           <a href="/ueber-uns">Über uns</a>
           <a href="/tarife">Tarife</a>
           <a href="/ratgeber">Ratgeber</a>
@@ -456,6 +468,7 @@ function Home() {
           alt="Diplomierte Pflegefachperson misst Blutdruck zu Hause"
           width={1536}
           height={1024}
+          loading="lazy"
           decoding="async"
           sizes="(max-width: 980px) 100vw, 560px"
         />
@@ -1113,7 +1126,7 @@ function Bewerbung() {
     if (response.ok) setSent(true);
     else
       setError(
-        "Das Senden hat nicht geklappt. Bitte mailen Sie an info@lumina-spitex.ch oder rufen Sie 043 433 88 00 an.",
+        "Das Senden hat nicht geklappt. Nutzen Sie bitte die E-Mail- oder Anrufmöglichkeit auf dieser Seite.",
       );
   }
 
@@ -1242,6 +1255,25 @@ function Bewerbung() {
           )}
         </form>
       </section>
+      <section className="wrap legal-copy compact-support">
+        <h2>So läuft Ihre Bewerbung bei Lumina ab</h2>
+        <p>
+          Nach Ihrer Schnellbewerbung prüft das Lumina-Team, ob Profil, Pensum
+          und Einsatzregion grundsätzlich zusammenpassen. Danach folgt ein
+          persönliches Gespräch zu Erfahrung, fachlicher Verantwortung,
+          Arbeitsweise und möglichen Einsätzen. Lebenslauf, Diplome und
+          Arbeitszeugnisse fordern wir erst im nächsten Schritt über einen
+          geeigneten Übermittlungsweg an. So bleibt der Erstkontakt einfach und
+          datensparsam.
+        </p>
+        <p>
+          Gesucht sind Menschen, die professionelle Pflege mit Verlässlichkeit
+          und Respekt verbinden. Feste Bezugspersonen, nachvollziehbare Abläufe
+          und fachliche Qualität stehen im Zentrum. Auch eine Initiativbewerbung
+          ist willkommen, wenn Sie in Zürich oder Aargau arbeiten möchten und
+          sich in einem wachsenden Spitex-Team einbringen wollen.
+        </p>
+      </section>
     </main>
   );
 }
@@ -1293,7 +1325,7 @@ function Contact() {
     if (response.ok) setSent(true);
     else
       setError(
-        "Das Senden hat nicht geklappt. Bitte rufen Sie uns unter 043 433 88 00 an.",
+        "Das Senden hat nicht geklappt. Nutzen Sie bitte den Anruf-Link auf dieser Seite.",
       );
   }
 
@@ -1349,7 +1381,7 @@ function Contact() {
             <span className="contact-label">Dringender Pflegebedarf?</span>
             <p>
               Rufen Sie uns direkt an. Bei medizinischen Notfällen wählen Sie
-              144.
+              {" "}<a href="tel:144">144</a>.
             </p>
           </div>
         </div>
@@ -1437,6 +1469,25 @@ function Contact() {
               )}
           </form>
         </div>
+      </section>
+      <section className="wrap legal-copy compact-support">
+        <h2>Was nach Ihrer Anfrage passiert</h2>
+        <p>
+          Eine Fachperson meldet sich während der Bürozeiten persönlich bei
+          Ihnen. Im ersten Gespräch geht es darum, Ihre Situation zu verstehen:
+          Welche Unterstützung wird benötigt, wo wohnt die betreute Person und
+          wie dringend ist der Bedarf? Sie müssen im Formular keine Diagnose und
+          keine ausführlichen Gesundheitsangaben nennen. Für den Rückruf genügen
+          Name, Kontaktmöglichkeit und das Thema.
+        </p>
+        <p>
+          Wenn eine Pflegeabklärung sinnvoll ist, erklärt Lumina den weiteren
+          Ablauf, die benötigten Unterlagen und mögliche Termine. Bei Fragen zur
+          Anstellung pflegender Angehöriger können Sie vorab den{" "}
+          <a href="/anspruchscheck">Anspruchscheck</a> nutzen. Er ersetzt keine
+          Fachabklärung, hilft aber dabei, das Erstgespräch gezielt
+          vorzubereiten.
+        </p>
       </section>
     </main>
   );
@@ -1656,6 +1707,7 @@ function Ratgeber({ articleSlug }: { articleSlug?: string }) {
         </div>
       </section>
       <section className="wrap blog-content">
+        <h2 className="blog-list-title">Alle Ratgeber-Beiträge</h2>
         <div className="filters" aria-label="Beiträge filtern">
           {categories.map((c) => (
             <button
@@ -1706,6 +1758,45 @@ function LohnCheck() {
         </div>
       </section>
       <LohnCheckQuiz embedded source="lohn-check" sectionId="lohn-rechner" />
+      <section className="wrap legal-copy check-explainer">
+        <h2>So entsteht Ihre Lohnorientierung</h2>
+        <p>
+          Der Lohn-Check beantwortet die konkrete Frage: Welcher Bruttolohn kann
+          sich aus regelmässiger, anrechenbarer Grundpflege ungefähr ergeben? Die
+          Schätzung verbindet Ihren täglichen Zeitaufwand mit einer
+          Lohnorientierung. Sie ist bewusst keine verbindliche Offerte. Erst eine
+          diplomierte Pflegefachperson kann vor Ort beurteilen, welche
+          Pflegehandlungen ärztlich verordnet und nach KLV abrechenbar sind.
+          Haushalt, Begleitung und reine Präsenz sind wertvoll, zählen aber nicht
+          automatisch als kassenpflichtige Grundpflege.
+        </p>
+        <h2>Was nach dem Ergebnis passiert</h2>
+        <p>
+          Sie entscheiden selbst, ob Sie das Resultat mit Lumina besprechen
+          möchten. Im persönlichen Erstgespräch klären wir Pflegesituation,
+          Wohnort und zeitlichen Umfang. Passt das Modell grundsätzlich, folgen
+          die ärztliche Verordnung und eine Bedarfsabklärung zu Hause. Erst danach
+          werden Pensum, Arbeitsvertrag, Sozialversicherungen, Ferienanspruch und
+          Dokumentation verbindlich festgelegt. Ein hoher privater Zeitaufwand
+          führt deshalb nicht automatisch zu gleich vielen bezahlten Stunden.
+        </p>
+        <h2>Welche Angaben und Unterlagen helfen</h2>
+        <p>
+          Für den ersten Kontakt genügen eine kurze Beschreibung der täglichen
+          Pflege und Ihre Kontaktangaben. Hilfreich für die spätere Abklärung sind
+          eine aktuelle Medikamentenliste, vorhandene Arztberichte, bisherige
+          Spitex-Unterlagen und eine einfache Übersicht der wiederkehrenden
+          Pflegehandlungen. Senden Sie keine Gesundheitsunterlagen unaufgefordert
+          über ein Freitextfeld. Lumina erklärt Ihnen zuerst den passenden,
+          geschützten Übermittlungsweg.
+        </p>
+        <p>
+          Noch unsicher, ob überhaupt ein Anspruch bestehen kann? Starten Sie
+          zuerst den <a href="/anspruchscheck">Anspruchscheck</a>. Er prüft die
+          grundlegende Situation; der Lohn-Check schätzt anschliessend die mögliche
+          Grössenordnung.
+        </p>
+      </section>
     </main>
   );
 }
@@ -1715,18 +1806,53 @@ function Anspruchscheck() {
     <main id="main-content">
       <section className="subhero warm">
         <div className="wrap">
-          <span className="eyebrow">Lohnrechner</span>
+          <span className="eyebrow">Anspruchscheck</span>
           <h1>Anspruch prüfen für pflegende Angehörige</h1>
           <p className="lead">
-            In wenigen Schritten eine erste Brutto-Orientierung in Franken.
+            Vier kurze Fragen zeigen, ob eine Anstellung grundsätzlich in Frage
+            kommen könnte – ohne Login und ohne verbindliche Entscheidung.
           </p>
         </div>
       </section>
-      <LohnCheckQuiz
-        embedded
-        source="anspruchscheck"
-        sectionId="anspruch-pruefen"
-      />
+      <AnspruchscheckQuiz embedded />
+      <section className="wrap legal-copy check-explainer">
+        <h2>Wann Angehörigenpflege grundsätzlich anstellbar ist</h2>
+        <p>
+          Der Anspruchscheck beantwortet zuerst die grundlegende Frage: Passt Ihre
+          Situation überhaupt zum Modell der angestellten Angehörigenpflege? Im
+          Zentrum stehen regelmässige Hilfe bei der Grundpflege, eine betreute
+          Person zu Hause und die Bereitschaft, sich von einer zugelassenen Spitex
+          anleiten zu lassen. Häufig geht es um Unterstützung beim Waschen,
+          Ankleiden, Essen, Lagern, Aufstehen oder bei der Mobilität. Verwandtschaft
+          allein schafft noch keinen Anspruch; entscheidend ist der fachlich
+          bestätigte Pflegebedarf.
+        </p>
+        <h2>Was der digitale Check nicht entscheidet</h2>
+        <p>
+          Das Ergebnis ist eine unverbindliche Orientierung und keine Zusage der
+          Krankenkasse, Gemeinde oder Lumina. Eine ärztliche Verordnung und die
+          Bedarfsabklärung durch eine diplomierte Pflegefachperson bleiben
+          notwendig. Dabei wird unterschieden zwischen Grundpflege,
+          Behandlungspflege, Haushalt und Betreuung. Auch Region, Dauer der
+          Pflegesituation, fachliche Anleitung und kantonale Vorgaben spielen eine
+          Rolle. Grenzfälle werden deshalb immer persönlich beurteilt.
+        </p>
+        <h2>Ihr nächster sinnvoller Schritt</h2>
+        <p>
+          Wenn mehrere Voraussetzungen passen, besprechen wir die Situation in
+          einem kostenlosen Erstgespräch. Dafür brauchen Sie zunächst keine
+          vollständige Akte. Notieren Sie, welche Hilfe täglich anfällt, seit wann
+          sie nötig ist und ob bereits eine Spitex oder Ärztin beteiligt ist. Im
+          nächsten Schritt erklärt Lumina, welche Unterlagen erforderlich sind und
+          wie die fachliche Abklärung abläuft. Sie behalten jederzeit die Kontrolle
+          darüber, welche Daten Sie weitergeben.
+        </p>
+        <p>
+          Sie wissen bereits, dass regelmässige Grundpflege anfällt? Dann zeigt der
+          <a href="/lohn-check">Lohn-Check</a> eine erste mögliche
+          Bruttolohn-Grössenordnung. Anspruch und Lohn bleiben damit klar getrennt.
+        </p>
+      </section>
     </main>
   );
 }
@@ -1783,8 +1909,9 @@ function Legal({
           </p>
           <h2>6. Kontakt</h2>
           <p>
-            Lumina Spitex AG, Rütistrasse 18, 8952 Schlieren · 043 433 88 00 ·
-            info@lumina-spitex.ch
+            Lumina Spitex AG, Rütistrasse 18, 8952 Schlieren ·{" "}
+            <a href="tel:+41434338800">043 433 88 00</a> ·{" "}
+            <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
           </p>
         </section>
       </main>
@@ -1835,6 +1962,14 @@ function Legal({
             Lumina Spitex AG erbringt Spitex-Leistungen. Wir kennzeichnen
             Angebote klar. Unabhängige Behörden bleiben die massgebende Stelle
             für Entscheide.
+          </p>
+          <p>
+            Fachliche Aussagen werden bei relevanten Änderungen der gesetzlichen
+            oder kantonalen Grundlagen früher überprüft. Korrekturen halten wir
+            im Aktualisierungsdatum des jeweiligen Beitrags fest. Hinweise von
+            Leserinnen, Lesern und Fachpersonen prüfen wir nachvollziehbar; eine
+            redaktionelle Anpassung erfolgt erst nach dem Abgleich mit einer
+            belastbaren Quelle.
           </p>
         </section>
       </main>

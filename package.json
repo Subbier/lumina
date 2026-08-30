@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ignore-pattern .next",
+    "test": "node --test tests/seo-regression.test.mjs",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push"
   },
