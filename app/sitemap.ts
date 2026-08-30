@@ -1,12 +1,10 @@
 import type { MetadataRoute } from "next";
-import { INDEXING_ENABLED, publicSiteUrl } from "../lib/stage-seo";
+import { publicSiteUrl } from "../lib/stage-seo";
 import { articles } from "./ratgeber/articles";
 import { pageSeo } from "./seo/site";
 
-/** Die öffentliche Sitemap existiert erst nach dem kontrollierten Domain-Go-live. */
+/** Öffentliche Sitemap der Vercel-Website. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  if (!INDEXING_ENABLED) return [];
-
   const base = publicSiteUrl().replace(/\/$/, "");
   const pageLastModified: Record<string, string> = {
     "/": "2026-08-30",

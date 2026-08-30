@@ -5,13 +5,19 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 
-test("staging cannot be indexed and does not advertise review content", async () => {
-  const [stageSeo, llms] = await Promise.all([
+test("the Vercel URL is the only public, indexable website", async () => {
+  const [stageSeo, llms, robots, config] = await Promise.all([
     read("lib/stage-seo.ts"),
     read("public/llms.txt"),
+    read("app/robots.ts"),
+    read("next.config.ts"),
   ]);
 
-  assert.match(stageSeo, /REVIEW_CRAWL_OPEN\s*=\s*false/);
+  assert.match(stageSeo, /PUBLIC_SITE_URL = "https:\/\/lumina-spitex\.vercel\.app"/);
+  assert.match(stageSeo, /index: true/);
+  assert.match(robots, /allow: "\/"/);
+  assert.doesNotMatch(config, /X-Robots-Tag|noindex|coming-soon|doctors/i);
+  assert.doesNotMatch(stageSeo, /lumina-spitex\.ch/);
   assert.doesNotMatch(llms, /staging|review|vorschau/i);
 });
 
@@ -66,14 +72,4 @@ test("images and headings keep the mobile page fast and accessible", async () =>
   assert.match(image, /from "next\/image"/);
   assert.doesNotMatch(site, /<h3>\s*(Dienstleistungen|Über uns)\s*<\/h3>/);
   assert.match(site, /src="\/images\/home-hero\.jpg[\s\S]+fetchPriority="high"/);
-});
-
-test("legacy WordPress routes keep permanent URL-to-URL redirects", async () => {
-  const config = await read("next.config.ts");
-
-  assert.match(config, /source: "\/dienstleistungen"[\s\S]+destination: "\/spitex"/);
-  assert.match(config, /source: "\/doctors"[\s\S]+destination: "\/ueber-uns"/);
-  assert.match(config, /source: "\/uber-uns"[\s\S]+destination: "\/ueber-uns"/);
-  assert.match(config, /source: "\/coming-soon"[\s\S]+destination: "\/"/);
-  assert.equal((config.match(/statusCode: 301/g) ?? []).length, 4);
 });

@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import { INDEXING_ENABLED } from "./lib/stage-seo";
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -37,41 +36,10 @@ const nextConfig: NextConfig = {
     dirs: ["app", "db"],
   },
   async headers() {
-    const headers = [...securityHeaders];
-    if (!INDEXING_ENABLED) {
-      headers.push({
-        key: "X-Robots-Tag",
-        value: "noindex, nofollow, noarchive",
-      });
-    }
     return [
       {
         source: "/:path*",
-        headers,
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      {
-        source: "/dienstleistungen",
-        destination: "/spitex",
-        statusCode: 301,
-      },
-      {
-        source: "/doctors",
-        destination: "/ueber-uns",
-        statusCode: 301,
-      },
-      {
-        source: "/uber-uns",
-        destination: "/ueber-uns",
-        statusCode: 301,
-      },
-      {
-        source: "/coming-soon",
-        destination: "/",
-        statusCode: 301,
+        headers: securityHeaders,
       },
     ];
   },

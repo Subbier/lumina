@@ -5,7 +5,7 @@ import { LohnCheckQuiz } from "../../lohn-check/LohnCheckQuiz";
 import { CookieBanner } from "../../CookieBanner";
 import { PictImg } from "../../components/PictImg";
 
-/** Kampagnen-Landing für Subdomain rechner.lumina-spitex.ch */
+/** Kampagnen-Landing für rechner-lumina-spitex.vercel.app */
 export function RechnerKampagne() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");

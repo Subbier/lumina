@@ -9,7 +9,7 @@
 | Sitemap | https://lumina-spitex.vercel.app/sitemap.xml |
 | Kampagne Rechner | https://rechner-lumina-spitex.vercel.app/ |
 
-Hinweis: `og:url` zeigte zuvor auf die noch nicht live Domain `lumina-spitex.ch`. Stage-Meta zeigt jetzt auf `lumina-spitex.vercel.app`, damit Tools nicht ins Leere folgen.
+Canonical, Open Graph und Sitemap zeigen auf `lumina-spitex.vercel.app`.
 
 Falls ein Tool `.vercel.app` pauschal ablehnt: diesen Ordner / die Seitentexte unten nutzen.
 

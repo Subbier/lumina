@@ -1,32 +1,19 @@
 /**
- * Kampagnen-Hosts auf der Vercel-Stage (noch keine echte .ch-Domain).
- *
- * Wichtig: `rechner.lumina-spitex.vercel.app` ist bei Vercel NICHT möglich
- * (keine Nested-Subdomain unter *.vercel.app).
- *
- * Stage-Muster (zweites Vercel-Projekt, gleiches Repo):
+ * Öffentliche Kampagnen-Hosts auf Vercel.
+ * Muster (zweites Vercel-Projekt, gleiches Repo):
  *   rechner-lumina-spitex.vercel.app  → Kampagne «rechner»
  *   lumina-spitex.vercel.app           → Hauptdomain (normale Site)
- *
- * Später mit echter Domain umstellen auf:
- *   rechner.lumina-spitex.ch
- * (ROOT_DOMAIN_LIVE + getCampaignSlug-Zweig sind schon vorbereitet)
  */
 
-/** Hauptdomain der Stage */
+/** Öffentliche Hauptdomain */
 export const STAGE_APEX = "lumina-spitex.vercel.app";
 
 /** Suffix für Kampagnen-Projekte: {slug}-lumina-spitex.vercel.app */
 export const STAGE_CAMPAIGN_SUFFIX = "-lumina-spitex.vercel.app";
 
-/** Spätere Live-Domain (noch nicht aktiv als Apex) */
-export const ROOT_DOMAIN_LIVE = "lumina-spitex.ch";
-
 /** Hosts der Haupt-Site (kein Kampagnen-Rewrite) */
 export const APEX_HOSTS = new Set([
   STAGE_APEX,
-  ROOT_DOMAIN_LIVE,
-  `www.${ROOT_DOMAIN_LIVE}`,
   "localhost",
   "127.0.0.1",
 ]);
@@ -76,14 +63,6 @@ export function getCampaignSlug(host: string | null): string | null {
     ) {
       return slug;
     }
-  }
-
-  // Später Live: rechner.lumina-spitex.ch
-  const liveSuffix = `.${ROOT_DOMAIN_LIVE}`;
-  if (h.endsWith(liveSuffix)) {
-    const slug = h.slice(0, -liveSuffix.length);
-    if (!slug || slug.includes(".")) return null;
-    return CAMPAIGNS[slug] ? slug : null;
   }
 
   return null;

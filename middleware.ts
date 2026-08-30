@@ -4,7 +4,7 @@ import { CAMPAIGNS, getCampaignSlug } from "./lib/subdomains";
 /**
  * Edge-safe: nur Host-/Env-Logik, keine Node-APIs.
  * Kampagnen-Projekt: CAMPAIGN_SLUG=rechner → Root zeigt die LP.
- * Host-basiert: rechner-lumina-spitex.vercel.app / später rechner.lumina-spitex.ch
+ * Host-basiert: rechner-lumina-spitex.vercel.app
  */
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

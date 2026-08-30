@@ -1,19 +1,17 @@
 # Lumina Spitex – Launch-Checklist
 
-## 1. SEO-Schalter (kritisch – Relaunch-Killer)
+## 1. SEO-Grundlage
 
 Vergessener `Disallow: /` oder `noindex` = monatelang keine Indexierung.
 
-- [ ] Vercel-Variable `LUMINA_INDEXING_ENABLED=true` erst nach Domain-Umzug setzen
-- [ ] Live: `app/robots.ts` erlaubt Crawling + zeigt `sitemap.xml`
-- [ ] Live: `app/sitemap.ts` listet alle öffentlichen URLs (Ortsseiten, Karriere, …)
-- [ ] Live: Meta-Robots / `X-Robots-Tag` = index,follow (kein Stage-noindex)
+- [ ] `app/robots.ts` erlaubt Crawling + zeigt `sitemap.xml`
+- [ ] `app/sitemap.ts` listet alle öffentlichen URLs (Ortsseiten, Karriere, …)
+- [ ] Meta-Robots = index,follow
 - [ ] Live: Canonicals + OG/Twitter pro Seite individuell (nicht Layout-Default überall)
 - [ ] `public/llms.txt` auf öffentliche Version umstellen
 - [ ] Nach Deploy: `https://…/robots.txt` und eine Seite manuell prüfen
 
-Vorschau und Preview-Deployments bleiben ohne Variable automatisch auf
-`noindex, nofollow`. Für Audits wird die Vorschau nicht mehr indexierbar gemacht.
+Öffentliche Website und Canonical-Ziel ist `https://lumina-spitex.vercel.app`.
 
 ## 2. Arbitrage-Cluster Hilflosenentschädigung (Priorität)
 
@@ -48,9 +46,8 @@ Vorschau und Preview-Deployments bleiben ohne Variable automatisch auf
 - [ ] Kantonsbewilligung, KK-Anerkennung, Verbände, Team mit Gesicht
 - [ ] Durchgehend «Sie» (Angehörige 50+)
 
-## 6. Technik Go-Live
+## 6. Technik
 
-- [ ] Domain `lumina-spitex.ch` + Redirects von alter Adresse
-- [ ] Kampagne: `rechner.lumina-spitex.ch` (DNS), nicht Query-Spam auf Apex
+- [ ] Hauptseite `lumina-spitex.vercel.app` und Rechner-Projekt prüfen
 - [ ] Mobile: Ladezeit + Schriftgrösse
 - [ ] Analytics / Conversion-Events nur nach Consent

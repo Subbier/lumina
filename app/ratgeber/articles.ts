@@ -25,7 +25,7 @@ export type Article = {
 /**
  * Ratgeber-Inhalte für Lumina Spitex.
  * Quellen u.a.: BGE 145 V 161, KLV Art. 7 Abs. 2, Merkblatt AHV 3.01 (Stand 01.01.2026),
- * lumina-spitex.ch, Wettbewerbspflege (pflegewegweiser.ch, iaha.ch, spitex.ch) – inhaltlich
+ * Wettbewerbspflege (pflegewegweiser.ch, iaha.ch, spitex.ch) – inhaltlich
  * abgegrenzt durch Transparenz, Limmattal-Bezug und Fokus Grundpflege unter Fachaufsicht.
  */
 const articleDrafts: Array<Omit<Article, "publishedAt" | "modifiedAt">> = [
