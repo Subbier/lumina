@@ -1,42 +1,56 @@
 import { getDb, hasDatabase } from "../../../db";
 import { leads } from "../../../db/schema";
+import {
+  prepareLeadPayload,
+  unavailableLeadSinkResponse,
+} from "../../../lib/lead-contract.mjs";
+import { eq } from "drizzle-orm";
 
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as Record<string, unknown>;
-    const contact = String(body.contact ?? "").trim();
-    const consent = body.consent === true;
-    if (!contact || !consent) {
+    const parsed = prepareLeadPayload(
+      body,
+      request.headers.get("idempotency-key"),
+    );
+    if (!parsed.ok || !parsed.value) {
       return Response.json(
-        { error: "Kontakt und Einwilligung sind erforderlich." },
+        { ok: false, persisted: false, error: parsed.error },
         { status: 400 }
       );
     }
 
-    const payload = {
-      source: String(body.source ?? "website").slice(0, 80),
-      name: String(body.name ?? "").slice(0, 160),
-      contact: contact.slice(0, 240),
-      topic: String(body.topic ?? "").slice(0, 160),
-      message: String(body.message ?? "").slice(0, 4000),
-      details: JSON.stringify(body.details ?? {}).slice(0, 6000),
-      consent,
-    };
-
     if (!hasDatabase()) {
       console.warn("lead-create-no-db");
-      return Response.json(
-        { ok: true, id: `pending-${Date.now()}`, persisted: false },
-        { status: 201 }
-      );
+      return unavailableLeadSinkResponse();
     }
 
-    const [lead] = await getDb()
+    const payload = parsed.value;
+    const database = getDb();
+    const [created] = await database
       .insert(leads)
       .values(payload)
+      .onConflictDoNothing({ target: leads.idempotencyKey })
       .returning({ id: leads.id });
 
-    return Response.json({ ok: true, id: lead.id, persisted: true }, { status: 201 });
+    const existing = created
+      ? created
+      : (
+          await database
+            .select({ id: leads.id })
+            .from(leads)
+            .where(eq(leads.idempotencyKey, payload.idempotencyKey))
+            .limit(1)
+        )[0];
+
+    if (!existing) {
+      throw new Error("lead-create-idempotency-lookup");
+    }
+
+    return Response.json(
+      { ok: true, id: existing.id, persisted: true, status: "held" },
+      { status: created ? 201 : 200 },
+    );
   } catch (error) {
     console.error("lead-create", error);
     return Response.json(

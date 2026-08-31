@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { submitLead } from "../../lib/lead-client";
 
 type LohnCheckQuizProps = {
   /** Inline auf Kampagnen-/Inhaltsseiten */
@@ -28,6 +29,9 @@ export function LohnCheckQuiz({
   const [leadName, setLeadName] = useState("");
   const [leadPhone, setLeadPhone] = useState("");
   const [leadEmail, setLeadEmail] = useState("");
+  const [leadError, setLeadError] = useState("");
+  const [sendingLead, setSendingLead] = useState(false);
+  const requestKey = useRef("");
   const eligible =
     tasks.some((t) => t !== "Haushalt & Gesellschaft") &&
     (canton === "Zürich" || canton === "Aargau");
@@ -170,6 +174,7 @@ export function LohnCheckQuiz({
             zu.
           </span>
         </label>
+        {leadError && <p role="alert">{leadError}</p>}
       </div>
     </div>,
     <div className="quiz-result" key="s7">
@@ -210,10 +215,11 @@ export function LohnCheckQuiz({
 
   async function next() {
     if (step === 5 && contact && (leadPhone || leadEmail)) {
-      await fetch("/api/leads", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
+      setSendingLead(true);
+      setLeadError("");
+      if (!requestKey.current) requestKey.current = crypto.randomUUID();
+      try {
+        await submitLead({
           source,
           name: leadName,
           contact: [leadPhone, leadEmail].filter(Boolean).join(" · "),
@@ -227,8 +233,15 @@ export function LohnCheckQuiz({
             estimatedMonthlyGross: wage,
           },
           consent: true,
-        }),
-      });
+        }, requestKey.current);
+      } catch {
+        setLeadError(
+          "Das Ergebnis konnte nicht sicher übermittelt werden. Bitte versuchen Sie es erneut oder fahren Sie ohne Rückruf fort.",
+        );
+        return;
+      } finally {
+        setSendingLead(false);
+      }
     }
     if (step < 6) setStep(step + 1);
   }
@@ -252,8 +265,8 @@ export function LohnCheckQuiz({
               Zurück
             </button>
             {needsWeiter ? (
-              <button type="button" className="button" onClick={next}>
-                Weiter
+              <button type="button" className="button" onClick={next} disabled={sendingLead}>
+                {sendingLead ? "Wird gesendet …" : "Weiter"}
               </button>
             ) : (
               <span className="quiz-nav-hint">Antwort antippen – es geht automatisch weiter</span>

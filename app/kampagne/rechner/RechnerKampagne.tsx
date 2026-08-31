@@ -1,9 +1,10 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { LohnCheckQuiz } from "../../lohn-check/LohnCheckQuiz";
 import { CookieBanner } from "../../CookieBanner";
 import { PictImg } from "../../components/PictImg";
+import { submitLead } from "../../../lib/lead-client";
 
 /** Kampagnen-Landing für rechner-lumina-spitex.vercel.app */
 export function RechnerKampagne() {
@@ -12,24 +13,28 @@ export function RechnerKampagne() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [consent, setConsent] = useState(false);
+  const [error, setError] = useState("");
+  const requestKey = useRef("");
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     if (!phone.trim() || !consent) return;
     setSending(true);
+    setError("");
+    if (!requestKey.current) requestKey.current = crypto.randomUUID();
     try {
-      await fetch("/api/leads", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
+      await submitLead({
           source: "kampagne-rechner",
           name,
           contact: phone.trim(),
           topic: "Rückruf Kampagne Rechner",
-          consent,
-        }),
-      });
+          consent: true,
+        }, requestKey.current);
       setSent(true);
+    } catch {
+      setError(
+        "Die Anfrage konnte nicht sicher gespeichert werden. Bitte rufen Sie uns an.",
+      );
     } finally {
       setSending(false);
     }
@@ -126,6 +131,7 @@ export function RechnerKampagne() {
                     <a href="/datenschutz">Datenschutzerklärung</a> einverstanden.
                   </span>
                 </label>
+                {error && <p role="alert">{error}</p>}
                 <button className="button gold" type="submit" disabled={sending}>
                   {sending ? "Wird gesendet…" : "Rückruf anfordern"}
                 </button>

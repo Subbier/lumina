@@ -5,6 +5,7 @@ import {
   FormEvent,
   ReactNode,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import dynamic from "next/dynamic";
@@ -14,6 +15,7 @@ import { CookieBanner } from "./CookieBanner";
 import { PictImg } from "./components/PictImg";
 import { AppMenuSheet, AppTabBar, PWARegister } from "./components/AppShell";
 import { haptic } from "./components/haptic";
+import { submitLead } from "../lib/lead-client";
 
 const LohnCheckQuiz = dynamic(
   () => import("./lohn-check/LohnCheckQuiz").then((mod) => mod.LohnCheckQuiz),
@@ -1099,6 +1101,7 @@ function Bewerbung() {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const [rolle, setRolle] = useState("efz");
+  const requestKey = useRef("");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -1113,15 +1116,14 @@ function Bewerbung() {
     setSending(true);
     setError("");
     const data = new FormData(e.currentTarget);
-    const response = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
+    if (!requestKey.current) requestKey.current = crypto.randomUUID();
+    try {
+      await submitLead({
         source: "bewerbung",
         name: `${data.get("first") || ""} ${data.get("last") || ""}`.trim(),
-        contact: data.get("contact"),
+        contact: String(data.get("contact") || ""),
         topic: `Bewerbung: ${data.get("role")}`,
-        message: data.get("message"),
+        message: String(data.get("message") || ""),
         details: {
           role: data.get("role"),
           pensum: data.get("pensum"),
@@ -1129,14 +1131,15 @@ function Bewerbung() {
           start: data.get("start"),
         },
         consent: true,
-      }),
-    });
-    setSending(false);
-    if (response.ok) setSent(true);
-    else
+      }, requestKey.current);
+      setSent(true);
+    } catch {
       setError(
         "Das Senden hat nicht geklappt. Nutzen Sie bitte die E-Mail- oder Anrufmöglichkeit auf dieser Seite.",
       );
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -1292,6 +1295,7 @@ function Contact() {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const [topic, setTopic] = useState("pflege");
+  const requestKey = useRef("");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -1317,25 +1321,25 @@ function Contact() {
     setSending(true);
     setError("");
     const data = new FormData(e.currentTarget);
-    const response = await fetch("/api/leads", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
+    if (!requestKey.current) requestKey.current = crypto.randomUUID();
+    try {
+      await submitLead({
         source: "kontakt-rueckruf",
-        name: data.get("name"),
-        contact: data.get("contact"),
-        topic: data.get("topic"),
-        message: data.get("message"),
+        name: String(data.get("name") || ""),
+        contact: String(data.get("contact") || ""),
+        topic: String(data.get("topic") || ""),
+        message: String(data.get("message") || ""),
         details: {},
         consent: true,
-      }),
-    });
-    setSending(false);
-    if (response.ok) setSent(true);
-    else
+      }, requestKey.current);
+      setSent(true);
+    } catch {
       setError(
         "Das Senden hat nicht geklappt. Nutzen Sie bitte den Anruf-Link auf dieser Seite.",
       );
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -1405,7 +1409,10 @@ function Contact() {
                   <button
                     type="button"
                     className="text-link"
-                    onClick={() => setSent(false)}
+                    onClick={() => {
+                      requestKey.current = "";
+                      setSent(false);
+                    }}
                   >
                     Neue Anfrage erfassen →
                   </button>

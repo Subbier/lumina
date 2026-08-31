@@ -1,12 +1,19 @@
 {
   "version": "7",
-  "dialect": "sqlite",
+  "dialect": "postgresql",
   "entries": [
     {
       "idx": 0,
-      "version": "6",
+      "version": "7",
       "when": 1786092200000,
       "tag": "0000_create_leads",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788177600000,
+      "tag": "0001_hold_existing_leads",
       "breakpoints": true
     }
   ]
