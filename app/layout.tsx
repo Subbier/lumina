@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { publicSiteUrl, stageRobotsMeta } from "../lib/stage-seo";
 import {
@@ -8,6 +9,19 @@ import {
 } from "./seo/site";
 
 const publicBase = publicSiteUrl();
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(publicBase),
@@ -67,7 +81,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2e96df",
+  themeColor: "#173f3c",
   width: "device-width",
   initialScale: 1,
   colorScheme: "light",
@@ -88,7 +102,7 @@ export default function RootLayout({
           title="llms.txt"
         />
       </head>
-      <body>
+      <body className={`${manrope.variable} ${cormorant.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

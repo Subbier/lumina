@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  CSSProperties,
   FormEvent,
   ReactNode,
   useEffect,
@@ -40,21 +41,27 @@ function BrandLockup({
   light?: boolean;
   lazy?: boolean;
 }) {
-  const width = Math.round(height * (987 / 360));
-  const src = light
-    ? "/images/logo-lumina-lockup-light.png?v=brand1"
-    : "/images/logo-lumina-lockup.png?v=brand1";
   return (
-    <PictImg
-      className="brand-logo"
-      src={src}
-      alt="Lumina Spitex"
-      width={width}
-      height={height}
-      loading={lazy ? "lazy" : "eager"}
-      decoding="async"
-      sizes={`${width}px`}
-    />
+    <span
+      className={`brand-logo brand-lockup${light ? " is-light" : ""}`}
+      style={{ "--lockup-height": `${height}px` } as CSSProperties}
+      aria-hidden="true"
+    >
+      <PictImg
+        className="brand-lockup-mark"
+        src="/images/logo-lumina-mark-warm.svg"
+        alt=""
+        width={421}
+        height={483}
+        loading={lazy ? "lazy" : "eager"}
+        decoding="async"
+        sizes={`${height}px`}
+      />
+      <span className="brand-lockup-copy">
+        <strong>Lumina<sup>©</sup></strong>
+        <small>SPITEX <b>+</b></small>
+      </span>
+    </span>
   );
 }
 export type View =
