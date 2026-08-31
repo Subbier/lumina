@@ -16,9 +16,12 @@ export function CookieBanner() {
     }
   }, []);
 
-  function acknowledge() {
+  function saveConsent(value: "necessary" | "analytics") {
     try {
-      window.localStorage.setItem(STORAGE_KEY, "acknowledged");
+      window.localStorage.setItem(STORAGE_KEY, value);
+      window.dispatchEvent(
+        new CustomEvent("lumina-cookie-consent-change", { detail: value }),
+      );
     } catch {
       /* ignore quota / private mode */
     }
@@ -39,17 +42,25 @@ export function CookieBanner() {
         Cookie-Hinweis
       </p>
       <p id="cookie-banner-text">
-        Diese Website nutzt nur technisch notwendige lokale Speicherungen. Es
-        sind derzeit keine Analyse- oder Marketing-Cookies aktiv. Details in der{" "}
+        Wir verwenden notwendige Speicherungen für den Betrieb. Mit Ihrer
+        Zustimmung hilft uns eine anonyme Reichweitenmessung, die Website zu
+        verbessern. Details in der{" "}
         <a href="/datenschutz">Datenschutzerklärung</a>.
       </p>
       <div className="cookie-banner-actions">
         <button
           type="button"
-          className="cookie-banner-accept"
-          onClick={acknowledge}
+          className="cookie-banner-decline"
+          onClick={() => saveConsent("necessary")}
         >
-          Verstanden
+          Nur notwendig
+        </button>
+        <button
+          type="button"
+          className="cookie-banner-accept"
+          onClick={() => saveConsent("analytics")}
+        >
+          Analyse erlauben
         </button>
       </div>
     </div>

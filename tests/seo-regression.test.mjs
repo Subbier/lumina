@@ -42,6 +42,21 @@ test("page metadata stays route-specific across search and social cards", async 
   assert.match(articlePage, /twitter:\s*\{/);
 });
 
+test("Lumina loads its own Tag Manager only after analytics consent", async () => {
+  const [analytics, cookieBanner, layout] = await Promise.all([
+    read("app/seo/Analytics.tsx"),
+    read("app/CookieBanner.tsx"),
+    read("app/layout.tsx"),
+  ]);
+
+  assert.match(analytics, /GTM-PJKS83HR/);
+  assert.match(analytics, /lumina-cookie-consent/);
+  assert.doesNotMatch(analytics, /<noscript|ns\.html/);
+  assert.match(cookieBanner, /Nur notwendig/);
+  assert.match(cookieBanner, /Analyse erlauben/);
+  assert.match(layout, /<Analytics \/>/);
+});
+
 test("structured data and sitemap use content dates instead of build time", async () => {
   const [articles, sitemap] = await Promise.all([
     read("app/ratgeber/articles.ts"),
