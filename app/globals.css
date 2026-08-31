@@ -1105,7 +1105,9 @@ h3{font-size:1.48rem;line-height:1.14}
   backdrop-filter:blur(20px) saturate(135%);
 }
 
-.nav{font-size:.98rem;gap:26px}
+.nav{font-size:1.07rem;gap:26px}
+.nav-dropdown-trigger{font-size:1.07rem}
+.nav-dropdown-panel-inner a{font-size:1.02rem}
 .nav>a:not(.button):hover,.nav-dropdown-trigger:hover{color:var(--petrol)}
 .nav-dropdown-panel-inner{
   background:var(--white);
@@ -1349,6 +1351,8 @@ h3{font-size:1.48rem;line-height:1.14}
 }
 .app-tab.is-accent .app-tab-icon{background:var(--gold)}
 .app-sheet-call{background:var(--navy)}
+.app-sheet-row b{font-size:1.08rem}
+.app-sheet-row small{font-size:.86rem}
 
 @media(max-width:640px){
   .brand-logo.brand-lockup{--lockup-height:52px!important}

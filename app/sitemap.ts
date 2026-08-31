@@ -3,7 +3,7 @@ import { publicSiteUrl } from "../lib/stage-seo";
 import { articles } from "./ratgeber/articles";
 import { pageSeo } from "./seo/site";
 
-/** Öffentliche Sitemap der Vercel-Website. */
+/** Öffentliche Sitemap der Lumina-Website. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = publicSiteUrl().replace(/\/$/, "");
   const pageLastModified: Record<string, string> = {

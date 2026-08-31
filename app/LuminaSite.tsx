@@ -274,7 +274,7 @@ function Footer() {
             <br />
             <a href="mailto:info@lumina-spitex.ch">info@lumina-spitex.ch</a>
             <br />
-            <a href="https://lumina-spitex.vercel.app">lumina-spitex.vercel.app</a>
+            <a href="https://luminaspitex.com">luminaspitex.com</a>
             <br />
             <a href="tel:+41434338800" aria-label="Telefon 043 433 88 00">
               043 433 88 00

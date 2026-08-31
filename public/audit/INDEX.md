@@ -4,12 +4,12 @@
 
 | Was | URL |
 |---|---|
-| Site | https://lumina-spitex.vercel.app/ |
-| robots.txt | https://lumina-spitex.vercel.app/robots.txt → `Allow: /` |
-| Sitemap | https://lumina-spitex.vercel.app/sitemap.xml |
+| Site | https://luminaspitex.com/ |
+| robots.txt | https://luminaspitex.com/robots.txt → `Allow: /` |
+| Sitemap | https://luminaspitex.com/sitemap.xml |
 | Kampagne Rechner | https://rechner-lumina-spitex.vercel.app/ |
 
-Canonical, Open Graph und Sitemap zeigen auf `lumina-spitex.vercel.app`.
+Canonical, Open Graph und Sitemap zeigen auf `luminaspitex.com`.
 
 Falls ein Tool `.vercel.app` pauschal ablehnt: diesen Ordner / die Seitentexte unten nutzen.
 

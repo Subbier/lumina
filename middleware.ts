@@ -8,6 +8,16 @@ import { CAMPAIGNS, getCampaignSlug } from "./lib/subdomains";
  */
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const hostname = request.headers.get("host")?.split(":")[0]?.toLowerCase();
+
+  if (hostname === "www.luminaspitex.com") {
+    const canonicalUrl = request.nextUrl.clone();
+    canonicalUrl.protocol = "https:";
+    canonicalUrl.hostname = "luminaspitex.com";
+    canonicalUrl.port = "";
+    return NextResponse.redirect(canonicalUrl, 308);
+  }
+
   if (pathname !== "/") return NextResponse.next();
 
   const fromEnv = process.env.CAMPAIGN_SLUG?.trim().toLowerCase();
@@ -26,5 +36,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };

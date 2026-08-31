@@ -5,7 +5,7 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 const read = (path) => readFile(new URL(path, root), "utf8");
 
-test("the Vercel URL is the only public, indexable website", async () => {
+test("luminaspitex.com is the only public, indexable website", async () => {
   const [stageSeo, llms, robots, config] = await Promise.all([
     read("lib/stage-seo.ts"),
     read("public/llms.txt"),
@@ -13,11 +13,12 @@ test("the Vercel URL is the only public, indexable website", async () => {
     read("next.config.ts"),
   ]);
 
-  assert.match(stageSeo, /PUBLIC_SITE_URL = "https:\/\/lumina-spitex\.vercel\.app"/);
+  assert.match(stageSeo, /PUBLIC_SITE_URL = "https:\/\/luminaspitex\.com"/);
   assert.match(stageSeo, /index: true/);
   assert.match(robots, /allow: "\/"/);
   assert.doesNotMatch(config, /X-Robots-Tag|noindex|coming-soon|doctors/i);
   assert.doesNotMatch(stageSeo, /lumina-spitex\.ch/);
+  assert.doesNotMatch(stageSeo, /lumina-spitex\.vercel\.app/);
   assert.doesNotMatch(llms, /staging|review|vorschau/i);
 });
 

@@ -39,7 +39,7 @@ export function RechnerKampagne() {
     <div className="kampagne-rechner">
       <header className="kampagne-top">
         <div className="wrap kampagne-top-inner">
-          <a href="https://lumina-spitex.vercel.app" aria-label="Lumina Spitex">
+          <a href="https://luminaspitex.com" aria-label="Lumina Spitex">
             <PictImg
               className="brand-logo"
               src="/images/logo-lumina-lockup.png?v=brand1"

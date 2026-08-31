@@ -1,5 +1,5 @@
 /** Einzige öffentliche Website und Canonical-Zieldomain. */
-export const PUBLIC_SITE_URL = "https://lumina-spitex.vercel.app";
+export const PUBLIC_SITE_URL = "https://luminaspitex.com";
 
 /** Öffentliche Basis-URL für Canonical, OG, Sitemap, JSON-LD. */
 export function publicSiteUrl(): string {

@@ -1,10 +1,7 @@
 import type { MetadataRoute } from "next";
 import { PUBLIC_SITE_URL } from "../lib/stage-seo";
 
-/**
- * Stage-Robots.
- * Die Vercel-Adresse ist die öffentliche Website und darf indexiert werden.
- */
+/** Robots-Regeln der öffentlichen Website. */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
