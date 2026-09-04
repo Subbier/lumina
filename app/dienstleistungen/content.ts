@@ -59,7 +59,7 @@ export const serviceSegments: ServiceSegment[] = [
       "Wir klären Ihren Pflegebedarf sorgfältig ab und übernehmen die Grund- und Behandlungspflege bei Ihnen zu Hause. Die ärztlich verordneten Leistungen werden von qualifizierten Fachpersonen erbracht und direkt mit der Krankenkasse abgerechnet.",
     image: "/images/spitex-hero-home-visit.webp",
     imageAlt:
-      "Spitex-Pflegefachperson misst bei einer Klientin zu Hause den Blutdruck",
+      "Spitex-Pflegefachperson misst bei einer Kundin zu Hause den Blutdruck",
     heroTone: "warm",
     introEyebrow: "Kassenpflichtige Spitex-Leistungen",
     introTitle: "Spitex-Leistungen nach KVG – klar und fachlich begleitet.",

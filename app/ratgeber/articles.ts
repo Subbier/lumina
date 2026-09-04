@@ -105,7 +105,7 @@ const articleDrafts: Array<Omit<Article, "publishedAt" | "modifiedAt">> = [
       {
         heading: "Beziehungen, die häufig in Frage kommen",
         paragraphs: [
-          "In der Praxis sind es vor allem Ehe- und Lebenspartner:innen, Töchter und Söhne, Schwiegerkinder, Eltern von erwachsenen Kindern mit Beeinträchtigung sowie engste Bezugspersonen im gemeinsamen Haushalt. Auch Grosseltern-Enkel-Konstellationen kommen vor.",
+          "In der Praxis sind es vor allem Ehe- und Lebenspartnerinnen und -partner, Töchter und Söhne, Schwiegerkinder, Eltern von erwachsenen Kindern mit Beeinträchtigung sowie engste Bezugspersonen im gemeinsamen Haushalt. Auch Grosseltern-Enkel-Konstellationen kommen vor.",
           "Wichtig: Eine emotionale Nähe allein reicht nicht. Es braucht eine nachvollziehbare, wiederkehrende Übernahme von Grundpflegeaufgaben – zum Beispiel Hilfe beim Waschen, Ankleiden, Essen oder Lagern.",
         ],
       },
@@ -133,7 +133,7 @@ const articleDrafts: Array<Omit<Article, "publishedAt" | "modifiedAt">> = [
     text: "Wann eine Anmeldung sinnvoll sein kann, welche Stufen es gibt und wo Sie eine verbindliche Prüfung erhalten.",
     read: "9 Min.",
     image: "/images/ratgeber/blog-11.webp",
-    imageAlt: "Pflegefachperson hält die Hand einer älteren Klientin",
+    imageAlt: "Pflegefachperson hält die Hand einer älteren Kundin",
     updated: "August 2026",
     takeaways: [
       "Die Hilflosenentschädigung hängt vom Grad der Hilflosigkeit ab – nicht vom Einkommen.",

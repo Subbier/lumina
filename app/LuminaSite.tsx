@@ -442,7 +442,7 @@ function Home() {
             </article>
           </div>
           <p className="paths-note">
-            Sie pflegen bereits jemanden? Der Lohnrechner liefert in zwei
+            Sie pflegen bereits jemanden? Der Bedarfscheck liefert in zwei
             Minuten eine erste Orientierung.
           </p>
         </div>
@@ -544,11 +544,7 @@ function Home() {
       <section className="wrap relation-banner recruit-banner">
         <div>
           <span className="eyebrow light">Team · Wachstum mit Vertrauen</span>
-          <h2>
-            Wir suchen{" "}
-            <br />
-            mehrere Fachkräfte.
-          </h2>
+          <h2>Wir suchen mehrere Fachkräfte.</h2>
           <MoreRead
             summary={
               <p>
@@ -633,8 +629,9 @@ function Tarife() {
           <div>
             <span className="eyebrow light">Über uns · Tarife</span>
             <h1 className="hero-title">
+              <span className="hero-title-line">Transparente Tarife</span>
               <span className="hero-title-line">
-                Transparente Tarife nach KLV und UVG.
+                nach <em>KLV und UVG.</em>
               </span>
             </h1>
             <p className="lead">
@@ -722,7 +719,7 @@ function Tarife() {
             <tbody>
               <tr>
                 <td data-label="Leistung">Hauswirtschaftliche Leistungen</td>
-                <td data-label="Kostenübernahme">Klient / Zusatzversicherung</td>
+                <td data-label="Kostenübernahme">Kundin/Kunde oder Zusatzversicherung</td>
                 <td data-label="Tarif (CHF/Std.)">55.00</td>
               </tr>
             </tbody>
@@ -731,7 +728,8 @@ function Tarife() {
         <div className="more-read tarife-notes">
           <div className="more-read-summary">
             <p>
-              Hauswirtschaftliche Leistungen werden durch die Klienten bezahlt.
+              Hauswirtschaftliche Leistungen werden von den Kundinnen und
+              Kunden bezahlt.
               Sie sind keine Pflichtleistung der Krankenversicherer, können aber
               allenfalls aus der Zusatzversicherung zurückgefordert werden.
             </p>
@@ -741,7 +739,8 @@ function Tarife() {
             <div className="more-read-body">
               <p>
                 Für Haushaltshilfe können Ergänzungsleistungen (EL) oder
-                Gemeinden Beiträge leisten. Klientenbeteiligung pro Tag: CHF 7.65
+                Gemeinden Beiträge leisten. Beteiligung der Kundinnen und Kunden
+                pro Tag: CHF 7.65
                 (gesetzlich geregelt).
               </p>
               <p>
@@ -1219,7 +1218,9 @@ function Bewerbung() {
                 </label>
               </div>
               <label>
-                Kurz zu Ihnen <span className="optional">(optional)</span>
+                <span className="label-text">
+                  Kurz zu Ihnen <span className="optional">(optional)</span>
+                </span>
                 <textarea
                   rows={4}
                   name="message"
@@ -1453,7 +1454,9 @@ function Contact() {
                     </p>
                   ) : null}
                   <label>
-                    Ihre Frage <span className="optional">(optional)</span>
+                    <span className="label-text">
+                      Ihre Frage <span className="optional">(optional)</span>
+                    </span>
                     <textarea
                       rows={3}
                       name="message"
@@ -1505,7 +1508,7 @@ function Contact() {
 const homeArticlePreviews = [
   { slug: "lohn-fuer-pflegende-angehoerige", tag: "Lohn & Anspruch", title: "Lohn für pflegende Angehörige", text: "Welche Pflegezeit zählt, wie eine Anstellung funktioniert und warum die genaue Abklärung entscheidend ist.", read: "8 Min.", image: "/images/ratgeber/blog-12.webp", imageAlt: "Pflegende Angehörige begleitet eine ältere Frau zu Hause im Rollstuhl" },
   { slug: "wer-gilt-als-pflegende-angehoerige", tag: "Orientierung", title: "Wer gilt als pflegende Angehörige?", text: "Ehepartner, Kinder, Eltern und enge Bezugspersonen: Entscheidend sind Situation und regelmässige Grundpflege.", read: "6 Min.", image: "/images/ratgeber/blog-10.webp", imageAlt: "Gespräch zwischen pflegendem Angehörigen und älterem Mann" },
-  { slug: "hilflosenentschaedigung-verstaendlich", tag: "Finanzierung", title: "Hilflosenentschädigung verständlich erklärt", text: "Wann eine Anmeldung sinnvoll sein kann, welche Stufen es gibt und wo Sie eine verbindliche Prüfung erhalten.", read: "9 Min.", image: "/images/ratgeber/blog-11.webp", imageAlt: "Pflegefachperson hält die Hand einer älteren Klientin" },
+  { slug: "hilflosenentschaedigung-verstaendlich", tag: "Finanzierung", title: "Hilflosenentschädigung verständlich erklärt", text: "Wann eine Anmeldung sinnvoll sein kann, welche Stufen es gibt und wo Sie eine verbindliche Prüfung erhalten.", read: "9 Min.", image: "/images/ratgeber/blog-11.webp", imageAlt: "Pflegefachperson hält die Hand einer älteren Kundin" },
 ];
 
 function BlogPreview() {
@@ -1522,7 +1525,13 @@ function BlogPreview() {
               <a href={`/ratgeber/${article.slug}`} aria-label={`${article.title} lesen`}>
                 <PictImg src={article.image} alt={article.imageAlt} width={640} height={400} loading="lazy" sizes="(max-width: 640px) 100vw, 360px" />
               </a>
-              <span className={`article-art-label art-${index % 3}`}>Wissen schafft Klarheit.</span>
+              <span className={`article-art-label art-${index % 3}`}>
+                {index % 3 === 0
+                  ? "Wissen schafft Klarheit."
+                  : index % 3 === 1
+                    ? "Gute Pflege beginnt beim Zuhören."
+                    : "Entlastung ist Teil der Fürsorge."}
+              </span>
             </div>
             <div><span className="tag">{article.tag}</span><h3>{article.title}</h3><p>{article.text}</p><small>{article.read} Lesezeit</small><a href={`/ratgeber/${article.slug}`}>{article.title} →</a></div>
           </article>
