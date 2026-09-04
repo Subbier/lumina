@@ -32,7 +32,7 @@ export const pageSeo = {
     path: "/",
     title: "Spitex Zürich & Limmattal: Pflege zu Hause | Lumina Spitex AG",
     description:
-      "Pflege zu Hause in Zürich & Aargau. Lohn für pflegende Angehörige. Sofort anstellen, SRK innert 12 Monaten. Anspruch prüfen.",
+      "Pflege zu Hause in Zürich & Aargau. Lohn für pflegende Angehörige. Sofort anstellen, SRK innerhalb von 12 Monaten. Anspruch prüfen.",
   },
   spitex: {
     path: "/spitex",
@@ -44,7 +44,7 @@ export const pageSeo = {
     path: "/angehoerige",
     title: "Pflegende Angehörige anstellen mit Lohn",
     description:
-      "Pflegende Angehörige sofort anstellen: Lohn ab Tag eins, Lehrgang SRK innert 12 Monaten – Kosten trägt Lumina. Anspruch prüfen.",
+      "Pflegende Angehörige sofort anstellen: Lohn ab Tag eins, Lehrgang SRK innerhalb von 12 Monaten. Anspruch prüfen.",
     conversion: true,
   },
   begleitung: {
@@ -73,9 +73,9 @@ export const pageSeo = {
   },
   kontakt: {
     path: "/kontakt",
-    title: "Kontakt und Rückruf",
+    title: "Kontakt und Rückmeldung",
     description:
-      "Rückruf anfordern oder anrufen zu Anstellung und Pflege. Mo–Fr 08:00–18:00, Schlieren.",
+      "Rückmeldung anfordern oder anrufen zu Anstellung und Pflege. Mo–Fr 08:00–17:00, Schlieren.",
     conversion: true,
   },
   bewerbung: {
@@ -227,7 +227,7 @@ export function organizationJsonLd(baseUrl: string = SITE_URL) {
             "Friday",
           ],
           opens: "08:00",
-          closes: "18:00",
+          closes: "17:00",
         },
         sameAs: [
           "https://www.help.ch/firma/CHE-233.932.070/lumina-spitex-ag-schlieren",

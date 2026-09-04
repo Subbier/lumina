@@ -120,9 +120,11 @@ function ArticleDetail({ article }: { article: Article }) {
                 <a className="button" href={article.ctaHref}>
                   {article.ctaLabel ?? "Weiter"}
                 </a>
-                <a className="text-link" href="/kontakt">
-                  Persönliches Gespräch →
-                </a>
+                {article.ctaHref !== "/kontakt" ? (
+                  <a className="text-link" href="/kontakt">
+                    Persönliches Gespräch →
+                  </a>
+                ) : null}
               </div>
             ) : null}
           </div>

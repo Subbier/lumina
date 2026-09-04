@@ -145,10 +145,20 @@ function Header({
       <div className="utility">
         <div className="wrap utility-inner">
           <span>Vom Kanton bewilligt · Krankenkassen anerkannt</span>
-          <a className="utility-contact" href="/kontakt">
-            <strong>Kontaktieren Sie uns</strong>
-            <span>Mo–Fr von 08:00 Uhr bis 18:00 Uhr</span>
-          </a>
+          <span className="utility-actions">
+            <a
+              className="utility-opan"
+              href="https://opancare.ch/de/anmeldung/spitex/1500000002068/lumina-spitex-ag/anmeldung-starten/8038-zuerich"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              OPAN-Anmeldung für Leistungserbringer
+            </a>
+            <a className="utility-contact" href="/kontakt">
+              <strong>Kontaktieren Sie uns</strong>
+              <span>Mo–Fr von 08:00 Uhr bis 17:00 Uhr</span>
+            </a>
+          </span>
         </div>
       </div>
       <header className={`header${scrolled ? " is-compact" : ""}`}>
@@ -233,13 +243,6 @@ function Header({
                   >
                     Bewerbung
                   </a>
-                  <a
-                    href="/redaktion"
-                    role="menuitem"
-                    onClick={() => setAboutOpen(false)}
-                  >
-                    Redaktion
-                  </a>
                 </div>
               </div>
             </div>
@@ -265,6 +268,26 @@ function Footer() {
             Persönliche Pflege zu Hause und faire Anstellung für pflegende
             Angehörige in Zürich und Aargau.
           </p>
+        </div>
+        <nav aria-label="Dienstleistungen">
+          <p className="footer-heading">Dienstleistungen</p>
+          <a href="/spitex">Spitex</a>
+          <a href="/angehoerige">Pflegende Angehörige</a>
+          <a className="footer-subitem" href="/lohn-check">
+            Bedarfscheck für pflegende Angehörige
+          </a>
+          <a href="/begleitung">Begleitung</a>
+        </nav>
+        <nav aria-label="Über uns und Service">
+          <p className="footer-heading">Über uns</p>
+          <a href="/ueber-uns">Über uns</a>
+          <a href="/tarife">Tarife</a>
+          <a href="/ratgeber">Ratgeber</a>
+          <a href="/bewerbung">Bewerbung</a>
+          <a href="/kontakt">Kontakt</a>
+          <a href="/redaktion">Redaktion</a>
+        </nav>
+        <div>
           <address className="footer-contact">
             <strong>Lumina Spitex AG</strong>
             <br />
@@ -281,35 +304,9 @@ function Footer() {
             </a>
           </address>
         </div>
-        <nav aria-label="Dienstleistungen">
-          <p className="footer-heading">Dienstleistungen</p>
-          <a href="/spitex">Spitex</a>
-          <a href="/angehoerige">Pflegende Angehörige</a>
-          <a href="/begleitung">Begleitung</a>
-        </nav>
-        <nav aria-label="Über uns und Service">
-          <p className="footer-heading">Über uns</p>
-          <a href="/ueber-uns">Über uns</a>
-          <a href="/tarife">Tarife</a>
-          <a href="/ratgeber">Ratgeber</a>
-          <a href="/bewerbung">Bewerbung</a>
-          <a href="/kontakt">Kontakt</a>
-          <a href="/redaktion">Redaktion</a>
-        </nav>
-        <div>
-          <a className="footer-wage-link" href="/lohn-check">
-            <span>Lohn für pflegende Angehörige</span>
-            <span>schätzen</span>
-          </a>
-        </div>
       </div>
       <div className="wrap legal">
-        <span>
-          © 2026 Lumina Spitex AG · Website & Inhalte:{" "}
-          <a href="https://agenticit.ch/" target="_blank" rel="noopener noreferrer">
-            AgenticIT
-          </a>
-        </span>
+        <span>© 2026 Lumina Spitex AG</span>
         <span>
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutz</a>
@@ -414,31 +411,32 @@ function Home() {
           <div className="paths aida-paths">
             <article className="path-card">
               <Icon>01</Icon>
-              <span>Spitex-Dienstleistungen</span>
-              <h3>Pflege, die die Krankenkasse mitträgt</h3>
+              <span>Spitex</span>
+              <h3>Pflege, die von der Krankenkasse übernommen wird</h3>
               <p>
-                Abklärung, Grundpflege, Behandlungspflege. Ärztlich verordnet.
-                Professionell zu Hause.
+                Abklärung, Grundpflege und Behandlungspflege – ärztlich
+                verordnet und professionell bei Ihnen zu Hause.
               </p>
               <a href="/spitex">Spitex ansehen →</a>
             </article>
             <article className="path-card">
               <Icon>02</Icon>
               <span>Pflegende Angehörige</span>
-              <h3>Sofort anstellen. Lohn für Ihre Pflege.</h3>
+              <h3>Pflege ist Arbeit. Sie verdient einen Lohn.</h3>
               <p>
-                Sie pflegen schon. Wir stellen an. Ausbildung Pflegende
-                Angehörige SRK innert zwölf Monaten. Kosten trägt Lumina.
+                Sie pflegen bereits? Wir machen Sie zur Pflegefachperson: In nur
+                zwölf Monaten zur SRK-anerkannten Ausbildung für pflegende
+                Angehörige.
               </p>
-              <a href="/angehoerige#anspruch-pruefen">Lohn schätzen →</a>
+              <a href="/angehoerige#anspruch-pruefen">Zum Bedarfscheck →</a>
             </article>
             <article className="path-card premium">
               <Icon>03</Icon>
               <span>Begleitung</span>
-              <h3>Erledigungen, Termine, Teilhabe</h3>
+              <h3>Erledigungen, Termine, Alltag</h3>
               <p>
-                Hilfe über die Grundpflege hinaus. Für einen angenehmen,
-                selbstbestimmten Alltag.
+                Unterstützung, die über die Grundpflege hinausgeht – für mehr
+                Selbstständigkeit, Sicherheit und Lebensqualität im Alltag.
               </p>
               <a href="/begleitung">Begleitung entdecken →</a>
             </article>
@@ -490,16 +488,15 @@ function Home() {
           <p className="aida-lead">
             Sie können sofort mit Lohn angestellt werden. Den anerkannten
             Lehrgang für pflegende Angehörige absolvieren Sie anschliessend
-            innerhalb von zwölf Monaten – organisiert und finanziert von
-            Lumina.
+            innerhalb von zwölf Monaten – organisiert und begleitet von Lumina.
           </p>
           <ul className="aida-points">
-            <li>Sofort anstellen – ohne Kursabschluss zuerst</li>
+            <li>Sofort anstellen – Ausbildung folgt</li>
             <li>Lohn plus Sozialversicherung ab Tag eins</li>
-            <li>SRK-Ausbildung innert zwölf Monaten – Kosten bei uns</li>
+            <li>SRK-Ausbildung in 12 Monaten</li>
           </ul>
           <a className="text-link" href="#anspruch-pruefen">
-            In zwei Minuten eine erste Lohnzahl sehen →
+            In 2 Minuten zum ersten Bedarfscheck →
           </a>
         </div>
         <PictImg
@@ -526,10 +523,10 @@ function Home() {
           <ul className="aida-points">
             <li>Unterstützung bei Erledigungen im Alltag</li>
             <li>Sichere Begleitung zu Terminen</li>
-            <li>Soziale Teilhabe – passend zu Ihrem Rhythmus</li>
+            <li>Am sozialen Leben teilnehmen – in Ihrem Tempo</li>
           </ul>
           <a className="button outline" href="/begleitung">
-            Begleitung ansehen →
+            Mehr über Begleitung →
           </a>
         </div>
         <PictImg
@@ -555,8 +552,8 @@ function Home() {
           <MoreRead
             summary={
               <p>
-                Immer mehr Menschen vertrauen dem Lumina-Team. Deshalb wachsen
-                wir. Wir suchen Verstärkung an mehreren Stellen.
+                Immer mehr Menschen verlassen sich auf das Lumina-Team. Deshalb
+                wachsen wir und suchen Verstärkung in verschiedenen Bereichen.
               </p>
             }
           >
@@ -628,54 +625,6 @@ function Team() {
   return <About />;
 }
 
-function LohnJob() {
-  const [pct, setPct] = useState(80);
-  const [rate, setRate] = useState(38);
-  const gross = Math.round(((((42 * pct) / 100) * 52) / 12) * rate);
-  return (
-    <section className="wrap job-calculator">
-      <div>
-        <span className="eyebrow light">Team-Lohnrechner</span>
-        <h2>Ihr Pensum. Ihre Orientierung.</h2>
-        <p>
-          Eine unverbindliche Bruttolohn-Schätzung für den ersten Austausch.
-        </p>
-      </div>
-      <div>
-        <label>
-          Pensum <b>{pct}%</b>
-          <input
-            type="range"
-            min="40"
-            max="100"
-            step="10"
-            value={pct}
-            onChange={(e) => setPct(+e.target.value)}
-          />
-        </label>
-        <label>
-          Beispiel-Stundenlohn <b>CHF {rate}</b>
-          <input
-            type="range"
-            min="30"
-            max="55"
-            step="1"
-            value={rate}
-            onChange={(e) => setRate(+e.target.value)}
-          />
-        </label>
-      </div>
-      <div className="result-preview">
-        <span>Brutto / Monat</span>
-        <b>CHF {gross.toLocaleString("de-CH")}</b>
-        <small>
-          Ohne Zulagen; definitive Einstufung nach Qualifikation und Erfahrung.
-        </small>
-      </div>
-    </section>
-  );
-}
-
 function Tarife() {
   return (
     <main id="main-content">
@@ -689,7 +638,8 @@ function Tarife() {
               </span>
             </h1>
             <p className="lead">
-              Pflegeleistungen nach KLV und UVG sowie private Leistungen –
+              Pflegeleistungen nach KLV und UVG sowie private Leistungen –{" "}
+              <br />
               klar aufgeschlüsselt und verständlich erklärt.
             </p>
             <a className="button hero-button" href="/kontakt?thema=pflege">
@@ -697,10 +647,11 @@ function Tarife() {
             </a>
           </div>
           <PictImg
-            src="/images/home-spitex.webp"
-            alt="Transparente Spitex-Tarife und Beratung"
+            src="/images/about-team-meeting.webp"
+            alt="Beratungsgespräch zu Tarifen und Abrechnung bei Lumina Spitex"
             width={1536}
             height={1024}
+            loading="eager"
             sizes="(max-width: 980px) 100vw, 560px"
           />
         </div>
@@ -953,7 +904,7 @@ function About() {
           </div>
           <PictImg
             src="/images/about-team-meeting.webp"
-            alt="Das Lumina-Team bespricht gemeinsam die Betreuung von Klientinnen und Klienten"
+            alt="Das Lumina-Team bespricht gemeinsam die Betreuung von Kundinnen und Kunden"
             width={1536}
             height={1024}
             loading="lazy"
@@ -1008,7 +959,7 @@ function About() {
             <li>Lückenlose Pflegedokumentation und Qualitätsprüfungen</li>
             <li>Klare Abläufe für Notfälle, Medikamente und Hygiene</li>
             <li>Direkte Abrechnung mit Schweizer Krankenversicherern</li>
-            <li>Offenes Ohr für Rückmeldungen von Kund:innen und Familien</li>
+            <li>Offenes Ohr für Rückmeldungen von Kundinnen, Kunden und Familien</li>
           </ul>
         </div>
       </section>
@@ -1045,8 +996,8 @@ function About() {
           <span className="eyebrow">Karriere</span>
           <h2>Wir suchen Verstärkung – an mehreren Stellen.</h2>
           <p className="lead small-lead">
-            Lumina Spitex wächst, weil Menschen uns bereits vertrauen. Damit
-            wir diesen Zuspruch halten und mehr Familien begleiten können,
+            Lumina Spitex wächst, weil immer mehr Menschen uns vertrauen.
+            Damit wir diesen Zuspruch halten und mehr Familien begleiten können,
             suchen wir Pflegefachfrauen und Pflegefachmänner EFZ sowie
             diplomierte Fachpersonen in Zürich und Aargau.
           </p>
@@ -1057,32 +1008,37 @@ function About() {
             <h3>Pflegefachfrau / Pflegefachmann EFZ</h3>
             <p>
               Grund- und Behandlungspflege im Alltag, stabile Beziehungen zu
-              Klientinnen und enge Zusammenarbeit mit dem Fachteam.
+              Kundinnen und Kunden und enge Zusammenarbeit mit dem Fachteam.
             </p>
-            <a href="/bewerbung?rolle=efz">Jetzt bewerben →</a>
+            <a href="/bewerbung?rolle=efz&pensum=60-80&region=beides">
+              Jetzt bewerben →
+            </a>
           </article>
           <article>
             <span>60–100% · Zürich & Aargau</span>
             <h3>Dipl. Pflegefachperson HF/FH</h3>
             <p>
               Fallführung, Bedarfsabklärung und fachliche Begleitung von
-              Kund:innen und Angehörigen.
+              Kundinnen, Kunden und Angehörigen.
             </p>
-            <a href="/bewerbung?rolle=dipl">Jetzt bewerben →</a>
+            <a href="/bewerbung?rolle=dipl&pensum=60-80&region=beides">
+              Jetzt bewerben →
+            </a>
           </article>
           <article>
             <span>40–100% · Zürich & Aargau</span>
             <h3>Fachperson Gesundheit FaGe</h3>
             <p>
               Professionelle Pflege mit Eigenverantwortung und einer festen
-              Beziehung zu Kund:innen.
+              Beziehung zu Kundinnen und Kunden.
             </p>
-            <a href="/bewerbung?rolle=fage">Jetzt bewerben →</a>
+            <a href="/bewerbung?rolle=fage&pensum=40-60&region=beides">
+              Jetzt bewerben →
+            </a>
           </article>
         </div>
       </section>
 
-      <LohnJob />
       <PartnersStrip />
       <CTA
         title="Bewerben Sie sich bei Lumina."
@@ -1099,13 +1055,26 @@ function Bewerbung() {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const [rolle, setRolle] = useState("efz");
+  const [pensum, setPensum] = useState("80-100");
+  const [region, setRegion] = useState("beides");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const q = new URLSearchParams(window.location.search).get("rolle");
-    if (q === "dipl" || q === "fage" || q === "efz" || q === "initiativ") {
-      window.requestAnimationFrame(() => setRolle(q));
-    }
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("rolle");
+    const p = params.get("pensum");
+    const r = params.get("region");
+    window.requestAnimationFrame(() => {
+      if (q === "dipl" || q === "fage" || q === "efz" || q === "initiativ") {
+        setRolle(q);
+      }
+      if (p === "40-60" || p === "60-80" || p === "80-100" || p === "flexibel") {
+        setPensum(p);
+      }
+      if (r === "zuerich" || r === "aargau" || r === "beides") {
+        setRegion(r);
+      }
+    });
   }, []);
 
   async function submit(e: FormEvent<HTMLFormElement>) {
@@ -1225,7 +1194,11 @@ function Bewerbung() {
               <div className="form-row">
                 <label>
                   Gewünschtes Pensum
-                  <select name="pensum" defaultValue="80">
+                  <select
+                    name="pensum"
+                    value={pensum}
+                    onChange={(e) => setPensum(e.target.value)}
+                  >
                     <option value="40-60">40–60%</option>
                     <option value="60-80">60–80%</option>
                     <option value="80-100">80–100%</option>
@@ -1234,7 +1207,11 @@ function Bewerbung() {
                 </label>
                 <label>
                   Region
-                  <select name="region" defaultValue="beides">
+                  <select
+                    name="region"
+                    value={region}
+                    onChange={(e) => setRegion(e.target.value)}
+                  >
                     <option value="zuerich">Kanton Zürich</option>
                     <option value="aargau">Kanton Aargau</option>
                     <option value="beides">Zürich & Aargau</option>
@@ -1249,11 +1226,14 @@ function Bewerbung() {
                   placeholder="Ausbildung, Erfahrung oder möglicher Start"
                 />
               </label>
-              <label className="check">
+              <label className="check consent-line">
                 <input type="checkbox" required />{" "}
                 <span>
                   Ich bin mit der Bearbeitung meiner Bewerbungsdaten gemäss{" "}
-                  <a href="/datenschutz">Datenschutzerklärung</a> einverstanden.
+                  <a className="consent-link" href="/datenschutz">
+                    Datenschutzerklärung
+                  </a>{" "}
+                  einverstanden.
                 </span>
               </label>
               {error && <p role="alert">{error}</p>}
@@ -1323,10 +1303,15 @@ function Contact() {
       body: JSON.stringify({
         source: "kontakt-rueckruf",
         name: data.get("name"),
-        contact: data.get("contact"),
+        contact: [data.get("phone"), data.get("email")]
+          .filter(Boolean)
+          .join(" · "),
         topic: data.get("topic"),
         message: data.get("message"),
-        details: {},
+        details: {
+          phone: data.get("phone"),
+          email: data.get("email"),
+        },
         consent: true,
       }),
     });
@@ -1355,7 +1340,7 @@ function Contact() {
           <a className="contact-callout" href="tel:+41434338800">
             <span>Jetzt anrufen</span>
             <strong>043 433 88 00</strong>
-            <small>Mo–Fr, 08:00–18:00 Uhr</small>
+            <small>Mo–Fr, 08:00–17:00 Uhr</small>
           </a>
           <div>
             <Icon>✉</Icon>
@@ -1382,15 +1367,15 @@ function Contact() {
               <p>
                 Montag–Freitag
                 <br />
-                08:00–18:00 Uhr
+                08:00–17:00 Uhr
               </p>
             </span>
           </div>
           <div className="contact-note">
             <span className="contact-label">Dringender Pflegebedarf?</span>
             <p>
-              Rufen Sie uns direkt an. Bei medizinischen Notfällen wählen Sie
-              {" "}<a href="tel:144">144</a>.
+              Rufen Sie uns direkt an! Ausserhalb der Bürozeiten melden Sie sich
+              beim Ärztephon oder direkt unter <a href="tel:144">144</a>.
             </p>
           </div>
         </div>
@@ -1412,8 +1397,8 @@ function Contact() {
                 </div>
               ) : (
                 <>
-                  <span className="eyebrow">Rückruf anfordern</span>
-                  <h2>Drei Angaben genügen.</h2>
+                  <span className="eyebrow">Rückmeldung anfordern</span>
+                  <h2>Wenige Angaben genügen.</h2>
                   <p className="form-intro">
                     Keine langen Formulare. Sagen Sie uns kurz, worum es geht.
                   </p>
@@ -1421,14 +1406,27 @@ function Contact() {
                     Ihr Name
                     <input required name="name" autoComplete="name" />
                   </label>
-                  <label>
-                    Telefon oder E-Mail
-                    <input
-                      required
-                      name="contact"
-                      autoComplete="tel"
-                    />
-                  </label>
+                  <div className="form-row">
+                    <label>
+                      Telefon
+                      <input
+                        required
+                        type="tel"
+                        name="phone"
+                        autoComplete="tel"
+                        placeholder="043 433 88 00"
+                      />
+                    </label>
+                    <label>
+                      E-Mail
+                      <input
+                        type="email"
+                        name="email"
+                        autoComplete="email"
+                        placeholder="name@beispiel.ch"
+                      />
+                    </label>
+                  </div>
                   <label>
                     Ich interessiere mich für
                     <select
@@ -1438,7 +1436,7 @@ function Contact() {
                     >
                       <option value="pflege">Pflege</option>
                       <option value="begleitung">Begleitung</option>
-                      <option value="mehr-infos">Mehr Infos anfordern</option>
+                      <option value="mehr-infos">Weitere Informationen</option>
                       <option value="bewerbung">Bewerbung</option>
                       <option value="sonstiges">Sonstiges</option>
                     </select>
@@ -1459,20 +1457,22 @@ function Contact() {
                     <textarea
                       rows={3}
                       name="message"
-                      placeholder="Zum Beispiel: Pflege für meine Mutter in Dietikon"
+                      placeholder="Geben Sie hier Ihre Frage ein."
                     />
                   </label>
-                  <label className="check">
+                  <label className="check consent-line">
                     <input type="checkbox" required />{" "}
                     <span>
                       Ich bin mit der Bearbeitung meiner Angaben gemäss{" "}
-                      <a href="/datenschutz">Datenschutzerklärung</a>{" "}
+                      <a className="consent-link" href="/datenschutz">
+                        Datenschutzerklärung
+                      </a>{" "}
                       einverstanden.
                     </span>
                   </label>
                   {error && <p role="alert">{error}</p>}
                   <button className="button" disabled={sending} type="submit">
-                    {sending ? "Wird gesendet …" : "Rückruf anfordern"}
+                    {sending ? "Wird gesendet …" : "Rückmeldung anfordern"}
                   </button>
                 </>
               )}
@@ -1486,8 +1486,8 @@ function Contact() {
           Ihnen. Im ersten Gespräch geht es darum, Ihre Situation zu verstehen:
           Welche Unterstützung wird benötigt, wo wohnt die betreute Person und
           wie dringend ist der Bedarf? Sie müssen im Formular keine Diagnose und
-          keine ausführlichen Gesundheitsangaben nennen. Für den Rückruf genügen
-          Name, Kontaktmöglichkeit und das Thema.
+          keine ausführlichen Gesundheitsangaben nennen. Für die Rückmeldung
+          genügen Name, Kontaktmöglichkeit und das Thema.
         </p>
         <p>
           Wenn eine Pflegeabklärung sinnvoll ist, erklärt Lumina den weiteren

@@ -56,7 +56,7 @@ export const serviceSegments: ServiceSegment[] = [
     title: "Spitex-Leistungen.",
     titleEm: "Abklärung und Pflege.",
     lead:
-      "Wir klären Ihren Pflegebedarf sorgfältig ab und übernehmen Grund- sowie Behandlungspflege zu Hause. Die Leistungen werden ärztlich verordnet, von Fachpersonen erbracht und direkt über die Krankenkasse abgerechnet.",
+      "Wir klären Ihren Pflegebedarf sorgfältig ab und übernehmen die Grund- und Behandlungspflege bei Ihnen zu Hause. Die ärztlich verordneten Leistungen werden von qualifizierten Fachpersonen erbracht und direkt mit der Krankenkasse abgerechnet.",
     image: "/images/spitex-hero-home-visit.webp",
     imageAlt:
       "Spitex-Pflegefachperson misst bei einer Klientin zu Hause den Blutdruck",
@@ -64,7 +64,7 @@ export const serviceSegments: ServiceSegment[] = [
     introEyebrow: "Kassenpflichtige Spitex-Leistungen",
     introTitle: "Spitex-Leistungen nach KVG – klar und fachlich begleitet.",
     introSummary:
-      "Am Anfang steht eine sorgfältige Abklärung Ihres Pflegebedarfs. Darauf aufbauend übernehmen diplomierte Pflegefachpersonen und Fachpersonen Gesundheit die Grund- und Behandlungspflege – wirksam, zweckmässig und wirtschaftlich nach KVG.",
+      "Ihre Betreuung erfolgt durch diplomierte Pflegefachpersonen und Fachpersonen Gesundheit, die Sie kompetent und individuell unterstützen. Dabei richten wir uns nach den gesetzlichen Vorgaben des KVG und stellen eine wirksame, zweckmässige und wirtschaftliche Versorgung sicher.",
     introMore: [
       "Abklärung, Grundpflege und Behandlungspflege nach KLV Art. 7 Abs. 2 rechnen wir direkt über Ihre Krankenkasse (KVG) ab. Die Spitex-Leistungen erfassen wir transparent in der Pflegedokumentation.",
       "Leistungen über die kassenpflichtige Spitex-Pflege hinaus finden Sie unter Begleitung. Wenn Angehörige die Pflege übernehmen, begleiten wir Anstellung und Qualifikation unter Pflegende Angehörige. Aktuelle Ansätze stehen unter Tarife.",
@@ -72,7 +72,7 @@ export const serviceSegments: ServiceSegment[] = [
     accordionTitle: "Was Sie von der Lumina Spitex erwarten dürfen",
     accordionLink: {
       href: "/kontakt?thema=mehr-infos&aktion=rueckruf",
-      label: "Rückruf anfordern",
+      label: "Rückmeldung anfordern",
     },
     accordion: [
       {
@@ -89,7 +89,7 @@ export const serviceSegments: ServiceSegment[] = [
           "Erstellung des individuellen Pflegeplans und Festlegung der Pflegeziele",
         ],
         note:
-          "Beratung begleitet Sie auch laufend – zu Krankheitsbildern, Medikamenten, Hilfsmitteln und der Koordination mit Ärztinnen, Spital und Therapeuten. Die Abklärungs- und Beratungsleistungen sind kassenpflichtig.",
+          "Beratung begleitet Sie auch laufend – zu Krankheitsbildern, Medikamenten, Hilfsmitteln und der Koordination mit Ärztinnen und Ärzten, Spital und Therapeuten. Die Abklärungs- und Beratungsleistungen sind kassenpflichtig.",
       },
       {
         title: "Grundpflege",
@@ -159,19 +159,12 @@ export const serviceSegments: ServiceSegment[] = [
       {
         step: "05",
         title: "Begleiten",
-        text: "Wir bleiben erreichbar, stimmen uns mit Ärztinnen ab und passen die Pflege bei Bedarf an.",
+        text: "Wir bleiben erreichbar, stimmen uns mit Ärztinnen und Ärzten ab und passen die Pflege bei Bedarf an.",
       },
     ],
     audioSrc: "/audio/spitex.mp3?v=spoken2",
     speakScript:
       "Hallo und willkommen bei Lumina Spietex. Schön, dass Sie da sind. Wir kommen zu Ihnen nach Hause – mit professioneller Pflege, die wirklich zu Ihrem Alltag passt. Zuerst schauen wir gemeinsam hin: Was brauchen Sie gerade? Eine diplomierte Pflegefachperson macht die Abklärung bei Ihnen vor Ort und plant die nächsten Schritte mit Ihnen. Danach unterstützen wir Sie in der Grundpflege – zum Beispiel bei Körperpflege, Mobilisation oder beim Anziehen. Und wenn medizinische Massnahmen nötig sind, übernehmen wir die Behandlungspflege auf ärztliche Anordnung. Medikamente, Wundversorgung, Blutdruck – das regeln wir fachlich und ruhig. Wichtig für Sie: Diese Leistungen rechnen wir direkt mit der Krankenkasse ab. Sie müssen das nicht allein organisieren. Wenn Sie jetzt wissen möchten, wie der Einstieg bei Ihnen aussehen könnte, fordern Sie bitte eine kostenlose Erstberatung an – über das Kontaktformular auf dieser Seite oder telefonisch unter null vier drei, vier drei drei, acht acht, null null. Wir melden uns persönlich bei Ihnen.",
-    claimBanner: {
-      eyebrow: "Unverbindliche Orientierung",
-      title: "Brauchen Sie Spitex-Pflege zu Hause? Dann klären wir den nächsten Schritt.",
-      text: "In einem kurzen Gespräch prüfen wir Bedarf, Finanzierung über die Krankenkasse und wie der Einstieg bei Ihnen aussehen könnte – klar und ohne Verpflichtung.",
-      href: "/kontakt",
-      label: "Erstberatung anfragen",
-    },
     cta: {
       title: "Dürfen wir Ihre Pflegesituation gemeinsam anschauen?",
       text: "Starten Sie mit einer unverbindlichen Erstberatung – oder prüfen Sie zuerst die Tarife für kassenpflichtige Leistungen.",
@@ -185,8 +178,8 @@ export const serviceSegments: ServiceSegment[] = [
     id: "begleitung",
     path: "/begleitung",
     eyebrow: "Begleitung · über die Grundpflege hinaus",
-    title: "Begleitung: Ein Leben,",
-    titleEm: "das sich wieder leicht anfühlt.",
+    title: "Begleitung:",
+    titleEm: "Ein Leben, das sich wieder leicht anfühlt.",
     lead:
       "Wenn Pflege das Nötige sichert, schafft Begleitung das Angenehme: Erledigungen, Termine und Teilhabe am sozialen Leben – diskret, verlässlich und so, dass der Alltag sich wieder leicht anfühlt.",
     image: "/images/home-services.webp",
@@ -265,7 +258,7 @@ export const serviceSegments: ServiceSegment[] = [
       },
       {
         step: "02",
-        title: "Passen",
+        title: "Individuell",
         text: "Gemeinsam legen wir Umfang, Zeiten und Bezugsperson fest.",
       },
       {
@@ -293,7 +286,7 @@ export const serviceSegments: ServiceSegment[] = [
     title: "Sie pflegen.",
     titleEm: "Wir stellen an.",
     lead:
-      "Wenn Sie bereits einen nahestehenden Menschen pflegen, können Sie bei uns sofort angestellt werden und erhalten vom ersten Tag an Lohn. Den anerkannten SRK-Lehrgang organisieren und finanzieren wir innerhalb der ersten zwölf Monate.",
+      "Wenn Sie bereits einen nahestehenden Menschen pflegen, können Sie bei uns sofort angestellt werden und erhalten vom ersten Tag an Lohn. Den anerkannten SRK-Lehrgang organisieren und begleiten wir innerhalb der ersten zwölf Monate.",
     image: "/images/angehoerige-hero-anleitung.webp",
     imageAlt:
       "Pflegefachperson zeigt einem Angehörigen auf Hausbesuch, wie er seinen Vater unterstützt",
@@ -304,12 +297,12 @@ export const serviceSegments: ServiceSegment[] = [
       "Sie müssen nicht erst einen Kurs abschliessen oder monatelang warten. Bei Lumina starten Sie direkt mit Anstellung, Lohn und Sozialversicherung. Eine diplomierte Pflegefachperson begleitet Sie, während die dokumentierte Grundpflege über die Krankenkasse abgerechnet wird.",
     introMore: [
       "Vertrag, Abrechnung und Qualitätssicherung liegen bei uns. Sie bleiben bei dem Menschen, der Ihnen nahesteht – mit Lohn statt stiller Belastung.",
-      "Innert zwölf Monaten absolvieren Sie den Lehrgang Pflegende Angehörige SRK (von Spitex Schweiz anerkannt). Wir organisieren, zahlen und begleiten das Coaching zu Hause.",
+      "Innerhalb von zwölf Monaten absolvieren Sie den Lehrgang Pflegende Angehörige SRK (von Spitex Schweiz anerkannt). Wir organisieren den Lehrgang und begleiten Sie mit Coaching zu Hause.",
     ],
     accordionTitle: "Was Sie von Lumina erwarten dürfen",
     accordionLink: {
       href: "#anspruch-pruefen",
-      label: "Jetzt Lohn schätzen",
+      label: "Zum Bedarfscheck",
     },
     accordion: [
       {
@@ -325,10 +318,10 @@ export const serviceSegments: ServiceSegment[] = [
       {
         title: "Enge Begleitung im Pflegealltag",
         intro:
-          "Sie sind nicht allein gelassen. Eine diplomierte Pflegefachperson führt Sie ein, bleibt erreichbar und begleitet die Qualität der Pflege – mit Respekt für Ihre familiäre Nähe.",
+          "Von Anfang an gut begleitet. Eine diplomierte Pflegefachperson führt Sie ein, bleibt erreichbar und begleitet die Qualität der Pflege – mit Respekt für Ihre familiäre Nähe.",
         bullets: [
           "Persönliche Einführung in sichere Pflegetechniken",
-          "Regelmässige Fachkontakte und Hausbesuche nach Bedarf",
+          "Regelmässige Hausbesuche und Fachkontakte",
           "Unterstützung bei Dokumentation und Absprachen mit Ärztinnen und Ärzten",
           "Entlastung, wenn Sie vorübergehend Vertretung brauchen",
         ],
@@ -336,9 +329,8 @@ export const serviceSegments: ServiceSegment[] = [
       {
         title: "Lehrgang Pflegende Angehörige SRK",
         intro:
-          "Zuerst Anstellung – dann Ausbildung. Innert zwölf Monaten führen wir Sie durch den anerkannten SRK-Lehrgang. Praxisnah, auf Ihre Situation zu Hause ausgerichtet.",
+          "Zuerst Anstellung – dann Ausbildung. Innerhalb von zwölf Monaten führen wir Sie durch den anerkannten SRK-Lehrgang. Praxisnah, auf Ihre Situation zu Hause ausgerichtet.",
         bullets: [
-          "Kurskosten übernimmt Lumina",
           "Anmeldung und Termine organisieren wir",
           "Transfercoaching durch unsere Pflegefachpersonen",
           "Zertifikat Pflegende Angehörige SRK – anerkannt von Spitex Schweiz",
@@ -358,14 +350,14 @@ export const serviceSegments: ServiceSegment[] = [
       },
       {
         label: "Ausbildung",
-        value: "SRK-Lehrgang innert 12 Monaten – Kosten trägt Lumina",
+        value: "SRK-Lehrgang innerhalb von 12 Monaten",
       },
     ],
     processTitle: "Ihr Weg mit Lumina",
     process: [
       {
         step: "01",
-        title: "Klären",
+        title: "Kennenlernen",
         text: "Kurzes Erstgespräch: Passt Ihre Situation – und wie geht es weiter?",
       },
       {
@@ -376,12 +368,12 @@ export const serviceSegments: ServiceSegment[] = [
       {
         step: "03",
         title: "Anstellen",
-        text: "Sofort: Vertrag, Sozialversicherungen und Lohn – ohne Kursabschluss zuerst.",
+        text: "Sofort: Vertrag, Sozialversicherungen und Lohn – Ausbildung folgt.",
       },
       {
         step: "04",
         title: "Ausbilden",
-        text: "Innert zwölf Monaten: Lehrgang Pflegende Angehörige SRK – organisiert und finanziert durch uns.",
+        text: "Innerhalb von 12 Monaten: Lehrgang Pflegende Angehörige SRK – organisiert und begleitet durch uns.",
       },
       {
         step: "05",
@@ -391,21 +383,14 @@ export const serviceSegments: ServiceSegment[] = [
     ],
     audioSrc: "/audio/angehoerige.mp3?v=spoken2",
     speakScript:
-      "Hallo und willkommen bei Lumina Spitex. Wenn Sie jemanden pflegen, der Ihnen nahesteht: Sie müssen das nicht allein tragen. Bei uns können Sie sofort angestellt werden – mit Lohn und Sozialversicherung. Eine diplomierte Pflegefachperson begleitet Sie. Innert zwölf Monaten organisieren und finanzieren wir den Lehrgang Pflegende Angehörige SRK. Prüfen Sie jetzt in zwei Minuten Ihren möglichen Lohnanspruch – oder fordern Sie einen Rückruf an.",
-    claimBanner: {
-      eyebrow: "2 Minuten",
-      title: "Pflegen Sie Angehörige? Schätzen Sie Ihren möglichen Lohn.",
-      text: "Unverbindlich – Sie sehen sofort eine erste Brutto-Orientierung in Franken.",
-      href: "#anspruch-pruefen",
-      label: "Zur Zahl",
-    },
+      "Hallo und willkommen bei Lumina Spitex. Wenn Sie jemanden pflegen, der Ihnen nahesteht: Sie müssen das nicht allein tragen. Bei uns können Sie sofort angestellt werden – mit Lohn und Sozialversicherung. Eine diplomierte Pflegefachperson begleitet Sie. Innerhalb von zwölf Monaten organisieren und begleiten wir den Lehrgang Pflegende Angehörige SRK. Prüfen Sie jetzt in zwei Minuten Ihren möglichen Lohnanspruch – oder fordern Sie eine Rückmeldung an.",
     cta: {
       title: "Möchten Sie wissen, was Ihre Pflege ungefähr wert sein könnte?",
-      text: "Nutzen Sie den Lohnrechner auf dieser Seite – oder fordern Sie einen Rückruf an.",
+      text: "Nutzen Sie den Bedarfscheck auf dieser Seite – oder fordern Sie eine Rückmeldung an.",
       primaryHref: "#anspruch-pruefen",
-      primaryLabel: "Lohn schätzen",
+      primaryLabel: "Zum Bedarfscheck",
       secondaryHref: "/kontakt",
-      secondaryLabel: "Rückruf anfordern",
+      secondaryLabel: "Rückmeldung anfordern",
     },
   },
 ];

@@ -105,7 +105,7 @@ export function AnspruchscheckQuiz({
               </a>
             ) : (
               <a className="restart" href="/kontakt">
-                Lieber Rückruf anfordern
+                Lieber Rückmeldung anfordern
               </a>
             )}
           </div>

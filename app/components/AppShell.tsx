@@ -170,8 +170,12 @@ const SHEET_LINKS: { href: string; label: string; hint: string }[] = [
   { href: "/tarife", label: "Tarife", hint: "KLV, UVG, Hauswirtschaft" },
   { href: "/ratgeber", label: "Ratgeber", hint: "Lohn, Anspruch, Pflege" },
   { href: "/bewerbung", label: "Bewerbung", hint: "Pflegefachkräfte gesucht" },
-  { href: "/kontakt", label: "Kontakt", hint: "Anruf oder Rückruf" },
-  { href: "/lohn-check", label: "Lohn-Check", hint: "Erste Bruttoschätzung" },
+  { href: "/kontakt", label: "Kontakt", hint: "Anruf oder Rückmeldung" },
+  {
+    href: "/lohn-check",
+    label: "Bedarfscheck für pflegende Angehörige",
+    hint: "Erste Bruttoschätzung",
+  },
 ];
 
 export function AppMenuSheet({

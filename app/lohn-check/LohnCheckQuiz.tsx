@@ -265,7 +265,7 @@ export function LohnCheckQuiz({
               className="text-link"
               href={embedded ? "#kontakt-kampagne" : "/"}
             >
-              {embedded ? "Rückruf anfordern →" : "Zur Website →"}
+              {embedded ? "Rückmeldung anfordern →" : "Zur Website →"}
             </a>
           </div>
         )}

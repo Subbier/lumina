@@ -1362,3 +1362,117 @@ h3{font-size:1.48rem;line-height:1.14}
   .article-detail-visual img{border-radius:16px}
 }
 
+
+/* ============================================================
+   Korrekturen aus dem Kundenreview (Feedback-Tabelle, 09/2026)
+   ============================================================ */
+
+/* Schriftart: fl-Ligatur unterbinden – "Pflege" wurde als "Ptlege" gelesen */
+body,h1,h2,h3,h4,h5,.hero-title,.brand,.button,.eyebrow,.lead{
+  font-variant-ligatures:no-common-ligatures;
+  font-feature-settings:"liga" 0,"clig" 0;
+}
+
+/* --- Hellere Schrift auf allen dunklen Flächen --- */
+.utility,.utility-contact span{color:#eaf3fb}
+.cta p{color:#e6eef8}
+.subhero.dark .lead,.subhero.dark p{color:#e6eef8}
+.timeline p{color:#dce7f4}
+.relation-banner p{color:#eff5fc}
+.numbers-grid span{color:#e3ecf7}
+.contact-info p{color:#eff5fc}
+.contact-callout small{color:#e3ecf7}
+.claim-banner-copy p{color:#e6eef8}
+.magnet p{color:#f0f9fb}
+.job-calculator p,.calculator-teaser p{color:#eff5fc}
+.blog-hero .lead{color:#e6eef8}
+.quiz-intro,.quiz-intro p{color:#e6eef8}
+.footer-grid p{color:#c6d1e1}
+.footer-grid>div>a:not(.brand):not(.button),
+.footer-grid>nav>a:not(.brand):not(.button){color:#ccd7e6}
+.legal{color:#a9b7ca}
+.service-accordion-body{color:#4a4945}
+
+/* --- Trennlinien in der Farbe der Ziffern/Überbegriffe statt schwarz --- */
+.timeline{background:rgba(74,190,211,.5)}
+.numbers-grid div{border-right-color:rgba(74,190,211,.45)}
+.contact-info>div{border-bottom-color:rgba(74,190,211,.4)}
+.legal{border-top-color:rgba(74,190,211,.3)}
+
+/* --- CTA-Hierarchie: Primär-Button auf dunklem Grund sichtbar --- */
+.cta .button.gold,
+.subhero.dark .button.gold,
+.magnet .button,
+.relation-banner .button{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#0d3a55;
+}
+.cta .button.gold,
+.subhero.dark .button.gold,
+.magnet .button,
+.relation-banner .button{color:#0d3a55}
+.cta .button.gold:hover,
+.subhero.dark .button.gold:hover,
+.magnet .button:hover{background:#7ad3e4;border-color:#7ad3e4;color:#0d3a55}
+.magnet .button{white-space:nowrap}
+
+/* Sekundärer CTA gleichwertig zum primären */
+.cta-actions .text-link.light,
+.subhero.dark .actions .text-link.light{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:0 24px;
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:4px;
+  color:#fff;
+}
+.cta-actions .text-link.light:hover,
+.subhero.dark .actions .text-link.light:hover{background:rgba(255,255,255,.14)}
+.cta-actions{align-items:stretch;min-width:250px}
+@media(max-width:640px){.cta-actions{width:100%}}
+
+/* --- Zentrierte Section-Leads wirklich mittig --- */
+.section-head .section-lead,.section-head .lead{margin-inline:auto}
+.section-head.left .section-lead,.section-head.left .lead{margin-inline:0}
+/* Hinweis unter den Leistungskarten auf einer Linie */
+.paths-note{max-width:none}
+
+/* --- Icons in den Kreisen grösser --- */
+.icon{width:54px;height:54px;font-size:1.4rem;line-height:1}
+.contact-info .icon{flex:0 0 54px}
+.benefits article .icon{margin-inline:auto}
+.benefits article{text-align:center}
+/* Labels im Kontaktblock so lesbar wie "Jetzt anrufen" */
+.contact-info .contact-label,.contact-callout span{color:#fff;letter-spacing:.09em}
+
+/* --- Rechtstexte linksbündig an der Hero-Kante --- */
+.wrap.legal-copy{max-width:none}
+.wrap.legal-copy>*{max-width:820px}
+
+/* --- Einwilligungszeile linksbündig, Datenschutz-Link hervorheben --- */
+.contact-form .check.consent-line{align-items:flex-start;text-align:left}
+.consent-link{color:var(--petrol);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* --- Tarife: Hinweistext über volle Tabellenbreite --- */
+.tarife-notes{max-width:none}
+.legal-foundations .lead.small-lead{max-width:none}
+
+/* --- Ratgeber: Abstand zwischen "Alle Ratgeber" und Kategorie --- */
+.article-detail-hero>.text-link{display:inline-flex;margin-bottom:10px}
+.article-detail-hero .tag{display:block;margin-top:8px}
+
+/* --- Utility-Leiste mit OPAN-Link --- */
+.utility-actions{display:flex;align-items:center;gap:24px}
+.utility-opan{border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:1px;font-weight:700}
+.utility-opan:hover{border-bottom-color:#fff}
+@media(max-width:760px){.utility-opan{display:none}}
+
+/* --- Footer: Bedarfscheck als Unterpunkt bei Pflegende Angehörige --- */
+.footer-subitem{padding-left:14px;position:relative}
+.footer-subitem:before{content:"–";position:absolute;left:0;opacity:.6}
+
+/* --- Dunkle Subheros ohne harte Bildkante --- */
+.subhero.dark img{border-color:rgba(255,255,255,.25)}

@@ -72,7 +72,7 @@ const articleDrafts: Array<Omit<Article, "publishedAt" | "modifiedAt">> = [
       {
         heading: "Was Sie vor dem Unterschreiben prüfen sollten",
         paragraphs: [
-          "Fragen Sie nach dem Brutto-/Nettolohn, Ferien, AHV/ALV/UVG/BVG, der fachlichen Begleitung und danach, wie die Restkostenfinanzierung der Gemeinde kommuniziert wird. Im Kanton Zürich gelten für Angehörigenpflege strengere Vorgaben – unter anderem eine anerkannte Qualifikation innert eines Jahres. Bei Lumina können Sie sofort angestellt werden; den Lehrgang Pflegende Angehörige SRK organisieren und finanzieren wir innert zwölf Monaten.",
+          "Fragen Sie nach dem Brutto-/Nettolohn, Ferien, AHV/ALV/UVG/BVG, der fachlichen Begleitung und danach, wie die Restkostenfinanzierung der Gemeinde kommuniziert wird. Im Kanton Zürich gelten für Angehörigenpflege strengere Vorgaben – unter anderem eine anerkannte Qualifikation innert eines Jahres. Bei Lumina können Sie sofort angestellt werden; den Lehrgang Pflegende Angehörige SRK organisieren und begleiten wir innerhalb von zwölf Monaten.",
           "Lumina begleitet Sie bei Abklärung, Anstellung und Dokumentation. So bleibt die Pflege bei Ihnen zu Hause – und die Administration nicht allein auf Ihren Schultern.",
         ],
       },
@@ -325,7 +325,7 @@ const articleDrafts: Array<Omit<Article, "publishedAt" | "modifiedAt">> = [
       "Passung zählt mehr als Label: Verfügbarkeit, Bezugsperson und Qualität der Abklärung.",
     ],
     ctaLabel: "Lumina Spitex kennenlernen",
-    ctaHref: "/begleitung",
+    ctaHref: "/ueber-uns",
     sections: [
       {
         paragraphs: [
@@ -402,7 +402,7 @@ const articleDrafts: Array<Omit<Article, "publishedAt" | "modifiedAt">> = [
       "Ferien, Krankheit und Vertretung müssen geregelt sein – sonst trägt die Familie das Risiko.",
       "Fachaufsicht ist rechtlich zentral für die Abrechnung von Angehörigenpflege.",
     ],
-    ctaLabel: "Anstellungsmodell erklären lassen",
+    ctaLabel: "Anstellung für pflegende Angehörige ansehen",
     ctaHref: "/angehoerige",
     sections: [
       {
